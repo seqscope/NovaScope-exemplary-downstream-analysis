@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 # ===== SET UP =====
 set -ueo pipefail
 
@@ -68,16 +69,17 @@ command time -v ${py39} ${ficture}/script/transform_univ.py  \
     --precision 2  \
     --major_axis X
 
-
 # If needed, create the color table.
 echo -e "\n#=== sub-step.2 Choose color ===#"
 
-if [ -f ${model_dir}/${train_prefix}.rgb.tsv ]; then
-    echo -e "The color table already exists. Skip this step."
+if [[ -f "${model_dir}/${tranform_prefix}.rgb.tsv" ]]; then
+    echo -e "Skip given color table already exists: ${model_dir}/${tranform_prefix}.rgb.tsv"
 else
     if [[ $train_model == "LDA" ]]; then
+        echo -e "For LDA. Create the color table from the training model."
         ln -s ${model_dir}/${train_prefix}.rgb.tsv ${model_dir}/${tranform_prefix}.rgb.tsv
-    else   
+    else 
+        echo -e "For Seurat. Create the color table from the transformed data."
         ${py39} ${ficture}/script/choose_color.py \
             --input ${model_dir}/${tranform_prefix}.fit_result.tsv.gz\
             --output ${model_dir}/${tranform_prefix} \

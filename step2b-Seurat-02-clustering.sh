@@ -1,5 +1,5 @@
 # ===== SET UP =====
-set -ueo pipefail
+#set -ueo pipefail
 
 # Processing the input_data_and_params.
 if [ $# -ne 1 ]; then
@@ -44,12 +44,18 @@ check_files_exist "${required_files[@]}"
 
 echo -e "\n#=== sub-step 3. Clustering ===#"
 
+# Initialize variables to empty strings to avoid unbound variable errors due to set -u
+X_min=${X_min-}
+X_max=${X_max-}
+Y_min=${Y_min-}
+Y_max=${Y_max-}
+
 cmd="Rscript ${neda}/scripts/seurat_analysis.R --input_dir ${model_dir} --output_dir ${model_dir} --unit_id ${prefix} --nFeature_RNA_cutoff $nFeature_RNA_cutoff"
 
-[[ -n "$X_min" ]] && cmd+=" --X_min $X_min"
-[[ -n "$X_max" ]] && cmd+=" --X_max $X_max"
-[[ -n "$Y_min" ]] && cmd+=" --Y_min $Y_min"
-[[ -n "$Y_max" ]] && cmd+=" --Y_max $Y_max"
+[[ ${#X_min} -ge 1 ]] && cmd+=" --X_min $X_min"
+[[ ${#X_max} -ge 1 ]] && cmd+=" --X_max $X_max"
+[[ ${#Y_min} -ge 1 ]] && cmd+=" --Y_min $Y_min"
+[[ ${#Y_max} -ge 1 ]] && cmd+=" --Y_max $Y_max"
 
 echo -e "$cmd\n"
-eval $cmd
+eval "$cmd"

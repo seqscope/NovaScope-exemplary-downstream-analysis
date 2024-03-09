@@ -1,5 +1,5 @@
 # ===== SET UP =====
-set -ueo pipefail
+#set -ueo pipefail
 
 # Processing the input_data_and_params.
 if [ $# -ne 1 ]; then
@@ -48,22 +48,40 @@ echo -e "\n#=== sub-step 4. Create model file ===#"
 
 echo -e "\nresolution: $res_of_interest\n"
 
+cnt_mat="${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_clusterbyres${res_of_interest}.tsv.gz"
 command time -v ${py39} ${neda}/scripts/seurat_cluster_to_count_matrix_for_categorical.py\
-    --input_csv ${output_dir}/Seurat/${prefix}_cutoff${nFeature_RNA_cutoff}_metadata.csv  \
-    --dge_path ${output_dir}/Seurat \
-    --output ${output_dir}/Seurat/${prefix}_cutoff${nFeature_RNA_cutoff}_clusterbyres${res_of_interest}.tsv.gz \
+    --input_csv ${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_metadata.csv  \
+    --dge_path ${model_dir} \
+    --output ${cnt_mat} \
     --key ${sf} \
-    --cluster SCT_snn_res.${res_of_interest} \
+    --cluster "SCT_snn_res.${res_of_interest}" \
     --x_col 2 \
     --y_col 3 
 
 # link the model file
-new_nf=$(zcat ${output_dir}/Seurat/${prefix}_cutoff${nFeature_RNA_cutoff}_clusterbyres${res_of_interest}.tsv.gz |head -1 | awk -F '\t' '{print NF-1}')
+echo -e "count matrix file: $cnt_mat"
 
-model_path=${model_dir}/${prefix}.${sf}.nF${new_nf}.d_${tw}.s_${ep}.model.tsv.gz
+if [[ ! -f "$cnt_mat" ]]; then
+    echo -e "Error: File not found: $cnt_mat" 
+    exit 1
+elif [[ ! -s "$cnt_mat" ]]; then
+    echo -e "Error: File is empty: $cnt_mat" 
+    exit 1
+else
+    new_nf=$(zcat "$cnt_mat" | head -1 | awk -F '\t' '{print NF-1}')
+fi
+
+model_path="${model_dir}/${prefix}.${sf}.nF${new_nf}.d_${tw}.s_${ep}.model.tsv.gz"
+
+echo -e "New nf: $new_nf"
+echo -e "model file: $model_path"
+
 # link the model file if it does not exist
-if [ ! -f ${model_path} ]; then
-    ln -s ${output_dir}/Seurat/${prefix}_cutoff${nFeature_RNA_cutoff}_clusterbyres${res_of_interest}.tsv.gz ${model_path}
+if [[ -f "${model_path}" ]]; then
+    echo -e "Model file ${model_path} already exists"
+else
+    echo -e "Linking the model file to ${model_path}"
+    ln -s "${cnt_mat}" "${model_path}"
 fi
 
 # You can manually update nf in the input_data_and_params file or use below 

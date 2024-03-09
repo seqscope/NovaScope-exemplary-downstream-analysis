@@ -39,7 +39,6 @@ required_files=(
     "${output_dir}/${prefix}.batched.matrix.tsv.gz "
     "${model_path}"
     "${model_dir}/${tranform_prefix}.fit_result.tsv.gz"
-    "${model_dir}/${tranform_prefix}.rgb.tsv"
 )
 
 check_files_exist "${required_files[@]}"
@@ -96,12 +95,29 @@ command time -v ${py39} ${ficture}/script/de_bulk.py \
     --thread $threads
 
 # decode pixel figure
-deactivate 
+echo -e "\n#=== sub-step.3 Plot pixel figure ===#"
 
+# If needed, create the color table.
+if [ -f ${model_dir}/${train_prefix}.rgb.tsv ]; then
+    echo -e "The color table already exists. Skip this step."
+else
+    if [[ $train_model == "LDA" ]]; then
+        echo -e "For LDA. Create the color table from the training model."
+        echo -e "ln -s ${model_dir}/${train_prefix}.rgb.tsv ${model_dir}/${tranform_prefix}.rgb.tsv"
+        ln -s ${model_dir}/${train_prefix}.rgb.tsv ${model_dir}/${tranform_prefix}.rgb.tsv
+    else 
+        echo -e "For Seurat. Create the color table from the transformed data."
+        ${py39} ${ficture}/script/choose_color.py \
+            --input ${model_dir}/${tranform_prefix}.fit_result.tsv.gz\
+            --output ${model_dir}/${tranform_prefix} \
+            --cmap_name turbo
+    fi
+fi
+
+deactivate 
 source ${py310_env}/bin/activate
 py310=${py310_env}/bin/python
 
-echo -e "\n#=== sub-step.3 Plot pixel figure ===#"
 command time -v ${py310} ${ficture}/script/plot_pixel_full.py \
     --input ${model_dir}/${decode_prefix}.pixel.sorted.tsv.gz \
     --output ${model_dir}/${decode_prefix}.pixel.png  \
