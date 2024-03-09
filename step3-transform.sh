@@ -76,7 +76,7 @@ if [[ -f "${model_dir}/${tranform_prefix}.rgb.tsv" ]]; then
     echo -e "Skip given color table already exists: ${model_dir}/${tranform_prefix}.rgb.tsv"
 else
     if [[ $train_model == "LDA" ]]; then
-        echo -e "For LDA. Create the color table from the training model."
+        echo -e "For LDA. Use the color table from the training model."
         ln -s ${model_dir}/${train_prefix}.rgb.tsv ${model_dir}/${tranform_prefix}.rgb.tsv
     else 
         echo -e "For Seurat. Create the color table from the transformed data."

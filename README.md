@@ -1,48 +1,51 @@
-# NovaScope-exemplary-downstream-analysis
+# Guide for NovaScope Exemplary Downstream Analysis
 
-## Step-by-step Tutorial
+## Step-by-Step Instructions
 
-0. Follow the `step0-getstarted.md` to install the required softwares and datasets, and prepare input files. 
+0. Begin with `step0-getstarted.md` to install all necessary software and datasets, and to prepare your input files.
 
-1. Proprocess the input datasets.
+1. Preprocess your input datasets using the following command:
+2. 
     ```bash
     ./step1-preprocess.sh ./input_data_and_params.txt
     ```
 
-2. Opt for either LDA factorization or Seurat clustering to proceed. Execute the relevant steps as follows:
+2. Next, choose between LDA factorization and Seurat clustering for further analysis. Follow the respective instructions:
 
-     **(a) LDA Factorization**: 
-       
+    **(a) LDA Factorization**: 
+    
+    Execute LDA factorization by running:
+    
     ```bash
     ./step2a-LDA.sh ./input_data_and_params.txt
     ```
 
-    (b) **Seurat factorization**.
+    **(b) Seurat Clustering**: 
     
-    This process involves interactive decision points requiring parameter adjustments. Follow these steps:
-
+    Seurat clustering involves interactive steps for parameter fine-tuning. Proceed as follows:
+    
     ```
-    # 1) Start the Seurat analysis:
+    # Begin Seurat analysis:
     ./step2b-Seurat-01-hexagon.sh ./input_data_and_params.txt
     
-    # 2) Review the density plot to determine the nFeature_RNA cutoff. Update this in input_data_and_params.txt. 
+    # Analyze the density plot to set the nFeature_RNA cutoff. Update this in the parameters file. 
     
-    # 3) Clustering:
+    # Execute clustering:
     ./step2b-Seurat-02-clustering.sh ./input_data_and_params.txt
     
-    # 4) Assess the Dim and Spatial plots to select the appropriate clustering resolution.
+    # Review Dimensionality and Spatial plots to choose a clustering resolution.
 
-    # 5) Prepare a model file.
-    ./step2b-Seurat-03-convert.sh  ./input_data_and_params.txt
+    # Generate a model file:
+    ./step2b-Seurat-03-convert.sh ./input_data_and_params.txt
     ```
 
-3. Pixel-level Spatial decoding.
-    
+3. Perform Pixel-level Spatial Decoding:
+4. 
     ```
-    ./step3-transform.sh  ./input_data_and_params.txt
+    ./step3-transform.sh ./input_data_and_params.txt
     ./step4-decoding.sh ./input_data_and_params.txt
     ```
 
-# Notes:
+# Notes
 
-* This example case uses the X as major axis as it is the longer axis. The sort and tabix steps thoroughout this downstream analysis are based on X axis. 
+* This tutorial assumes the X-axis as the primary axis due to its greater length. Sorting and tabix steps are thus aligned with the X-axis in this downstream analysis.

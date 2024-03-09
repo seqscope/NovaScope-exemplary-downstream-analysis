@@ -12,12 +12,11 @@ Ensure the installation of the below software and their respective versions to f
     - R (v4.2)
     - FICTURE (Install from [GitHub](https://github.com/seqscope/ficture))
 
-For Python, 3.9 is applied for the majority steps while 3.10 helps create the HTML report file for LDA factorization and projection.
+For Python, 3.9 is applied for the majority steps while 3.10 helps create the pixel figure and HTML report file for LDA factorization and projection.
 
 **Python Environment**:
 
 Set up a dedicated Python environment for FICTURE as per the guidelines found at [this link](https://github.com/seqscope/ficture/blob/8ceb419618c1181bb673255427b53198c4887cfa/requirements.txt#L4).
-
 
 **R Packages Installation**:
 
@@ -63,11 +62,11 @@ neda="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exempla
 ref_geneinfo="/nfs/turbo/sph-hmkang/weiqiuc/tools/factor_analysis/info/Mus_musculus.GRCm39.107.names.tsv.gz"   # Reference gene info dataset path. Only needed for LDA.
 
 ## Input/Output Directories
-input_dir="/nfs/turbo/umms-leeju/v5/ngeAR/N3-B08C_mouse_default_QCraret1v4i"             # Directory for input files
+input_dir="/nfs/turbo/umms-leeju/v5/ngeAR/N3-B08C_mouse_default_QCraret1v4i"           # Directory for input files
 output_dir="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-results"  # Directory for output files, including `LDA` and `Seurat` results
 
 ## Output Prefix
-prefix="N3-B08C_mouse_default_QCraret1v4i"                                               # Prefix for naming output files
+prefix="N3-B08C_mouse_default_QCraret1v4i"                                             # Prefix for naming output files
 ```
 
 ### 3.2 Factorization/Clustering params
