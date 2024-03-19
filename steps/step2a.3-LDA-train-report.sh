@@ -36,7 +36,8 @@ ap_min_fold_output=1.5
 command time -v ${python} ${ficture}/script/choose_color.py \
     --input ${model_dir}/${train_prefix}.fit_result.tsv.gz \
     --output ${model_dir}/${train_prefix} \
-    --cmap_name $ap_cmap_name
+    --cmap_name $ap_cmap_name \
+    --seed ${seed}
 
 # Create bulk_chisq file with marker genes for each factor,
 command time -v ${python} ${ficture}/script/de_bulk.py \

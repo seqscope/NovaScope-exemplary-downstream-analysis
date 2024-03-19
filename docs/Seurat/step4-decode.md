@@ -5,6 +5,7 @@
 **Prefix**:
 
 The decode_prefix will be automatically defined by the script as below.
+The `nr` represents neighbor_radius. By default, `nr=ar+1`.
 ```
 decode_prefix="${train_prefix}.decode.prj_${pw}.r_${ar}_${nr}"
 ```

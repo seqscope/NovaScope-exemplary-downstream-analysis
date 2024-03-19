@@ -43,7 +43,7 @@ $neda_dir/steps/step2b.1-creat-hexagons-for-Seurat.sh $input_configfile
 
 ### step 2b.2 Manually select the cutoffs.
 
-Review the density plots from the `step2b-Seurat-01-hexagon.sh` and select a threshold for nFeature_RNA while specifying the ranges for x and y.  Add those variables to the `input_data_and_params` file.
+Review the density plots from the `step2b-Seurat-01-hexagon.sh` and select a threshold for nFeature_RNA. It is optional to define x y ranges. Add those variables to the `input_data_and_params` file.
 
 Regarding to the thresholds for nFeature_RNA, we applied a cutoff of nFeature_RNA_cutoff=500 for deep sequencing data, and nFeature_RNA_cutoff=100 for shallow sequencing data. 
 

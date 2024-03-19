@@ -57,7 +57,8 @@ else
         ${python} ${ficture}/script/choose_color.py \
             --input ${model_dir}/${tranform_prefix}.fit_result.tsv.gz\
             --output ${model_dir}/${tranform_prefix} \
-            --cmap_name $ap_cmap_name
+            --cmap_name $ap_cmap_name \
+            --seed ${seed}
     fi
 fi
 

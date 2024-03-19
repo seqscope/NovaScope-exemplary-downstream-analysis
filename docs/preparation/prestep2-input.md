@@ -26,7 +26,7 @@ ref_geneinfo=<path_to_the_reference_dataset>                        ## Path to t
 
 ## Input/Output 
 input_dir=<path_to_the_input_directory>                             ## Directory for input files
-output_dir=<path_to_the_output_directory>                           ## Directory for output files
+output_dir=<path_to_the_output_directory>                           ## Directory for output files. The LDA-based results will be saved in "${output_dir}/LDA" while the Seurat-based results will be stored at "${output_dir}/Seurat"
 prefix=<prefix_of_output_files>                                     ## Prefix for output files. The output files will be named using both this prefix and the following analytical parameters.
 
 ## analytical parameters
@@ -41,6 +41,6 @@ ar=<archor_distance>                                                ## Anchor po
 
 seed=<an_integer>                                                   ## A seed for reproducibility, e.g., 2024030700. This will be used in the LDA training and choosing colors for factors/cluster.
 
-major_axis=<X_or_Y>                                                 ## Generally, we defined the one with greater length as the major axis.
+major_axis=<X_or_Y>                                                 ## Generally, we defined the one with greater length as the major axis. Options: "X", "Y".
 ```
 
