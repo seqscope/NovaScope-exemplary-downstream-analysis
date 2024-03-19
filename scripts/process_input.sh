@@ -30,8 +30,7 @@ process_input_data_and_params() {
     threads=${threads:-1}
     # Log
     echo -e "#=== ENVIRONMENT ===#"
-    echo -e "py39_env: $py39_env"
-    echo -e "py310_env: $py310_env"
+    echo -e "python environment: $py_env"
     echo -e "ficture: $ficture"
     echo -e "execution_mode: $execution_mode"
     echo -e "threads: $threads"

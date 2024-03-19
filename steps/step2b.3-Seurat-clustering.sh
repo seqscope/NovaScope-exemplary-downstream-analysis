@@ -1,9 +1,8 @@
 # ===== SET UP =====
-#set -ueo pipefail
+set -ueo pipefail
 
-# Processing the input_data_and_params.
 if [ $# -ne 1 ]; then
-    echo -e "Usage: $0 <path_to_file>"
+    echo -e "Usage: $0 <input_data_and_params>"
     exit 1
 fi
 
@@ -11,16 +10,10 @@ echo -e "#=====================\n#"
 echo -e "# $(basename "$0") \n#"
 echo -e "#=====================\n#"
 
-neda=$(dirname "$0")
-input_data_and_params="$1"
-
+# Read input config
+neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-
-process_input_data_and_params $input_data_and_params
-
-if [[ $execution_mode == "HPC" ]]; then
-    module load R/4.2.0
-fi
+process_input_data_and_params $0s
 
 # Examine the required input files
 required_files=(
@@ -32,8 +25,8 @@ check_files_exist "${required_files[@]}"
 
 # ===== ANALYSIS =====
 # Review the density plots from the `step2b-Seurat-01-hexagon.sh` and select a threshold for nFeature_RNA while specifying the ranges for x and y. 
-# Add those variables to the input_data_and_params file or below.
-# Regarding to the thresholds for nFeature_RNA, we applied a cutoff of nFeature_RNA_cutoff=500 for deep sequencing data, and nFeature_RNA_cutoff=100 for shallow sequencing data, .
+# Add those variables to the input_data_and_params file.
+# Regarding to the thresholds for nFeature_RNA, we applied a cutoff of nFeature_RNA_cutoff=500 for deep sequencing data, and nFeature_RNA_cutoff=100 for shallow sequencing data.
 
 # Example:
 # In this case, the Y_max is not applied. 
@@ -42,14 +35,13 @@ check_files_exist "${required_files[@]}"
 # X_max=1e+07
 # Y_min=1e+06
 
-echo -e "\n#=== sub-step 3. Clustering ===#"
-
 # Initialize variables to empty strings to avoid unbound variable errors due to set -u
 X_min=${X_min-}
 X_max=${X_max-}
 Y_min=${Y_min-}
 Y_max=${Y_max-}
 
+# Define the command for Seurat analysis with the required arguments
 cmd="Rscript ${neda}/scripts/seurat_analysis.R --input_dir ${model_dir} --output_dir ${model_dir} --unit_id ${prefix} --nFeature_RNA_cutoff $nFeature_RNA_cutoff"
 
 [[ ${#X_min} -ge 1 ]] && cmd+=" --X_min $X_min"
@@ -57,5 +49,6 @@ cmd="Rscript ${neda}/scripts/seurat_analysis.R --input_dir ${model_dir} --output
 [[ ${#Y_min} -ge 1 ]] && cmd+=" --Y_min $Y_min"
 [[ ${#Y_max} -ge 1 ]] && cmd+=" --Y_max $Y_max"
 
+# Execute Seurat analysis
 echo -e "$cmd\n"
 eval "$cmd"

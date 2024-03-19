@@ -1,6 +1,4 @@
-py39_env="/nfs/turbo/sph-hmkang/index/data/weiqiuc/ScopeFlow_local/env/pyenv/py39"
-py310_env="/nfs/turbo/sph-hmkang/index/data/weiqiuc/ScopeFlow_local/env/pyenv/py310"
-ficture="/nfs/turbo/sph-hmkang/weiqiuc/tools/factor_analysis"
+ficture="/nfs/turbo/sph-hmkang/weiqiuc/tools/ficture"
 ref_geneinfo="/nfs/turbo/sph-hmkang/weiqiuc/tools/factor_analysis/info/Mus_musculus.GRCm39.107.names.tsv.gz"
 execution_mode="HPC"
 threads=12
