@@ -30,14 +30,23 @@ required_files=(
 
 check_files_exist "${required_files[@]}"
 
+# ===== AUXILIARY PARAMS =====
+# marker genes
+ap_min_ct_per_feature=50
+ap_max_pval_output=0.001
+ap_min_fold_output=1.5
+
+# plot
+ap_plot_um_per_pixel=0.5
+
 # ===== ANALYSIS =====
 # 1) Identify marker genes for each factor/cluster.
 command time -v ${python} ${ficture}/script/de_bulk.py \
     --input ${model_dir}/${decode_prefix}.posterior.count.tsv.gz \
     --output ${model_dir}/${decode_prefix}.bulk_chisq.tsv \
-    --min_ct_per_feature 50  \
-    --max_pval_output 0.001 \
-    --min_fold_output 1.5 \
+    --min_ct_per_feature $ap_min_ct_per_feature \
+    --max_pval_output $ap_max_pval_output \
+    --min_fold_output $ap_min_fold_output \
     --thread $threads
 
 # 2) Create the high-resolution image of cell type factors for individual pixels.
@@ -45,7 +54,7 @@ command time -v ${python} ${ficture}/script/plot_pixel_full.py \
     --input ${model_dir}/${decode_prefix}.pixel.sorted.tsv.gz \
     --output ${model_dir}/${decode_prefix}.pixel.png  \
     --color_table ${model_dir}/${tranform_prefix}.rgb.tsv \
-    --plot_um_per_pixel 0.5 \
+    --plot_um_per_pixel $ap_plot_um_per_pixel \
     --full
 
 # 3) create an HTML file summarizing individual factors and marker genes. 

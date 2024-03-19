@@ -16,3 +16,5 @@ ep=3
 seed=2024030700
 pw=18
 ar=4
+
+major_axis="X"

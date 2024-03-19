@@ -24,6 +24,16 @@ required_files=(
 )
 check_files_exist "${required_files[@]}"
 
+# ===== AUXILIARY PARAMS =====
+ap_kept_gene_types="protein_coding,lncRNA"
+ap_removed_gene_types="^Gm\d+|^mt-|^MT-"
+
+ap_mu_scale=1000
+ap_radius=15
+ap_quartile=2
+ap_hex_n_move=2
+ap_remove_small_polygons=500
+
 # ===== ANALYSIS =====
 # 1) Create a QCed feature file via filtering gene types and density
 echo -e "\n#=== 1) Prepare a clean feature file ===#"
@@ -32,8 +42,8 @@ echo -e "\n#=== 1) Prepare a clean feature file ===#"
 zcat ${input_dir}/features.tsv.gz | cut -f 1,2,4 | sed 's/,/\t/g' | sed '1 s/^/gene_id\tgene\tgn\tgt\tspl\tunspl\tambig\n/' | gzip -c > ${output_dir}/${prefix}.feature.tsv.gz
 
 # Define which gene types to keep and which gene names to remove
-kept_gene_type=$(echo "protein_coding,lncRNA" | sed 's/,/\|/') 
-rm_gene_regex=$(echo "^Gm\d+|^mt-|^MT-" | sed 's/\^/\\t/g')
+kept_gene_type=$(echo "$ap_kept_gene_types" | sed 's/,/\|/') 
+rm_gene_regex=$(echo "$ap_kept_gene_types" | sed 's/\^/\\t/g')
 
 # Define the header of the QCed feature file
 echo -e "gene_id\tgene\tgn\tgt\tspl\tunspl\tambig" > ${output_dir}/${prefix}.feature.clean.tsv
@@ -55,15 +65,22 @@ command time -v ${python} ${ficture}/script/filter_poly.py \
     --output ${output_dir}/${prefix}.QCed.matrix.tsv.gz \
     --output_boundary ${output_dir}/${prefix} \
     --filter_based_on ${sf} \
-    --mu_scale 1000 \
-    --radius 15 \
-    --quartile 2 \
-    --hex_n_move 2 \
-    --remove_small_polygons 500 \
+    --mu_scale $ap_mu_scale \
+    --radius $ap_radius \
+    --quartile $ap_quartile \
+    --hex_n_move $ap_hex_n_move \
+    --remove_small_polygons $ap_remove_small_polygons \
 
 # 3) Tabix the QCed matrix
 echo -e "\n#=== 3) Tabix the QCed matrix ===#"
 zcat ${output_dir}/${prefix}.QCed.matrix.tsv.gz | bgzip -c > ${output_dir}/${prefix}.QCed.matrix.tsv.gz.tmp.gz
 mv ${output_dir}/${prefix}.QCed.matrix.tsv.gz.tmp.gz ${output_dir}/${prefix}.QCed.matrix.tsv.gz
-tabix -0 -f -s1 -b3 -e3 ${output_dir}/${prefix}.QCed.matrix.tsv.gz
+
+if [ $major_axis == "Y" ]; then
+    tabix_column="-b4 -e4"
+else
+    tabix_column="-b3 -e3"
+fi
+
+tabix -0 -f -s1 ${tabix_column} ${output_dir}/${prefix}.QCed.matrix.tsv.gz
 

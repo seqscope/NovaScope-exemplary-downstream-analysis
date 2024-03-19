@@ -5,7 +5,7 @@ Please make sure set up the working environment before each Step (see below).
 ## Load modules if applicable.
 module load Bioinformatics
 module load samtools
-module load R/4.2.0
+module load R/4.2.0                                 ## Seurat-only
 
 ## If you are using a conda environment, replace the following lines with the appropriate commands to activate the environment.
 py_env="<path_to_python_env>"                       ## Replace <path_to_python_env> with the path to the python environment
@@ -21,21 +21,42 @@ input_configfile="<path_to_input_data_and_params>"  ## Replace <path_to_input_da
 
 ### Step 1.1 convert the SGE matrix to a merged format
 
-input:  `${input_dir}/features.tsv.gz`, `${input_dir}/barcodes.tsv.gz`, `${input_dir}/matrix.mtx.gz`
+Input & Output
+```
+# Input:
+${input_dir}/features.tsv.gz
+${input_dir}/barcodes.tsv.gz
+${input_dir}/matrix.mtx.gz
 
-output: `${output_dir}/${prefix}.merged.matrix.tsv.gz`
+#Output:
+${output_dir}/${prefix}.merged.matrix.tsv.gz
+```
 
+Command:
 ```
 $neda_dir/steps/step1.1-convert-SGE.sh $input_configfile
 ```
 
-### Step 1.2 QC
-Prepare a QCed feature and SGE matrix in a merged format, filtered by gene types and density.
+### Step 1.2 Filtering
+Prepare a quality-controlled (QCed) feature and SGE matrix in a merged format, filtered by gene types and density.
 
-input: `${input_dir}/features.tsv.gz`, `${input_dir}/barcodes.tsv.gz`, `${input_dir}/matrix.mtx.gz`, `${output_dir}/${prefix}.merged.matrix.tsv.gz`
+Input & Output
 
-output: `${output_dir}/${prefix}.feature.clean.tsv.gz`, `${output_dir}/${prefix}.QCed.matrix.tsv.gz,` `${output_dir}/${prefix}.boundary.strict.geojson`, `${output_dir}/${prefix}.coordinate_minmax.tsv`
+```
+# Input: 
+${input_dir}/features.tsv.gz
+${input_dir}/barcodes.tsv.gz
+${input_dir}/matrix.mtx.gz
+${output_dir}/${prefix}.merged.matrix.tsv.gz
 
+#Output: 
+${output_dir}/${prefix}.feature.clean.tsv.gz
+${output_dir}/${prefix}.QCed.matrix.tsv.gz
+${output_dir}/${prefix}.boundary.strict.geojson
+${output_dir}/${prefix}.coordinate_minmax.tsv
+```
+
+Command:
 ```
 $neda_dir/steps/step1.2-filter-feature-and-SGE.sh $input_configfile
 ```
@@ -43,10 +64,17 @@ $neda_dir/steps/step1.2-filter-feature-and-SGE.sh $input_configfile
 ### Step 1.3 Create minimatch
 Reformat the input file by assigning minibatch label, and by reordering the data based on the major axis so that they are locally contiguous.
 
-input: `${output_dir}/${prefix}.QCed.matrix.tsv.gz`
+Input & Output
+```
+#Input: 
+${output_dir}/${prefix}.QCed.matrix.tsv.gz
 
-output: `${output_dir}/${prefix}.batched.matrix.tsv.gz`
+#Output: 
+${output_dir}/${prefix}.batched.matrix.tsv.gz
 
+```
+
+Command:
 ```
 $neda_dir/steps/step1.3-create-minibatch.sh $input_configfile
 ```

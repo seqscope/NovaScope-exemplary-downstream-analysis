@@ -22,8 +22,8 @@ theme:
 nav:
   - Home: index.md
   - Preparation:
-      - Installation and Download reference data: ../preparation/prestep1-setup.md
-      - Preparing input: prestep2-input.md
+      - Installation and Download reference data: preparation/prestep1-setup.md
+      - Preparing input: preparation/prestep2-input.md
   - LDA+FICTURE analysis:
       - Preprocessing: LDA/step1-preprocess.md
       - LDA Factorization: LDA/step2a-LDA.md
@@ -31,7 +31,7 @@ nav:
       - Pixel-level Decoding: LDA/step4-decode.md
   - Seurat+FICTURE analysis:
       - Preprocessing: Seurat/step1-preprocess.md
-      - Seurat Clustering: Seurat/step2a-seurat.md
+      - Seurat Clustering: Seurat/step2b-seurat.md
       - Transform : Seurat/step3-transform.md
       - Pixel-level Decoding: Seurat/step4-decode.md
 

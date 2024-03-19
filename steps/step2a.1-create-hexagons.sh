@@ -23,6 +23,12 @@ required_files=(
 )
 check_files_exist "${required_files[@]}"
 
+# ===== AUXILIARY PARAMS =====
+ap_mu_scale=1000
+ap_n_move=2
+ap_precision=2
+ap_min_density_per_unit=0.3
+
 # ===== ANALYSIS =====
 mkdir -p ${model_dir}
 
@@ -32,12 +38,12 @@ command time -v ${python} ${ficture}/script/make_dge_univ.py \
     --input ${output_dir}/${prefix}.QCed.matrix.tsv.gz \
     --output ${model_dir}/${hexagon_prefix}.tsv \
     --hex_width ${tw} \
-    --n_move 2 \
-    --mu_scale 1000 \
-    --precision 2 \
-    --major_axis X \
-    --min_density_per_unit 0.3 \
+    --n_move $ap_n_move \
+    --mu_scale $ap_mu_scale \
+    --precision $ap_n_move \
+    --major_axis ${major_axis} \
+    --min_density_per_unit $ap_min_density_per_unit \
     --boundary ${output_dir}/${prefix}.boundary.strict.geojson
 
-# 2) Sort based on the major axis
+# 2) Sort by the hexagon IDs
 sort -S 10G -k1,1n ${model_dir}/${hexagon_prefix}.tsv | gzip -c > ${model_dir}/${hexagon_prefix}.tsv.gz 

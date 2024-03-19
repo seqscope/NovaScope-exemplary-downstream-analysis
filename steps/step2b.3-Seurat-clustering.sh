@@ -23,18 +23,10 @@ required_files=(
 )
 check_files_exist "${required_files[@]}"
 
+# ===== AUXILIARY PARAMS =====
+# None
+
 # ===== ANALYSIS =====
-# Review the density plots from the `step2b-Seurat-01-hexagon.sh` and select a threshold for nFeature_RNA while specifying the ranges for x and y. 
-# Add those variables to the input_data_and_params file.
-# Regarding to the thresholds for nFeature_RNA, we applied a cutoff of nFeature_RNA_cutoff=500 for deep sequencing data, and nFeature_RNA_cutoff=100 for shallow sequencing data.
-
-# Example:
-# In this case, the Y_max is not applied. 
-# nFeature_RNA_cutoff=100
-# X_min=2.5e+06
-# X_max=1e+07
-# Y_min=1e+06
-
 # Initialize variables to empty strings to avoid unbound variable errors due to set -u
 X_min=${X_min-}
 X_max=${X_max-}

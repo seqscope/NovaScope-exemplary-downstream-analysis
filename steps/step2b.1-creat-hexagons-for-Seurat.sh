@@ -22,6 +22,12 @@ required_files=(
 )
 check_files_exist "${required_files[@]}"
 
+# ===== AUXILIARY PARAMS =====
+ap_mu_scale=1000
+ap_n_move=1                 # To create non-overlapping hexagons, set ap_n_move=1
+ap_precision=2
+ap_min_ct_per_unit=10
+
 # ===== ANALYSIS =====
 mkdir -p ${model_dir}
 
@@ -30,13 +36,13 @@ command time -v ${py39} ${ficture}/script/make_sge_by_hexagon.py \
     --input ${output_dir}/${prefix}.merged.matrix.tsv.gz \
     --feature ${output_dir}/${prefix}.feature.tsv.gz \
     --output_path ${model_dir} \
-    --mu_scale 1000 \
-    --major_axis X \
+    --mu_scale $ap_mu_scale \
+    --major_axis ${major_axis} \
     --key ${sf}   \
-    --precision 2  \
+    --precision $ap_precision  \
     --hex_width ${tw}  \
-    --n_move 1 \
-    --min_ct_per_unit 10  \
+    --n_move $ap_n_move \
+    --min_ct_per_unit $ap_min_ct_per_unit  \
     --transfer_gene_prefix
 
 # Test different cutoffs for nFeature_RNA

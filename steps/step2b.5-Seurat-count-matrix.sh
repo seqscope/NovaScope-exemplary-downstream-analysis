@@ -23,8 +23,12 @@ required_files=(
 )
 check_files_exist "${required_files[@]}"
 
+# ===== AUXILIARY PARAMS =====
+# None
+
 # ===== ANALYSIS =====
 # 1) convert metadata to a count matrix
+# The x_col and y_col specify which column in the hexagon ID file to use as the x and y coordinates.
 echo -e "\nresolution: $res_of_interest\n"
 
 cnt_mat="${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_clusterbyres${res_of_interest}.tsv.gz"
@@ -37,7 +41,7 @@ command time -v ${python} ${neda}/scripts/seurat_cluster_to_count_matrix_for_cat
     --x_col 2 \
     --y_col 3 
 
-# 2) Examines the count matrix file is valid, and btain the number of factors (nf) from the count matrix file.
+# 2) Examines the count matrix file is valid, and obtain the number of factors (nf) from the count matrix file.
 echo -e "count matrix file: $cnt_mat"
 
 if [[ ! -f "$cnt_mat" ]]; then
@@ -59,8 +63,7 @@ else
     echo "nf=$new_nf" >> "$input_data_and_params"
 fi
 
-# Use a symbolic link to the count matrix file as the model file. 
-# This allows the model file to be easily located by the subsequent steps.
+# Create a symbolic link to the count matrix file, simplifying its location by subsequent steps.
 model_path="${model_dir}/${prefix}.${sf}.nF${new_nf}.d_${tw}.s_${ep}.model.tsv.gz"
 echo -e "model file: $model_path"
 

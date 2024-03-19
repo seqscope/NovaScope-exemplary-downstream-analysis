@@ -6,7 +6,8 @@ This example illustrates infering cell type factors using Seurat.
 
 This process contains two stops, which require manual evaluation. One stop is at step 2b.2 and the other at step 2b.4.
 
-Prefix:
+**Prefix**:
+
 The `nf` will be determined in step2b.5
 ```
 hexagon_prefix="${prefix}.hexagon.${sf}.d_${tw}"
@@ -14,15 +15,28 @@ train_prefix="${prefix}.${sf}.nF${nf}.d_${tw}.s_${ep}"
 ```
 
 ### step 2b.1 Create hexagonal SGE and test different cutoffs for nFeature_RNA
-This step will creates hexagonal SGE that is compatible with Seurat. It also examine the distribution of Ncount and Nfeature and tests filtering the SGE using different nFeature_RNA cutoffs, including 50,100,200,300,400,500,750,1000.
+This step will creates hexagonal SGE that is compatible with Seurat. It also examine the distribution of Ncount and Nfeature and tests filtering the SGE using different nFeature_RNA cutoffs, including 50, 100, 200, 300, 400, 500, 750, and 1000.
 
-Input: `${output_dir}/${prefix}.merged.matrix.tsv.gz`, `${output_dir}/${prefix}.feature.tsv.gz`
+Input & Output
+```
+# Input:
+${output_dir}/${prefix}.merged.matrix.tsv.gz
+${output_dir}/${prefix}.feature.tsv.gz
 
-Output: 
-* Hexagonal SGE: `${model_dir}/features.tsv.gz`, `${model_dir}/barcodes.tsv.gz`, `${model_dir}/matrix.mtx.gz`
-* Evaluation files: `${model_dir}/Ncount_Nfeature_vln.png`, `${model_dir}/nFeature_RNA_dist.png`,
-        `${model_dir}/nFeature_RNA_cutoff100.png`, `${model_dir}/nFeature_RNA_cutoff200.png`, `${model_dir}/nFeature_RNA_cutoff300.png`, `${model_dir}/nFeature_RNA_cutoff400.png`, `${model_dir}/nFeature_RNA_cutoff500.png`, `${model_dir}/nFeature_RNA_cutoff50.png`, `${model_dir}/nFeature_RNA_cutoff750.png`
+# Output: 
+# * Hexagonal SGE: 
+        ${model_dir}/features.tsv.gz
+        ${model_dir}/barcodes.tsv.gz
+        ${model_dir}/matrix.mtx.gz
+# * Evaluation files: 
+        ${model_dir}/Ncount_Nfeature_vln.png
+        ${model_dir}/nFeature_RNA_dist.png
+        * for each cut off ${cutoff} in 50, 100, 200, 300, 400, 500, 750, and 1000:
+                ${model_dir}/nFeature_RNA_cutoff${cutoff}.png
 
+```
+
+Command:
 ```
 $neda_dir/steps/step2b.1-creat-hexagons-for-Seurat.sh $input_configfile
 ```
@@ -49,15 +63,24 @@ For each resolution level, it creates both a Dimensionality Reduction and Spatia
 
 Additionally, the script generates a metadata file containing information on the cluster assignment for each cell, and an RDS file that stores the complete Seurat object with all the compiled data.
 
-Input: 
-* `${model_dir}/features.tsv.gz`, 
-* `${model_dir}/barcodes.tsv.gz`,
-* `${model_dir}/matrix.mtx.gz`
+Input & Output
+```
+# Input: 
+${model_dir}/features.tsv.gz
+${model_dir}/barcodes.tsv.gz
+${model_dir}/matrix.mtx.gz
 
-Output: 
-* `${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_metadata.csv`,  `${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_SCT.RDS`
-* For each resolution `$res`: `${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_res${res}_DE.csv`, `${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_res${res}_DimSpatial.png`, 
+#Output: 
+# * A metadata file:
+        ${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_metadata.csv
+# * An RDS file:
+        ${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_SCT.RDS
+# * For each resolution `$res` in 0.25, 0.5, 0.75, 1, 1.25, 1.5, and 1.75:
+        ${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_res${res}_DE.csv
+        ${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_res${res}_DimSpatial.png
+```
 
+Command:
 ```
 $neda_dir/steps/step2b.3-Seurat-clustering.sh $input_configfile
 ```
@@ -74,10 +97,19 @@ res_of_interest=1
 Transform the metadata into a count matrix to serve as the model matrix for the subsequent step. 
 Additionally, this process determines the number of clusters present at the chosen resolution and assigns this count to the nf variable in the `input_data_and_params` file.
 
-Input: `${model_dir}/features.tsv.gz, ${model_dir}/barcodes.tsv.gz`, `${model_dir}/matrix.mtx.gz`, `${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_metadata.csv`
+Input & Output
+```
+#Input:
+${model_dir}/features.tsv.gz
+${model_dir}/barcodes.tsv.gz
+${model_dir}/matrix.mtx.gz
+${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_metadata.csv
 
-Output: `${model_dir}/${train_prefix}.model.tsv.gz`
+#Output: 
+${model_dir}/${train_prefix}.model.tsv.gz
+```
 
+Command:
 ```
 $neda_dir/steps/step2b.5-Seurat-count-matrix.sh $input_configfile
 ```

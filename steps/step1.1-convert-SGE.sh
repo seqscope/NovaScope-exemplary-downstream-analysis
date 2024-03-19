@@ -23,8 +23,19 @@ required_files=(
 )
 check_files_exist "${required_files[@]}"
 
+# ===== AUXILIARY PARAMS =====
+# None
+
 # ===== ANALYSIS =====
 mkdir -p ${output_dir}
+
+if [ $major_axis == "Y" ]; then
+    sort_column="-k4,4n"
+    tabix_column="-b4 -e4"
+else
+    sort_column="-k3,3n"
+    tabix_column="-b3 -e3"
+fi
 
 awk 'BEGIN{FS=OFS="\t"} NR==FNR{ft[$3]=$1 FS $2 ;next} ($1 in ft) {print $2 FS $3 FS $4 FS $5 FS ft[$1] FS $6 FS $7 FS $8 FS $9 FS $10 }' \
     <(zcat ${input_dir}/features.tsv.gz) \
@@ -32,9 +43,10 @@ awk 'BEGIN{FS=OFS="\t"} NR==FNR{ft[$3]=$1 FS $2 ;next} ($1 in ft) {print $2 FS $
         <(zcat ${input_dir}/barcodes.tsv.gz   | cut -f 2,4-8) \
         <(zcat ${input_dir}/matrix.mtx.gz     | tail -n +4 | sed 's/ /\t/g' )) | \
     sed -E 's/\t[[:alnum:]]+_/\t/' | \
-    sort -S 10G -k1,1n -k3,3n|\
+    sort -S 10G -k1,1n $sort_column|\
     sed '1 s/^/#lane\ttile\tX\tY\tgene_id\tgene\tgn\tgt\tspl\tunspl\tambig\n/' | \
     bgzip -c > ${output_dir}/${prefix}.merged.matrix.tsv.gz
 
-tabix -0 -f -s1 -b3 -e3 ${output_dir}/${prefix}.merged.matrix.tsv.gz
+
+tabix -0 -f -s1 $tabix_column ${output_dir}/${prefix}.merged.matrix.tsv.gz
 

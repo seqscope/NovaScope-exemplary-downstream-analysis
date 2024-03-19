@@ -14,7 +14,9 @@ Input files required for NEDA are `features.tsv.gz`, `barcodes.tsv.gz`, and `mat
 
 The input configuration file serves as the input for parameters and dataset paths. It should include: environment paths, input and output directory paths, output prefix, and analytical parameters.
 
-Define your preference for LDA+FICTURE or Seurat+FICTURE analytical strategy first, and include the appropriate configurations as follows. Please note that the below a guide for defining minimal parameters in FICTURE; for a comprehensive parameter list, refer to [FICTURE's protocol](https://github.com/seqscope/ficture/tree/protocol).
+Select your desired analytical approach, either "LDA + FICTURE" or "Seurat + FICTURE", and apply the corresponding configurations as detailed below. We provided an example configuration file for [LDA+FICTURE analysis](https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/input_data_and_params/input_data_and_params_lda.txt) and [Seurat+FICTURE analysis](https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/input_data_and_params/input_data_and_params_seurat.txt), separately. 
+
+The following guidance outlines the basic parameters for FICTURE, with all other parameters defaulting to FICTURE's predefined settings. A detailed list of parameters for each step of the analysis can be found under the `AUXILIARY PARAMS` section within the corresponding script. More details for parameters can be found at [FICTURE](https://github.com/seqscope/ficture/tree/protocol).
 
 ```
 ## Environment Paths
@@ -39,7 +41,6 @@ ar=<archor_distance>                                                ## Anchor po
 
 seed=<an_integer>                                                   ## A seed for reproducibility, e.g., 2024030700. This will be used in the LDA training and choosing colors for factors/cluster.
 
-## Projection parameters
+major_axis=<X_or_Y>                                                 ## Generally, we defined the one with greater length as the major axis.
 ```
 
-We provided an example configuration file for [LDA+FICTURE analysis](https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/input_data_and_params/input_data_and_params_lda.txt) and for [Seurat+FICTURE analysis](https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/input_data_and_params/input_data_and_params_seurat.txt). 

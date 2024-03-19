@@ -4,23 +4,33 @@
 git clone git@github.com:seqscope/NovaScope-exemplary-downstream-analysis.git 
 
 cd NovaScope-exemplary-downstream-analysis
-neda_dir=$(realpath ./)                         # 
+neda_dir=$(realpath ./) 
 ```
 
 ## 2. Install Softwares and Dependencies
 
 ### 2.1 Install Softwares:
 
-Ensure the installation of the below software to facilitate analysis. The versions listed below have been confirmed for compatibility with NEDA while alternative versions may also work with it.
+Ensure the installation of the below software to facilitate analysis. It is feasible for HPC users to conveniently load those softwares using the `module load` command. Use either `module available` or `module spider` to check for available modules. 
+
+The versions listed below have been confirmed for compatibility with NEDA while alternative versions may also work with it.
 
 * Samtools (v1.14)
-* Python (versions 3.10) 
+* Python (v3.10) 
 * R (v4.2)
-* FICTURE (Install via `git clone git@github.com:seqscope/ficture.git`)
+* FICTURE 
+
+To install FICTURE, see below:
+
+```
+git clone git@github.com:seqscope/ficture.git
+```
 
 ### 2.2 Create a Python Environment:
 
 Set up a Python environment for FICTURE as per the [guidelines](https://github.com/seqscope/ficture/blob/8ceb419618c1181bb673255427b53198c4887cfa/requirements.txt).
+
+Here is an example of creating a Python environment using `venv`. It's also possible to establish such environments through alternative methods, including `conda`, `virtualenv`, and `pyenv`.
 
 ```
 cd $neda_dir                                # Replace $neda_dir with the path to build your pyenv

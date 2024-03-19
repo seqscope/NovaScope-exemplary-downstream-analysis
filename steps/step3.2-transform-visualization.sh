@@ -34,6 +34,16 @@ fi
 
 check_files_exist "${required_files[@]}"
 
+# ===== AUXILIARY PARAMS =====
+# color map
+ap_cmap_name="turbo"
+
+# plot
+ap_plot_horizontal_axis=x
+ap_plot_um_per_pixel=1
+
+fill_range=$(($ar/2+1))
+
 # ===== ANALYSIS =====
 # Color table.
 if [[ -f "${model_dir}/${tranform_prefix}.rgb.tsv" ]]; then
@@ -47,7 +57,7 @@ else
         ${python} ${ficture}/script/choose_color.py \
             --input ${model_dir}/${tranform_prefix}.fit_result.tsv.gz\
             --output ${model_dir}/${tranform_prefix} \
-            --cmap_name turbo
+            --cmap_name $ap_cmap_name
     fi
 fi
 
@@ -60,13 +70,13 @@ echo -e "The coordinates ranges are: ${xmin}, ${xmax}; ${ymin}, ${ymax} !"
 command time -v ${python} ${ficture}/script/plot_big.py \
     --input ${model_dir}/${tranform_prefix}.fit_result.tsv.gz \
     --output ${model_dir}/${tranform_prefix} \
-    --fill_range 3 \
+    --fill_range $fill_range \
     --color_table ${model_dir}/${tranform_prefix}.rgb.tsv \
-    --plot_um_per_pixel 1 \
+    --plot_um_per_pixel $ap_plot_um_per_pixel \
     --xmin $xmin \
     --xmax $xmax \
     --ymin $ymin \
     --ymax $ymax \
-    --horizontal_axis x \
+    --horizontal_axis $ap_plot_horizontal_axis \
     --plot_fit \
     --plot_discretized

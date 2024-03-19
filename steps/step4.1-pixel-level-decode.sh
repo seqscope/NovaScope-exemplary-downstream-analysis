@@ -31,13 +31,22 @@ required_files=(
 
 check_files_exist "${required_files[@]}"
 
-# ===== ANALYSIS =====
-# Pixel-level Decoding
+# ===== AUXILIARY PARAMS =====
+ap_mu_scale=1000
+ap_precision=0.25
+ap_lite_topk_output_pixel=3
+ap_lite_topk_output_anchor=3
+
+# neighbor_radius (nr):
+# By default, nr=ar+1.
 if [[ -z $nr ]]; then
     echo -e "Error: neighbor_radius (nr) is missing. By default, nr=ar+1. Please make sure ar is defined in the input_data_and_params file."
     exit 1
 fi
 
+# ===== ANALYSIS =====
+
+# Pixel-level Decoding
 command time -v ${python} ${ficture}/script/slda_decode.py  \
     --input ${output_dir}/${prefix}.batched.matrix.tsv.gz \
     --model ${model_path}\
@@ -45,12 +54,21 @@ command time -v ${python} ${ficture}/script/slda_decode.py  \
     --output ${model_dir}/${decode_prefix} \
     --anchor_in_um \
     --neighbor_radius ${nr} \
-    --mu_scale 1000 \
+    --mu_scale ${ap_mu_scale} \
     --key ${sf} \
-    --precision 0.25 \
-    --lite_topk_output_pixel 3 \
-    --lite_topk_output_anchor 3 \
+    --precision $ap_precision \
+    --lite_topk_output_pixel $ap_lite_topk_output_pixel \
+    --lite_topk_output_anchor $ap_lite_topk_output_anchor \
     --thread $threads
+
+# Determine the sort/tabix column based on the major_axis value
+if[ ${major_axis} == "Y" ]; then
+    sort_column="-k3,3g"
+    tabix_column="-b3 -e3"
+else
+    sort_column="-k2,2g"
+    tabix_column="-b2 -e2"
+fi
 
 # Sort based on major axis
 while IFS=$'\t' read -r r_key r_val; do
@@ -66,8 +84,8 @@ header="##K=12;TOPK=3\n##BLOCK_SIZE=1000;BLOCK_AXIS=X;INDEX_AXIS=Y\n##OFFSET_X=$
 (echo -e "${header}" && zcat ${model_dir}/${decode_prefix}.pixel.tsv.gz | \
     tail -n +2 | \
     perl -slane '$F[0]=int(($F[1]-$offx)/$bsize) * $bsize; $F[1]=int(($F[1]-$offx)*$scale); $F[1]=($F[1]>=0)?$F[1]:0; $F[2]=int(($F[2]-$offy)*$scale); $F[2]=($F[2]>=0)?$F[2]:0; print join("\t", @F);' -- -bsize=1000 -scale=100 -offx=${offsetx} -offy=${offsety} | \
-    sort -S 10G -k1,1g -k2,2g ) | \
+    sort -S 10G -k1,1g $sort_column ) | \
     bgzip -c > ${model_dir}/${decode_prefix}.pixel.sorted.tsv.gz
 
-tabix -f -s1 -b2 -e2 ${model_dir}/${decode_prefix}.pixel.sorted.tsv.gz
+tabix -f -s1 $tabix_column ${model_dir}/${decode_prefix}.pixel.sorted.tsv.gz
 

@@ -22,17 +22,22 @@ required_files=(
 )
 check_files_exist "${required_files[@]}"
 
+# ===== AUXILIARY PARAMS =====
+ap_lenth_epoch_id=2
+ap_min_ct_per_unit=50
+ap_min_ct_per_feature=50
+
 # ===== ANALYSIS =====
 command time -v ${python} ${ficture}/script/lda_univ.py \
     --epoch ${ep} \
-    --epoch_id_length 2 \
+    --epoch_id_length $ap_lenth_epoch_id \
     --feature ${output_dir}/${prefix}.feature.clean.tsv.gz \
     --key ${sf} \
     --input ${model_dir}/${hexagon_prefix}.tsv.gz \
     --output_pref ${model_dir}/${train_prefix} \
     --nFactor ${nf} \
-    --min_ct_per_unit 50 \
-    --min_ct_per_feature 50 \
+    --min_ct_per_unit $ap_min_ct_per_unit \
+    --min_ct_per_feature $ap_min_ct_per_feature \
     --thread $threads \
     --unit_attr X Y \
     --overwrite \
