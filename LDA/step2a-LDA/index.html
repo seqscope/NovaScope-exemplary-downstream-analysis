@@ -746,6 +746,7 @@
 
 <h1 id="latent-dirichlet-allocation-lda-ficture-analytical-strategy">Latent Dirichlet Allocation (LDA) + FICTURE analytical strategy<a class="headerlink" href="#latent-dirichlet-allocation-lda-ficture-analytical-strategy" title="Permanent link">&para;</a></h1>
 <h2 id="step-2a-infer-cell-type-factors-using-lda">Step 2a. Infer Cell Type Factors using LDA.<a class="headerlink" href="#step-2a-infer-cell-type-factors-using-lda" title="Permanent link">&para;</a></h2>
+<p>This example illustrates infering cell type factors using LDA. Since this step, the output files will be stored at <code>${model_dir}</code>, which is defined as <code>model_dir=${output_dir}/${train_model}</code>.</p>
 <p><strong>Prefix</strong>:
 To clarify the input and output filenames, we have utilized prefixes in this documentation. Below, we illustrate how these prefixes are automatically applied by the script. </p>
 <p>It is important to note that users do NOT need to manually define these prefixes; they are automatically defined by the script.</p>
@@ -782,7 +783,7 @@ ${model_dir}/${train_prefix}.posterior.count.tsv.gz
 </code></pre></div>
 
 <p>Command:</p>
-<div class="codehilite"><pre><span></span><code>$neda_dir/steps/step2a.2-LDA-Factorization.sh $input_configfile
+<div class="codehilite"><pre><span></span><code>$neda_dir/steps/step2a.2-LDA-factorization.sh $input_configfile
 </code></pre></div>
 
 <h3 id="step2a3-lda-train-report">step2a.3 LDA train report<a class="headerlink" href="#step2a3-lda-train-report" title="Permanent link">&para;</a></h3>
@@ -799,7 +800,7 @@ ${model_dir}/${train_prefix}.factor.info.html
 </code></pre></div>
 
 <p>Command:</p>
-<div class="codehilite"><pre><span></span><code>$neda_dir/steps/step2a.3-LDA-train-report.sh $input_configfile
+<div class="codehilite"><pre><span></span><code>$neda_dir/steps/step2a.3-LDA-factorization-report.sh $input_configfile
 </code></pre></div>
 
 

@@ -751,10 +751,12 @@ module load Bioinformatics
 module load samtools
 module load R/4.2.0                                 ## Seurat-only
 
+## If you are using a local R, use `export R=&lt;path_to_R&gt;` to define R.
+
 ## If you are using a conda environment, replace the following lines with the appropriate commands to activate the environment.
 py_env=&quot;&lt;path_to_python_env&gt;&quot;                       ## Replace &lt;path_to_python_env&gt; with the path to the python environment
 source ${py_env}/bin/activate
-python=${py_env}/bin/python
+export python=${py_env}/bin/python
 
 neda_dir=&quot;&lt;path_to_the_NEDA_repository&gt;&quot;            ## Replace &lt;path_to_the_NEDA_repository&gt; with the path to the NovaScope-exemplary-downstream-analysis repository
 
