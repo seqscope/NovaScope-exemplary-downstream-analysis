@@ -782,8 +782,8 @@
 
 <h1 id="seurat-ficture-analytical-strategy">Seurat + FICTURE analytical strategy<a class="headerlink" href="#seurat-ficture-analytical-strategy" title="Permanent link">&para;</a></h1>
 <h2 id="step-2b-infer-cell-type-factors-using-seurat">Step 2b. Infer cell type factors using Seurat<a class="headerlink" href="#step-2b-infer-cell-type-factors-using-seurat" title="Permanent link">&para;</a></h2>
-<p>This example illustrates infering cell type factors using Seurat. </p>
-<p>This process contains two stops, which require manual evaluation. One stop is at step 2b.2 and the other at step 2b.4.</p>
+<p>This example illustrates infering cell type factors using Seurat. Since this step, the output files will be stored at <code>${model_dir}</code>, which is defined as <code>model_dir=${output_dir}/${train_model}</code>.</p>
+<p>This process contains two stops, which require manual evaluation. One stop is at step 2b.2 and the other at step 2b.4. </p>
 <p><strong>Prefix</strong>:</p>
 <p>The <code>nf</code> will be determined in step2b.5</p>
 <div class="codehilite"><pre><span></span><code>hexagon_prefix=&quot;${prefix}.hexagon.${sf}.d_${tw}&quot;
@@ -799,7 +799,7 @@ ${output_dir}/${prefix}.feature.tsv.gz
 
 # Output: 
 # * Hexagonal SGE: 
-        ${model_dir}/features.tsv.gz
+        ${model_dir}/features.tsv.gz    ## model_dir=${output_dir}/${train_model}
         ${model_dir}/barcodes.tsv.gz
         ${model_dir}/matrix.mtx.gz
 # * Evaluation files: 

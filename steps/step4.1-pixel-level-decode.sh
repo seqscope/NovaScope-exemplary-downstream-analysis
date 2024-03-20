@@ -62,7 +62,7 @@ command time -v python ${ficture}/script/slda_decode.py  \
     --thread $threads
 
 # Determine the sort/tabix column based on the major_axis value
-if[ ${major_axis} == "Y" ]; then
+if [[ ${major_axis} == "Y" ]]; then
     sort_column="-k3,3g"
     tabix_column="-b3 -e3"
 else

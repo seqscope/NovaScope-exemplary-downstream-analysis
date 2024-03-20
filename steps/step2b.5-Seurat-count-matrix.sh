@@ -1,5 +1,5 @@
 # ===== SET UP =====
-set -ueo pipefail
+#set -ueo pipefail
 
 if [ $# -ne 1 ]; then
     echo -e "Usage: $0 <input_data_and_params>"
@@ -55,12 +55,14 @@ else
 fi
 
 # Update the nf to input_data_and_params file. You can also manually update it, if you prefer. 
+
 echo -e "New nf: $new_nf"
-if grep -q '^nf=' "$input_data_and_params"; then
-    sed -i "s/^nf=.*/nf=$new_nf/" "$input_data_and_params"
+
+if grep -q '^nf=' "$1"; then
+    sed -i "s/^nf=.*/nf=$new_nf/" "$1"
 else
     echo "== Update nf =="
-    echo "nf=$new_nf" >> "$input_data_and_params"
+    echo -e "nf=$new_nf\n" >> "$1"
 fi
 
 # Create a symbolic link to the count matrix file, simplifying its location by subsequent steps.
