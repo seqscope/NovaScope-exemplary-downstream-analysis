@@ -11,16 +11,16 @@ neda_dir=$(realpath ./)
 
 ### 2.1 Install Softwares:
 
-Ensure the installation of the below software to facilitate analysis. It is feasible for HPC users to conveniently load those softwares using the `module load` command. Use either `module available` or `module spider` to check for available modules. 
+Ensure the installation of the below software to facilitate analysis. The versions listed below have been confirmed for compatibility with NEDA while alternative versions may also work with it.
 
-The versions listed below have been confirmed for compatibility with NEDA while alternative versions may also work with it.
+High-performance computing (HPC) users can easily load these programs using the `module load` command. It's advisable to first check availability with `module available` or `module spider`.
 
 * Samtools (v1.14)
 * Python (v3.10) 
 * R (v4.2)
 * FICTURE 
 
-To install FICTURE, see below:
+Install FICTURE:
 
 ```
 cd $neda_dir
@@ -29,7 +29,7 @@ git clone git@github.com:seqscope/ficture.git
 
 ### 2.2 Create a Python Environment:
 
-Set up a Python environment for FICTURE as per the [guidelines](https://github.com/seqscope/ficture/blob/8ceb419618c1181bb673255427b53198c4887cfa/requirements.txt).
+Set up a Python environment for FICTURE as per the [requirement file](https://github.com/seqscope/ficture/blob/8ceb419618c1181bb673255427b53198c4887cfa/requirements.txt).
 
 Here is an example of creating a Python environment using `venv`. It's also possible to establish such environments through alternative methods, including `conda`, `virtualenv`, and `pyenv`.
 

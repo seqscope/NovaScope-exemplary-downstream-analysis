@@ -22,7 +22,7 @@
     
     
       
-        <title>Preparing input - NovaScope-exemplary-downstream-analysis</title>
+        <title>Preparing Input - NovaScope-exemplary-downstream-analysis</title>
       
     
     
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Preparing input
+              Preparing Input
             
           </span>
         </div>
@@ -286,7 +286,7 @@
         
   
   <span class="md-ellipsis">
-    Installation and Download reference data
+    Installing NovaScope-exemplary-downstream-analysis (NEDA)
   </span>
   
 
@@ -316,7 +316,7 @@
           
   
   <span class="md-ellipsis">
-    Preparing input
+    Preparing Input
   </span>
   
 
@@ -327,7 +327,7 @@
         
   
   <span class="md-ellipsis">
-    Preparing input
+    Preparing Input
   </span>
   
 
@@ -355,12 +355,36 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="1. Input Datasets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-shallow-sequencing-depth-sample-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Shallow Sequencing Depth Sample Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-deep-sequencing-depth-sample-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Deep Sequencing Depth Sample Data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#2a-input-configuration-file" class="md-nav__link">
+  <a href="#2-an-input-configuration-file" class="md-nav__link">
     <span class="md-ellipsis">
-      2.A input Configuration File
+      2. An input Configuration File
     </span>
   </a>
   
@@ -403,7 +427,7 @@
             
   
   <span class="md-ellipsis">
-    LDA+FICTURE analysis
+    LDA+FICTURE Analysis
   </span>
   
 
@@ -413,7 +437,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            LDA+FICTURE analysis
+            LDA+FICTURE Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -529,7 +553,7 @@
             
   
   <span class="md-ellipsis">
-    Seurat+FICTURE analysis
+    Seurat+FICTURE Analysis
   </span>
   
 
@@ -539,7 +563,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Seurat+FICTURE analysis
+            Seurat+FICTURE Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -667,12 +691,36 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="1. Input Datasets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-shallow-sequencing-depth-sample-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Shallow Sequencing Depth Sample Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-deep-sequencing-depth-sample-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Deep Sequencing Depth Sample Data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#2a-input-configuration-file" class="md-nav__link">
+  <a href="#2-an-input-configuration-file" class="md-nav__link">
     <span class="md-ellipsis">
-      2.A input Configuration File
+      2. An input Configuration File
     </span>
   </a>
   
@@ -698,15 +746,38 @@
 
 <h1 id="prepare-the-input">Prepare the input<a class="headerlink" href="#prepare-the-input" title="Permanent link">&para;</a></h1>
 <h2 id="1-input-datasets">1. Input Datasets<a class="headerlink" href="#1-input-datasets" title="Permanent link">&para;</a></h2>
-<p>Input files required for NEDA are <code>features.tsv.gz</code>, <code>barcodes.tsv.gz</code>, and <code>matrix.mtx.gz</code>, which can be generated via <a href="https://github.com/seqscope/NovaScope/tree/main">NovaScope</a>.</p>
-<p><em>TBC: add commands to download the input data.</em></p>
-<div class="codehilite"><pre><span></span><code>
+<p>Input data required for NovaScope-exemplary-downstream-analysis (NEDA) are spatial digital gene expression (SGE) matrix, including <code>features.tsv.gz</code>, <code>barcodes.tsv.gz</code>, and <code>matrix.mtx.gz</code>. Such SGE can be generated via <a href="https://github.com/seqscope/NovaScope/tree/main">NovaScope</a>.</p>
+<p>Two sets of example SGE data are available through <em>Zenodo</em>, both derived from the same section chip but varying in the sequencing depth of their 2nd-Seq libraries:</p>
+<h3 id="11-shallow-sequencing-depth-sample-data">1.1 Shallow Sequencing Depth Sample Data<a class="headerlink" href="#11-shallow-sequencing-depth-sample-data" title="Permanent link">&para;</a></h3>
+<p>The <code>B08Cshallow_20240319_SGE.tar.gz</code> features a section chip sequenced at a relatively shallow depth in the 2nd-Seq library.</p>
+<div class="codehilite"><pre><span></span><code>## Download the file via curl
+curl -o B08Cshallow_20240319_SGE.tar.gz https://zenodo.org/records/10841778/files/B08Cshallow_20240319_SGE.tar.gz?download=1&amp;preview=1
+
+## (Optional) Verify the integrity of the file
+curl -o B08Cshallow_20240319_SGE.tar.gz.md5 https://zenodo.org/records/10841778/files/B08Cshallow_20240319_SGE.tar.gz.md5?download=1&amp;preview=1
+md5sum -c B08Cshallow_20240319_SGE.tar.gz.md5
+
+## Extraction
+tar -zxvf B08Cshallow_20240319_SGE.tar.gz
 </code></pre></div>
 
-<h2 id="2a-input-configuration-file">2.A input Configuration File<a class="headerlink" href="#2a-input-configuration-file" title="Permanent link">&para;</a></h2>
+<h3 id="12-deep-sequencing-depth-sample-data">1.2 Deep Sequencing Depth Sample Data<a class="headerlink" href="#12-deep-sequencing-depth-sample-data" title="Permanent link">&para;</a></h3>
+<p>The <code>B08Cdeep_20240319_SGE.tar.gz</code> showcases a section chip with a deep sequencing depth in the 2nd-Seq library.</p>
+<div class="codehilite"><pre><span></span><code>## Download the file
+curl -o B08Cdeep_20240319_SGE.tar.gz https://zenodo.org/records/10841778/files/B08Cdeep_20240319_SGE.tar.gz?download=1&amp;preview=1
+
+## (Optional) Check the integrity
+curl -o B08Cdeep_20240319_SGE.tar.gz.md5 https://zenodo.org/records/10841778/files/B08Cdeep_20240319_SGE.tar.gz.md5?download=1&amp;preview=1
+md5sum -c B08Cdeep_20240319_SGE.tar.gz.md5
+
+## Extraction
+tar -zxvf B08Cdeep_20240319_SGE.tar.gz
+</code></pre></div>
+
+<h2 id="2-an-input-configuration-file">2. An input Configuration File<a class="headerlink" href="#2-an-input-configuration-file" title="Permanent link">&para;</a></h2>
 <p>The input configuration file serves as the input for parameters and dataset paths. It should include: environment paths, input and output directory paths, output prefix, and analytical parameters.</p>
-<p>Select your desired analytical approach, either "LDA + FICTURE" or "Seurat + FICTURE", and apply the corresponding configurations as detailed below. We provided an example configuration file for <a href="https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/input_data_and_params/input_data_and_params_lda.txt">LDA+FICTURE analysis</a> and <a href="https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/input_data_and_params/input_data_and_params_seurat.txt">Seurat+FICTURE analysis</a>, separately. </p>
-<p>The following guidance outlines the basic parameters for FICTURE, with all other parameters defaulting to FICTURE's predefined settings. A detailed list of parameters for each step of the analysis can be found under the <code>AUXILIARY PARAMS</code> section within the corresponding script. More details for parameters can be found at <a href="https://github.com/seqscope/ficture/tree/protocol">FICTURE</a>.</p>
+<p>We provided an example configuration file for <a href="https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/input_data_and_params/input_data_and_params_lda.txt">LDA+FICTURE analysis</a> and <a href="https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/input_data_and_params/input_data_and_params_seurat.txt">Seurat+FICTURE analysis</a>, separately. </p>
+<p>Below only include FICTURE's essential parameters, defaulting others to pre-set values. For detailed parameter information, refer to the AUXILIARY PARAMS section in the script or visit [FICTURE] (https://github.com/seqscope/ficture/tree/protocol).</p>
 <div class="codehilite"><pre><span></span><code>## Environment Paths
 py_env=&lt;path_to_the_python_environment&gt;                             ## Python environment path
 ficture=&lt;path_to_the_ficture_repository&gt;                            ## Path to FICTURE repository

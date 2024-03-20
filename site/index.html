@@ -278,6 +278,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#a-brief-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Brief Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#step-by-step-instructions" class="md-nav__link">
     <span class="md-ellipsis">
       Step-by-Step Instructions
@@ -349,7 +358,7 @@
         
   
   <span class="md-ellipsis">
-    Installation and Download reference data
+    Installing NovaScope-exemplary-downstream-analysis (NEDA)
   </span>
   
 
@@ -370,7 +379,7 @@
         
   
   <span class="md-ellipsis">
-    Preparing input
+    Preparing Input
   </span>
   
 
@@ -408,7 +417,7 @@
             
   
   <span class="md-ellipsis">
-    LDA+FICTURE analysis
+    LDA+FICTURE Analysis
   </span>
   
 
@@ -418,7 +427,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            LDA+FICTURE analysis
+            LDA+FICTURE Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -534,7 +543,7 @@
             
   
   <span class="md-ellipsis">
-    Seurat+FICTURE analysis
+    Seurat+FICTURE Analysis
   </span>
   
 
@@ -544,7 +553,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Seurat+FICTURE analysis
+            Seurat+FICTURE Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -675,6 +684,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#a-brief-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Brief Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#step-by-step-instructions" class="md-nav__link">
     <span class="md-ellipsis">
       Step-by-Step Instructions
@@ -714,16 +732,20 @@
 <p>This is an exemplary downstream analysis for Spatial Transcriptomics data from <a href="https://github.com/seqscope/NovaScope/tree/main">NovaScope</a>. </p>
 <p>Currently, this NovaScope Exemplary Downstream Analysis (NEDA) offers two analytical strategies:</p>
 <p>1) <strong>Latent Dirichlet allocation (LDA) + FICTURE</strong>:<br />
-    This strategy utilizes LDA for the identification of spatial factors. Subsequently, FICTURE is employed to map these identified factors onto a histological space with pixel-level resolution.</p>
+    This strategy utilizes LDA for the identification of spatial factors. Subsequently, <a href="https://github.com/seqscope/ficture">FICTURE</a> is employed to map these identified factors onto a histological space with pixel-level resolution.</p>
 <p>2) <strong>Seurat + FICTURE</strong>: 
     In this strategy, multi-dimensional clustering via Seurat is applied to explore cell type clusters. These clusters are then projected into a histological space, achieving pixel-level resolution through the use of FICTURE.</p>
 <h2 id="preparation">Preparation<a class="headerlink" href="#preparation" title="Permanent link">&para;</a></h2>
 <p>First, please refer to <a href="preparation/prestep1-setup/"><code>prestep1-setup.md</code></a> for guidance on installing the required software and packages, and downloading gene reference data. </p>
 <p>Next, proceed with <a href="preparation/prestep2-input/"><code>prestep2-input.md</code></a> to prepare the input data and configuration file for NEDA analysis. </p>
+<h2 id="a-brief-overview">A Brief Overview<a class="headerlink" href="#a-brief-overview" title="Permanent link">&para;</a></h2>
+<p><img alt="overview_brief" src="NEDA_overview_brief.jpg" />
+<strong>Figure 1: A Brief overview of the inputs, outputs, and process steps in NEDA.</strong>
+The strategies "LDA + FICTURE" and "Seurat + FICTURE" share the scripts of step1.preprocessing step3.transform, and step4.pixel-level decoding. Their differences lie in two main areas: 1) the configuration file used for input; and 2) the procedures and output files in the second step. Details for each step are provided in the step-by-step instructions. SGE: spatial digital gene expression. </p>
 <h2 id="step-by-step-instructions">Step-by-Step Instructions<a class="headerlink" href="#step-by-step-instructions" title="Permanent link">&para;</a></h2>
-<p>We include examples that detail the step-by-step process for both the <a href="LDA/step1-preprocess/"><code>"LDA + FICTURE"</code></a> and <a href="Seurat/step1-preprocess/"><code>"Seurat + FICTURE"</code></a> analytical strategies, each presented separately. We recommend executing these steps sequentially. </p>
-<p>For clarity, the instructions detail the necessary input files and the output files that each step will generate.</p>
-<p>The input configuration file sets the essential parameters, while certain steps might need auxiliary parameters. In such cases, NEDA employs FICTURE's recommended defaults for these extra settings, wherever applicable. Should you wish to customize these auxiliary parameters beyond the defaults, please proceed with caution as it involves risk. For detailed information on modifying auxiliary parameters, kindly refer to the <code>AUXILIARY PARAMS</code> section found in the script for each respective step. For instance, the script <a href="https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/steps/step2a.1-create-hexagons.sh">step2.1-create-hexagons.sh</a> for generating hexagonal SGEs for LDA needs extra auxiliary parameters, which are specified between lines 26 and 30.</p>
+<p>First choose the analytical strategy that fits your case. We include examples that detail the step-by-step process for both the <a href="LDA/step1-preprocess/">"LDA + FICTURE"</a> and <a href="Seurat/step1-preprocess/">"Seurat + FICTURE"</a> analytical strategies, each presented separately. We recommend executing these steps sequentially. </p>
+<p>For each step, the instructions include both the <strong>purpose</strong> and the <strong>execution command</strong>. To ensure clarity, the instructions specifically detail the required <strong>input files and the output files</strong> that will be generated.</p>
+<p>The example input configuration file sets the essential parameters, while certain steps might need <strong>auxiliary parameters</strong>. In such cases, NEDA employs FICTURE's recommended defaults for these extra settings, wherever applicable. Should you wish to customize these auxiliary parameters beyond the defaults, please proceed with caution as it involves risk. For detailed information on modifying auxiliary parameters, kindly refer to the <code>AUXILIARY PARAMS</code> section found in the script for each respective step. For instance, the script <a href="https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/steps/step2a.1-create-hexagons.sh">step2.1-create-hexagons.sh</a> for generating hexagonal spatial digital gene expression (SGE) matrix for LDA needs extra auxiliary parameters, which are specified between lines 26 and 30. For each auxiliary parameter, please consult the original publication of <a href="https://www.biorxiv.org/content/10.1101/2023.11.04.565621v2">FICTURE</a>.</p>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
 <ul>
 <li>The "Seurat + FICTURE" strategy involves two points at which manual assessment is required.</li>

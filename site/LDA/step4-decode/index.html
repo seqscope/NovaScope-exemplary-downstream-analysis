@@ -284,7 +284,7 @@
         
   
   <span class="md-ellipsis">
-    Installation and Download reference data
+    Installing NovaScope-exemplary-downstream-analysis (NEDA)
   </span>
   
 
@@ -305,7 +305,7 @@
         
   
   <span class="md-ellipsis">
-    Preparing input
+    Preparing Input
   </span>
   
 
@@ -345,7 +345,7 @@
             
   
   <span class="md-ellipsis">
-    LDA+FICTURE analysis
+    LDA+FICTURE Analysis
   </span>
   
 
@@ -355,7 +355,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            LDA+FICTURE analysis
+            LDA+FICTURE Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -487,16 +487,16 @@
           <li class="md-nav__item">
   <a href="#step-41-pixel-level-decoding" class="md-nav__link">
     <span class="md-ellipsis">
-      step 4.1 pixel-level decoding.
+      step 4.1 Pixel-level Decoding.
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-42-pixel-level-decoding-visualization-and-report" class="md-nav__link">
+  <a href="#step-42-visualizing-pixel-level-decoding-and-generating-marker-gene-reports" class="md-nav__link">
     <span class="md-ellipsis">
-      step 4.2 Pixel-level decoding visualization and report.
+      step 4.2 Visualizing Pixel-Level Decoding and Generating Marker Gene Reports
     </span>
   </a>
   
@@ -544,7 +544,7 @@
             
   
   <span class="md-ellipsis">
-    Seurat+FICTURE analysis
+    Seurat+FICTURE Analysis
   </span>
   
 
@@ -554,7 +554,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Seurat+FICTURE analysis
+            Seurat+FICTURE Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -688,16 +688,16 @@
           <li class="md-nav__item">
   <a href="#step-41-pixel-level-decoding" class="md-nav__link">
     <span class="md-ellipsis">
-      step 4.1 pixel-level decoding.
+      step 4.1 Pixel-level Decoding.
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-42-pixel-level-decoding-visualization-and-report" class="md-nav__link">
+  <a href="#step-42-visualizing-pixel-level-decoding-and-generating-marker-gene-reports" class="md-nav__link">
     <span class="md-ellipsis">
-      step 4.2 Pixel-level decoding visualization and report.
+      step 4.2 Visualizing Pixel-Level Decoding and Generating Marker Gene Reports
     </span>
   </a>
   
@@ -729,14 +729,16 @@
 <h1 id="latent-dirichlet-allocation-lda-ficture-analytical-strategy">Latent Dirichlet Allocation (LDA) + FICTURE analytical strategy<a class="headerlink" href="#latent-dirichlet-allocation-lda-ficture-analytical-strategy" title="Permanent link">&para;</a></h1>
 <h2 id="step-4-pixel-level-decoding">Step 4 Pixel-level Decoding<a class="headerlink" href="#step-4-pixel-level-decoding" title="Permanent link">&para;</a></h2>
 <p><strong>Prefix</strong>:</p>
-<p>The decode_prefix will be automatically defined by the script as below.
-The <code>nr</code> represents neighbor_radius. By default, <code>nr=ar+1</code>.</p>
+<p>The decode_prefix will be automatically defined as below.</p>
 <div class="codehilite"><pre><span></span><code>decode_prefix=&quot;${train_prefix}.decode.prj_${pw}.r_${ar}_${nr}&quot;
 </code></pre></div>
 
-<h3 id="step-41-pixel-level-decoding">step 4.1 pixel-level decoding.<a class="headerlink" href="#step-41-pixel-level-decoding" title="Permanent link">&para;</a></h3>
-<p>Decoding the model matrix on individual pixels, which returns a tab-delimited file of the posterior count of factors on individual pixels.
-Input &amp; Output</p>
+<ul>
+<li><code>nr</code>: represents neighbor_radius. By default, <code>nr=ar+1</code>.</li>
+</ul>
+<h3 id="step-41-pixel-level-decoding">step 4.1 Pixel-level Decoding.<a class="headerlink" href="#step-41-pixel-level-decoding" title="Permanent link">&para;</a></h3>
+<p>Decoding the model matrix on individual pixels, which returns a tab-delimited file of the posterior count of factors on individual pixels.</p>
+<p>Input &amp; Output</p>
 <div class="codehilite"><pre><span></span><code># Input:
 ${output_dir}/${prefix}.coordinate_minmax.tsv
 ${output_dir}/${prefix}.batched.matrix.tsv.gz
@@ -752,8 +754,8 @@ ${model_dir}/${decode_prefix}.pixel.sorted.tsv.gz
 <div class="codehilite"><pre><span></span><code>$neda_dir/steps/step4.1-pixel-level-decode.sh $input_configfile
 </code></pre></div>
 
-<h3 id="step-42-pixel-level-decoding-visualization-and-report">step 4.2 Pixel-level decoding visualization and report.<a class="headerlink" href="#step-42-pixel-level-decoding-visualization-and-report" title="Permanent link">&para;</a></h3>
-<p>This includes: identifying marker genes that are associated with each factor/cluster, generating a report html file that summarizes individual factors and marker genes, and creating a high-resolution image of cell type factors for individual pixels.</p>
+<h3 id="step-42-visualizing-pixel-level-decoding-and-generating-marker-gene-reports">step 4.2 Visualizing Pixel-Level Decoding and Generating Marker Gene Reports<a class="headerlink" href="#step-42-visualizing-pixel-level-decoding-and-generating-marker-gene-reports" title="Permanent link">&para;</a></h3>
+<p>Identifying marker genes for each factor/cluster, and generating a report html file that summarizes individual factors and marker genes. In addition, this step creates a high-resolution image of cell type factors for individual pixels.</p>
 <p>Input &amp; Output</p>
 <div class="codehilite"><pre><span></span><code>#Input:
 ${model_dir}/${decode_prefix}.posterior.count.tsv.gz

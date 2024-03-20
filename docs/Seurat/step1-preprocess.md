@@ -1,11 +1,14 @@
 # Seurat + FICTURE analytical strategy
 
-Please make sure set up the working environment before each Step (see below).
+Please make sure set up the working environment before each step (see below).
+
 ```
 ## Load modules if applicable.
-module load Bioinformatics
+## For non-HPC user, use `export` to set the paths for following softwares, e.g., `export samtools=<path_to_samtools>`.
+
+module load Bioinformatics                          ## In this example, samtools is part of the Bioinformatics module system, requiring the Bioinformatics module to be loaded before accessing the specific program.
 module load samtools
-module load R/4.2.0                                 ## Seurat-only
+module load R/4.2.0                                 
 
 ## If you are using a local R, use `export R=<path_to_R>` to define R.
 
@@ -21,7 +24,7 @@ input_configfile="<path_to_input_data_and_params>"  ## Replace <path_to_input_da
 
 ## Step 1. Preprocessing
 
-### Step 1.1 convert the SGE matrix to a merged format
+### Step 1.1 convert the SGE matrix into a FICTURE-compatible format
 
 Input & Output
 ```
@@ -40,7 +43,7 @@ $neda_dir/steps/step1.1-convert-SGE.sh $input_configfile
 ```
 
 ### Step 1.2 Filtering
-Prepare a quality-controlled (QCed) feature and SGE matrix in a merged format, filtered by gene types and density.
+Prepare a quality-controlled (QCed) feature file and SGE matrix into a FICTURE-compatible format, filtered by gene types and density.
 
 Input & Output
 

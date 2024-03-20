@@ -2,21 +2,48 @@
 
 ## 1. Input Datasets
 
-Input files required for NEDA are `features.tsv.gz`, `barcodes.tsv.gz`, and `matrix.mtx.gz`, which can be generated via [NovaScope](https://github.com/seqscope/NovaScope/tree/main).
+Input data required for NovaScope-exemplary-downstream-analysis (NEDA) are spatial digital gene expression (SGE) matrix, including `features.tsv.gz`, `barcodes.tsv.gz`, and `matrix.mtx.gz`. Such SGE can be generated via [NovaScope](https://github.com/seqscope/NovaScope/tree/main).
 
-*TBC: add commands to download the input data.*
+Two sets of example SGE data are available through *Zenodo*, both derived from the same section chip but varying in the sequencing depth of their 2nd-Seq libraries:
+
+### 1.1 Shallow Sequencing Depth Sample Data
+The `B08Cshallow_20240319_SGE.tar.gz` features a section chip sequenced at a relatively shallow depth in the 2nd-Seq library.
 
 ```
+## Download the file via curl
+curl -o B08Cshallow_20240319_SGE.tar.gz https://zenodo.org/records/10841778/files/B08Cshallow_20240319_SGE.tar.gz?download=1&preview=1
 
+## (Optional) Verify the integrity of the file
+curl -o B08Cshallow_20240319_SGE.tar.gz.md5 https://zenodo.org/records/10841778/files/B08Cshallow_20240319_SGE.tar.gz.md5?download=1&preview=1
+md5sum -c B08Cshallow_20240319_SGE.tar.gz.md5
+
+## Extraction
+tar -zxvf B08Cshallow_20240319_SGE.tar.gz
 ```
 
-## 2.A input Configuration File
+### 1.2 Deep Sequencing Depth Sample Data
+The `B08Cdeep_20240319_SGE.tar.gz` showcases a section chip with a deep sequencing depth in the 2nd-Seq library.
+
+```
+## Download the file
+curl -o B08Cdeep_20240319_SGE.tar.gz https://zenodo.org/records/10841778/files/B08Cdeep_20240319_SGE.tar.gz?download=1&preview=1
+
+## (Optional) Check the integrity
+curl -o B08Cdeep_20240319_SGE.tar.gz.md5 https://zenodo.org/records/10841778/files/B08Cdeep_20240319_SGE.tar.gz.md5?download=1&preview=1
+md5sum -c B08Cdeep_20240319_SGE.tar.gz.md5
+
+## Extraction
+tar -zxvf B08Cdeep_20240319_SGE.tar.gz
+```
+
+
+## 2. An input Configuration File
 
 The input configuration file serves as the input for parameters and dataset paths. It should include: environment paths, input and output directory paths, output prefix, and analytical parameters.
 
-Select your desired analytical approach, either "LDA + FICTURE" or "Seurat + FICTURE", and apply the corresponding configurations as detailed below. We provided an example configuration file for [LDA+FICTURE analysis](https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/input_data_and_params/input_data_and_params_lda.txt) and [Seurat+FICTURE analysis](https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/input_data_and_params/input_data_and_params_seurat.txt), separately. 
+We provided an example configuration file for [LDA+FICTURE analysis](https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/input_data_and_params/input_data_and_params_lda.txt) and [Seurat+FICTURE analysis](https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/input_data_and_params/input_data_and_params_seurat.txt), separately. 
 
-The following guidance outlines the basic parameters for FICTURE, with all other parameters defaulting to FICTURE's predefined settings. A detailed list of parameters for each step of the analysis can be found under the `AUXILIARY PARAMS` section within the corresponding script. More details for parameters can be found at [FICTURE](https://github.com/seqscope/ficture/tree/protocol).
+Below only include FICTURE's essential parameters, defaulting others to pre-set values. For detailed parameter information, refer to the AUXILIARY PARAMS section in the script or visit [FICTURE] (https://github.com/seqscope/ficture/tree/protocol).
 
 ```
 ## Environment Paths

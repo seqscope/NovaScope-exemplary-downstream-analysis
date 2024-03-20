@@ -22,14 +22,14 @@ theme:
 nav:
   - Home: index.md
   - Preparation:
-      - Installation and Download reference data: preparation/prestep1-setup.md
-      - Preparing input: preparation/prestep2-input.md
-  - LDA+FICTURE analysis:
+      - Installing NovaScope-exemplary-downstream-analysis (NEDA): preparation/prestep1-setup.md
+      - Preparing Input: preparation/prestep2-input.md
+  - LDA+FICTURE Analysis:
       - Preprocessing: LDA/step1-preprocess.md
       - LDA Factorization: LDA/step2a-LDA.md
       - Transform : LDA/step3-transform.md
       - Pixel-level Decoding: LDA/step4-decode.md
-  - Seurat+FICTURE analysis:
+  - Seurat+FICTURE Analysis:
       - Preprocessing: Seurat/step1-preprocess.md
       - Seurat Clustering: Seurat/step2b-seurat.md
       - Transform : Seurat/step3-transform.md

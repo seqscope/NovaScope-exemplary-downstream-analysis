@@ -56,13 +56,13 @@ $neda_dir/steps/step2a.1-create-hexagons.sh $input_configfile
 # An unsupervised learning of cell type factors using LDA.
 # input: ${output_dir}/${prefix}.feature.clean.tsv.gz, ${model_dir}/${hexagon_prefix}.tsv.gz
 # output: ${model_dir}/${train_prefix}.model.p, ${model_dir}/${train_prefix}.fit_result.tsv.gz, ${model_dir}/${train_prefix}.posterior.count.tsv.gz
-$neda_dir/steps/step2a.2-LDA-Factorization.sh $input_configfile
+$neda_dir/steps/step2a.2-LDA-factorization.sh $input_configfile
 
 # step2a.3 LDA train report
 # This includes: generating a color table, identifying marker genes for each factor, and creating a report html file, which summarizes individual factors and marker genes.
 # input: ${model_dir}/${train_prefix}.fit_result.tsv.gz, ${model_dir}/${train_prefix}.posterior.count.tsv.gz
 # output: ${model_dir}/${train_prefix}.color.tsv, ${model_dir}/${train_prefix}.bulk_chisq.tsv, ${model_dir}/${train_prefix}.factor.info.html
-$neda_dir/steps/step2a.3-LDA-train-report.sh $input_configfile
+$neda_dir/steps/step2a.3-LDA-factorization-report.sh $input_configfile
 #================================================================================================
 
 # step 3 Transform 
