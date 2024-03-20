@@ -2,9 +2,9 @@
 
 ## Step 2b. Infer cell type factors using Seurat
 
-This example illustrates infering cell type factors using Seurat. 
+This example illustrates infering cell type factors using Seurat. Since this step, the output files will be stored at `${model_dir}`, which is defined as `model_dir=${output_dir}/${train_model}`.
 
-This process contains two stops, which require manual evaluation. One stop is at step 2b.2 and the other at step 2b.4.
+This process contains two stops, which require manual evaluation. One stop is at step 2b.2 and the other at step 2b.4. 
 
 **Prefix**:
 
@@ -13,6 +13,8 @@ The `nf` will be determined in step2b.5
 hexagon_prefix="${prefix}.hexagon.${sf}.d_${tw}"
 train_prefix="${prefix}.${sf}.nF${nf}.d_${tw}.s_${ep}"    
 ```
+
+
 
 ### step 2b.1 Create hexagonal SGE and test different cutoffs for nFeature_RNA
 This step will creates hexagonal SGE that is compatible with Seurat. It also examine the distribution of Ncount and Nfeature and tests filtering the SGE using different nFeature_RNA cutoffs, including 50, 100, 200, 300, 400, 500, 750, and 1000.
@@ -25,7 +27,7 @@ ${output_dir}/${prefix}.feature.tsv.gz
 
 # Output: 
 # * Hexagonal SGE: 
-        ${model_dir}/features.tsv.gz
+        ${model_dir}/features.tsv.gz    ## model_dir=${output_dir}/${train_model}
         ${model_dir}/barcodes.tsv.gz
         ${model_dir}/matrix.mtx.gz
 # * Evaluation files: 

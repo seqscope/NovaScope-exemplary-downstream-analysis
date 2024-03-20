@@ -13,7 +13,7 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-process_input_data_and_params $0
+process_input_data_and_params $1
 
 # (Seurat-only) Sanity check - make sure nf is defined
 if [[ -z $nf ]]; then
@@ -47,7 +47,7 @@ fi
 # ===== ANALYSIS =====
 
 # Pixel-level Decoding
-command time -v ${python} ${ficture}/script/slda_decode.py  \
+command time -v python ${ficture}/script/slda_decode.py  \
     --input ${output_dir}/${prefix}.batched.matrix.tsv.gz \
     --model ${model_path}\
     --anchor ${model_dir}/${tranform_prefix}.fit_result.tsv.gz\

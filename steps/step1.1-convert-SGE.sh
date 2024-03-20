@@ -12,8 +12,11 @@ echo -e "#=====================\n#"
 
 # # Read input config
 neda=$(dirname $(dirname "$0"))
+echo $neda
+
 source $neda/scripts/process_input.sh
-process_input_data_and_params $0
+
+process_input_data_and_params $1
 
 # Examine the input data
 required_files=(

@@ -1,6 +1,7 @@
 # Latent Dirichlet Allocation (LDA) + FICTURE analytical strategy
 
 ## Step 2a. Infer Cell Type Factors using LDA.
+This example illustrates infering cell type factors using LDA. Since this step, the output files will be stored at `${model_dir}`, which is defined as `model_dir=${output_dir}/${train_model}`.
 
 **Prefix**:
 To clarify the input and output filenames, we have utilized prefixes in this documentation. Below, we illustrate how these prefixes are automatically applied by the script. 
@@ -47,7 +48,7 @@ ${model_dir}/${train_prefix}.posterior.count.tsv.gz
 
 Command:
 ```
-$neda_dir/steps/step2a.2-LDA-Factorization.sh $input_configfile
+$neda_dir/steps/step2a.2-LDA-factorization.sh $input_configfile
 ```
 
 ### step2a.3 LDA train report
@@ -67,5 +68,5 @@ ${model_dir}/${train_prefix}.factor.info.html
 
 Command:
 ```
-$neda_dir/steps/step2a.3-LDA-train-report.sh $input_configfile
+$neda_dir/steps/step2a.3-LDA-factorization-report.sh $input_configfile
 ```

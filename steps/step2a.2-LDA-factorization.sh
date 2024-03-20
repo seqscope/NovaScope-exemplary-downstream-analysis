@@ -13,7 +13,7 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-process_input_data_and_params $0
+process_input_data_and_params $1
 
 # Examine the required input files
 required_files=(
@@ -28,7 +28,7 @@ ap_min_ct_per_unit=50
 ap_min_ct_per_feature=50
 
 # ===== ANALYSIS =====
-command time -v ${python} ${ficture}/script/lda_univ.py \
+command time -v python ${ficture}/script/lda_univ.py \
     --epoch ${ep} \
     --epoch_id_length $ap_lenth_epoch_id \
     --feature ${output_dir}/${prefix}.feature.clean.tsv.gz \

@@ -13,7 +13,7 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-process_input_data_and_params $0
+process_input_data_and_params $1
 
 # Examine the required input files
 required_files=(
@@ -33,7 +33,7 @@ ap_min_density_per_unit=0.3
 mkdir -p ${model_dir}
 
 # 1) Create hexagonal files 
-command time -v ${python} ${ficture}/script/make_dge_univ.py \
+command time -v python ${ficture}/script/make_dge_univ.py \
     --key ${sf} \
     --input ${output_dir}/${prefix}.QCed.matrix.tsv.gz \
     --output ${model_dir}/${hexagon_prefix}.tsv \

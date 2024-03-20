@@ -13,7 +13,7 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-process_input_data_and_params $0
+process_input_data_and_params $1
 
 # Examine the required input files
 required_files=(
@@ -32,7 +32,7 @@ ap_min_ct_per_unit=10
 mkdir -p ${model_dir}
 
 # Create hexagonal SGE that compatible with Seurat
-command time -v ${py39} ${ficture}/script/make_sge_by_hexagon.py \
+command time -v python ${ficture}/script/make_sge_by_hexagon.py \
     --input ${output_dir}/${prefix}.merged.matrix.tsv.gz \
     --feature ${output_dir}/${prefix}.feature.tsv.gz \
     --output_path ${model_dir} \

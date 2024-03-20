@@ -13,7 +13,7 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-process_input_data_and_params $0
+process_input_data_and_params $1
 
 # (Seurat-only) Sanity check - make sure nf is defined
 if [[ -z $nf ]]; then
@@ -54,7 +54,7 @@ else
         ln -s ${model_dir}/${train_prefix}.rgb.tsv ${model_dir}/${tranform_prefix}.rgb.tsv
     else 
         echo -e "For Seurat. Create the color table from the transformed data."
-        ${python} ${ficture}/script/choose_color.py \
+        python ${ficture}/script/choose_color.py \
             --input ${model_dir}/${tranform_prefix}.fit_result.tsv.gz\
             --output ${model_dir}/${tranform_prefix} \
             --cmap_name $ap_cmap_name \
@@ -68,7 +68,7 @@ while IFS=$'\t' read -r r_key r_val; do
 done < ${output_dir}/${prefix}.coordinate_minmax.tsv
 echo -e "The coordinates ranges are: ${xmin}, ${xmax}; ${ymin}, ${ymax} !"
 
-command time -v ${python} ${ficture}/script/plot_big.py \
+command time -v python ${ficture}/script/plot_big.py \
     --input ${model_dir}/${tranform_prefix}.fit_result.tsv.gz \
     --output ${model_dir}/${tranform_prefix} \
     --fill_range $fill_range \

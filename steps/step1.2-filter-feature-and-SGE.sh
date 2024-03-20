@@ -13,7 +13,7 @@ echo -e "#=====================\n#"
 # # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-process_input_data_and_params $0
+process_input_data_and_params $1
 
 # Examine the input data
 required_files=(
@@ -43,7 +43,7 @@ zcat ${input_dir}/features.tsv.gz | cut -f 1,2,4 | sed 's/,/\t/g' | sed '1 s/^/g
 
 # Define which gene types to keep and which gene names to remove
 kept_gene_type=$(echo "$ap_kept_gene_types" | sed 's/,/\|/') 
-rm_gene_regex=$(echo "$ap_kept_gene_types" | sed 's/\^/\\t/g')
+rm_gene_regex=$(echo "$ap_removed_gene_types" | sed 's/\^/\\t/g')
 
 # Define the header of the QCed feature file
 echo -e "gene_id\tgene\tgn\tgt\tspl\tunspl\tambig" > ${output_dir}/${prefix}.feature.clean.tsv
@@ -59,7 +59,7 @@ gzip -f ${output_dir}/${prefix}.feature.clean.tsv
 
 # 2) Create SGE matrix in FICTURE format
 echo -e "\n#=== 2)  Prepare a SGE matrix in FICTURE format===#"
-command time -v ${python} ${ficture}/script/filter_poly.py \
+command time -v python ${ficture}/script/filter_poly.py \
     --input ${output_dir}/${prefix}.merged.matrix.tsv.gz \
     --feature ${output_dir}/${prefix}.feature.clean.tsv.gz \
     --output ${output_dir}/${prefix}.QCed.matrix.tsv.gz \

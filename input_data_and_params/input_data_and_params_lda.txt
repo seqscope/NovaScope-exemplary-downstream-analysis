@@ -1,11 +1,10 @@
 ficture="/nfs/turbo/sph-hmkang/weiqiuc/tools/ficture"
-ref_geneinfo="/nfs/turbo/sph-hmkang/weiqiuc/tools/factor_analysis/info/Mus_musculus.GRCm39.107.names.tsv.gz"
-execution_mode="HPC"
+ref_geneinfo="/home/weiqiuc/task2/NovaScope_local/NovaScope-exemplary-downstream-testrun/ref/Mus_musculus.GRCm39.107.names.tsv.gz"
 threads=12
 
-input_dir="/nfs/turbo/umms-leeju/v5/ngeAR/N3-B08C_mouse_default_QCraret1v1"
+input_dir="/home/weiqiuc/task2/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_data"
 output_dir="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/results"
-prefix="N3-B08C_mouse_default_QCraret1v1"
+prefix="B08C_shallow"
 
 train_model="LDA"
 
@@ -13,8 +12,8 @@ sf="gn"
 tw=18
 nf=12
 ep=3
-seed=2024030700
 pw=18
 ar=4
+seed=2024030700
 
 major_axis="X"

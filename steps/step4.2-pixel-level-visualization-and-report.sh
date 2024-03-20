@@ -13,7 +13,7 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-process_input_data_and_params $0
+process_input_data_and_params $1
 
 # (Seurat-only) Sanity check - make sure nf is defined
 if [[ -z $nf ]]; then
@@ -41,7 +41,7 @@ ap_plot_um_per_pixel=0.5
 
 # ===== ANALYSIS =====
 # 1) Identify marker genes for each factor/cluster.
-command time -v ${python} ${ficture}/script/de_bulk.py \
+command time -v python ${ficture}/script/de_bulk.py \
     --input ${model_dir}/${decode_prefix}.posterior.count.tsv.gz \
     --output ${model_dir}/${decode_prefix}.bulk_chisq.tsv \
     --min_ct_per_feature $ap_min_ct_per_feature \
@@ -50,7 +50,7 @@ command time -v ${python} ${ficture}/script/de_bulk.py \
     --thread $threads
 
 # 2) Create the high-resolution image of cell type factors for individual pixels.
-command time -v ${python} ${ficture}/script/plot_pixel_full.py \
+command time -v python ${ficture}/script/plot_pixel_full.py \
     --input ${model_dir}/${decode_prefix}.pixel.sorted.tsv.gz \
     --output ${model_dir}/${decode_prefix}.pixel.png  \
     --color_table ${model_dir}/${tranform_prefix}.rgb.tsv \
@@ -59,7 +59,7 @@ command time -v ${python} ${ficture}/script/plot_pixel_full.py \
 
 # 3) create an HTML file summarizing individual factors and marker genes. 
 echo -e "\n#=== sub-step.4 DE Report ===#"
-command time -v ${python} ${ficture}/script/factor_report.py \
+command time -v python ${ficture}/script/factor_report.py \
     --path ${model_dir} \
     --pref ${decode_prefix} \
     --color_table ${model_dir}/${tranform_prefix}.rgb.tsv \

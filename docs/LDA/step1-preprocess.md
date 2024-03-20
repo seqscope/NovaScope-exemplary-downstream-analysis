@@ -12,7 +12,7 @@ module load samtools
 ## If your Python environment was not set up using venv, replace the following lines with the appropriate commands to activate the environment.
 py_env="<path_to_python_env>"                       ## Replace <path_to_python_env> with the path to the python environment
 source ${py_env}/bin/activate
-python=${py_env}/bin/python
+export python=${py_env}/bin/python
 
 neda_dir="<path_to_the_NEDA_repository>"            ## Replace <path_to_the_NEDA_repository> with the path to the NovaScope-exemplary-downstream-analysis repository
 

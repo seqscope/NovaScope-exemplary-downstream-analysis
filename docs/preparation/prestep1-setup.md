@@ -23,6 +23,7 @@ The versions listed below have been confirmed for compatibility with NEDA while 
 To install FICTURE, see below:
 
 ```
+cd $neda_dir
 git clone git@github.com:seqscope/ficture.git
 ```
 

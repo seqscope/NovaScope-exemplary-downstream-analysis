@@ -13,7 +13,7 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-process_input_data_and_params $0
+process_input_data_and_params $1
 
 # - (Seurat-only) Sanity check - make sure nf is defined
 if [[ -z $nf ]]; then
@@ -48,7 +48,7 @@ fi
 
 # ===== ANALYSIS =====
 # Transform
-command time -v ${python} ${ficture}/script/transform_univ.py  \
+command time -v python ${ficture}/script/transform_univ.py  \
     --key ${sf} \
     --input ${output_dir}/${prefix}.QCed.matrix.tsv.gz \
     --model ${model_path}  \

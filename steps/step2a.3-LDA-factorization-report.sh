@@ -13,11 +13,11 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-process_input_data_and_params $0
+process_input_data_and_params $1
 
 # Examine the required input files
 required_files=(
-    "${model_dir}/${train_prefix}.fit_result.tsv.gz",
+    "${model_dir}/${train_prefix}.fit_result.tsv.gz"
     "${model_dir}/${train_prefix}.posterior.count.tsv.gz"
 )
 check_files_exist "${required_files[@]}"
@@ -33,14 +33,14 @@ ap_min_fold_output=1.5
 
 # ===== ANALYSIS =====
 # Choose color
-command time -v ${python} ${ficture}/script/choose_color.py \
+command time -v python ${ficture}/script/choose_color.py \
     --input ${model_dir}/${train_prefix}.fit_result.tsv.gz \
     --output ${model_dir}/${train_prefix} \
     --cmap_name $ap_cmap_name \
     --seed ${seed}
 
 # Create bulk_chisq file with marker genes for each factor,
-command time -v ${python} ${ficture}/script/de_bulk.py \
+command time -v python ${ficture}/script/de_bulk.py \
     --input ${model_dir}/${train_prefix}.posterior.count.tsv.gz \
     --output ${model_dir}/${train_prefix}.bulk_chisq.tsv \
     --min_ct_per_feature $ap_min_ct_per_feature \
@@ -49,7 +49,7 @@ command time -v ${python} ${ficture}/script/de_bulk.py \
     --thread $threads
 
 # Create a report html file
-command time -v ${python} ${ficture}/script/factor_report.py \
+command time -v python ${ficture}/script/factor_report.py \
     --path ${model_dir} \
     --pref ${train_prefix} \
     --color_table ${model_dir}/${train_prefix}.rgb.tsv \

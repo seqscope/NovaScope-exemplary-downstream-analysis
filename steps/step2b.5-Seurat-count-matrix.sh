@@ -13,7 +13,7 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-process_input_data_and_params $0
+process_input_data_and_params $1
 
 # Examine the required input files
 required_files=(
@@ -32,7 +32,7 @@ check_files_exist "${required_files[@]}"
 echo -e "\nresolution: $res_of_interest\n"
 
 cnt_mat="${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_clusterbyres${res_of_interest}.tsv.gz"
-command time -v ${python} ${neda}/scripts/seurat_cluster_to_count_matrix_for_categorical.py\
+command time -v python ${neda}/scripts/seurat_cluster_to_count_matrix_for_categorical.py\
     --input_csv ${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_metadata.csv  \
     --dge_path ${model_dir} \
     --output ${cnt_mat} \

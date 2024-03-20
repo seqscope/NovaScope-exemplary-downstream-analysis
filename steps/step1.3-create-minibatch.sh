@@ -13,7 +13,7 @@ echo -e "#=====================\n#"
 # # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-process_input_data_and_params $0
+process_input_data_and_params $1
 
 # Examine the input data
 required_files=(
@@ -28,7 +28,7 @@ ap_batch_buff=30
 
 # ===== ANALYSIS =====
 # 1) Reformat the input file by assigning minibatch label,
-command time -v ${python} ${ficture}/script/make_spatial_minibatch.py \
+command time -v python ${ficture}/script/make_spatial_minibatch.py \
     --input ${output_dir}/${prefix}.QCed.matrix.tsv.gz \
     --output ${output_dir}/${prefix}.batched.matrix.tsv \
     --mu_scale $ap_mu_scale \
