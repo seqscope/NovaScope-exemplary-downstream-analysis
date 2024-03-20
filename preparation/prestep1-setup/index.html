@@ -22,7 +22,7 @@
     
     
       
-        <title>Installation and Download reference data - NovaScope-exemplary-downstream-analysis</title>
+        <title>Installing NovaScope-exemplary-downstream-analysis (NEDA) - NovaScope-exemplary-downstream-analysis</title>
       
     
     
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Installation and Download reference data
+              Installing NovaScope-exemplary-downstream-analysis (NEDA)
             
           </span>
         </div>
@@ -293,7 +293,7 @@
           
   
   <span class="md-ellipsis">
-    Installation and Download reference data
+    Installing NovaScope-exemplary-downstream-analysis (NEDA)
   </span>
   
 
@@ -304,7 +304,7 @@
         
   
   <span class="md-ellipsis">
-    Installation and Download reference data
+    Installing NovaScope-exemplary-downstream-analysis (NEDA)
   </span>
   
 
@@ -403,7 +403,7 @@
         
   
   <span class="md-ellipsis">
-    Preparing input
+    Preparing Input
   </span>
   
 
@@ -441,7 +441,7 @@
             
   
   <span class="md-ellipsis">
-    LDA+FICTURE analysis
+    LDA+FICTURE Analysis
   </span>
   
 
@@ -451,7 +451,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            LDA+FICTURE analysis
+            LDA+FICTURE Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -567,7 +567,7 @@
             
   
   <span class="md-ellipsis">
-    Seurat+FICTURE analysis
+    Seurat+FICTURE Analysis
   </span>
   
 
@@ -577,7 +577,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Seurat+FICTURE analysis
+            Seurat+FICTURE Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -774,7 +774,7 @@
   
 
 
-  <h1>Installation and Download reference data</h1>
+  <h1>Installing NovaScope-exemplary-downstream-analysis (NEDA)</h1>
 
 <h2 id="1-download-the-novascope-exemplary-downstream-analysis-neda-repository">1. Download the NovaScope-exemplary-downstream-analysis (NEDA) repository<a class="headerlink" href="#1-download-the-novascope-exemplary-downstream-analysis-neda-repository" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><code>git clone git@github.com:seqscope/NovaScope-exemplary-downstream-analysis.git 
@@ -785,21 +785,21 @@ neda_dir=$(realpath ./)
 
 <h2 id="2-install-softwares-and-dependencies">2. Install Softwares and Dependencies<a class="headerlink" href="#2-install-softwares-and-dependencies" title="Permanent link">&para;</a></h2>
 <h3 id="21-install-softwares">2.1 Install Softwares:<a class="headerlink" href="#21-install-softwares" title="Permanent link">&para;</a></h3>
-<p>Ensure the installation of the below software to facilitate analysis. It is feasible for HPC users to conveniently load those softwares using the <code>module load</code> command. Use either <code>module available</code> or <code>module spider</code> to check for available modules. </p>
-<p>The versions listed below have been confirmed for compatibility with NEDA while alternative versions may also work with it.</p>
+<p>Ensure the installation of the below software to facilitate analysis. The versions listed below have been confirmed for compatibility with NEDA while alternative versions may also work with it.</p>
+<p>High-performance computing (HPC) users can easily load these programs using the <code>module load</code> command. It's advisable to first check availability with <code>module available</code> or <code>module spider</code>.</p>
 <ul>
 <li>Samtools (v1.14)</li>
 <li>Python (v3.10) </li>
 <li>R (v4.2)</li>
 <li>FICTURE </li>
 </ul>
-<p>To install FICTURE, see below:</p>
+<p>Install FICTURE:</p>
 <div class="codehilite"><pre><span></span><code>cd $neda_dir
 git clone git@github.com:seqscope/ficture.git
 </code></pre></div>
 
 <h3 id="22-create-a-python-environment">2.2 Create a Python Environment:<a class="headerlink" href="#22-create-a-python-environment" title="Permanent link">&para;</a></h3>
-<p>Set up a Python environment for FICTURE as per the <a href="https://github.com/seqscope/ficture/blob/8ceb419618c1181bb673255427b53198c4887cfa/requirements.txt">guidelines</a>.</p>
+<p>Set up a Python environment for FICTURE as per the <a href="https://github.com/seqscope/ficture/blob/8ceb419618c1181bb673255427b53198c4887cfa/requirements.txt">requirement file</a>.</p>
 <p>Here is an example of creating a Python environment using <code>venv</code>. It's also possible to establish such environments through alternative methods, including <code>conda</code>, <code>virtualenv</code>, and <code>pyenv</code>.</p>
 <div class="codehilite"><pre><span></span><code>cd $neda_dir                                # Replace $neda_dir with the path to build your pyenv
 pyenv_name=&lt;name_of_python_environment&gt;     # Replace &lt;name_of_python_environment&gt; with any name

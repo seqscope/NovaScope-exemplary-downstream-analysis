@@ -284,7 +284,7 @@
         
   
   <span class="md-ellipsis">
-    Installation and Download reference data
+    Installing NovaScope-exemplary-downstream-analysis (NEDA)
   </span>
   
 
@@ -305,7 +305,7 @@
         
   
   <span class="md-ellipsis">
-    Preparing input
+    Preparing Input
   </span>
   
 
@@ -343,7 +343,7 @@
             
   
   <span class="md-ellipsis">
-    LDA+FICTURE analysis
+    LDA+FICTURE Analysis
   </span>
   
 
@@ -353,7 +353,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            LDA+FICTURE analysis
+            LDA+FICTURE Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -471,7 +471,7 @@
             
   
   <span class="md-ellipsis">
-    Seurat+FICTURE analysis
+    Seurat+FICTURE Analysis
   </span>
   
 
@@ -481,7 +481,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Seurat+FICTURE analysis
+            Seurat+FICTURE Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -569,9 +569,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-2b1-create-hexagonal-sge-and-test-different-cutoffs-for-nfeature_rna" class="md-nav__link">
+  <a href="#step-2b1-create-hexagonal-spatial-gene-expression-sge-matrix-and-test-different-cutoffs-for-nfeature_rna" class="md-nav__link">
     <span class="md-ellipsis">
-      step 2b.1 Create hexagonal SGE and test different cutoffs for nFeature_RNA
+      step 2b.1 Create hexagonal spatial gene expression (SGE) matrix and test different cutoffs for nFeature_RNA
     </span>
   </a>
   
@@ -580,7 +580,7 @@
           <li class="md-nav__item">
   <a href="#step-2b2-manually-select-the-cutoffs" class="md-nav__link">
     <span class="md-ellipsis">
-      step 2b.2 Manually select the cutoffs.
+      step 2b.2 Manually select the cutoffs
     </span>
   </a>
   
@@ -607,7 +607,7 @@
           <li class="md-nav__item">
   <a href="#step-2b5-prepare-a-count-matrix-with-the-selected-resolution" class="md-nav__link">
     <span class="md-ellipsis">
-      step 2b.5 Prepare a count matrix with the selected resolution.
+      step 2b.5 Prepare a count matrix with the selected resolution
     </span>
   </a>
   
@@ -713,9 +713,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-2b1-create-hexagonal-sge-and-test-different-cutoffs-for-nfeature_rna" class="md-nav__link">
+  <a href="#step-2b1-create-hexagonal-spatial-gene-expression-sge-matrix-and-test-different-cutoffs-for-nfeature_rna" class="md-nav__link">
     <span class="md-ellipsis">
-      step 2b.1 Create hexagonal SGE and test different cutoffs for nFeature_RNA
+      step 2b.1 Create hexagonal spatial gene expression (SGE) matrix and test different cutoffs for nFeature_RNA
     </span>
   </a>
   
@@ -724,7 +724,7 @@
           <li class="md-nav__item">
   <a href="#step-2b2-manually-select-the-cutoffs" class="md-nav__link">
     <span class="md-ellipsis">
-      step 2b.2 Manually select the cutoffs.
+      step 2b.2 Manually select the cutoffs
     </span>
   </a>
   
@@ -751,7 +751,7 @@
           <li class="md-nav__item">
   <a href="#step-2b5-prepare-a-count-matrix-with-the-selected-resolution" class="md-nav__link">
     <span class="md-ellipsis">
-      step 2b.5 Prepare a count matrix with the selected resolution.
+      step 2b.5 Prepare a count matrix with the selected resolution
     </span>
   </a>
   
@@ -782,16 +782,17 @@
 
 <h1 id="seurat-ficture-analytical-strategy">Seurat + FICTURE analytical strategy<a class="headerlink" href="#seurat-ficture-analytical-strategy" title="Permanent link">&para;</a></h1>
 <h2 id="step-2b-infer-cell-type-factors-using-seurat">Step 2b. Infer cell type factors using Seurat<a class="headerlink" href="#step-2b-infer-cell-type-factors-using-seurat" title="Permanent link">&para;</a></h2>
-<p>This example illustrates infering cell type factors using Seurat. Since this step, the output files will be stored at <code>${model_dir}</code>, which is defined as <code>model_dir=${output_dir}/${train_model}</code>.</p>
-<p>This process contains two stops, which require manual evaluation. One stop is at step 2b.2 and the other at step 2b.4. </p>
+<p>This example illustrates infering cell type factors using Seurat. This process contains two stops, which require manual evaluation. One stop is at step 2b.2 and the other at step 2b.4. </p>
+<p>Since this step, the output files will be stored at <code>${model_dir}</code>, which is defined as <code>${output_dir}/${train_model}</code>.</p>
 <p><strong>Prefix</strong>:</p>
+<p>This documentation uses the following prefixes to illustrate input and output filenames, which are automatically assigned by the script.</p>
 <p>The <code>nf</code> will be determined in step2b.5</p>
 <div class="codehilite"><pre><span></span><code>hexagon_prefix=&quot;${prefix}.hexagon.${sf}.d_${tw}&quot;
 train_prefix=&quot;${prefix}.${sf}.nF${nf}.d_${tw}.s_${ep}&quot;    
 </code></pre></div>
 
-<h3 id="step-2b1-create-hexagonal-sge-and-test-different-cutoffs-for-nfeature_rna">step 2b.1 Create hexagonal SGE and test different cutoffs for nFeature_RNA<a class="headerlink" href="#step-2b1-create-hexagonal-sge-and-test-different-cutoffs-for-nfeature_rna" title="Permanent link">&para;</a></h3>
-<p>This step will creates hexagonal SGE that is compatible with Seurat. It also examine the distribution of Ncount and Nfeature and tests filtering the SGE using different nFeature_RNA cutoffs, including 50, 100, 200, 300, 400, 500, 750, and 1000.</p>
+<h3 id="step-2b1-create-hexagonal-spatial-gene-expression-sge-matrix-and-test-different-cutoffs-for-nfeature_rna">step 2b.1 Create hexagonal spatial gene expression (SGE) matrix and test different cutoffs for nFeature_RNA<a class="headerlink" href="#step-2b1-create-hexagonal-spatial-gene-expression-sge-matrix-and-test-different-cutoffs-for-nfeature_rna" title="Permanent link">&para;</a></h3>
+<p>This step creates hexagonal spatial gene expression (SGE) matrix that is compatible with Seurat. It analyzes the distribution of Ncount and Nfeature, and tests filtering the SGE using different nFeature_RNA cutoffs, including 50, 100, 200, 300, 400, 500, 750, and 1000.</p>
 <p>Input &amp; Output</p>
 <div class="codehilite"><pre><span></span><code># Input:
 ${output_dir}/${prefix}.merged.matrix.tsv.gz
@@ -799,13 +800,13 @@ ${output_dir}/${prefix}.feature.tsv.gz
 
 # Output: 
 # * Hexagonal SGE: 
-        ${model_dir}/features.tsv.gz    ## model_dir=${output_dir}/${train_model}
+        ${model_dir}/features.tsv.gz
         ${model_dir}/barcodes.tsv.gz
         ${model_dir}/matrix.mtx.gz
 # * Evaluation files: 
         ${model_dir}/Ncount_Nfeature_vln.png
         ${model_dir}/nFeature_RNA_dist.png
-        * for each cut off ${cutoff} in 50, 100, 200, 300, 400, 500, 750, and 1000:
+        # * for each cut off ${cutoff} in 50, 100, 200, 300, 400, 500, 750, and 1000:
                 ${model_dir}/nFeature_RNA_cutoff${cutoff}.png
 </code></pre></div>
 
@@ -813,9 +814,10 @@ ${output_dir}/${prefix}.feature.tsv.gz
 <div class="codehilite"><pre><span></span><code>$neda_dir/steps/step2b.1-creat-hexagons-for-Seurat.sh $input_configfile
 </code></pre></div>
 
-<h3 id="step-2b2-manually-select-the-cutoffs">step 2b.2 Manually select the cutoffs.<a class="headerlink" href="#step-2b2-manually-select-the-cutoffs" title="Permanent link">&para;</a></h3>
-<p>Review the density plots from the <code>step2b-Seurat-01-hexagon.sh</code> and select a threshold for nFeature_RNA. It is optional to define x y ranges. Add those variables to the <code>input_data_and_params</code> file.</p>
-<p>Regarding to the thresholds for nFeature_RNA, we applied a cutoff of nFeature_RNA_cutoff=500 for deep sequencing data, and nFeature_RNA_cutoff=100 for shallow sequencing data. </p>
+<h3 id="step-2b2-manually-select-the-cutoffs">step 2b.2 Manually select the cutoffs<a class="headerlink" href="#step-2b2-manually-select-the-cutoffs" title="Permanent link">&para;</a></h3>
+<p>Examine the density plots generated by <code>step2b-Seurat-01-hexagon.sh</code> to choose a cutoff for nFeature_RNA, aiming to remove noise signals. For our example data, we applied a cut off of 500 for deep sequencing data, and 100 for shallow sequencing data. </p>
+<p>It is optional to define x y ranges. </p>
+<p>Add those variables to the <code>input_data_and_params</code> file.</p>
 <p>Example:</p>
 <div class="codehilite"><pre><span></span><code># In this case, the Y_max is not applied. 
 nFeature_RNA_cutoff=100
@@ -825,9 +827,9 @@ Y_min=1e+06
 </code></pre></div>
 
 <h3 id="step-2b3-seurat-clustering-analysis">step 2b.3 Seurat clustering analysis<a class="headerlink" href="#step-2b3-seurat-clustering-analysis" title="Permanent link">&para;</a></h3>
-<p>The Seurat_analysis.R script, by default, evaluates clustering at various resolutions, specifically 0.25, 0.5, 0.75, 1, 1.25, 1.5, and 1.75. </p>
-<p>For each resolution level, it creates both a Dimensionality Reduction and Spatial plot to illustrate the clusters using a UMAP manifold and their spatial positioning, as well as a Differential Expression (DE) file listing the marker genes for every cluster. </p>
-<p>Additionally, the script generates a metadata file containing information on the cluster assignment for each cell, and an RDS file that stores the complete Seurat object with all the compiled data.</p>
+<p>The <code>Seurat_analysis.R</code> script, by default, evaluates clustering at various resolutions, specifically 0.25, 0.5, 0.75, 1, 1.25, 1.5, and 1.75. </p>
+<p>For each resolution level, it creates a Dimensionality Reduction and Spatial plot to illustrate the clusters through Uniform Manifold Approximation and Projection (UMAP) along with their spatial distribution. It also produces a Differential Expression (DE) file that lists the marker genes for each cluster.</p>
+<p>Additionally, this step generates a metadata file containing information on the cluster assignment for each hexagon, and an RDS file that stores the complete Seurat object with all the compiled data.</p>
 <p>Input &amp; Output</p>
 <div class="codehilite"><pre><span></span><code># Input: 
 ${model_dir}/features.tsv.gz
@@ -839,7 +841,7 @@ ${model_dir}/matrix.mtx.gz
         ${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_metadata.csv
 # * An RDS file:
         ${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_SCT.RDS
-# * For each resolution `$res` in 0.25, 0.5, 0.75, 1, 1.25, 1.5, and 1.75:
+# * For each resolution (`$res`) in 0.25, 0.5, 0.75, 1, 1.25, 1.5, and 1.75:
         ${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_res${res}_DE.csv
         ${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_res${res}_DimSpatial.png
 </code></pre></div>
@@ -854,9 +856,9 @@ ${model_dir}/matrix.mtx.gz
 <div class="codehilite"><pre><span></span><code>res_of_interest=1
 </code></pre></div>
 
-<h3 id="step-2b5-prepare-a-count-matrix-with-the-selected-resolution">step 2b.5 Prepare a count matrix with the selected resolution.<a class="headerlink" href="#step-2b5-prepare-a-count-matrix-with-the-selected-resolution" title="Permanent link">&para;</a></h3>
-<p>Transform the metadata into a count matrix to serve as the model matrix for the subsequent step. 
-Additionally, this process determines the number of clusters present at the chosen resolution and assigns this count to the nf variable in the <code>input_data_and_params</code> file.</p>
+<h3 id="step-2b5-prepare-a-count-matrix-with-the-selected-resolution">step 2b.5 Prepare a count matrix with the selected resolution<a class="headerlink" href="#step-2b5-prepare-a-count-matrix-with-the-selected-resolution" title="Permanent link">&para;</a></h3>
+<p>Transform the metadata into a count matrix to serve as the model matrix for the subsequent step. </p>
+<p>Additionally, the number of clusters from the model matrix will be obtained and assigned to the <code>nf</code> variable in the <code>input_data_and_params</code> file.</p>
 <p>Input &amp; Output</p>
 <div class="codehilite"><pre><span></span><code>#Input:
 ${model_dir}/features.tsv.gz

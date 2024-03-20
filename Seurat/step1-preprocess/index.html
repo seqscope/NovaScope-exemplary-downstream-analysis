@@ -284,7 +284,7 @@
         
   
   <span class="md-ellipsis">
-    Installation and Download reference data
+    Installing NovaScope-exemplary-downstream-analysis (NEDA)
   </span>
   
 
@@ -305,7 +305,7 @@
         
   
   <span class="md-ellipsis">
-    Preparing input
+    Preparing Input
   </span>
   
 
@@ -343,7 +343,7 @@
             
   
   <span class="md-ellipsis">
-    LDA+FICTURE analysis
+    LDA+FICTURE Analysis
   </span>
   
 
@@ -353,7 +353,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            LDA+FICTURE analysis
+            LDA+FICTURE Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -471,7 +471,7 @@
             
   
   <span class="md-ellipsis">
-    Seurat+FICTURE analysis
+    Seurat+FICTURE Analysis
   </span>
   
 
@@ -481,7 +481,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Seurat+FICTURE analysis
+            Seurat+FICTURE Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -548,9 +548,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-11-convert-the-sge-matrix-to-a-merged-format" class="md-nav__link">
+  <a href="#step-11-convert-the-sge-matrix-into-a-ficture-compatible-format" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1.1 convert the SGE matrix to a merged format
+      Step 1.1 convert the SGE matrix into a FICTURE-compatible format
     </span>
   </a>
   
@@ -695,9 +695,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-11-convert-the-sge-matrix-to-a-merged-format" class="md-nav__link">
+  <a href="#step-11-convert-the-sge-matrix-into-a-ficture-compatible-format" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1.1 convert the SGE matrix to a merged format
+      Step 1.1 convert the SGE matrix into a FICTURE-compatible format
     </span>
   </a>
   
@@ -745,11 +745,13 @@
 
 
 <h1 id="seurat-ficture-analytical-strategy">Seurat + FICTURE analytical strategy<a class="headerlink" href="#seurat-ficture-analytical-strategy" title="Permanent link">&para;</a></h1>
-<p>Please make sure set up the working environment before each Step (see below).</p>
+<p>Please make sure set up the working environment before each step (see below).</p>
 <div class="codehilite"><pre><span></span><code>## Load modules if applicable.
-module load Bioinformatics
+## For non-HPC user, use `export` to set the paths for following softwares, e.g., `export samtools=&lt;path_to_samtools&gt;`.
+
+module load Bioinformatics                          ## In this example, samtools is part of the Bioinformatics module system, requiring the Bioinformatics module to be loaded before accessing the specific program.
 module load samtools
-module load R/4.2.0                                 ## Seurat-only
+module load R/4.2.0                                 
 
 ## If you are using a local R, use `export R=&lt;path_to_R&gt;` to define R.
 
@@ -764,7 +766,7 @@ input_configfile=&quot;&lt;path_to_input_data_and_params&gt;&quot;  ## Replace &
 </code></pre></div>
 
 <h2 id="step-1-preprocessing">Step 1. Preprocessing<a class="headerlink" href="#step-1-preprocessing" title="Permanent link">&para;</a></h2>
-<h3 id="step-11-convert-the-sge-matrix-to-a-merged-format">Step 1.1 convert the SGE matrix to a merged format<a class="headerlink" href="#step-11-convert-the-sge-matrix-to-a-merged-format" title="Permanent link">&para;</a></h3>
+<h3 id="step-11-convert-the-sge-matrix-into-a-ficture-compatible-format">Step 1.1 convert the SGE matrix into a FICTURE-compatible format<a class="headerlink" href="#step-11-convert-the-sge-matrix-into-a-ficture-compatible-format" title="Permanent link">&para;</a></h3>
 <p>Input &amp; Output</p>
 <div class="codehilite"><pre><span></span><code># Input:
 ${input_dir}/features.tsv.gz
@@ -780,7 +782,7 @@ ${output_dir}/${prefix}.merged.matrix.tsv.gz
 </code></pre></div>
 
 <h3 id="step-12-filtering">Step 1.2 Filtering<a class="headerlink" href="#step-12-filtering" title="Permanent link">&para;</a></h3>
-<p>Prepare a quality-controlled (QCed) feature and SGE matrix in a merged format, filtered by gene types and density.</p>
+<p>Prepare a quality-controlled (QCed) feature file and SGE matrix into a FICTURE-compatible format, filtered by gene types and density.</p>
 <p>Input &amp; Output</p>
 <div class="codehilite"><pre><span></span><code># Input: 
 ${input_dir}/features.tsv.gz
