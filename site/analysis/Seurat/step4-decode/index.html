@@ -924,7 +924,7 @@
           <li class="md-nav__item">
   <a href="#step-41-pixel-level-decoding" class="md-nav__link">
     <span class="md-ellipsis">
-      step 4.1 pixel-level Decoding.
+      Step 4.1 pixel-level Decoding.
     </span>
   </a>
   
@@ -933,7 +933,7 @@
           <li class="md-nav__item">
   <a href="#step-42-visualizing-pixel-level-decoding-and-generating-marker-gene-reports" class="md-nav__link">
     <span class="md-ellipsis">
-      step 4.2 Visualizing Pixel-Level Decoding and Generating Marker Gene Reports
+      Step 4.2 Visualizing Pixel-Level Decoding and Generating Marker Gene Reports
     </span>
   </a>
   
@@ -1007,7 +1007,7 @@
           <li class="md-nav__item">
   <a href="#step-41-pixel-level-decoding" class="md-nav__link">
     <span class="md-ellipsis">
-      step 4.1 pixel-level Decoding.
+      Step 4.1 pixel-level Decoding.
     </span>
   </a>
   
@@ -1016,7 +1016,7 @@
           <li class="md-nav__item">
   <a href="#step-42-visualizing-pixel-level-decoding-and-generating-marker-gene-reports" class="md-nav__link">
     <span class="md-ellipsis">
-      step 4.2 Visualizing Pixel-Level Decoding and Generating Marker Gene Reports
+      Step 4.2 Visualizing Pixel-Level Decoding and Generating Marker Gene Reports
     </span>
   </a>
   
@@ -1053,8 +1053,9 @@
 </code></pre></div></td></tr></table></div></p>
 <ul>
 <li><code>nr</code>: represents neighbor_radius. By default, <code>nr=ar+1</code>.</li>
+<li>Other variables applied above are in the <a href="../../../prep_input/job_config/">Job Configuration</a>.</li>
 </ul>
-<h3 id="step-41-pixel-level-decoding">step 4.1 pixel-level Decoding.<a class="headerlink" href="#step-41-pixel-level-decoding" title="Permanent link">&para;</a></h3>
+<h3 id="step-41-pixel-level-decoding">Step 4.1 pixel-level Decoding.<a class="headerlink" href="#step-41-pixel-level-decoding" title="Permanent link">&para;</a></h3>
 <p>Decoding the model matrix on individual pixels, which returns a tab-delimited file of the posterior count of factors on individual pixels.</p>
 <p>Input &amp; Output
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1078,8 +1079,8 @@ ${output_dir}/${train_model}/${decode_prefix}.pixel.sorted.tsv.gz
 <p>Command:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step4.1-pixel-level-decode.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
-<h3 id="step-42-visualizing-pixel-level-decoding-and-generating-marker-gene-reports">step 4.2 Visualizing Pixel-Level Decoding and Generating Marker Gene Reports<a class="headerlink" href="#step-42-visualizing-pixel-level-decoding-and-generating-marker-gene-reports" title="Permanent link">&para;</a></h3>
-<p>Identifying marker genes for each factor/cluster, and generating a report html file that summarizes individual factors and marker genes. In addition, this step creates a high-resolution image of cell type factors for individual pixels.</p>
+<h3 id="step-42-visualizing-pixel-level-decoding-and-generating-marker-gene-reports">Step 4.2 Visualizing Pixel-Level Decoding and Generating Marker Gene Reports<a class="headerlink" href="#step-42-visualizing-pixel-level-decoding-and-generating-marker-gene-reports" title="Permanent link">&para;</a></h3>
+<p>Identifying marker genes for each factor/cluster, and generating a report html file that summarizes individual factors and marker genes. In addition, this step creates a high-resolution image of cell type factors for individual pixels, using the color table generated at <a href="../step3-transform/#step-32-transform-visualization">step 3.2</a>.</p>
 <p>Input &amp; Output
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>

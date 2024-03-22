@@ -1,8 +1,8 @@
-# Preparing the input Configuration File
+# Preparing the Input Configuration File
 
 The input configuration file, which is a **text** file, serves as the input for parameters and dataset paths. We provide an example configuration file for [LDA+FICTURE analysis](https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/input_data_and_params/input_data_and_params_lda.txt) and [Seurat+FICTURE analysis](https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/input_data_and_params/input_data_and_params_seurat.txt), separately. 
 
-Below only include FICTURE's essential parameters, while certain steps might need **auxiliary parameters**. In such cases, NEDA employs FICTURE's recommended defaults for these extra settings, wherever applicable. Should you wish to customize these auxiliary parameters beyond the defaults, please proceed with caution as it involves risk. For detailed information on modifying auxiliary parameters, kindly refer to the `AUXILIARY PARAMS` section in the script for each respective step and original publication of [FICTURE](https://github.com/seqscope/ficture/tree/protocol).
+Below only include FICTURE's **essential parameters**, while certain steps might need **auxiliary parameters**. In such cases, NEDA employs FICTURE's recommended defaults for these extra settings, wherever applicable. Should you wish to customize these auxiliary parameters beyond the defaults, please proceed with caution as it involves risk. For detailed information on modifying auxiliary parameters, kindly refer to the `AUXILIARY PARAMS` section in the script for each respective step and original publication of [FICTURE](https://github.com/seqscope/ficture/tree/protocol).
 
 ```
 ## Environment Paths

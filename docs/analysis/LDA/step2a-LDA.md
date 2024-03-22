@@ -5,14 +5,16 @@ This example illustrates infering cell type factors using Latent Dirichlet Alloc
 
 **Prefix**:
 
-To clarify the input and output filenames, we utilize prefixes in this documentation. Below, we illustrate how these prefixes are defined. Those prefixes are automatically defined by the script; users do **NOT** need to manually define them. Details on variables used in prefixes are in the[Job Configuration](../../prep_input/job_config.md).
+To clarify the input and output filenames, we utilize prefixes in this documentation. Below, we illustrate how these prefixes are defined. Those prefixes are automatically defined by the script; users do **NOT** need to manually define them. 
 
 ```
 hexagon_prefix="${prefix}.hexagon.${sf}.d_${tw}"
 train_prefix="${prefix}.${sf}.nF${nf}.d_${tw}.s_${ep}"
 ```
 
-### step 2a.1 Create hexagonal spatial gene expression (SGE) matrix
+* Details on variables used in above prefixes are in the [Job Configuration](../../prep_input/job_config.md).
+
+### Step 2a.1 Create Hexagonal Spatial Gene Expression (SGE) matrix
 Given a specified size of hexagons, segment the raw spatial gene expression (SGE) matrix into hexagonal SGE.
 
 Input & Output
@@ -30,7 +32,7 @@ Command:
 $neda_dir/steps/step2a.1-create-hexagons.sh $input_configfile
 ```
 
-### step 2a.2 LDA Factorization
+### Step 2a.2 LDA Factorization
 An unsupervised learning of cell type factors using LDA.
 
 Input & Output:
@@ -50,7 +52,7 @@ Command:
 $neda_dir/steps/step2a.2-LDA-factorization.sh $input_configfile
 ```
 
-### step 2a.3 LDA factorization report
+### Step 2a.3 Creating Marker Gene Reports
 This step includes: generating a color table, identifying marker genes for each factor, and creating a report html file, which summarizes individual factors and marker genes.
 
 Input & Output:

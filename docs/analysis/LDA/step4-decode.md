@@ -8,11 +8,10 @@ The decode_prefix will be automatically defined as below.
 ```
 decode_prefix="${train_prefix}.decode.prj_${pw}.r_${ar}_${nr}"
 ```
-
 * `nr`: represents neighbor_radius. By default, `nr=ar+1`.
+* Other variables applied above are in the [Job Configuration](../../prep_input/job_config.md).
 
-
-### step 4.1 Pixel-level Decoding. 
+### Step 4.1 Pixel-level Decoding. 
 Decoding the model matrix on individual pixels, which returns a tab-delimited file of the posterior count of factors on individual pixels.
 
 Input & Output
@@ -33,8 +32,8 @@ Command:
 $neda_dir/steps/step4.1-pixel-level-decode.sh $input_configfile
 ```
 
-### step 4.2 Visualizing Pixel-Level Decoding and Generating Marker Gene Reports
-Identifying marker genes for each factor/cluster, and generating a report html file that summarizes individual factors and marker genes. In addition, this step creates a high-resolution image of cell type factors for individual pixels.
+### Step 4.2 Visualizing Pixel-Level Decoding and Generating Marker Gene Reports
+Identifying marker genes for each factor/cluster, and generating a report html file that summarizes individual factors and marker genes. In addition, this step creates a high-resolution image of cell type factors for individual pixels, using the color table created in [step 2a.3](step2a-LDA.md/#step-2a3-summarize-lda-factorization).
 
 Input & Output
 ```

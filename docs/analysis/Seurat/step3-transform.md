@@ -10,6 +10,9 @@ The `tranform_prefix` will be automatically defined by the script as below.
 tranform_prefix="${train_prefix}.prj_${pw}.r_${ar}"
 ```
 
+* See variables applied above in the [Job Configuration](../../prep_input/job_config.md).
+
+
 ### Step 3.1 Transform
 Convert to a factor space using the provided model, which includes gene names and potentially Dirichlet parameters. The pixel-level data will be organized into (potentially overlapping) hexagonal groups.
 
@@ -29,7 +32,7 @@ Command:
 $neda_dir/steps/step3.1-transform.sh $input_configfile
 ```
 
-### Step 3.2 transform visualization
+### Step 3.2 Transform Visualization
 For Seurat, create a color table and visualize the transformed data. 
 
 Input & Output

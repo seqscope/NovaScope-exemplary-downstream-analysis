@@ -914,7 +914,7 @@
           <li class="md-nav__item">
   <a href="#step-32-transform-visualization" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 3.2 transform visualization
+      Step 3.2 Transform Visualization
     </span>
   </a>
   
@@ -1018,7 +1018,7 @@
           <li class="md-nav__item">
   <a href="#step-32-transform-visualization" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 3.2 transform visualization
+      Step 3.2 Transform Visualization
     </span>
   </a>
   
@@ -1053,6 +1053,9 @@
 <p>The <code>tranform_prefix</code> will be automatically defined by the script as below.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>tranform_prefix=&quot;${train_prefix}.prj_${pw}.r_${ar}&quot;
 </code></pre></div></td></tr></table></div>
+<ul>
+<li>See variables applied above in the <a href="../../../prep_input/job_config/">Job Configuration</a>.</li>
+</ul>
 <h3 id="step-31-transform">Step 3.1 Transform<a class="headerlink" href="#step-31-transform" title="Permanent link">&para;</a></h3>
 <p>Convert to a factor space using the provided model, which includes gene names and potentially Dirichlet parameters. The pixel-level data will be organized into (potentially overlapping) hexagonal groups.</p>
 <p>Input &amp; Output
@@ -1073,7 +1076,7 @@ ${output_dir}/${train_model}/${tranform_prefix}.posterior.count.tsv.gz
 <p>Command:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step3.1-transform.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
-<h3 id="step-32-transform-visualization">Step 3.2 transform visualization<a class="headerlink" href="#step-32-transform-visualization" title="Permanent link">&para;</a></h3>
+<h3 id="step-32-transform-visualization">Step 3.2 Transform Visualization<a class="headerlink" href="#step-32-transform-visualization" title="Permanent link">&para;</a></h3>
 <p>For Seurat, create a color table and visualize the transformed data. </p>
 <p>Input &amp; Output
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>

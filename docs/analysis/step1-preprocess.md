@@ -24,7 +24,7 @@ input_configfile="<path_to_input_data_and_params>"  ## replace <path_to_input_da
 
 ## Step 1. Preprocessing
 
-### Step 1.1 Convert the spatial digital gene expression (SGE) matrix into a FICTURE-compatible format
+### Step 1.1 Convert Spatial Digital Gene Expression (SGE) Matrix into a FICTURE-compatible Format
 
 This step converts the spatial digital gene expression (SGE) matrix to FICTURE format, where each row contains, X/Y coordinates, gene name, identifier, and observed count.
 
@@ -44,7 +44,7 @@ Command:
 $neda_dir/steps/step1.1-convert-SGE.sh $input_configfile
 ```
 
-### Step 1.2 Filtering both
+### Step 1.2 Filtering
 Prepare a quality-controlled (QCed) feature file and SGE matrix into a FICTURE-compatible format, filtered by gene types and density. This also creates a strict boundary file based on the density of transcripts.
 
 Input & Output
@@ -67,7 +67,7 @@ Command:
 $neda_dir/steps/step1.2-filter-feature-and-SGE.sh $input_configfile
 ```
 
-### Step 1.3 Create minimatch
+### Step 1.3 Create Minimatch
 Reformat the input file by assigning minibatch label, and by reordering the data based on the major axis so that they are locally contiguous.
 
 Input & Output
