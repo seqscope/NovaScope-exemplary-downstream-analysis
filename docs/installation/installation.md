@@ -4,7 +4,7 @@
 git clone git@github.com:seqscope/NovaScope-exemplary-downstream-analysis.git 
 ```
 
-## 2. Install Softwares and Dependencies
+## 2. Install Software and Dependencies
 
 ### 2.1 Install Dependent Softwares
 
@@ -23,7 +23,7 @@ High-performance computing (HPC) users can easily load these programs using the 
 To install [FICTURE](https://github.com/seqscope/ficture/tree/protocol), run:
 
 ```bash
-## revise the path to install ficture if needed
+## revise the path to install FICTURE if needed
 git clone git@github.com:seqscope/ficture.git
 ```
 
@@ -34,13 +34,13 @@ git clone git@github.com:seqscope/ficture.git
 * human: 
     * GRCh38: `Homo_sapiens.GRCh38.107.names.tsv.gz`
 * mouse: 
-    * GRCm39 (recommand): `Mus_musculus.GRCm39.107.names.tsv.gz`
+    * GRCm39 (recommanded): `Mus_musculus.GRCm39.107.names.tsv.gz`
     * GRCm38: `Mus_musculus.GRCm38.102.names.tsv.gz`
 
 Once you installed [FICTURE](https://github.com/seqscope/ficture/tree/protocol), view available reference files:
 
 ```bash
-## revise the path of ficture if you install ficture 
+## revise the path of FICTURE if needed
 ficture_dir=/path/to/ficture
 
 ## double-check available reference files
@@ -54,7 +54,7 @@ Set up a Python environment for [FICTURE](https://github.com/seqscope/ficture/tr
 First, ensure the requirements file is accessible:
 
 ```bash
-## path to the requirement file in the ficture repository
+## path to the requirement file in the FICTURE repository
 ficture_reqfile=$ficture_dir/requirements.txt
 
 ## verify the existence of the requirement file.
@@ -70,16 +70,16 @@ fi
 Now, install the required packages. Below is an example of creating a new Python environment using `venv`. It's also possible to establish such environments through alternative methods, including `conda`, `virtualenv`, and `pyenv`.
 
 ```bash
-## set the path to the python virtual environment directory
+## set the path to the Python virtual environment directory
 pyenv_dir=/path/to/python/virtual/environment/directory
 pyenv_name=name_of_python_venv
 
-## create the python virtual environment (need to be done only once)
+## create the Python virtual environment (need to be done only once)
 mkdir -p ${pyenv_dir}
 cd ${pyenv_dir}
 python -m venv ${pyenv_name}
 
-## activate the python environment (every time you want to use the environment)
+## activate the Python environment (every time you want to use the environment)
 source ${pyenv_name}/bin/activate
 
 ## install the required packages (need to be done only once)

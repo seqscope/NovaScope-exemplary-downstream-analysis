@@ -8,6 +8,7 @@ The decode_prefix will be automatically defined as below.
 ```
 decode_prefix="${train_prefix}.decode.prj_${pw}.r_${ar}_${nr}"
 ```
+
 * `nr`: represents neighbor_radius. By default, `nr=ar+1`.
 * Other variables applied above are in the [Job Configuration](../../prep_input/job_config.md).
 
@@ -23,7 +24,7 @@ ${output_dir}/${prefix}.QCed.matrix.tsv.gz
 ${output_dir}/${train_model}/${tranform_prefix}.model.p         # The format of the model file varies between LDA and Seurat.
 ${output_dir}/${train_model}/${tranform_prefix}.fit_result.tsv.gz
 
-#Output: 
+# Output: 
 ${output_dir}/${train_model}/${decode_prefix}.pixel.sorted.tsv.gz
 ```
 
@@ -33,15 +34,15 @@ $neda_dir/steps/step4.1-pixel-level-decode.sh $input_configfile
 ```
 
 ### Step 4.2 Visualizing Pixel-Level Decoding and Generating Marker Gene Reports
-Identifying marker genes for each factor/cluster, and generating a report html file that summarizes individual factors and marker genes. In addition, this step creates a high-resolution image of cell type factors for individual pixels, using the color table created in [step 2a.3](step2a-LDA.md/#step-2a3-summarize-lda-factorization).
+Identifying marker genes for each factor, and generating a report html file that summarizes individual factors and marker genes. In addition, this step creates a high-resolution image of cell type factors for individual pixels, using the color table created in [step 2a.3](step2a-LDA.md/#step-2a3-summarize-lda-factorization).
 
 Input & Output
 ```
-#Input:
+# Input:
 ${output_dir}/${train_model}/${decode_prefix}.posterior.count.tsv.gz
 ${output_dir}/${train_model}/${tranform_prefix}.rgb.tsv
 
-#Output: 
+# Output: 
 ${output_dir}/${train_model}/${decode_prefix}.bulk_chisq.tsv
 ${output_dir}/${train_model}/${decode_prefix}.factor.info.html
 ${output_dir}/${train_model}/${decode_prefix}.pixel.png

@@ -18,11 +18,11 @@ Convert to a factor space using the provided model, which includes gene names an
 
 Input & Output
 ```
-#Input:
+# Input:
 ${output_dir}/${prefix}.QCed.matrix.tsv.gz
 ${output_dir}/${train_model}/${train_prefix}.model.tsv.gz               # The format of the model file varies between LDA and Seurat.
 
-#Output:
+# Output:
 ${output_dir}/${train_model}/${tranform_prefix}.fit_result.tsv.gz
 ${output_dir}/${train_model}/${tranform_prefix}.posterior.count.tsv.gz
 ```
@@ -42,7 +42,7 @@ ${output_dir}/${train_model}/${tranform_prefix}.fit_result.tsv.gz
 ${output_dir}/${train_model}/${tranform_prefix}.posterior.count.tsv.gz
 ${output_dir}/${prefix}.coordinate_minmax.tsv
 
-#Output:
+# Output:
 ${output_dir}/${train_model}/${tranform_prefix}.rgb.tsv
 ${output_dir}/${train_model}/${tranform_prefix}.top.png
 

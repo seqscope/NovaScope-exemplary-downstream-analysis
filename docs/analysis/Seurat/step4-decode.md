@@ -25,7 +25,7 @@ ${output_dir}/${prefix}.QCed.matrix.tsv.gz
 ${output_dir}/${train_model}/${tranform_prefix}.model.tsv.gz        # The format of the model file varies between LDA and Seurat.
 ${output_dir}/${train_model}/${tranform_prefix}.fit_result.tsv.gz
 
-#Output: 
+# Output: 
 ${output_dir}/${train_model}/${decode_prefix}.pixel.sorted.tsv.gz
 ```
 
@@ -35,15 +35,15 @@ $neda_dir/steps/step4.1-pixel-level-decode.sh $input_configfile
 ```
 
 ### Step 4.2 Visualizing Pixel-Level Decoding and Generating Marker Gene Reports
-Identifying marker genes for each factor/cluster, and generating a report html file that summarizes individual factors and marker genes. In addition, this step creates a high-resolution image of cell type factors for individual pixels, using the color table generated at [step 3.2](step3-transform.md/#step-32-transform-visualization).
+Identifying marker genes for each cluster, and generating a report html file that summarizes individual factors and marker genes. In addition, this step creates a high-resolution image of cell type factors for individual pixels, using the color table generated at [step 3.2](step3-transform.md/#step-32-transform-visualization).
 
 Input & Output
 ```
-#Input:
+# Input:
 ${output_dir}/${train_model}/${decode_prefix}.posterior.count.tsv.gz
 ${output_dir}/${train_model}/${tranform_prefix}.rgb.tsv
 
-#Output: 
+# Output: 
 ${output_dir}/${train_model}/${decode_prefix}.bulk_chisq.tsv
 ${output_dir}/${train_model}/${decode_prefix}.factor.info.html
 ${output_dir}/${train_model}/${decode_prefix}.pixel.png

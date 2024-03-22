@@ -208,7 +208,7 @@ vln_plot <- cowplot::plot_grid(vln_nFeature, vln_nCount, ncol = 2)
 
 ggsave(filename = paste0(opts$output_dir, "/Ncount_Nfeature_vln.png"), plot = vln_plot, width = 10, height = 10)
 
-# 2.2.3 Plot the denisty plot of nFeature_RNA and nCount_RNA
+# 2.2.3 Density plot of nFeature_RNA and nCount_RNA
 message(paste0(" - Drawing a density plot of nFeature_RNA and nCount_RNA in ", opts$output_dir, "/Nfeature_density_cutoff*.png"))
 
 # Function to calculate plot dimensions based on spatial data ranges
@@ -219,7 +219,7 @@ calculate_plot_dimensions <- function(adata) {
   return(aspect_ratio)
 }
 
-# Function to create a faceted densty plot for raw and QCed data
+# Function to create a faceted density plot for raw and QCed data
 create_faceted_density_plot <- function(adata_raw, adata_QCed, x_var, y_var, QC_var, QC_cutoff, output_dir,color_var=NA, width=15, height=15, dpi=300){
   adata_raw@meta.data[["Status"]] <- "Raw"
   adata_QCed@meta.data[["Status"]]  <- "QCed"
