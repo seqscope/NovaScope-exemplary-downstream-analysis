@@ -8,37 +8,81 @@ repo_url: https://github.com/seqscope/NovaScope-exemplary-downstream-analysis
 # Theme configuration
 theme:
   name: material
-#  palette:
+  features:
+  - navigation.tabs
+  - navigation.indexes
+  - navigation.sections
+  - content.code.annotate
+  palette:
+  - media: "(prefers-color-scheme)"
+    toggle:
+      icon: material/link
+      name: Switch to light mode
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    primary: indigo
+    accent: indigo
+    toggle:
+      icon: material/toggle-switch
+      name: Switch to dark mode
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    primary: black
+    accent: indigo
+    toggle:
+      icon: material/toggle-switch-off
+      name: Switch to system preference
 #    primary: 'deep purple'
 #    accent: 'lime'
-  palette:
-    primary: indigo
-    accent: grey
+#  palette:
+#    primary: indigo
+#    accent: grey
   font:
     text: 'Roboto'
     code: 'Roboto Mono'
 
 # Navigation structure
 nav:
-  - Home: index.md
-  - Preparation:
-      - Installing NovaScope-exemplary-downstream-analysis (NEDA): preparation/prestep1-setup.md
-      - Preparing Input: preparation/prestep2-input.md
-  - LDA+FICTURE Analysis:
-      - Preprocessing: LDA/step1-preprocess.md
-      - LDA Factorization: LDA/step2a-LDA.md
-      - Transform : LDA/step3-transform.md
-      - Pixel-level Decoding: LDA/step4-decode.md
-  - Seurat+FICTURE Analysis:
-      - Preprocessing: Seurat/step1-preprocess.md
-      - Seurat Clustering: Seurat/step2b-seurat.md
-      - Transform : Seurat/step3-transform.md
-      - Pixel-level Decoding: Seurat/step4-decode.md
+  - Home: 
+      - Introduction: index.md
+      - Documentation Overview: home/documentation_overview.md
+  - Installation: installation/installation.md
+  - Preparing Input:
+      - Input Data: prep_input/access_data.md
+      - Job Configuration: prep_input/job_config.md
+  - Starting Downstream Analysis:
+      - Introduction: analysis/intro.md
+      - Initialization: analysis/step1-preprocess.md
+      - Latent Dirichlet allocation (LDA) + FICTURE Analysis: 
+          - LDA Factorization: analysis/LDA/step2a-LDA.md
+          - Transform : analysis/LDA/step3-transform.md
+          - Pixel-level Decoding: analysis/LDA/step4-decode.md
+      - Seurat + FICTURE Analysis: 
+          - Seurat Clustering: analysis/Seurat/step2b-seurat.md
+          - Transform : analysis/Seurat/step3-transform.md
+          - Pixel-level Decoding: analysis/Seurat/step4-decode.md
+
 
 # Markdown Extensions
 markdown_extensions:
   - admonition
-  - codehilite:
-      guess_lang: false
+#  - codehilite:
+#      guess_lang: false 
   - toc:
       permalink: true
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight:
+      linenums: true
+      css_class: 'highlight'
+  - pymdownx.superfences
+# - pymdownx.inlinehilite
+
+
+plugins:
+  - search
+  - open-in-new-tab
+
+# Extra CSS
+extra_css:
+  - css/custom.css

@@ -2,57 +2,67 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/</loc>
-         <lastmod>2024-03-20</lastmod>
+         <lastmod>2024-03-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/LDA/step1-preprocess/</loc>
-         <lastmod>2024-03-20</lastmod>
+         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/analysis/intro/</loc>
+         <lastmod>2024-03-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/LDA/step2a-LDA/</loc>
-         <lastmod>2024-03-20</lastmod>
+         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/analysis/step1-preprocess/</loc>
+         <lastmod>2024-03-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/LDA/step3-transform/</loc>
-         <lastmod>2024-03-20</lastmod>
+         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/analysis/LDA/step2a-LDA/</loc>
+         <lastmod>2024-03-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/LDA/step4-decode/</loc>
-         <lastmod>2024-03-20</lastmod>
+         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/analysis/LDA/step3-transform/</loc>
+         <lastmod>2024-03-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/Seurat/step1-preprocess/</loc>
-         <lastmod>2024-03-20</lastmod>
+         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/analysis/LDA/step4-decode/</loc>
+         <lastmod>2024-03-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/Seurat/step2b-seurat/</loc>
-         <lastmod>2024-03-20</lastmod>
+         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/analysis/Seurat/step2b-seurat/</loc>
+         <lastmod>2024-03-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/Seurat/step3-transform/</loc>
-         <lastmod>2024-03-20</lastmod>
+         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/analysis/Seurat/step3-transform/</loc>
+         <lastmod>2024-03-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/Seurat/step4-decode/</loc>
-         <lastmod>2024-03-20</lastmod>
+         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/analysis/Seurat/step4-decode/</loc>
+         <lastmod>2024-03-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/preparation/prestep1-setup/</loc>
-         <lastmod>2024-03-20</lastmod>
+         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/home/documentation_overview/</loc>
+         <lastmod>2024-03-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/preparation/prestep2-input/</loc>
-         <lastmod>2024-03-20</lastmod>
+         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/installation/installation/</loc>
+         <lastmod>2024-03-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/prep_input/access_data/</loc>
+         <lastmod>2024-03-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/prep_input/job_config/</loc>
+         <lastmod>2024-03-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
