@@ -762,7 +762,7 @@
           <li class="md-nav__item">
   <a href="#step-2a1-create-hexagonal-spatial-gene-expression-sge-matrix" class="md-nav__link">
     <span class="md-ellipsis">
-      step 2a.1 Create hexagonal spatial gene expression (SGE) matrix
+      Step 2a.1 Create Hexagonal Spatial Gene Expression (SGE) matrix
     </span>
   </a>
   
@@ -771,16 +771,16 @@
           <li class="md-nav__item">
   <a href="#step-2a2-lda-factorization" class="md-nav__link">
     <span class="md-ellipsis">
-      step 2a.2 LDA Factorization
+      Step 2a.2 LDA Factorization
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2a3-lda-factorization-report" class="md-nav__link">
+  <a href="#step-2a3-creating-marker-gene-reports" class="md-nav__link">
     <span class="md-ellipsis">
-      step 2a.3 LDA factorization report
+      Step 2a.3 Creating Marker Gene Reports
     </span>
   </a>
   
@@ -1018,7 +1018,7 @@
           <li class="md-nav__item">
   <a href="#step-2a1-create-hexagonal-spatial-gene-expression-sge-matrix" class="md-nav__link">
     <span class="md-ellipsis">
-      step 2a.1 Create hexagonal spatial gene expression (SGE) matrix
+      Step 2a.1 Create Hexagonal Spatial Gene Expression (SGE) matrix
     </span>
   </a>
   
@@ -1027,16 +1027,16 @@
           <li class="md-nav__item">
   <a href="#step-2a2-lda-factorization" class="md-nav__link">
     <span class="md-ellipsis">
-      step 2a.2 LDA Factorization
+      Step 2a.2 LDA Factorization
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2a3-lda-factorization-report" class="md-nav__link">
+  <a href="#step-2a3-creating-marker-gene-reports" class="md-nav__link">
     <span class="md-ellipsis">
-      step 2a.3 LDA factorization report
+      Step 2a.3 Creating Marker Gene Reports
     </span>
   </a>
   
@@ -1069,12 +1069,15 @@
 <h2 id="step-2a-infer-cell-type-factors-using-latent-dirichlet-allocation-lda">Step 2a. Infer Cell Type Factors using Latent Dirichlet Allocation (LDA).<a class="headerlink" href="#step-2a-infer-cell-type-factors-using-latent-dirichlet-allocation-lda" title="Permanent link">&para;</a></h2>
 <p>This example illustrates infering cell type factors using Latent Dirichlet Allocation (LDA). </p>
 <p><strong>Prefix</strong>:</p>
-<p>To clarify the input and output filenames, we utilize prefixes in this documentation. Below, we illustrate how these prefixes are defined. Those prefixes are automatically defined by the script; users do <strong>NOT</strong> need to manually define them. Details on variables used in prefixes are in the<a href="../../../prep_input/job_config/">Job Configuration</a>.</p>
+<p>To clarify the input and output filenames, we utilize prefixes in this documentation. Below, we illustrate how these prefixes are defined. Those prefixes are automatically defined by the script; users do <strong>NOT</strong> need to manually define them. </p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>hexagon_prefix=&quot;${prefix}.hexagon.${sf}.d_${tw}&quot;
 train_prefix=&quot;${prefix}.${sf}.nF${nf}.d_${tw}.s_${ep}&quot;
 </code></pre></div></td></tr></table></div>
-<h3 id="step-2a1-create-hexagonal-spatial-gene-expression-sge-matrix">step 2a.1 Create hexagonal spatial gene expression (SGE) matrix<a class="headerlink" href="#step-2a1-create-hexagonal-spatial-gene-expression-sge-matrix" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Details on variables used in above prefixes are in the <a href="../../../prep_input/job_config/">Job Configuration</a>.</li>
+</ul>
+<h3 id="step-2a1-create-hexagonal-spatial-gene-expression-sge-matrix">Step 2a.1 Create Hexagonal Spatial Gene Expression (SGE) matrix<a class="headerlink" href="#step-2a1-create-hexagonal-spatial-gene-expression-sge-matrix" title="Permanent link">&para;</a></h3>
 <p>Given a specified size of hexagons, segment the raw spatial gene expression (SGE) matrix into hexagonal SGE.</p>
 <p>Input &amp; Output
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1092,7 +1095,7 @@ ${output_dir}/${train_model}/${hexagon_prefix}.tsv.gz
 <p>Command:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step2a.1-create-hexagons.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
-<h3 id="step-2a2-lda-factorization">step 2a.2 LDA Factorization<a class="headerlink" href="#step-2a2-lda-factorization" title="Permanent link">&para;</a></h3>
+<h3 id="step-2a2-lda-factorization">Step 2a.2 LDA Factorization<a class="headerlink" href="#step-2a2-lda-factorization" title="Permanent link">&para;</a></h3>
 <p>An unsupervised learning of cell type factors using LDA.</p>
 <p>Input &amp; Output:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1114,7 +1117,7 @@ ${output_dir}/${train_model}/${train_prefix}.posterior.count.tsv.gz
 <p>Command:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step2a.2-LDA-factorization.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
-<h3 id="step-2a3-lda-factorization-report">step 2a.3 LDA factorization report<a class="headerlink" href="#step-2a3-lda-factorization-report" title="Permanent link">&para;</a></h3>
+<h3 id="step-2a3-creating-marker-gene-reports">Step 2a.3 Creating Marker Gene Reports<a class="headerlink" href="#step-2a3-creating-marker-gene-reports" title="Permanent link">&para;</a></h3>
 <p>This step includes: generating a color table, identifying marker genes for each factor, and creating a report html file, which summarizes individual factors and marker genes.</p>
 <p>Input &amp; Output:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
