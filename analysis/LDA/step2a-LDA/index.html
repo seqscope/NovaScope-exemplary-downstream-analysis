@@ -1068,9 +1068,8 @@
 <h1 id="latent-dirichlet-allocation-lda-ficture-analytical-strategy">Latent Dirichlet Allocation (LDA) + FICTURE analytical strategy<a class="headerlink" href="#latent-dirichlet-allocation-lda-ficture-analytical-strategy" title="Permanent link">&para;</a></h1>
 <h2 id="step-2a-infer-cell-type-factors-using-latent-dirichlet-allocation-lda">Step 2a. Infer Cell Type Factors using Latent Dirichlet Allocation (LDA).<a class="headerlink" href="#step-2a-infer-cell-type-factors-using-latent-dirichlet-allocation-lda" title="Permanent link">&para;</a></h2>
 <p>This example illustrates infering cell type factors using Latent Dirichlet Allocation (LDA). </p>
-<p>Since this step, the output files will be stored at <code>${model_dir}</code>, which is defined as <code>${output_dir}/${train_model}</code>.</p>
 <p><strong>Prefix</strong>:</p>
-<p>To clarify the input and output filenames, we utilize prefixes in this documentation. Below, we illustrate how these prefixes are defined. Users do <strong>NOT</strong> need to manually define these prefixes; they are automatically defined by the script.</p>
+<p>To clarify the input and output filenames, we utilize prefixes in this documentation. Below, we illustrate how these prefixes are defined. Those prefixes are automatically defined by the script; users do <strong>NOT</strong> need to manually define them. Details on variables used in prefixes are in the<a href="../../../prep_input/job_config/">Job Configuration</a>.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>hexagon_prefix=&quot;${prefix}.hexagon.${sf}.d_${tw}&quot;
 train_prefix=&quot;${prefix}.${sf}.nF${nf}.d_${tw}.s_${ep}&quot;
@@ -1088,10 +1087,10 @@ ${output_dir}/${prefix}.QCed.matrix.tsv.gz
 ${output_dir}/${prefix}.boundary.strict.geojson
 
 # Output: 
-${model_dir}/${hexagon_prefix}.tsv.gz
+${output_dir}/${train_model}/${hexagon_prefix}.tsv.gz
 </code></pre></div></td></tr></table></div></p>
 <p>Command:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>$neda_dir/steps/step2a.1-create-hexagons.sh $input_configfile
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step2a.1-create-hexagons.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
 <h3 id="step-2a2-lda-factorization">step 2a.2 LDA Factorization<a class="headerlink" href="#step-2a2-lda-factorization" title="Permanent link">&para;</a></h3>
 <p>An unsupervised learning of cell type factors using LDA.</p>
@@ -1105,15 +1104,15 @@ ${model_dir}/${hexagon_prefix}.tsv.gz
 <span class="normal">7</span>
 <span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code># Input:
 ${output_dir}/${prefix}.feature.clean.tsv.gz
-${model_dir}/${hexagon_prefix}.tsv.gz
+${output_dir}/${train_model}/${hexagon_prefix}.tsv.gz
 
 # Output: 
-${model_dir}/${train_prefix}.model.p
-${model_dir}/${train_prefix}.fit_result.tsv.gz
-${model_dir}/${train_prefix}.posterior.count.tsv.gz
+${output_dir}/${train_model}/${train_prefix}.model.p
+${output_dir}/${train_model}/${train_prefix}.fit_result.tsv.gz
+${output_dir}/${train_model}/${train_prefix}.posterior.count.tsv.gz
 </code></pre></div></td></tr></table></div></p>
 <p>Command:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>$neda_dir/steps/step2a.2-LDA-factorization.sh $input_configfile
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step2a.2-LDA-factorization.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
 <h3 id="step-2a3-lda-factorization-report">step 2a.3 LDA factorization report<a class="headerlink" href="#step-2a3-lda-factorization-report" title="Permanent link">&para;</a></h3>
 <p>This step includes: generating a color table, identifying marker genes for each factor, and creating a report html file, which summarizes individual factors and marker genes.</p>
@@ -1126,16 +1125,16 @@ ${model_dir}/${train_prefix}.posterior.count.tsv.gz
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code># Input:
-${model_dir}/${train_prefix}.fit_result.tsv.gz
-${model_dir}/${train_prefix}.posterior.count.tsv.gz
+${output_dir}/${train_model}/${train_prefix}.fit_result.tsv.gz
+${output_dir}/${train_model}/${train_prefix}.posterior.count.tsv.gz
 
 # Output: 
-${model_dir}/${train_prefix}.color.tsv
-${model_dir}/${train_prefix}.bulk_chisq.tsv
-${model_dir}/${train_prefix}.factor.info.html
+${output_dir}/${train_model}/${train_prefix}.color.tsv
+${output_dir}/${train_model}/${train_prefix}.bulk_chisq.tsv
+${output_dir}/${train_model}/${train_prefix}.factor.info.html
 </code></pre></div></td></tr></table></div></p>
 <p>Command:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>$neda_dir/steps/step2a.3-LDA-factorization-report.sh $input_configfile
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step2a.3-LDA-factorization-report.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
 
 
