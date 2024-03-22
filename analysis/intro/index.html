@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/LDA/step3-transform/">
+        <link rel="canonical" href="https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/analysis/intro/">
       
       
-        <link rel="prev" href="../step2a-LDA/">
+        <link rel="prev" href="../../prep_input/job_config/">
       
       
-        <link rel="next" href="../step4-decode/">
+        <link rel="next" href="../step1-preprocess/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Transform - NovaScope-exemplary-downstream-analysis</title>
+        <title>Introduction - NovaScope-exemplary-downstream-analysis</title>
       
     
     
@@ -48,6 +48,8 @@
       
     
     
+      <link rel="stylesheet" href="../../css/custom.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -60,10 +62,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="grey">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -72,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#latent-dirichlet-allocation-lda-ficture-analytical-strategy" class="md-skip">
+        <a href="#introduction" class="md-skip">
           Skip to content
         </a>
       
@@ -84,9 +88,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="NovaScope-exemplary-downstream-analysis" class="md-header__button md-logo" aria-label="NovaScope-exemplary-downstream-analysis" data-md-component="logo">
       
@@ -108,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Transform
+              Introduction
             
           </span>
         </div>
@@ -116,7 +118,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1M8 13h8v-2H8v2m9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1 0 1.71-1.39 3.1-3.1 3.1h-4V17h4a5 5 0 0 0 5-5 5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5M7 15a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -179,6 +217,94 @@
       
         
           
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../installation/installation/" class="md-tabs__link">
+        
+  
+    
+  
+  Installation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../prep_input/access_data/" class="md-tabs__link">
+          
+  
+    
+  
+  Preparing Input
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+    
+  
+  Starting Downstream Analysis
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -192,8 +318,10 @@
                     
 
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="NovaScope-exemplary-downstream-analysis" class="md-nav__button md-logo" aria-label="NovaScope-exemplary-downstream-analysis" data-md-component="logo">
       
@@ -224,12 +352,98 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     Home
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../home/documentation_overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Documentation Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
   </span>
   
 
@@ -246,30 +460,41 @@
   
     
     
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    Preparation
+    Preparing Input
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Preparation
+            Preparing Input
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -280,11 +505,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../preparation/prestep1-setup/" class="md-nav__link">
+      <a href="../../prep_input/access_data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Installing NovaScope-exemplary-downstream-analysis (NEDA)
+    Input Data
   </span>
   
 
@@ -301,11 +526,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../preparation/prestep2-input/" class="md-nav__link">
+      <a href="../../prep_input/job_config/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Preparing Input
+    Job Configuration
   </span>
   
 
@@ -332,74 +557,50 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   <span class="md-ellipsis">
-    LDA+FICTURE Analysis
+    Starting Downstream Analysis
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            LDA+FICTURE Analysis
+            Starting Downstream Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../step1-preprocess/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Preprocessing
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../step2a-LDA/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    LDA Factorization
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -417,78 +618,15 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Transform
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Transform
+    Introduction
   </span>
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-transform" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3 Transform
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 3 Transform">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-31-transform" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3.1 Transform
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-32-transform-visualization" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3.2 transform visualization
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -502,7 +640,121 @@
   
   
     <li class="md-nav__item">
-      <a href="../step4-decode/" class="md-nav__link">
+      <a href="../step1-preprocess/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Latent Dirichlet allocation (LDA) + FICTURE Analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Latent Dirichlet allocation (LDA) + FICTURE Analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LDA/step2a-LDA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LDA Factorization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LDA/step3-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transform
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LDA/step4-decode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -522,39 +774,56 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
   
     
     
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
+      
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+        
+      
+    
+    
+      
+      
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
             
   
   <span class="md-ellipsis">
-    Seurat+FICTURE Analysis
+    Seurat + FICTURE Analysis
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
             <span class="md-nav__icon md-icon"></span>
-            Seurat+FICTURE Analysis
+            Seurat + FICTURE Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -565,28 +834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Seurat/step1-preprocess/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Preprocessing
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Seurat/step2b-seurat/" class="md-nav__link">
+      <a href="../Seurat/step2b-seurat/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -607,7 +855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Seurat/step3-transform/" class="md-nav__link">
+      <a href="../Seurat/step3-transform/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -628,7 +876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Seurat/step4-decode/" class="md-nav__link">
+      <a href="../Seurat/step4-decode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -637,6 +885,14 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -669,47 +925,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-transform" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3 Transform
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 3 Transform">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-31-transform" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3.1 Transform
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-32-transform-visualization" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3.2 transform visualization
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -726,45 +941,11 @@
   
 
 
-<h1 id="latent-dirichlet-allocation-lda-ficture-analytical-strategy">Latent Dirichlet Allocation (LDA) + FICTURE analytical strategy<a class="headerlink" href="#latent-dirichlet-allocation-lda-ficture-analytical-strategy" title="Permanent link">&para;</a></h1>
-<h2 id="step-3-transform">Step 3 Transform<a class="headerlink" href="#step-3-transform" title="Permanent link">&para;</a></h2>
-<p><strong>Prefix</strong>:</p>
-<p>The <code>tranform_prefix</code> will be automatically defined by the script as below.</p>
-<div class="codehilite"><pre><span></span><code>tranform_prefix=&quot;${train_prefix}.prj_${pw}.r_${ar}&quot;
-</code></pre></div>
-
-<h3 id="step-31-transform">Step 3.1 Transform<a class="headerlink" href="#step-31-transform" title="Permanent link">&para;</a></h3>
-<p>Convert to a factor space using the provided model, which includes gene names and potentially Dirichlet parameters. The pixel-level data will be organized into (potentially overlapping) hexagonal groups.</p>
-<p>Input &amp; Output</p>
-<div class="codehilite"><pre><span></span><code>#Input:
-${output_dir}/${prefix}.QCed.matrix.tsv.gz
-${model_dir}/${train_prefix}.model.p                    # The format of the model file varies between LDA and Seurat.
-
-#Output:
-${model_dir}/${tranform_prefix}.fit_result.tsv.gz
-${model_dir}/${tranform_prefix}.posterior.count.tsv.gz
-</code></pre></div>
-
-<p>Command:</p>
-<div class="codehilite"><pre><span></span><code>$neda_dir/steps/step3.1-transform.sh $input_configfile
-</code></pre></div>
-
-<h3 id="step-32-transform-visualization">Step 3.2 transform visualization<a class="headerlink" href="#step-32-transform-visualization" title="Permanent link">&para;</a></h3>
-<p>For LDA, simply use the color table created at <em>step 2a.3</em> to visualize the transformed data. This color table will also be used in <em>Step4</em>.</p>
-<p>Input &amp; Output</p>
-<div class="codehilite"><pre><span></span><code># Input:
-${model_dir}/${tranform_prefix}.fit_result.tsv.gz
-${model_dir}/${tranform_prefix}.posterior.count.tsv.gz
-${output_dir}/${prefix}.coordinate_minmax.tsv
-
-#Output:
-${model_dir}/${tranform_prefix}.rgb.tsv
-${model_dir}/${tranform_prefix}.top.png
-</code></pre></div>
-
-<p>Command:</p>
-<div class="codehilite"><pre><span></span><code>$neda_dir/steps/step3.2-transform-visualization.sh $input_configfile
-</code></pre></div>
+<h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h1>
+<p>This tutorial provides an instruction of running NovaScope-exemplary-downstream-analysis (NEDA) based on the example datasets provided with the published protocol.</p>
+<p>Before kicking off the analysis, please first <a href="../../installation/installation/">install NEDA in your computing environment</a>, <a href="../../prep_input/access_data/">download the example datasets</a>, and <a href="../../prep_input/job_config/">prepare your job configuration file</a>.</p>
+<p>Next, start with this  to set up your computing environment and preprocess the input spatial digital gene expression (SGE) matrix, ensuring it's ready for analysis.</p>
+<p>Finally, select the analytical strategy that best suits your needs or interests from Latent Dirichlet Allocation (LDA) + FICTURE, and Seurat + FICTURE. For implementing LDA + FICTURE analysis, refer to <a href="../LDA/step2a-LDA/">this instruction</a>. If you wish to conduct Seurat + FICTURE analysis, begin with <a href="../Seurat/step2b-seurat/">this step</a>. For each step, the instructions include both the <strong>purpose</strong> and the <strong>execution command</strong>. To ensure clarity, the instructions specifically detail the required <strong>input files and the output files</strong> that will be generated. When applicable, <strong>auxiliary parameters</strong> are applied in the script file.</p>
 
 
 
@@ -811,10 +992,12 @@ ${model_dir}/${tranform_prefix}.top.png
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.sections", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
       
     
   </body>

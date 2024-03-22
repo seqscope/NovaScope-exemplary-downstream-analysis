@@ -8,16 +8,16 @@
       
       
       
-        <link rel="canonical" href="https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/Seurat/step2b-seurat/">
+        <link rel="canonical" href="https://seqscope.github.io/NovaScope-exemplary-downstream-analysis/analysis/Seurat/step2b-seurat/">
       
       
-        <link rel="prev" href="../step1-preprocess/">
+        <link rel="prev" href="../../LDA/step4-decode/">
       
       
         <link rel="next" href="../step3-transform/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
     
     
@@ -26,10 +26,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e359304.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,7 +48,9 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+      <link rel="stylesheet" href="../../../css/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -60,10 +62,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="grey">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -84,11 +88,9 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="NovaScope-exemplary-downstream-analysis" class="md-header__button md-logo" aria-label="NovaScope-exemplary-downstream-analysis" data-md-component="logo">
+    <a href="../../.." title="NovaScope-exemplary-downstream-analysis" class="md-header__button md-logo" aria-label="NovaScope-exemplary-downstream-analysis" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -116,7 +118,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1M8 13h8v-2H8v2m9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1 0 1.71-1.39 3.1-3.1 3.1h-4V17h4a5 5 0 0 0 5-5 5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5M7 15a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -179,6 +217,94 @@
       
         
           
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../installation/installation/" class="md-tabs__link">
+        
+  
+    
+  
+  Installation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../prep_input/access_data/" class="md-tabs__link">
+          
+  
+    
+  
+  Preparing Input
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../intro/" class="md-tabs__link">
+          
+  
+    
+  
+  Starting Downstream Analysis
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -192,10 +318,12 @@
                     
 
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="NovaScope-exemplary-downstream-analysis" class="md-nav__button md-logo" aria-label="NovaScope-exemplary-downstream-analysis" data-md-component="logo">
+    <a href="../../.." title="NovaScope-exemplary-downstream-analysis" class="md-nav__button md-logo" aria-label="NovaScope-exemplary-downstream-analysis" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -224,75 +352,57 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+    
+    
+      
         
-  
-  <span class="md-ellipsis">
-    Home
-  </span>
-  
-
-      </a>
-    </li>
-  
-
+          
+        
+      
+        
+      
+    
     
       
       
-  
-  
-  
-  
-    
-    
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../.." class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
-    Preparation
+    Home
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
-            Preparation
+            Home
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
               
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../preparation/prestep1-setup/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Installing NovaScope-exemplary-downstream-analysis (NEDA)
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -301,11 +411,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../preparation/prestep2-input/" class="md-nav__link">
+      <a href="../../../home/documentation_overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Preparing Input
+    Documentation Overview
   </span>
   
 
@@ -328,8 +438,39 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../installation/installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     
     
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -343,7 +484,7 @@
             
   
   <span class="md-ellipsis">
-    LDA+FICTURE Analysis
+    Preparing Input
   </span>
   
 
@@ -353,7 +494,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            LDA+FICTURE Analysis
+            Preparing Input
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -364,11 +505,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../LDA/step1-preprocess/" class="md-nav__link">
+      <a href="../../../prep_input/access_data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Preprocessing
+    Input Data
   </span>
   
 
@@ -377,6 +518,182 @@
   
 
               
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../prep_input/job_config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Job Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Starting Downstream Analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Starting Downstream Analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../step1-preprocess/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Latent Dirichlet allocation (LDA) + FICTURE Analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Latent Dirichlet allocation (LDA) + FICTURE Analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -447,64 +764,60 @@
     </li>
   
 
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Seurat+FICTURE Analysis
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            Seurat+FICTURE Analysis
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+              
             
               
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../step1-preprocess/" class="md-nav__link">
+  
+    
+    
+      
         
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+            
   
   <span class="md-ellipsis">
-    Preprocessing
+    Seurat + FICTURE Analysis
   </span>
   
 
-      </a>
-    </li>
-  
-
-              
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Seurat + FICTURE Analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -675,6 +988,14 @@
     </li>
   
 
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
   </ul>
 </nav>
@@ -787,14 +1108,27 @@
 <p><strong>Prefix</strong>:</p>
 <p>This documentation uses the following prefixes to illustrate input and output filenames, which are automatically assigned by the script.</p>
 <p>The <code>nf</code> will be determined in step2b.5</p>
-<div class="codehilite"><pre><span></span><code>hexagon_prefix=&quot;${prefix}.hexagon.${sf}.d_${tw}&quot;
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>hexagon_prefix=&quot;${prefix}.hexagon.${sf}.d_${tw}&quot;
 train_prefix=&quot;${prefix}.${sf}.nF${nf}.d_${tw}.s_${ep}&quot;    
-</code></pre></div>
-
+</code></pre></div></td></tr></table></div>
 <h3 id="step-2b1-create-hexagonal-spatial-gene-expression-sge-matrix-and-test-different-cutoffs-for-nfeature_rna">step 2b.1 Create hexagonal spatial gene expression (SGE) matrix and test different cutoffs for nFeature_RNA<a class="headerlink" href="#step-2b1-create-hexagonal-spatial-gene-expression-sge-matrix-and-test-different-cutoffs-for-nfeature_rna" title="Permanent link">&para;</a></h3>
 <p>This step creates hexagonal spatial gene expression (SGE) matrix that is compatible with Seurat. It analyzes the distribution of Ncount and Nfeature, and tests filtering the SGE using different nFeature_RNA cutoffs, including 50, 100, 200, 300, 400, 500, 750, and 1000.</p>
-<p>Input &amp; Output</p>
-<div class="codehilite"><pre><span></span><code># Input:
+<p>Input &amp; Output
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code># Input:
 ${output_dir}/${prefix}.merged.matrix.tsv.gz
 ${output_dir}/${prefix}.feature.tsv.gz
 
@@ -808,30 +1142,43 @@ ${output_dir}/${prefix}.feature.tsv.gz
         ${model_dir}/nFeature_RNA_dist.png
         # * for each cut off ${cutoff} in 50, 100, 200, 300, 400, 500, 750, and 1000:
                 ${model_dir}/nFeature_RNA_cutoff${cutoff}.png
-</code></pre></div>
-
-<p>Command:</p>
-<div class="codehilite"><pre><span></span><code>$neda_dir/steps/step2b.1-creat-hexagons-for-Seurat.sh $input_configfile
-</code></pre></div>
-
+</code></pre></div></td></tr></table></div></p>
+<p>Command:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>$neda_dir/steps/step2b.1-creat-hexagons-for-Seurat.sh $input_configfile
+</code></pre></div></td></tr></table></div></p>
 <h3 id="step-2b2-manually-select-the-cutoffs">step 2b.2 Manually select the cutoffs<a class="headerlink" href="#step-2b2-manually-select-the-cutoffs" title="Permanent link">&para;</a></h3>
 <p>Examine the density plots generated by <code>step2b-Seurat-01-hexagon.sh</code> to choose a cutoff for nFeature_RNA, aiming to remove noise signals. For our example data, we applied a cut off of 500 for deep sequencing data, and 100 for shallow sequencing data. </p>
 <p>It is optional to define x y ranges. </p>
 <p>Add those variables to the <code>input_data_and_params</code> file.</p>
-<p>Example:</p>
-<div class="codehilite"><pre><span></span><code># In this case, the Y_max is not applied. 
+<p>Example:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code># In this case, the Y_max is not applied. 
 nFeature_RNA_cutoff=100
 X_min=2.5e+06
 X_max=1e+07
 Y_min=1e+06
-</code></pre></div>
-
+</code></pre></div></td></tr></table></div></p>
 <h3 id="step-2b3-seurat-clustering-analysis">step 2b.3 Seurat clustering analysis<a class="headerlink" href="#step-2b3-seurat-clustering-analysis" title="Permanent link">&para;</a></h3>
 <p>The <code>Seurat_analysis.R</code> script, by default, evaluates clustering at various resolutions, specifically 0.25, 0.5, 0.75, 1, 1.25, 1.5, and 1.75. </p>
 <p>For each resolution level, it creates a Dimensionality Reduction and Spatial plot to illustrate the clusters through Uniform Manifold Approximation and Projection (UMAP) along with their spatial distribution. It also produces a Differential Expression (DE) file that lists the marker genes for each cluster.</p>
 <p>Additionally, this step generates a metadata file containing information on the cluster assignment for each hexagon, and an RDS file that stores the complete Seurat object with all the compiled data.</p>
-<p>Input &amp; Output</p>
-<div class="codehilite"><pre><span></span><code># Input: 
+<p>Input &amp; Output
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code># Input: 
 ${model_dir}/features.tsv.gz
 ${model_dir}/barcodes.tsv.gz
 ${model_dir}/matrix.mtx.gz
@@ -844,23 +1191,27 @@ ${model_dir}/matrix.mtx.gz
 # * For each resolution (`$res`) in 0.25, 0.5, 0.75, 1, 1.25, 1.5, and 1.75:
         ${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_res${res}_DE.csv
         ${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_res${res}_DimSpatial.png
-</code></pre></div>
-
-<p>Command:</p>
-<div class="codehilite"><pre><span></span><code>$neda_dir/steps/step2b.3-Seurat-clustering.sh $input_configfile
-</code></pre></div>
-
+</code></pre></div></td></tr></table></div></p>
+<p>Command:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>$neda_dir/steps/step2b.3-Seurat-clustering.sh $input_configfile
+</code></pre></div></td></tr></table></div></p>
 <h3 id="step-2b4-manually-select-the-resolution-for-clustering">step 2b.4 Manually select the resolution for clustering<a class="headerlink" href="#step-2b4-manually-select-the-resolution-for-clustering" title="Permanent link">&para;</a></h3>
 <p>Examine the Dimensionality Reduction and Spatial plots from the previous step and choose a resolution to continue with. Then, save this chosen resolution into the <code>input_data_and_params</code> file as the res_of_interest variable. </p>
-<p>Example:</p>
-<div class="codehilite"><pre><span></span><code>res_of_interest=1
-</code></pre></div>
-
+<p>Example:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>res_of_interest=1
+</code></pre></div></td></tr></table></div></p>
 <h3 id="step-2b5-prepare-a-count-matrix-with-the-selected-resolution">step 2b.5 Prepare a count matrix with the selected resolution<a class="headerlink" href="#step-2b5-prepare-a-count-matrix-with-the-selected-resolution" title="Permanent link">&para;</a></h3>
 <p>Transform the metadata into a count matrix to serve as the model matrix for the subsequent step. </p>
 <p>Additionally, the number of clusters from the model matrix will be obtained and assigned to the <code>nf</code> variable in the <code>input_data_and_params</code> file.</p>
-<p>Input &amp; Output</p>
-<div class="codehilite"><pre><span></span><code>#Input:
+<p>Input &amp; Output
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>#Input:
 ${model_dir}/features.tsv.gz
 ${model_dir}/barcodes.tsv.gz
 ${model_dir}/matrix.mtx.gz
@@ -868,11 +1219,10 @@ ${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_metadata.csv
 
 #Output: 
 ${model_dir}/${train_prefix}.model.tsv.gz
-</code></pre></div>
-
-<p>Command:</p>
-<div class="codehilite"><pre><span></span><code>$neda_dir/steps/step2b.5-Seurat-count-matrix.sh $input_configfile
-</code></pre></div>
+</code></pre></div></td></tr></table></div></p>
+<p>Command:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>$neda_dir/steps/step2b.5-Seurat-count-matrix.sh $input_configfile
+</code></pre></div></td></tr></table></div></p>
 
 
 
@@ -919,10 +1269,12 @@ ${model_dir}/${train_prefix}.model.tsv.gz
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.sections", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      
+        <script src="../../../js/open_in_new_tab.js"></script>
       
     
   </body>
