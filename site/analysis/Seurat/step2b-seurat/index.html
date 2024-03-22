@@ -891,9 +891,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2b2-manually-select-the-cutoffs" class="md-nav__link">
+  <a href="#step-2b2-manually-select-a-cutoff-for-nfeature_rna" class="md-nav__link">
     <span class="md-ellipsis">
-      step 2b.2 Manually select the cutoffs
+      step 2b.2 Manually select a cutoff for nFeature_RNA
     </span>
   </a>
   
@@ -1043,9 +1043,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2b2-manually-select-the-cutoffs" class="md-nav__link">
+  <a href="#step-2b2-manually-select-a-cutoff-for-nfeature_rna" class="md-nav__link">
     <span class="md-ellipsis">
-      step 2b.2 Manually select the cutoffs
+      step 2b.2 Manually select a cutoff for nFeature_RNA
     </span>
   </a>
   
@@ -1103,15 +1103,14 @@
 
 <h1 id="seurat-ficture-analytical-strategy">Seurat + FICTURE analytical strategy<a class="headerlink" href="#seurat-ficture-analytical-strategy" title="Permanent link">&para;</a></h1>
 <h2 id="step-2b-infer-cell-type-factors-using-seurat">Step 2b. Infer cell type factors using Seurat<a class="headerlink" href="#step-2b-infer-cell-type-factors-using-seurat" title="Permanent link">&para;</a></h2>
-<p>This example illustrates infering cell type factors using Seurat. This process contains two stops, which require manual evaluation. One stop is at step 2b.2 and the other at step 2b.4. </p>
-<p>Since this step, the output files will be stored at <code>${model_dir}</code>, which is defined as <code>${output_dir}/${train_model}</code>.</p>
+<p>This example illustrates infering cell type factors using Seurat. This process contains two stops that require manual evaluation, including one at <a href="#step-2b2-manually-select-the-cutoffs">step 2b.2</a> and the other at <a href="#step-2b4-manually-select-the-resolution-for-clustering">step 2b.4</a>. </p>
 <p><strong>Prefix</strong>:</p>
-<p>This documentation uses the following prefixes to illustrate input and output filenames, which are automatically assigned by the script.</p>
-<p>The <code>nf</code> will be determined in step2b.5</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p>This documentation uses the following prefixes to illustrate input and output filenames, which are automatically assigned by the script. </p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>hexagon_prefix=&quot;${prefix}.hexagon.${sf}.d_${tw}&quot;
 train_prefix=&quot;${prefix}.${sf}.nF${nf}.d_${tw}.s_${ep}&quot;    
 </code></pre></div></td></tr></table></div>
+* The <code>nf</code> will be determined in <a href="#step-2b5-prepare-a-count-matrix-with-the-selected-resolution">step2b.5</a>.</p>
 <h3 id="step-2b1-create-hexagonal-spatial-gene-expression-sge-matrix-and-test-different-cutoffs-for-nfeature_rna">step 2b.1 Create hexagonal spatial gene expression (SGE) matrix and test different cutoffs for nFeature_RNA<a class="headerlink" href="#step-2b1-create-hexagonal-spatial-gene-expression-sge-matrix-and-test-different-cutoffs-for-nfeature_rna" title="Permanent link">&para;</a></h3>
 <p>This step creates hexagonal spatial gene expression (SGE) matrix that is compatible with Seurat. It analyzes the distribution of Ncount and Nfeature, and tests filtering the SGE using different nFeature_RNA cutoffs, including 50, 100, 200, 300, 400, 500, 750, and 1000.</p>
 <p>Input &amp; Output
@@ -1134,20 +1133,20 @@ ${output_dir}/${prefix}.feature.tsv.gz
 
 # Output: 
 # * Hexagonal SGE: 
-        ${model_dir}/features.tsv.gz
-        ${model_dir}/barcodes.tsv.gz
-        ${model_dir}/matrix.mtx.gz
+        ${output_dir}/${train_model}/features.tsv.gz
+        ${output_dir}/${train_model}/barcodes.tsv.gz
+        ${output_dir}/${train_model}/matrix.mtx.gz
 # * Evaluation files: 
-        ${model_dir}/Ncount_Nfeature_vln.png
-        ${model_dir}/nFeature_RNA_dist.png
+        ${output_dir}/${train_model}/Ncount_Nfeature_vln.png
+        ${output_dir}/${train_model}/nFeature_RNA_dist.png
         # * for each cut off ${cutoff} in 50, 100, 200, 300, 400, 500, 750, and 1000:
-                ${model_dir}/nFeature_RNA_cutoff${cutoff}.png
+                ${output_dir}/${train_model}/nFeature_RNA_cutoff${cutoff}.png
 </code></pre></div></td></tr></table></div></p>
 <p>Command:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>$neda_dir/steps/step2b.1-creat-hexagons-for-Seurat.sh $input_configfile
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step2b.1-creat-hexagons-for-Seurat.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
-<h3 id="step-2b2-manually-select-the-cutoffs">step 2b.2 Manually select the cutoffs<a class="headerlink" href="#step-2b2-manually-select-the-cutoffs" title="Permanent link">&para;</a></h3>
-<p>Examine the density plots generated by <code>step2b-Seurat-01-hexagon.sh</code> to choose a cutoff for nFeature_RNA, aiming to remove noise signals. For our example data, we applied a cut off of 500 for deep sequencing data, and 100 for shallow sequencing data. </p>
+<h3 id="step-2b2-manually-select-a-cutoff-for-nfeature_rna">step 2b.2 Manually select a cutoff for nFeature_RNA<a class="headerlink" href="#step-2b2-manually-select-a-cutoff-for-nfeature_rna" title="Permanent link">&para;</a></h3>
+<p>Examine the density plots generated by <a href="#step-2b1-create-hexagonal-spatial-gene-expression-sge-matrix-and-test-different-cutoffs-for-nfeature_rna">step2b.1</a> to choose a cutoff for nFeature_RNA, aiming to remove noise signals. For our example data, we applied a cut off of 500 for deep sequencing data, and 100 for shallow sequencing data. </p>
 <p>It is optional to define x y ranges. </p>
 <p>Add those variables to the <code>input_data_and_params</code> file.</p>
 <p>Example:
@@ -1179,30 +1178,29 @@ Y_min=1e+06
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code># Input: 
-${model_dir}/features.tsv.gz
-${model_dir}/barcodes.tsv.gz
-${model_dir}/matrix.mtx.gz
+${output_dir}/${train_model}/features.tsv.gz
+${output_dir}/${train_model}/barcodes.tsv.gz
+${output_dir}/${train_model}/matrix.mtx.gz
 
 #Output: 
 # * A metadata file:
-        ${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_metadata.csv
+        ${output_dir}/${train_model}/${prefix}_cutoff${nFeature_RNA_cutoff}_metadata.csv
 # * An RDS file:
-        ${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_SCT.RDS
+        ${output_dir}/${train_model}/${prefix}_cutoff${nFeature_RNA_cutoff}_SCT.RDS
 # * For each resolution (`$res`) in 0.25, 0.5, 0.75, 1, 1.25, 1.5, and 1.75:
-        ${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_res${res}_DE.csv
-        ${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_res${res}_DimSpatial.png
+        ${output_dir}/${train_model}/${prefix}_cutoff${nFeature_RNA_cutoff}_res${res}_DE.csv
+        ${output_dir}/${train_model}/${prefix}_cutoff${nFeature_RNA_cutoff}_res${res}_DimSpatial.png
 </code></pre></div></td></tr></table></div></p>
 <p>Command:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>$neda_dir/steps/step2b.3-Seurat-clustering.sh $input_configfile
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step2b.3-Seurat-clustering.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
 <h3 id="step-2b4-manually-select-the-resolution-for-clustering">step 2b.4 Manually select the resolution for clustering<a class="headerlink" href="#step-2b4-manually-select-the-resolution-for-clustering" title="Permanent link">&para;</a></h3>
-<p>Examine the Dimensionality Reduction and Spatial plots from the previous step and choose a resolution to continue with. Then, save this chosen resolution into the <code>input_data_and_params</code> file as the res_of_interest variable. </p>
+<p>Examine the Dimensionality Reduction and Spatial plots from the <a href="#step-2b3-seurat-clustering-analysis">step2b.3</a> and choose a resolution to continue with. Then, save this chosen resolution into the <code>input_data_and_params</code> file as the res_of_interest variable. </p>
 <p>Example:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>res_of_interest=1
 </code></pre></div></td></tr></table></div></p>
 <h3 id="step-2b5-prepare-a-count-matrix-with-the-selected-resolution">step 2b.5 Prepare a count matrix with the selected resolution<a class="headerlink" href="#step-2b5-prepare-a-count-matrix-with-the-selected-resolution" title="Permanent link">&para;</a></h3>
-<p>Transform the metadata into a count matrix to serve as the model matrix for the subsequent step. </p>
-<p>Additionally, the number of clusters from the model matrix will be obtained and assigned to the <code>nf</code> variable in the <code>input_data_and_params</code> file.</p>
+<p>Transform the metadata into a count matrix to serve as the model matrix for the subsequent step.  Additionally, the number of clusters from the model matrix will be obtained and assigned to the <code>nf</code> variable in the <code>input_data_and_params</code> file.</p>
 <p>Input &amp; Output
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1212,16 +1210,16 @@ ${model_dir}/matrix.mtx.gz
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>#Input:
-${model_dir}/features.tsv.gz
-${model_dir}/barcodes.tsv.gz
-${model_dir}/matrix.mtx.gz
-${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_metadata.csv
+${output_dir}/${train_model}/features.tsv.gz
+${output_dir}/${train_model}/barcodes.tsv.gz
+${output_dir}/${train_model}/matrix.mtx.gz
+${output_dir}/${train_model}/${prefix}_cutoff${nFeature_RNA_cutoff}_metadata.csv
 
 #Output: 
-${model_dir}/${train_prefix}.model.tsv.gz
+${output_dir}/${train_model}/${train_prefix}.model.tsv.gz
 </code></pre></div></td></tr></table></div></p>
 <p>Command:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>$neda_dir/steps/step2b.5-Seurat-count-matrix.sh $input_configfile
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step2b.5-Seurat-count-matrix.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
 
 

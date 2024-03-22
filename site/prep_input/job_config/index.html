@@ -936,9 +936,8 @@
 
 
 <h1 id="preparing-the-input-configuration-file">Preparing the input Configuration File<a class="headerlink" href="#preparing-the-input-configuration-file" title="Permanent link">&para;</a></h1>
-<p>The input configuration file serves as the input for parameters and dataset paths. It should include: environment paths, input and output directory paths, output prefix, and analytical parameters.</p>
-<p>We provided an example configuration file for <a href="https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/input_data_and_params/input_data_and_params_lda.txt">LDA+FICTURE analysis</a> and <a href="https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/input_data_and_params/input_data_and_params_seurat.txt">Seurat+FICTURE analysis</a>, separately. </p>
-<p>Below only include FICTURE's essential parameters, while certain steps might need <strong>auxiliary parameters</strong>. In such cases, NEDA employs FICTURE's recommended defaults for these extra settings, wherever applicable. Should you wish to customize these auxiliary parameters beyond the defaults, please proceed with caution as it involves risk. For detailed information on modifying auxiliary parameters, kindly refer to the <code>AUXILIARY PARAMS</code> section found in the script for each respective step. For each auxiliary parameter, please consult the original publication of <a href="https://www.biorxiv.org/content/10.1101/2023.11.04.565621v2">FICTURE</a>.</p>
+<p>The input configuration file, which is a <strong>text</strong> file, serves as the input for parameters and dataset paths. We provide an example configuration file for <a href="https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/input_data_and_params/input_data_and_params_lda.txt">LDA+FICTURE analysis</a> and <a href="https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/input_data_and_params/input_data_and_params_seurat.txt">Seurat+FICTURE analysis</a>, separately. </p>
+<p>Below only include FICTURE's essential parameters, while certain steps might need <strong>auxiliary parameters</strong>. In such cases, NEDA employs FICTURE's recommended defaults for these extra settings, wherever applicable. Should you wish to customize these auxiliary parameters beyond the defaults, please proceed with caution as it involves risk. For detailed information on modifying auxiliary parameters, kindly refer to the <code>AUXILIARY PARAMS</code> section in the script for each respective step and original publication of <a href="https://github.com/seqscope/ficture/tree/protocol">FICTURE</a>.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -962,26 +961,26 @@
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code>## Environment Paths
-py_env=&lt;path_to_the_python_environment&gt;                             ## Python environment path
-ficture=&lt;path_to_the_ficture_repository&gt;                            ## Path to FICTURE repository
-ref_geneinfo=&lt;path_to_the_reference_dataset&gt;                        ## Path to the reference gene info dataset
+py_env=&lt;path_to_the_python_environment&gt;                             ## path to Python environment 
+ficture=&lt;path_to_the_ficture_repository&gt;                            ## path to FICTURE repository
+ref_geneinfo=&lt;path_to_the_reference_dataset&gt;                        ## path to the reference file, please make sure
 
 ## Input/Output 
 input_dir=&lt;path_to_the_input_directory&gt;                             ## Directory for input files
-output_dir=&lt;path_to_the_output_directory&gt;                           ## Directory for output files. The LDA-based results will be saved in &quot;${output_dir}/LDA&quot; while the Seurat-based results will be stored at &quot;${output_dir}/Seurat&quot;
+output_dir=&lt;path_to_the_output_directory&gt;                           ## Directory for output files: LDA results saved in ${output_dir}/LDA, and Seurat results in ${output_dir}/Seurat.&quot;
 prefix=&lt;prefix_of_output_files&gt;                                     ## Prefix for output files. The output files will be named using both this prefix and the following analytical parameters.
 
-## analytical parameters
+## Analytical Parameters
 train_model=&lt;model_option&gt;                                          ## Define the analytical strategy. Options: &quot;LDA&quot;, &quot;Seurat&quot;.
 
 sf=&lt;solo_feature&gt;                                                   ## Feature selection, e.g., &quot;gn&quot;, which is short for &quot;gene&quot;.
 tw=&lt;train_width&gt;                                                    ## The side length of the hexagon (in micrometers), e.g., 18.
-nf=&lt;number_of_factors&gt;                                              ## (LDA-only) Number of factors, e.g., 12. For &quot;Seurat + FICTURE&quot; analysis, eliminate this line at the preparation stage, as the nf will later be defined by the outcomes of the clustering process.
+nf=&lt;number_of_factors&gt;                                              ## (LDA-only) Number of factors, e.g., 12. For the &#39;Seurat + FICTURE&#39; analysis, remove this line when preparing the configuration file; nf is defined after clustering.
 ep=&lt;number_of_epoch&gt;                                                ## (LDA-only) Epochs for LDA training, e.g., 3. For &quot;Seurat+FICTURE&quot; analysis, use &quot;NA&quot;.
 pw=&lt;projection_width&gt;                                               ## Projection width, suggest to use one the same as the train width, e.g., 18.
 ar=&lt;archor_distance&gt;                                                ## Anchor point distance (in micrometers), e.g., 4.
 
-seed=&lt;an_integer&gt;                                                   ## A seed for reproducibility, e.g., 2024030700. This will be used in the LDA training and choosing colors for factors/cluster.
+seed=&lt;an_integer&gt;                                                   ## (Optional) A seed (integer, e.g., 2024030700) for reproducibility. This applies in the LDA factorization and choosing color maps. If omitted, a random seed will be utilized.
 
 major_axis=&lt;X_or_Y&gt;                                                 ## Generally, we defined the one with greater length as the major axis. Options: &quot;X&quot;, &quot;Y&quot;.
 </code></pre></div></td></tr></table></div>

@@ -1064,14 +1064,14 @@
 <span class="normal">6</span>
 <span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>#Input:
 ${output_dir}/${prefix}.QCed.matrix.tsv.gz
-${model_dir}/${train_prefix}.model.p                    # The format of the model file varies between LDA and Seurat.
+${output_dir}/${train_model}/${train_prefix}.model.p                    # The format of the model file varies between LDA and Seurat.
 
 #Output:
-${model_dir}/${tranform_prefix}.fit_result.tsv.gz
-${model_dir}/${tranform_prefix}.posterior.count.tsv.gz
+${output_dir}/${train_model}/${tranform_prefix}.fit_result.tsv.gz
+${output_dir}/${train_model}/${tranform_prefix}.posterior.count.tsv.gz
 </code></pre></div></td></tr></table></div></p>
 <p>Command:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>$neda_dir/steps/step3.1-transform.sh $input_configfile
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step3.1-transform.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
 <h3 id="step-32-transform-visualization">Step 3.2 transform visualization<a class="headerlink" href="#step-32-transform-visualization" title="Permanent link">&para;</a></h3>
 <p>For LDA, simply use the color table created at <em>step 2a.3</em> to visualize the transformed data. This color table will also be used in <em>Step4</em>.</p>
@@ -1084,16 +1084,16 @@ ${model_dir}/${tranform_prefix}.posterior.count.tsv.gz
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code># Input:
-${model_dir}/${tranform_prefix}.fit_result.tsv.gz
-${model_dir}/${tranform_prefix}.posterior.count.tsv.gz
+${output_dir}/${train_model}/${tranform_prefix}.fit_result.tsv.gz
+${output_dir}/${train_model}/${tranform_prefix}.posterior.count.tsv.gz
 ${output_dir}/${prefix}.coordinate_minmax.tsv
 
 #Output:
-${model_dir}/${tranform_prefix}.rgb.tsv
-${model_dir}/${tranform_prefix}.top.png
+${output_dir}/${train_model}/${tranform_prefix}.rgb.tsv
+${output_dir}/${train_model}/${tranform_prefix}.top.png
 </code></pre></div></td></tr></table></div></p>
 <p>Command:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>$neda_dir/steps/step3.2-transform-visualization.sh $input_configfile
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step3.2-transform-visualization.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
 
 

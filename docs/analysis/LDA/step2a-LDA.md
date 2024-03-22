@@ -3,11 +3,9 @@
 ## Step 2a. Infer Cell Type Factors using Latent Dirichlet Allocation (LDA).
 This example illustrates infering cell type factors using Latent Dirichlet Allocation (LDA). 
 
-Since this step, the output files will be stored at `${model_dir}`, which is defined as `${output_dir}/${train_model}`.
-
 **Prefix**:
 
-To clarify the input and output filenames, we utilize prefixes in this documentation. Below, we illustrate how these prefixes are defined. Users do **NOT** need to manually define these prefixes; they are automatically defined by the script.
+To clarify the input and output filenames, we utilize prefixes in this documentation. Below, we illustrate how these prefixes are defined. Those prefixes are automatically defined by the script; users do **NOT** need to manually define them. Details on variables used in prefixes are in the[Job Configuration](../../prep_input/job_config.md).
 
 ```
 hexagon_prefix="${prefix}.hexagon.${sf}.d_${tw}"
@@ -24,11 +22,11 @@ ${output_dir}/${prefix}.QCed.matrix.tsv.gz
 ${output_dir}/${prefix}.boundary.strict.geojson
 
 # Output: 
-${model_dir}/${hexagon_prefix}.tsv.gz
+${output_dir}/${train_model}/${hexagon_prefix}.tsv.gz
 ```
 
 Command:
-```
+```bash
 $neda_dir/steps/step2a.1-create-hexagons.sh $input_configfile
 ```
 
@@ -39,16 +37,16 @@ Input & Output:
 ```
 # Input:
 ${output_dir}/${prefix}.feature.clean.tsv.gz
-${model_dir}/${hexagon_prefix}.tsv.gz
+${output_dir}/${train_model}/${hexagon_prefix}.tsv.gz
 
 # Output: 
-${model_dir}/${train_prefix}.model.p
-${model_dir}/${train_prefix}.fit_result.tsv.gz
-${model_dir}/${train_prefix}.posterior.count.tsv.gz
+${output_dir}/${train_model}/${train_prefix}.model.p
+${output_dir}/${train_model}/${train_prefix}.fit_result.tsv.gz
+${output_dir}/${train_model}/${train_prefix}.posterior.count.tsv.gz
 ```
 
 Command:
-```
+```bash
 $neda_dir/steps/step2a.2-LDA-factorization.sh $input_configfile
 ```
 
@@ -58,16 +56,16 @@ This step includes: generating a color table, identifying marker genes for each 
 Input & Output:
 ```
 # Input:
-${model_dir}/${train_prefix}.fit_result.tsv.gz
-${model_dir}/${train_prefix}.posterior.count.tsv.gz
+${output_dir}/${train_model}/${train_prefix}.fit_result.tsv.gz
+${output_dir}/${train_model}/${train_prefix}.posterior.count.tsv.gz
 
 # Output: 
-${model_dir}/${train_prefix}.color.tsv
-${model_dir}/${train_prefix}.bulk_chisq.tsv
-${model_dir}/${train_prefix}.factor.info.html
+${output_dir}/${train_model}/${train_prefix}.color.tsv
+${output_dir}/${train_model}/${train_prefix}.bulk_chisq.tsv
+${output_dir}/${train_model}/${train_prefix}.factor.info.html
 ```
 
 Command:
-```
+```bash
 $neda_dir/steps/step2a.3-LDA-factorization-report.sh $input_configfile
 ```

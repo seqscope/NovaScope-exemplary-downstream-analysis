@@ -16,15 +16,15 @@ Input & Output
 ```
 #Input:
 ${output_dir}/${prefix}.QCed.matrix.tsv.gz
-${model_dir}/${train_prefix}.model.p                    # The format of the model file varies between LDA and Seurat.
+${output_dir}/${train_model}/${train_prefix}.model.p                    # The format of the model file varies between LDA and Seurat.
 
 #Output:
-${model_dir}/${tranform_prefix}.fit_result.tsv.gz
-${model_dir}/${tranform_prefix}.posterior.count.tsv.gz
+${output_dir}/${train_model}/${tranform_prefix}.fit_result.tsv.gz
+${output_dir}/${train_model}/${tranform_prefix}.posterior.count.tsv.gz
 ```
 
 Command:
-```
+```bash
 $neda_dir/steps/step3.1-transform.sh $input_configfile
 ```
 
@@ -34,17 +34,17 @@ For LDA, simply use the color table created at *step 2a.3* to visualize the tran
 Input & Output
 ```
 # Input:
-${model_dir}/${tranform_prefix}.fit_result.tsv.gz
-${model_dir}/${tranform_prefix}.posterior.count.tsv.gz
+${output_dir}/${train_model}/${tranform_prefix}.fit_result.tsv.gz
+${output_dir}/${train_model}/${tranform_prefix}.posterior.count.tsv.gz
 ${output_dir}/${prefix}.coordinate_minmax.tsv
 
 #Output:
-${model_dir}/${tranform_prefix}.rgb.tsv
-${model_dir}/${tranform_prefix}.top.png
+${output_dir}/${train_model}/${tranform_prefix}.rgb.tsv
+${output_dir}/${train_model}/${tranform_prefix}.top.png
 
 ```
 
 Command:
-```
+```bash
 $neda_dir/steps/step3.2-transform-visualization.sh $input_configfile
 ```

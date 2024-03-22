@@ -21,15 +21,15 @@ Input & Output
 ${output_dir}/${prefix}.coordinate_minmax.tsv
 ${output_dir}/${prefix}.batched.matrix.tsv.gz
 ${output_dir}/${prefix}.QCed.matrix.tsv.gz
-${model_dir}/${tranform_prefix}.model.tsv.gz        # The format of the model file varies between LDA and Seurat.
-${model_dir}/${tranform_prefix}.fit_result.tsv.gz
+${output_dir}/${train_model}/${tranform_prefix}.model.tsv.gz        # The format of the model file varies between LDA and Seurat.
+${output_dir}/${train_model}/${tranform_prefix}.fit_result.tsv.gz
 
 #Output: 
-${model_dir}/${decode_prefix}.pixel.sorted.tsv.gz
+${output_dir}/${train_model}/${decode_prefix}.pixel.sorted.tsv.gz
 ```
 
 Command:
-```
+```bash
 $neda_dir/steps/step4.1-pixel-level-decode.sh $input_configfile
 ```
 
@@ -39,16 +39,16 @@ Identifying marker genes for each factor/cluster, and generating a report html f
 Input & Output
 ```
 #Input:
-${model_dir}/${decode_prefix}.posterior.count.tsv.gz
-${model_dir}/${tranform_prefix}.rgb.tsv
+${output_dir}/${train_model}/${decode_prefix}.posterior.count.tsv.gz
+${output_dir}/${train_model}/${tranform_prefix}.rgb.tsv
 
 #Output: 
-${model_dir}/${decode_prefix}.bulk_chisq.tsv
-${model_dir}/${decode_prefix}.factor.info.html
-${model_dir}/${decode_prefix}.pixel.png
+${output_dir}/${train_model}/${decode_prefix}.bulk_chisq.tsv
+${output_dir}/${train_model}/${decode_prefix}.factor.info.html
+${output_dir}/${train_model}/${decode_prefix}.pixel.png
 ```
 
 Command:
-```
+```bash
 $neda_dir/steps/step4.2-pixel-level-visualization-and-report.sh $input_configfile
 ```
