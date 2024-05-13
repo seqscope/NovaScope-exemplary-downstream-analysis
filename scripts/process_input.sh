@@ -1,22 +1,22 @@
 #!/bin/bash
 
-process_input_data_and_params() {
+process_config_job() {
     # Ensure exactly one argument is provided
     if [ "$#" -ne 1 ]; then
-        echo "Usage: process_input_data_and_params <path_to_file>"
+        echo "Usage: process_config_job <path_to_file>"
         return 1
     fi
 
-    local input_data_and_params="$1"
+    local config_job="$1"
 
     # Check if the input file exists and is not empty
-    if [ ! -s "$input_data_and_params" ]; then
-        echo "Error: File '$input_data_and_params' not found or is empty."
+    if [ ! -s "$config_job" ]; then
+        echo "Error: File '$config_job' not found or is empty."
         return 2
     fi
 
     # Source the input file
-    source "$input_data_and_params"
+    source "$config_job"
 
     # Check for mandatory variables
     local mandatory_vars=("input_dir" "output_dir" "prefix" "train_model")
