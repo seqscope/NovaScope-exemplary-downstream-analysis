@@ -10,14 +10,22 @@ echo -e "#=====================\n#"
 echo -e "# $(basename "$0") \n#"
 echo -e "#=====================\n#"
 
-# # Read input config
+# Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-process_input_data_and_params $1
+process_config_job $1
+
+# Define the input and output paths and files
+# * input:
+transcripts_filtered="${output_dir}/${prefix}.transcripts_filtered.matrix.tsv.gz"
+# * output:
+minibatches="${output_dir}/${prefix}.batched.matrix.tsv.gz"
+# * temporary:
+minibatches_tsv="${output_dir}/${prefix}.batched.matrix.tsv"
 
 # Examine the input data
 required_files=(
-    "${output_dir}/${prefix}.QCed.matrix.tsv.gz"
+    ${transcripts_filtered}
 )
 check_files_exist "${required_files[@]}"
 
@@ -29,12 +37,12 @@ ap_batch_buff=30
 # ===== ANALYSIS =====
 # 1) Reformat the input file by assigning minibatch label,
 command time -v python ${ficture}/script/make_spatial_minibatch.py \
-    --input ${output_dir}/${prefix}.QCed.matrix.tsv.gz \
-    --output ${output_dir}/${prefix}.batched.matrix.tsv \
+    --input ${transcripts_filtered} \
+    --output ${minibatches_tsv} \
     --mu_scale $ap_mu_scale \
     --batch_size $ap_batch_size \
     --batch_buff $ap_batch_buff \
-    --major_axis $major_axis \
+    --major_axis $major_axis 
 
 # 2) Reorder the data based on the major axis so that they are locally contiguous.
 # Determine the sort column based on the major_axis value
@@ -43,5 +51,6 @@ if [ $major_axis == "Y" ]; then
 else
     sort_column="-k3,3n"
 fi
-sort -S 10G -k2,2n $sort_column ${output_dir}/${prefix}.batched.matrix.tsv | bgzip -c > ${output_dir}/${prefix}.batched.matrix.tsv.gz 
+
+sort -S 10G -k2,2n $sort_column ${minibatches_tsv} | bgzip -c > ${minibatches}
 

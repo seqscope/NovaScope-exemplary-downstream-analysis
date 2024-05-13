@@ -13,12 +13,20 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-process_input_data_and_params $1
+process_config_job $1
+
+# Define the input and output paths and files
+# * input:
+transcripts="${output_dir}/${prefix}.transcripts.matrix.tsv.gz"
+ftr_tab="${output_dir}/${prefix}.feature.tsv.gz"
+
+# * output:
+# Only requires dirs
 
 # Examine the required input files
 required_files=(
-    "${output_dir}/${prefix}.merged.matrix.tsv.gz "
-    "${output_dir}/${prefix}.feature.tsv.gz"
+    ${transcripts}
+    ${ftr_tab}
 )
 check_files_exist "${required_files[@]}"
 
@@ -33,8 +41,8 @@ mkdir -p ${model_dir}
 
 # Create hexagonal SGE that compatible with Seurat
 command time -v python ${ficture}/script/make_sge_by_hexagon.py \
-    --input ${output_dir}/${prefix}.merged.matrix.tsv.gz \
-    --feature ${output_dir}/${prefix}.feature.tsv.gz \
+    --input ${transcripts} \
+    --feature ${ftr_tab} \
     --output_path ${model_dir} \
     --mu_scale $ap_mu_scale \
     --major_axis ${major_axis} \

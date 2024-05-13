@@ -24,7 +24,7 @@ To install [FICTURE](https://github.com/seqscope/ficture/tree/protocol), run:
 
 ```bash
 ## revise the path to install FICTURE if needed
-git clone git@github.com:seqscope/ficture.git
+git clone -b stable git@github.com:seqscope/ficture.git
 ```
 
 #### 2.2.2 Reference Files

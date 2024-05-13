@@ -13,13 +13,23 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-process_input_data_and_params $1
+process_config_job $1
+
+# Define the input and output paths and files
+# * input:
+transcripts_filtered="${output_dir}/${prefix}.transcripts_filtered.matrix.tsv.gz"
+transcripts_filtered_tbi="${output_dir}/${prefix}.transcripts_filtered.matrix.tsv.gz.tbi"
+strict_boundary="${output_dir}/${prefix}.boundary.strict.geojson"
+# * output:
+hexagons="${model_dir}/${hexagon_prefix}.tsv.gz"
+# * temporary:
+hexagons_tsv="${model_dir}/${hexagon_prefix}.tsv"
 
 # Examine the required input files
 required_files=(
-    "${output_dir}/${prefix}.QCed.matrix.tsv.gz"
-    "${output_dir}/${prefix}.QCed.matrix.tsv.gz.tbi"
-    "${output_dir}/${prefix}.boundary.strict.geojson"
+    ${transcripts_filtered}
+    ${transcripts_filtered_tbi}
+    ${strict_boundary}
 )
 check_files_exist "${required_files[@]}"
 
@@ -35,15 +45,15 @@ mkdir -p ${model_dir}
 # 1) Create hexagonal files 
 command time -v python ${ficture}/script/make_dge_univ.py \
     --key ${sf} \
-    --input ${output_dir}/${prefix}.QCed.matrix.tsv.gz \
-    --output ${model_dir}/${hexagon_prefix}.tsv \
+    --input ${transcripts_filtered} \
+    --output ${hexagons_tsv} \
     --hex_width ${tw} \
     --n_move $ap_n_move \
     --mu_scale $ap_mu_scale \
     --precision $ap_n_move \
     --major_axis ${major_axis} \
     --min_density_per_unit $ap_min_density_per_unit \
-    --boundary ${output_dir}/${prefix}.boundary.strict.geojson
+    --boundary ${strict_boundary}
 
 # 2) Sort by the hexagon IDs
-sort -S 10G -k1,1n ${model_dir}/${hexagon_prefix}.tsv | gzip -c > ${model_dir}/${hexagon_prefix}.tsv.gz 
+sort -S 10G -k1,1n ${hexagons_tsv}  | gzip -c > ${hexagons}
