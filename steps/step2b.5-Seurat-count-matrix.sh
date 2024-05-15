@@ -44,7 +44,7 @@ echo -e "\nresolution: $res_of_interest\n"
 
 command time -v python ${neda}/scripts/seurat_cluster_to_count_matrix_for_categorical.py\
     --input_csv ${seurat_cluster_meta} \
-    --dge_path ${model_dir} \
+    --dge_path ${hexagon_sge_dir} \
     --output ${ct_mtx} \
     --key ${solo_feature} \
     --cluster "SCT_snn_res.${res_of_interest}" \
@@ -61,7 +61,7 @@ elif [[ ! -s "$ct_mtx" ]]; then
     echo -e "Error: File is empty: $ct_mtx" 
     exit 1
 else
-    new_nf=$(zcat "$ct_mtx" | head -1 | awk -F '\t' '{print nfactor-1}')
+    new_nf=$(zcat "$ct_mtx" | head -1 | awk -F '\t' '{print NF-1}')
 fi
 
 # Update the nfactor to input_data_and_params file. You can also manually update it, if you prefer. 

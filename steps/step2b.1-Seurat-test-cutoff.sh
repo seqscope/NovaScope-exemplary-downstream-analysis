@@ -44,7 +44,7 @@ mkdir -p ${model_dir}
 # Test different cutoffs for nFeature_RNA
 echo -e "\n#=== sub-step 2. Testing nFeature_RNA cutoffs ===#" 
 Rscript ${neda}/scripts/seurat_analysis.R \
-    --input_dir ${model_dir} \
+    --input_dir ${hexagon_sge_dir} \
     --output_dir ${model_dir} \
     --unit_id ${prefix} \
     --test_mode

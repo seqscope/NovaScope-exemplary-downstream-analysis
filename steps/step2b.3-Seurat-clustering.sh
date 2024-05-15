@@ -42,7 +42,7 @@ Y_min=${Y_min-}
 Y_max=${Y_max-}
 
 # Define the command for Seurat analysis with the required arguments
-cmd="Rscript ${neda}/scripts/seurat_analysis.R --input_dir ${model_dir} --output_dir ${model_dir} --unit_id ${prefix} --nFeature_RNA_cutoff $nFeature_RNA_cutoff "
+cmd="Rscript ${neda}/scripts/seurat_analysis.R --input_dir ${hexagon_sge_dir} --output_dir ${model_dir} --unit_id ${prefix} --nFeature_RNA_cutoff $nFeature_RNA_cutoff "
 
 [[ ${#X_min} -ge 1 ]] && cmd+=" --X_min $X_min"
 [[ ${#X_max} -ge 1 ]] && cmd+=" --X_max $X_max"
