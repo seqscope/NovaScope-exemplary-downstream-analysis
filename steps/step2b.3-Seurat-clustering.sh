@@ -13,7 +13,7 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-read_hexagon_index_config $1
+read_config_for_ST $1 $neda
 
 # Define the input and output paths and files
 # * input:

@@ -13,7 +13,7 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-read_hexagon_index_config $1
+read_config_for_ST $1 $neda
 
 # (Seurat-only) Sanity check - make sure nfactor is defined
 if [[ -z $nfactor ]]; then
@@ -59,7 +59,7 @@ fi
 # ===== ANALYSIS =====
 
 # Pixel-level Decoding
-command time -v python ${ficture}/script/slda_decode.py  \
+command time -v python ${ficture}/ficture/scripts/slda_decode.py  \
     --input ${minibatches} \
     --model ${model_path}\
     --anchor ${transform_fit}\

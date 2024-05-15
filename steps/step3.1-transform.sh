@@ -13,7 +13,7 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-read_hexagon_index_config $1
+read_config_for_ST $1 $neda
 
 # - (Seurat-only) Sanity check - make sure nfactor is defined
 if [[ -z $nfactor ]]; then
@@ -55,7 +55,7 @@ fi
 
 # ===== ANALYSIS =====
 # Transform
-command time -v python ${ficture}/script/transform_univ.py  \
+command time -v python ${ficture}/ficture/scripts/transform_univ.py  \
     --input ${transcripts_filtered} \
     --model ${model_path}  \
     --output_pref ${transform_prefix_w_dir} \

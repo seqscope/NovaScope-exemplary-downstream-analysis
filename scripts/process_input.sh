@@ -11,14 +11,15 @@ check_mandatory_vars() {
     done
 }
 
-read_hexagon_index_config() {
+read_config_for_ST() {
     # Ensure exactly one argument is provided
     if [ "$#" -ne 2 ]; then
-        echo "Usage: read_hexagon_index_config <path_to_file>"
+        echo "Usage: read_config_for_ST <path_to_file> <path_to_neda>"
         return 1
     fi
 
     local config_job="$1"
+    local neda="$2"
 
     # Check if the input file exists and is not empty
     if [ ! -s "$config_job" ]; then
@@ -33,21 +34,23 @@ read_hexagon_index_config() {
     local mandatory_vars=("transcripts" "feature_clean" "output_dir" "prefix" "train_model")
     check_mandatory_vars "${mandatory_vars[@]}"
 
-    # Set default values for optional variables
+    # Set default values 
     threads=${threads:-1}
+    ficture=${ficture:-$neda/submodules/ficture}       # temporary for current branch
 
     # Log settings
-    echo -e "#=== ENVIRONMENT ===#"
+    echo -e "#=== ENV ===#"
+    echo -e "NEDA: $neda"
+    echo -e "ficture: $ficture"
     echo -e "threads: $threads"
 
-    echo -e "\n#=== INPUT/OUTPUT ===#"
+    echo -e "\n#=== INPUT ===#"
     echo -e "transcripts: $transcripts"
     echo -e "feature_clean: $feature_clean"
     if [[ $train_model == "Seurat" ]]; then
         echo -e "hexagon-indexed SGE directory: $hexagon_sge_dir"
     fi
     echo -e "major_axis: $major_axis"
-    echo -e "output_dir: $output_dir"
     echo -e "prefix: $prefix"
 
     echo -e "\n#=== ANALYSIS PARAMS ===#"
@@ -70,13 +73,13 @@ read_hexagon_index_config() {
     fi
 
     # Handling seed value based on training model
-    if [[ -z $seed ]]; then
+    if [[ -z ${seed+x} ]]; then
         seed=$(date +%s | cut -c 1-10)
-        echo -e "seed: $seed (Random seed is assigned)"
+        echo -e "Seed: $seed (Random seed is assigned)"
     else
         echo -e "Seed: $seed (Seed is assigned by the user)"
     fi
-
+    
     # Prefix definitions
     hexagon_prefix="${prefix}.hexagon.${solo_feature}.d_${train_width}"
     train_prefix="${prefix}.${solo_feature}.nfactor${nfactor}.d_${train_width}.s_${train_n_epoch}"
@@ -84,13 +87,18 @@ read_hexagon_index_config() {
     decode_prefix="${train_prefix}.decode.prj_${fit_width}.r_${anchor_dist}_${neighbor_radius}"
 
     echo -e "\n#=== OUTPUT PREFIX ===#"
+    if [ ! -d "$output_dir" ]; then
+        mkdir -p "$output_dir"
+    fi
+    model_dir=${output_dir}/${train_model}
+    echo -e "output_dir: $output_dir"
+    echo -e "model_dir: $model_dir"
     echo -e "hexagon_prefix: $hexagon_prefix"
     echo -e "train_prefix: $train_prefix"
     echo -e "tranform_prefix: $tranform_prefix"
     echo -e "decode_prefix: $decode_prefix"
 
     # Construct model path based on training model
-    model_dir=${output_dir}/${train_model}
     if [[ $train_model == "LDA" ]]; then
         model_path=${model_dir}/${train_prefix}.model.p
     elif [[ $train_model == "Seurat" ]]; then

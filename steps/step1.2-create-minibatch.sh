@@ -12,9 +12,8 @@ echo -e "#=====================\n#"
 
 # Read input config
 neda=$(dirname $(dirname "$0"))
-
 source $neda/scripts/process_input.sh
-read_hexagon_index_config $1
+read_config_for_ST $1 $neda
 
 # Define the input and output paths and files
 # * input:
@@ -37,7 +36,7 @@ ap_batch_buff=30
 
 # ===== ANALYSIS =====
 # 1) Reformat the input file by assigning minibatch label,
-command time -v python ${ficture}/script/make_spatial_minibatch.py \
+command time -v python ${ficture}/ficture/scripts/make_spatial_minibatch.py \
     --input ${transcripts_filtered} \
     --output ${minibatches_tmp} \
     --mu_scale $ap_mu_scale \

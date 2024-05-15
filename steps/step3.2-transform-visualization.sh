@@ -13,7 +13,7 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-read_hexagon_index_config $1
+read_config_for_ST $1 $neda
 
 # (Seurat-only) Sanity check - make sure nfactor is defined
 if [[ -z $nfactor ]]; then
@@ -66,7 +66,7 @@ else
         ln -s ${train_rgb} ${transform_rgb}
     else 
         echo -e "For Seurat. Create the color table from the transformed data."
-        python ${ficture}/script/choose_color.py \
+        python ${ficture}/ficture/scripts/choose_color.py \
             --input ${transform_fit}\
             --output ${transform_prefix_w_dir} \
             --cmap_name $ap_cmap_name \
@@ -80,7 +80,7 @@ while IFS=$'\t' read -r r_key r_val; do
 done < ${xyrange}
 echo -e "The coordinates ranges are: ${xmin}, ${xmax}; ${ymin}, ${ymax} !"
 
-command time -v python ${ficture}/script/plot_big.py \
+command time -v python ${ficture}/ficture/scripts/plot_big.py \
     --input ${transform_fit} \
     --output ${transform_prefix_w_dir} \
     --fill_range $fill_range \

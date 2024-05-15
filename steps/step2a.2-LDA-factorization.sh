@@ -12,9 +12,8 @@ echo -e "#=====================\n#"
 
 # Read input config
 neda=$(dirname $(dirname "$0"))
-
 source $neda/scripts/process_input.sh
-read_hexagon_index_config $1
+read_config_for_ST $1 $neda
 
 # Define the input and output paths and files
 # * input:
@@ -35,7 +34,7 @@ ap_min_ct_per_unit=50
 ap_min_ct_per_feature=50
 
 # ===== ANALYSIS =====
-command time -v python ${ficture}/script/lda_univ.py \
+command time -v python ${ficture}/ficture/scripts/lda_univ.py \
     --epoch ${train_n_epoch} \
     --epoch_id_length $ap_lenth_epoch_id \
     --feature ${feature_clean} \

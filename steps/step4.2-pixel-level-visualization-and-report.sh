@@ -13,7 +13,7 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-read_hexagon_index_config $1
+read_config_for_ST $1 $neda
 
 # (Seurat-only) Sanity check - make sure nfactor is defined
 if [[ -z $nfactor ]]; then
@@ -50,7 +50,7 @@ ap_plot_um_per_pixel=0.5
 
 # ===== ANALYSIS =====
 # 1) Identify marker genes for each factor/cluster.
-command time -v python ${ficture}/script/de_bulk.py \
+command time -v python ${ficture}/ficture/scripts/de_bulk.py \
     --input ${decode_ct} \
     --output ${decode_de} \
     --min_ct_per_feature $ap_min_ct_per_feature \
@@ -59,7 +59,7 @@ command time -v python ${ficture}/script/de_bulk.py \
     --thread $threads
 
 # 2) Create the high-resolution image of cell type factors for individual pixels.
-command time -v python ${ficture}/script/plot_pixel_full.py \
+command time -v python ${ficture}/ficture/scripts/plot_pixel_full.py \
     --input ${decode_pixel} \
     --output ${decode_pixel_png}  \
     --color_table ${transform_rgb} \
@@ -68,7 +68,7 @@ command time -v python ${ficture}/script/plot_pixel_full.py \
 
 # 3) create an HTML file summarizing individual factors and marker genes. 
 echo -e "\n#=== sub-step.4 DE Report ===#"
-command time -v python ${ficture}/script/factor_report.py \
+command time -v python ${ficture}/ficture/scripts/factor_report.py \
     --path ${model_dir} \
     --pref ${decode_prefix} \
     --color_table ${transform_rgb} \

@@ -12,9 +12,8 @@ echo -e "#=====================\n#"
 
 # Read input config
 neda=$(dirname $(dirname "$0"))
-
 source $neda/scripts/process_input.sh
-read_hexagon_index_config $1
+read_config_for_ST $1 $neda
 
 # Define the input and output paths and files
 # * input:
@@ -44,7 +43,7 @@ ap_min_density_per_unit=0.3
 mkdir -p ${model_dir}
 
 # 1) Create hexagonal files 
-command time -v python ${ficture}/script/make_dge_univ.py \
+command time -v python ${ficture}/ficture/scripts/make_dge_univ.py \
     --key ${solo_feature} \
     --input ${transcripts_filtered} \
     --output ${hexagons_tmp} \

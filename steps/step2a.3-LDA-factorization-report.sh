@@ -13,7 +13,7 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-read_hexagon_index_config $1
+read_config_for_ST $1 $neda
 
 # Define the input and output paths and files
 # * input:
@@ -43,14 +43,14 @@ ap_min_fold_output=1.5
 
 # ===== ANALYSIS =====
 # Choose color
-command time -v python ${ficture}/script/choose_color.py \
+command time -v python ${ficture}/ficture/scripts/choose_color.py \
     --input ${train_fit}\
     --output ${train_prefix_w_dir} \
     --cmap_name $ap_cmap_name \
     --seed ${seed}
 
 # Create bulk_chisq file with marker genes for each factor,
-command time -v python ${ficture}/script/de_bulk.py \
+command time -v python ${ficture}/ficture/scripts/de_bulk.py \
     --input ${train_ct} \
     --output ${train_de} \
     --min_ct_per_feature $ap_min_ct_per_feature \
@@ -59,7 +59,7 @@ command time -v python ${ficture}/script/de_bulk.py \
     --thread $threads
 
 # Create a report html file
-command time -v python ${ficture}/script/factor_report.py \
+command time -v python ${ficture}/ficture/scripts/factor_report.py \
     --path ${model_dir} \
     --pref ${train_prefix} \
     --color_table ${train_rgb} \
