@@ -10,7 +10,7 @@ hexagon_prefix="${prefix}.hexagon.${sf}.d_${tw}"
 train_prefix="${prefix}.${sf}.nF${nf}.d_${tw}.s_${ep}"
 ```
 
-* Details on variables used in above prefixes are in the [Job Configuration](../../prep_input/job_config.md).
+* Details on variables used in above prefixes are in the [Job Configuration](./job_config.md).
 
 ## Step 2a.1 Create Hexagonal Spatial Gene Expression (SGE) matrix
 Given a specified size of hexagons, segment the raw spatial gene expression (SGE) matrix into hexagonal SGE.

@@ -6,7 +6,7 @@ The `tranform_prefix` will be automatically defined by the script as below.
 ```bash
 tranform_prefix="${train_prefix}.prj_${pw}.r_${ar}"
 ```
-* See variables applied above in the [Job Configuration](../../prep_input/job_config.md).
+* See variables applied above in the [Job Configuration](./job_config.md).
 
 ## Step 3.1 Transform
 Convert to a factor space using the provided model, which includes gene names and potentially Dirichlet parameters. The pixel-level data will be organized into (potentially overlapping) hexagonal groups. Please note that the format of the model file varies between LDA (`*.model.p`) and Seurat(`*.model.tsv.gz`).

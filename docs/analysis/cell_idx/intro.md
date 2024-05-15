@@ -7,7 +7,7 @@ This is an example to illustrate aggregating the spatial transcriptomic data fro
 
 ## Step-by-Step Procedure
 
-Before beginning the analysis, ensure that NEDA and its dependencies are [installed](../installation/installation.md) in your computing environment. Follow these steps as outlined:
+Before beginning the analysis, ensure that NEDA and its dependencies are [installed](../../installation/installation.md) in your computing environment. Follow these steps as outlined:
 
 1. Create a cell-indexed spatial digital gene expression matrix.
 

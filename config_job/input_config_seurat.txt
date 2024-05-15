@@ -1,10 +1,12 @@
+# This is an example configuration file for shallower liver data
+
 #=========================
 # Mandatory Fields
 #=========================
 # input files
 transcripts="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_v2/B08C_shallow.transcripts.tsv.gz"            # NovaScope name convention: "${prefix}.transcripts.tsv.gz"
 feature_clean="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_v2/B08C_shallow.feature.clean.tsv.gz"        # NovaScope name convention: "${prefix}.feature.clean.tsv.gz"
-hexagon_sge_dir="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_v2/hexagon_sge_10x"
+hexagon_sge_dir="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_v2/hexagon_sge_10x"                        #
 major_axis="X"
 
 # output directory and prefix

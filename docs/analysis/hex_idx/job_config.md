@@ -9,9 +9,10 @@ Below only include FICTURE's **essential parameters**, while certain steps might
 # Mandatory Fields
 #=========================
 # input files
-transcripts=/path/to/the/transcripts/file                           ## path to the FICTURE-compatible SGE file, whose naming convention in NovaScope is *.transcripts.tsv.gz
+transcripts=/path/to/the/transcripts/file                           ## Path to the FICTURE-compatible SGE file, whose naming convention in NovaScope is *.transcripts.tsv.gz.
 feature_clean=/path/to/the/clean/feature/file                       ## NovaScope name convention is *.feature.clean.tsv.gz
-major_axis=<X_or_Y>                                                 ## Generally, we defined the one with greater length as the major axis. Options: "X", "Y".
+major_axis=<X_or_Y>                                                 ## Typically, we identify the major axis as the one with the greater length. The options are "X" and "Y". For instance, in the minimal test run dataset, the major axis is Y, whereas it is X in the shallow liver dataset.
+hexagon_sge_dir=/path/to/the/hexagon/indexed/sge/directory          ## The SGE that segmented pixels into hexagonal units in the 10x genome format.
 
 ## Input/Output 
 output_dir=/path/to/the/output/directory/                           ## Directory for output files: LDA results saved in ${output_dir}/LDA, and Seurat results in ${output_dir}/Seurat."
@@ -31,8 +32,8 @@ anchor_dist=<archor_distance>                                       ## Anchor po
 #=========================
 # Optional Fields
 #=========================
-threads=<number_of_cpus>                                            ## (Optional) A integer to indicate how many CPUs will be applied 
-seed=<an_integer>                                                   ## (Optional) A seed (integer, e.g., 2024030700) for reproducibility. This applies in the LDA factorization and choosing color maps. If omitted, a random seed will be utilized.
+threads=<number_of_cpus>                                            ## (Optional) A integer to indicate how many CPUs will be applied. If absent, 1 thread will be applied.
+#seed=<an_integer>                                                   ## (Optional) A seed (integer, e.g., 2024030700) for reproducibility. This applies in the LDA factorization and choosing color maps. If omitted, a random seed will be utilized.
 
 ```
 
