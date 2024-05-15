@@ -1,7 +1,9 @@
 ## 1. Install the NovaScope-exemplary-downstream-analysis (NEDA)
 
+Use `--recursive` to make sure both NEDA and its submodule are cloned. 
+
 ```bash
-git clone git@github.com:seqscope/NovaScope-exemplary-downstream-analysis.git 
+git clone --recursive git@github.com:seqscope/NovaScope-exemplary-downstream-analysis.git 
 ```
 
 ## 2. Install Software and Dependencies
@@ -20,34 +22,17 @@ High-performance computing (HPC) users can easily load these programs using the 
 
 #### 2.2.1 Install FICTURE
 
-To install [FICTURE](https://github.com/seqscope/ficture/tree/protocol), run:
+NEDA has included [FICTURE](https://github.com/seqscope/ficture/tree/protocol) as a submodule. We suggest the users to double check the `submodule/ficture` folder to make sure the FICTURE has been cloned successfully:
 
 ```bash
-## revise the path to install FICTURE if needed
-git clone -b stable git@github.com:seqscope/ficture.git
+## define the path of NEDA 
+neda_dir=/path/to/neda
+
+## double-check the ficture directory
+ls -hlt $neda_dir/submodules/ficture
 ```
 
-#### 2.2.2 Reference Files
-
-[FICTURE](https://github.com/seqscope/ficture/tree/protocol) requires **a reference file** for the species of interest, which offers the gene type information, to filter the input genes. Currently, FICTURE provided [such reference file](https://github.com/seqscope/ficture/tree/protocol/info) for human and mouse:
-
-* human: 
-    * GRCh38: `Homo_sapiens.GRCh38.107.names.tsv.gz`
-* mouse: 
-    * GRCm39 (recommanded): `Mus_musculus.GRCm39.107.names.tsv.gz`
-    * GRCm38: `Mus_musculus.GRCm38.102.names.tsv.gz`
-
-Once you installed [FICTURE](https://github.com/seqscope/ficture/tree/protocol), view available reference files:
-
-```bash
-## revise the path of FICTURE if needed
-ficture_dir=/path/to/ficture
-
-## double-check available reference files
-ls -hlt $ficture_dir/info
-```
-
-#### 2.2.3 Create a Python Environment
+#### 2.2.2 Create a Python Environment
 
 Set up a Python environment for [FICTURE](https://github.com/seqscope/ficture/tree/protocol) as per the [requirement file](https://github.com/seqscope/ficture/blob/8ceb419618c1181bb673255427b53198c4887cfa/requirements.txt). The requirement file is included in the FICTURE repository.
 
@@ -55,7 +40,7 @@ First, ensure the requirements file is accessible:
 
 ```bash
 ## path to the requirement file in the FICTURE repository
-ficture_reqfile=$ficture_dir/requirements.txt
+ficture_reqfile=$neda_dir/submodules/ficture/requirements.txt
 
 ## verify the existence of the requirement file.
 if [ -f "$ficture_reqfile" ]; then

@@ -12,21 +12,20 @@ echo -e "#=====================\n#"
 
 # Read input config
 neda=$(dirname $(dirname "$0"))
-source $neda/scripts/process_input.sh
-process_config_job $1
 
+source $neda/scripts/process_input.sh
+read_hexagon_index_config $1
 
 # Define the input and output paths and files
 # * input:
 hexagons="${model_dir}/${hexagon_prefix}.tsv.gz"
-ftr_tab_clean="${output_dir}/${prefix}.feature.clean.tsv.gz"
 # * output prefix:
 train_prefix_w_dir=${model_dir}/${train_prefix}
 
 # Examine the required input files
 required_files=(
-    ${hexagons}
-    ${ftr_tab_clean}
+    "${hexagons}"
+    "${feature_clean}"
 )
 check_files_exist "${required_files[@]}"
 
@@ -37,13 +36,13 @@ ap_min_ct_per_feature=50
 
 # ===== ANALYSIS =====
 command time -v python ${ficture}/script/lda_univ.py \
-    --epoch ${ep} \
+    --epoch ${train_n_epoch} \
     --epoch_id_length $ap_lenth_epoch_id \
-    --feature ${ftr_tab_clean} \
-    --key ${sf} \
+    --feature ${feature_clean} \
+    --key ${solo_feature} \
     --input ${hexagons} \
     --output_pref ${train_prefix_w_dir} \
-    --nFactor ${nf} \
+    --nFactor ${nfactor} \
     --min_ct_per_unit $ap_min_ct_per_unit \
     --min_ct_per_feature $ap_min_ct_per_feature \
     --thread $threads \

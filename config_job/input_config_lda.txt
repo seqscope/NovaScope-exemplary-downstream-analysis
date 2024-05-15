@@ -1,0 +1,28 @@
+#=========================
+# Mandatory Fields
+#=========================
+# input files
+transcripts="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/results_init/B08C_shallow.transcripts.tsv.gz"            # NovaScope name convention: "${prefix}.transcripts.tsv.gz"
+feature_clean="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/results_init/B08C_shallow.feature.clean.tsv.gz"        # NovaScope name convention: "${prefix}.feature.clean.tsv.gz"
+major_axis="X"
+
+# output directory and prefix
+output_dir="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/results"
+prefix="B08C_shallow"
+
+# analysis model
+train_model="LDA"          
+
+# analysis param
+solo_feature="gn"
+train_width=18
+nfactor=12
+train_n_epoch=3
+fit_width=18
+anchor_dist=4
+
+#=========================
+# Optional Fields
+#=========================
+threads=12
+seed=2024030700

@@ -13,20 +13,32 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-process_config_job $1
+read_hexagon_index_config $1
 
-# (Seurat-only) Sanity check - make sure nf is defined
-if [[ -z $nf ]]; then
-    echo -e "Error: number of factors (nf) is not defined. Please define nf in the input_data_and_params file."
+# (Seurat-only) Sanity check - make sure nfactor is defined
+if [[ -z $nfactor ]]; then
+    echo -e "Error: number of factors (nfactor) is not defined. Please define nfactor in the input_data_and_params file."
     exit 1
 fi
 
+# Define the input and output paths and files
+# * input
+xyrange="${output_dir}/${prefix}.coordinate_minmax.tsv"             # from step1.1
+minibatches="${output_dir}/${prefix}.batched.matrix.tsv.gz"         # from step1.2
+transform_fit="${model_dir}/${tranform_prefix}.fit_result.tsv.gz"
+# * output
+decode_pixel="${model_dir}/${decode_prefix}.pixel.sorted.tsv.gz"
+# * output prefix:
+decode_prefix_w_dir="${model_dir}/${decode_prefix}"
+# * temporary
+decode_pixel_unsorted="${model_dir}/${decode_prefix}.pixel.tsv.gz"
+
 # Examine the required input files
 required_files=(
-    "${output_dir}/${prefix}.coordinate_minmax.tsv"
-    "${output_dir}/${prefix}.batched.matrix.tsv.gz "
+    "${xyrange}"
+    "${minibatches}"
     "${model_path}"
-    "${model_dir}/${tranform_prefix}.fit_result.tsv.gz"
+    "${transform_fit}"
 )
 
 check_files_exist "${required_files[@]}"
@@ -37,10 +49,10 @@ ap_precision=0.25
 ap_lite_topk_output_pixel=3
 ap_lite_topk_output_anchor=3
 
-# neighbor_radius (nr):
-# By default, nr=ar+1.
-if [[ -z $nr ]]; then
-    echo -e "Error: neighbor_radius (nr) is missing. By default, nr=ar+1. Please make sure ar is defined in the input_data_and_params file."
+# neighbor_radius (neighbor_radius):
+# By default, neighbor_radius=anchor_dist+1.
+if [[ -z $neighbor_radius ]]; then
+    echo -e "Error: neighbor_radius (neighbor_radius) is missing. By default, neighbor_radius=anchor_dist+1. Please make sure anchor_dist is defined in the input_data_and_params file."
     exit 1
 fi
 
@@ -48,14 +60,14 @@ fi
 
 # Pixel-level Decoding
 command time -v python ${ficture}/script/slda_decode.py  \
-    --input ${output_dir}/${prefix}.batched.matrix.tsv.gz \
+    --input ${minibatches} \
     --model ${model_path}\
-    --anchor ${model_dir}/${tranform_prefix}.fit_result.tsv.gz\
-    --output ${model_dir}/${decode_prefix} \
+    --anchor ${transform_fit}\
+    --output ${decode_prefix_w_dir} \
     --anchor_in_um \
-    --neighbor_radius ${nr} \
+    --neighbor_radius ${neighbor_radius} \
     --mu_scale ${ap_mu_scale} \
-    --key ${sf} \
+    --key ${solo_feature} \
     --precision $ap_precision \
     --lite_topk_output_pixel $ap_lite_topk_output_pixel \
     --lite_topk_output_anchor $ap_lite_topk_output_anchor \
@@ -73,7 +85,7 @@ fi
 # Sort based on major axis
 while IFS=$'\t' read -r r_key r_val; do
     export "${r_key}"="${r_val}"
-done < ${output_dir}/${prefix}.coordinate_minmax.tsv
+done < ${xyrange}
 
 offsetx=${xmin}
 offsety=${ymin}
@@ -81,11 +93,11 @@ rangex=$( echo "(${xmax} - ${xmin} + 0.5)/1+1" | bc )
 rangey=$( echo "(${ymax} - ${ymin} + 0.5)/1+1" | bc )
 
 header="##K=12;TOPK=3\n##BLOCK_SIZE=1000;BLOCK_AXIS=X;INDEX_AXIS=Y\n##OFFSET_X=${offsetx};OFFSET_Y=${offsety};SIZE_X=${rangex};SIZE_Y=${rangey};SCALE=100\n#BLOCK\tX\tY\tK1\tK2\tK3\tP1\tP2\tP3"
-(echo -e "${header}" && zcat ${model_dir}/${decode_prefix}.pixel.tsv.gz | \
+(echo -e "${header}" && zcat ${decode_pixel_unsorted} | \
     tail -n +2 | \
     perl -slane '$F[0]=int(($F[1]-$offx)/$bsize) * $bsize; $F[1]=int(($F[1]-$offx)*$scale); $F[1]=($F[1]>=0)?$F[1]:0; $F[2]=int(($F[2]-$offy)*$scale); $F[2]=($F[2]>=0)?$F[2]:0; print join("\t", @F);' -- -bsize=1000 -scale=100 -offx=${offsetx} -offy=${offsety} | \
     sort -S 10G -k1,1g $sort_column ) | \
-    bgzip -c > ${model_dir}/${decode_prefix}.pixel.sorted.tsv.gz
+    bgzip -c > ${decode_pixel}
 
-tabix -f -s1 $tabix_column ${model_dir}/${decode_prefix}.pixel.sorted.tsv.gz
+tabix -f -s1 $tabix_column ${decode_pixel}
 

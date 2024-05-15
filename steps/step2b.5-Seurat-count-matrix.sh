@@ -13,25 +13,24 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-process_config_job $1
+read_hexagon_index_config $1
 
 # Define the input and output paths and files
 # * input:
-sge_bcd="${input_dir}/barcodes.tsv.gz"
-sge_ftr="${input_dir}/features.tsv.gz"
-sge_mtx="${input_dir}/matrix.mtx.gz"
-seurat_cluster_meta="${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_metadata.csv"
-
+hex_sge_mtx="${hexagon_sge_dir}/matrix.mtx.gz"
+hex_sge_bcd="${hexagon_sge_dir}/barcodes.tsv.gz"
+hex_sge_ftr="${hexagon_sge_dir}/features.tsv.gz"
+seurat_cluster_meta="${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_metadata.csv"      # from step2b.3-Seurat-clustering.sh
 # * output:
 ct_mtx="${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_clusterbyres${res_of_interest}.tsv.gz"
-renamed_model="${model_dir}/${prefix}.${sf}.nF${new_nf}.d_${tw}.s_${ep}.model.tsv.gz"
-# * temporary:
+renamed_model="${model_dir}/${prefix}.${solo_feature}.nfactor${new_nf}.d_${train_width}.s_${train_n_epoch}.model.tsv.gz"
 
 # Examine the input files
 required_files=(
-    $sge_bcd
-    $sge_ftr
-    $sge_mtx
+    "${hex_sge_mtx}"
+    "${hex_sge_bcd}"
+    "${hex_sge_ftr}"
+    "${seurat_cluster_meta}"
 )
 check_files_exist "${required_files[@]}"
 
@@ -47,12 +46,12 @@ command time -v python ${neda}/scripts/seurat_cluster_to_count_matrix_for_catego
     --input_csv ${seurat_cluster_meta} \
     --dge_path ${model_dir} \
     --output ${ct_mtx} \
-    --key ${sf} \
+    --key ${solo_feature} \
     --cluster "SCT_snn_res.${res_of_interest}" \
     --x_col 2 \
     --y_col 3 
 
-# 2) Examines the count matrix file is valid, and obtain the number of factors (nf) from the count matrix file.
+# 2) Examines the count matrix file is valid, and obtain the number of factors (nfactor) from the count matrix file.
 echo -e "count matrix file: $ct_mtx"
 
 if [[ ! -f "$ct_mtx" ]]; then
@@ -62,17 +61,17 @@ elif [[ ! -s "$ct_mtx" ]]; then
     echo -e "Error: File is empty: $ct_mtx" 
     exit 1
 else
-    new_nf=$(zcat "$ct_mtx" | head -1 | awk -F '\t' '{print NF-1}')
+    new_nf=$(zcat "$ct_mtx" | head -1 | awk -F '\t' '{print nfactor-1}')
 fi
 
-# Update the nf to input_data_and_params file. You can also manually update it, if you prefer. 
+# Update the nfactor to input_data_and_params file. You can also manually update it, if you prefer. 
 echo -e "Updated number of factor: $new_nf"
 
-if grep -q '^nf=' "$1"; then
-    sed -i "s/^nf=.*/nf=$new_nf/" "$1"
+if grep -q '^nfactor=' "$1"; then
+    sed -i "s/^nfactor=.*/nfactor=$new_nf/" "$1"
 else
-    echo "== Update nf =="
-    echo -e "nf=$new_nf\n" >> "$1"
+    echo "== Update nfactor =="
+    echo -e "nfactor=$new_nf\n" >> "$1"
 fi
 
 # Create a symbolic link to the count matrix file, simplifying its location by subsequent steps.

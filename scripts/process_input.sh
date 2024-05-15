@@ -1,9 +1,20 @@
 #!/bin/bash
+# Define the function to check mandatory variables
+check_mandatory_vars() {
+    local vars_to_check=("$@")  # Receive array elements as arguments
 
-process_config_job() {
+    for var in "${vars_to_check[@]}"; do
+        if [ -z "${!var}" ]; then  # Check if variable is unset or empty using indirect expansion
+            echo "Error: Mandatory variable '$var' is not defined or is empty." >&2
+            return 2  # Return a specific non-zero value to indicate an error
+        fi
+    done
+}
+
+read_hexagon_index_config() {
     # Ensure exactly one argument is provided
-    if [ "$#" -ne 1 ]; then
-        echo "Usage: process_config_job <path_to_file>"
+    if [ "$#" -ne 2 ]; then
+        echo "Usage: read_hexagon_index_config <path_to_file>"
         return 1
     fi
 
@@ -18,37 +29,45 @@ process_config_job() {
     # Source the input file
     source "$config_job"
 
-    # Check for mandatory variables
-    local mandatory_vars=("input_dir" "output_dir" "prefix" "train_model")
-    for var in "${mandatory_vars[@]}"; do
-        if [ -z "${!var}" ]; then
-            echo "Error: Mandatory variable '$var' is not defined or is empty."
-            return 2
-        fi
-    done
-    
+    # Check for general mandatory variables
+    local mandatory_vars=("transcripts" "feature_clean" "output_dir" "prefix" "train_model")
+    check_mandatory_vars "${mandatory_vars[@]}"
+
     # Set default values for optional variables
     threads=${threads:-1}
 
     # Log settings
     echo -e "#=== ENVIRONMENT ===#"
-    echo -e "ficture: $ficture"
     echo -e "threads: $threads"
-    echo -e "ref_geneinfo: $ref_geneinfo"
 
     echo -e "\n#=== INPUT/OUTPUT ===#"
-    echo -e "input_dir: $input_dir"
+    echo -e "transcripts: $transcripts"
+    echo -e "feature_clean: $feature_clean"
+    if [[ $train_model == "Seurat" ]]; then
+        echo -e "hexagon-indexed SGE directory: $hexagon_sge_dir"
+    fi
+    echo -e "major_axis: $major_axis"
     echo -e "output_dir: $output_dir"
     echo -e "prefix: $prefix"
+
+    echo -e "\n#=== ANALYSIS PARAMS ===#"
     echo -e "train_model: $train_model"
-    
-    echo -e "\n#=== PARAMETERS ===#"
-    echo -e "solo feature: $sf"
-    echo -e "training width: $tw"
-    echo -e "number of factor: $nf"
-    echo -e "training epoch: $ep"
-    echo -e "projection width: $pw"
-    echo -e "anchor distance: $ar"
+    echo -e "solo feature: $solo_feature"
+    echo -e "training width: $train_width"
+    echo -e "number of factor: $nfactor"
+    echo -e "training epoch: $train_n_epoch"
+    echo -e "projection width: $fit_width"
+    echo -e "anchor distance: $anchor_dist"
+    # Calculations based on input parameters
+    if [[ -n $anchor_dist ]]; then
+        neighbor_radius=$(echo "$anchor_dist + 1" | bc)
+        echo -e "neighbor radius: $neighbor_radius"
+    fi
+
+    if [[ -n $fit_width && -n $anchor_dist ]]; then
+        proj_n_move=$((fit_width / anchor_dist))
+        echo -e "projection n_move: $proj_n_move"
+    fi
 
     # Handling seed value based on training model
     if [[ -z $seed ]]; then
@@ -56,24 +75,13 @@ process_config_job() {
         echo -e "seed: $seed (Random seed is assigned)"
     else
         echo -e "Seed: $seed (Seed is assigned by the user)"
-    fi 
-
-    # Calculations based on input parameters
-    if [[ -n $ar ]]; then
-        nr=$(echo "$ar + 1" | bc)
-        echo -e "neighbor radius: $nr"
-    fi
-
-    if [[ -n $pw && -n $ar ]]; then
-        p_move=$((pw / ar))
-        echo -e "projection n_move: $p_move"
     fi
 
     # Prefix definitions
-    hexagon_prefix="${prefix}.hexagon.${sf}.d_${tw}"
-    train_prefix="${prefix}.${sf}.nF${nf}.d_${tw}.s_${ep}"
-    tranform_prefix="${train_prefix}.prj_${pw}.r_${ar}"
-    decode_prefix="${train_prefix}.decode.prj_${pw}.r_${ar}_${nr}"
+    hexagon_prefix="${prefix}.hexagon.${solo_feature}.d_${train_width}"
+    train_prefix="${prefix}.${solo_feature}.nfactor${nfactor}.d_${train_width}.s_${train_n_epoch}"
+    tranform_prefix="${train_prefix}.prj_${fit_width}.r_${anchor_dist}"
+    decode_prefix="${train_prefix}.decode.prj_${fit_width}.r_${anchor_dist}_${neighbor_radius}"
 
     echo -e "\n#=== OUTPUT PREFIX ===#"
     echo -e "hexagon_prefix: $hexagon_prefix"
@@ -81,9 +89,8 @@ process_config_job() {
     echo -e "tranform_prefix: $tranform_prefix"
     echo -e "decode_prefix: $decode_prefix"
 
-    model_dir=${output_dir}/${train_model}
-
     # Construct model path based on training model
+    model_dir=${output_dir}/${train_model}
     if [[ $train_model == "LDA" ]]; then
         model_path=${model_dir}/${train_prefix}.model.p
     elif [[ $train_model == "Seurat" ]]; then

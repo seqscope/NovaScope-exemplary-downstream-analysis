@@ -13,12 +13,22 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-process_config_job $1
+read_hexagon_index_config $1
+
+# Define the input and output paths and files
+# * input:
+train_fit="${model_dir}/${train_prefix}.fit_result.tsv.gz"
+train_ct="${model_dir}/${train_prefix}.posterior.count.tsv.gz"
+# * output:
+train_de="${model_dir}/${train_prefix}.bulk_chisq.tsv"
+train_rgb="${model_dir}/${train_prefix}.rgb.tsv"
+# * output prefix:
+train_prefix_w_dir=${model_dir}/${train_prefix}
 
 # Examine the required input files
 required_files=(
-    "${model_dir}/${train_prefix}.fit_result.tsv.gz"
-    "${model_dir}/${train_prefix}.posterior.count.tsv.gz"
+    "${train_fit}"
+    "${train_ct}"
 )
 check_files_exist "${required_files[@]}"
 
@@ -34,15 +44,15 @@ ap_min_fold_output=1.5
 # ===== ANALYSIS =====
 # Choose color
 command time -v python ${ficture}/script/choose_color.py \
-    --input ${model_dir}/${train_prefix}.fit_result.tsv.gz \
-    --output ${model_dir}/${train_prefix} \
+    --input ${train_fit}\
+    --output ${train_prefix_w_dir} \
     --cmap_name $ap_cmap_name \
     --seed ${seed}
 
 # Create bulk_chisq file with marker genes for each factor,
 command time -v python ${ficture}/script/de_bulk.py \
-    --input ${model_dir}/${train_prefix}.posterior.count.tsv.gz \
-    --output ${model_dir}/${train_prefix}.bulk_chisq.tsv \
+    --input ${train_ct} \
+    --output ${train_de} \
     --min_ct_per_feature $ap_min_ct_per_feature \
     --max_pval_output $ap_max_pval_output \
     --min_fold_output $ap_min_fold_output \
@@ -52,5 +62,5 @@ command time -v python ${ficture}/script/de_bulk.py \
 command time -v python ${ficture}/script/factor_report.py \
     --path ${model_dir} \
     --pref ${train_prefix} \
-    --color_table ${model_dir}/${train_prefix}.rgb.tsv \
+    --color_table ${train_rgb} \
     --hc_tree

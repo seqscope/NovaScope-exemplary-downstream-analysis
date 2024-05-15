@@ -25,14 +25,6 @@ output_dir=/nfs/turbo/umms-leeju/nova/v2/analysis/n3-hg5mc-b08c-mouse-a6bbf/n3-h
 #    --unit_id n3-hg5mc-b08c-mouse-a6bbf-default-watershed \
 #    --test_mode --X_col 1 --Y_col 2
 
-# Seurat analysis
-module load R/4.2.0
-Rscript ${neda}/scripts/seurat_analysis.R \
-    --input_dir $output_dir/watershed/n3-hg5mc-b08c-mouse-a6bbf-default-watershed_seg  \
-    --output_dir $output_dir/watershed/Seurat \
-    --unit_id n3-hg5mc-b08c-mouse-a6bbf-default-watershed \
-    --nFeature_RNA_cutoff 0 \
-    --X_col 1 --Y_col 2
 ```
 
 
@@ -48,14 +40,6 @@ output_dir=/nfs/turbo/umms-leeju/nova/v2/analysis/n3-hg5mc-b08c-mouse-a6bbf/n3-h
 #   --approach Cellpose \
 #   --sge_dir $sge_dir \
 #   --output_dir $output_dir/cellpose/n3-hg5mc-b08c-mouse-a6bbf-default-cellpose_seg 
-
-# Seurat test mode
-#module load R/4.2.0
-#Rscript ${neda}/scripts/seurat_analysis.R \
-#    --input_dir $output_dir/cellpose/n3-hg5mc-b08c-mouse-a6bbf-default-cellpose_seg  \
-#    --output_dir $output_dir/cellpose/n3-hg5mc-b08c-mouse-a6bbf-default-cellpose_seg \
-#    --unit_id n3-hg5mc-b08c-mouse-a6bbf-default-cellpose \
-#    --test_mode --X_col 1 --Y_col 2
 
 # Seurat analysis
 module load R/4.2.0
