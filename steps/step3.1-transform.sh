@@ -13,17 +13,24 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-process_input_data_and_params $1
+read_config_for_ST $1 $neda
 
-# - (Seurat-only) Sanity check - make sure nf is defined
-if [[ -z $nf ]]; then
-    echo -e "Error: nf is not defined. Please define nf in the input_data_and_params file."
+# - (Seurat-only) Sanity check - make sure nfactor is defined
+if [[ -z $nfactor ]]; then
+    echo -e "Error: nfactor is not defined. Please define nfactor in the input_data_and_params file."
     exit 1
 fi
 
+# Define the input and output paths and files
+# * input:
+transcripts_filtered="${output_dir}/${prefix}.transcripts_filtered.tsv.gz"
+# model_path: defined in the read_hexagon_index_config function
+# * output prefix:
+transform_prefix_w_dir="${model_dir}/${tranform_prefix}"
+
 # Examine the required input files
 required_files=(
-    "${output_dir}/${prefix}.QCed.matrix.tsv.gz "
+    "${transcripts_filtered}"
     "${model_path}"
 )
 
@@ -38,23 +45,23 @@ ap_mu_scale=1000
 ap_precision=2
 ap_min_ct_per_unit=20
 
-# projection n_move (p_move):
-# It will be automatically calculated using p_move=$((pw / ar)), where the pw is the projection width and ar is the anchor point distance. 
-# For example, in the example input_data_and_params files, pw=18 and ar=4, so p_move=4.
-if [ -z $p_move ] ; then
-    echo -e "Error: p_move is not defined. Please check if your have pw and ar in the input_data_and_params file."
+# projection n_move (proj_n_move):
+# It will be automatically calculated using proj_n_move=$((fit_width / anchor_dist)), where the fit_width is the projection width and anchor_dist is the anchor point distance. 
+# For example, in the example input_data_and_params files, fit_width=18 and anchor_dist=4, so proj_n_move=4.
+if [ -z $proj_n_move ] ; then
+    echo -e "Error: proj_n_move is not defined. Please check if your have fit_width and anchor_dist in the input_data_and_params file."
     exit 1
 fi
 
 # ===== ANALYSIS =====
 # Transform
-command time -v python ${ficture}/script/transform_univ.py  \
-    --key ${sf} \
-    --input ${output_dir}/${prefix}.QCed.matrix.tsv.gz \
+command time -v python ${ficture}/ficture/scripts/transform_univ.py  \
+    --input ${transcripts_filtered} \
     --model ${model_path}  \
-    --output_pref ${model_dir}/${tranform_prefix} \
-    --hex_width ${pw}  \
-    --n_move ${p_move}   \
+    --output_pref ${transform_prefix_w_dir} \
+    --key ${solo_feature} \
+    --hex_width ${fit_width}  \
+    --n_move ${proj_n_move}   \
     --min_ct_per_unit ${ap_min_ct_per_unit} \
     --mu_scale ${ap_mu_scale} \
     --thread ${threads} \

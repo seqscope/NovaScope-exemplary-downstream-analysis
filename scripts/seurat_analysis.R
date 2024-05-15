@@ -264,7 +264,8 @@ if (opts$test_mode) {
                                 dpi=300)
   }
   message("==> End the execution of the script since --test_mode is enabled.")
-  quit(save = "no", status = 1)
+  #quit(save = "no", status = 1)
+  quit(save = "no", status = 0)  # Exiting with status 0 for successful test completion
 }else{
   nFeature_RNA_cutoff=opts$nFeature_RNA_cutoff
   adata_QCed <- subset(adata, subset = nFeature_RNA > nFeature_RNA_cutoff)
