@@ -80,7 +80,7 @@ while IFS=$'\t' read -r r_key r_val; do
 done < ${xyrange}
 echo -e "The coordinates ranges are: ${xmin}, ${xmax}; ${ymin}, ${ymax} !"
 
-command time -v python ${ficture}/ficture/scripts/plot_base.py \
+command time -v python ${ficture}/ficture/scripts/plot_big.py \
     --input ${transform_fit} \
     --output ${transform_prefix_w_dir} \
     --fill_range $fill_range \
@@ -90,5 +90,6 @@ command time -v python ${ficture}/ficture/scripts/plot_base.py \
     --xmax $xmax \
     --ymin $ymin \
     --ymax $ymax \
+    --horizontal_axis $ap_plot_horizontal_axis \
     --plot_fit \
     --plot_discretized
