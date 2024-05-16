@@ -1,35 +1,31 @@
-The current documentation of [NovaScope Exemplary Downstream Analysis (NEDA)](../../index.md) 
-include the following sections:
-
-* [Installation](../installation/installation.md): Instructions on how to install NEDA and dependent software tools.
-
-* [Spatial Transcriptomics Analysis](../analysis/hex_idx/intro.md):
-    * [Introduction](../analysis/hex_idx/intro.md): A brief introduction of the step-by-step analytical procedures.
-    * [Preparing Input](../prep_input/access_data.md):
-        * [Input Data](../prep_input/access_data.md): Accessing the example input spatial digital gene expression matrix datasets.
-        * [Job Configuration](../prep_input/job_config.md): Preparing the input configuration file.
-    * [Initializing](../analysis/hex_idx/step1-preprocess.md): Initialize computing environment and data preprocessing
-    * [Latent Dirichlet Allocation (LDA) + FICTURE Analysis](../LDA/step2a-LDA.md): The step-by-step instruction for LDA and FICTURE analytical strategy.
-        * [LDA Factorization](../LDA/step2a-LDA.md)
-        * [Transform](../analysis/hex_idx/LDA/step3-transform.md)
-        * [Pixel-level Decoding](../analysis/hex_idx/LDA/step4-decode.md):
-    * [Seurat + FICTURE Analysis](../analysis/hex_idx/Seurat/step1-preprocess.md): A step-by-step guideline for the analytical strategy using Seurat and FICTURE.
-        * [Seurat Clustering](../analysis/hex_idx/Seurat/step2b-seurat.md)
-        * [Transform](../analysis/hex_idx/Seurat/step3-transform.md)
-        * [Pixel-level Decoding](../analysis/hex_idx/Seurat/step4-decode.md)
+The current documentation include the following sections:
 
 
-* [Preliminary Single-Cell Analysis](../analysis/cell_idx/intro.md):
-    * [Introduction](../analysis/cell_idx/intro.md): A brief introduction of the step-by-step analytical procedures.
-    * [Preparing Input](../analysis/cell_idx/access_data.md):
-        * [Input Data](../analysis/cell_idx/access_data.md): Accessing the example input spatial digital gene expression matrix datasets.
-        * [Job Configuration](../analysis/cell_idx/job_config.md): Preparing the input configuration file.
-    * [Initializing](../analysis/cell_idx/step1-preprocess.md): Initialize computing environment and data preprocessing
-    * [Latent Dirichlet Allocation (LDA) + FICTURE Analysis](../LDA/step2a-LDA.md): The step-by-step instruction for LDA and FICTURE analytical strategy.
-        * [LDA Factorization](../LDA/step2a-LDA.md)
-        * [Transform](../analysis/hex_idx/LDA/step3-transform.md)
-        * [Pixel-level Decoding](../analysis/hex_idx/LDA/step4-decode.md):
-    * [Seurat + FICTURE Analysis](../analysis/hex_idx/Seurat/step1-preprocess.md): A step-by-step guideline for the analytical strategy using Seurat and FICTURE.
-        * [Seurat Clustering](../analysis/hex_idx/Seurat/step2b-seurat.md)
-        * [Transform](../analysis/hex_idx/Seurat/step3-transform.md)
-        * [Pixel-level Decoding](../analysis/hex_idx/Seurat/step4-decode.md)
+[**Home**](../index.md):
+
+* [Documentation Overview](./documentation_overview.md): Provides a summary of the contents and structure of NEDA.
+
+[**Installation**](../index.md):
+
+* [Installing NEDA](../installation/installation.md): Guidelines on installing NEDA and its dependent software tools.
+* [Example Datasets](../installation/example_data.md): Information on accessing three provided example datasets.
+
+
+[**Spatial Transcriptomics Analysis**](../analysis/hex_idx/intro.md):
+
+* [Introduction](../analysis/hex_idx/intro.md): Introduction to spatial transcriptomics analysis in NEDA.
+* [Preparing Input Data](../analysis/hex_idx/prepare_data.md): Overview of required input files.
+* [Preparing Job Configuration](../analysis/hex_idx/job_config.md): Preparing the input configuration file.
+* [Preprocessing](../analysis/hex_idx/step1-preprocess.md): Initialize computing environment and data preprocessing.
+* [LDA Factorization](../analysis/hex_idx/step2a-LDA.md): Application of Latent Dirichlet Allocation (LDA) for spatial factor identification.
+* [Seurat Clustering](../analysis/hex_idx/step2b-seurat.md): Multi-dimensional clustering with `Seurat` to identify cell types.
+* [Transform](../analysis/hex_idx/step3-transform.md): Converting to a factor space using the provided model via `FICTURE`.
+* [Pixel-level Decoding](../analysis/hex_idx/step4-decode.md): Decoding of pixel-level factors or clusters using `FICTURE`.
+
+
+[**Preliminary Single-Cell Analysis**](../analysis/cell_idx/intro.md):
+
+* [Introduction](../analysis/cell_idx/intro.md): An Overview of the prelimary single-cell analysis.
+* [Preparing Input](../analysis/cell_idx/prepare_data.md): Details of required input files.
+* [Create Cell-indexed SGE](../analysis/cell_idx/step1-cell_SGE.md): Computing environment setup and preparation of a cell-indexed spatial digital gene expression matrix 
+* [Seurat Clustering](../analysis/cell_idx/step2-Seurat-clustering.md): Application of multi-dimensional clustering with `Seurat` for cell type factor inference.

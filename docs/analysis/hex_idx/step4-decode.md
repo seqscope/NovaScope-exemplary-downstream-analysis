@@ -8,7 +8,7 @@ decode_prefix="${train_prefix}.decode.prj_${pw}.r_${ar}_${nr}"
 ```
 
 * `nr`: represents neighbor_radius. By default, `nr=ar+1`.
-* Other variables applied above are in the [Job Configuration](../../prep_input/job_config.md).
+* Other variables applied above are in the [Job Configuration](./job_config.md).
 
 
 ## Step 4.1 pixel-level Decoding. 

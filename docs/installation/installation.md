@@ -10,7 +10,7 @@ git clone --recursive git@github.com:seqscope/NovaScope-exemplary-downstream-ana
 
 ### 2.1 Install Dependent Softwares
 
-Ensure the installation of the below software to facilitate analysis. The versions listed below have been confirmed for compatibility with NovaScope-exemplary-downstream-analysis (NEDA) while alternative versions may also work with it.
+Ensure the installation of the below software to facilitate analysis. The versions listed below have been confirmed for compatibility with NEDA while alternative versions may also work with it.
 
 High-performance computing (HPC) users can easily load these programs using the `module load` command. It's advisable to first check availability with `module available` or `module spider`.
 

@@ -60,4 +60,3 @@ Command:
 ```bash
 $neda_dir/steps/step1.2-create-minibatch.sh $input_configfile
 ```
-

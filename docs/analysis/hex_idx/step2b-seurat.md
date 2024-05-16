@@ -12,7 +12,7 @@ train_prefix="${prefix}.${sf}.nF${nf}.d_${tw}.s_${ep}"
 ```
 
 * The `nf` will be determined in [step 2b.5](#step-2b5-prepare-a-count-matrix-with-the-selected-resolution).
-* Details on variables used in above prefixes are in the [Job Configuration](../../prep_input/job_config.md).
+* Details on variables used in above prefixes are in the [Job Configuration](./job_config.md).
 
 ## Step 2b.1 Data Evaluation
 This step applies the 'Seurat_analysis.R' script in test mode for evaluation, which includes:

@@ -45,7 +45,6 @@ theme:
 nav:
   - Home: 
       - Introduction: index.md
-      #- Spatial Transcriptomics Analysis: home/hex_idx_overview.md
       - Documentation Overview: home/documentation_overview.md
   - Installation: 
       - Installing NEDA: installation/installation.md
