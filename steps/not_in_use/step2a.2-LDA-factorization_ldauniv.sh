@@ -32,19 +32,19 @@ check_files_exist "${required_files[@]}"
 ap_lenth_epoch_id=2
 ap_min_ct_per_unit=50
 ap_min_ct_per_feature=50
-ap_n_random_init=10
 
 # ===== ANALYSIS =====
-command time -v python ${ficture}/ficture/scripts/init_model_selection.py \
-    --input ${hexagons} \
-    --feature ${feature_clean} \
-    --output ${train_prefix_w_dir} \
-    --key ${solo_feature} \
-    --nFactor ${nfactor} \
+command time -v python ${ficture}/ficture/scripts/lda_univ.py \
     --epoch ${train_n_epoch} \
     --epoch_id_length $ap_lenth_epoch_id \
+    --feature ${feature_clean} \
+    --key ${solo_feature} \
+    --input ${hexagons} \
+    --output_pref ${train_prefix_w_dir} \
+    --nFactor ${nfactor} \
     --min_ct_per_unit $ap_min_ct_per_unit \
     --min_ct_per_feature $ap_min_ct_per_feature \
     --thread $threads \
     --unit_attr X Y \
-    --R $ap_n_random_init
+    --overwrite \
+    --seed ${seed}
