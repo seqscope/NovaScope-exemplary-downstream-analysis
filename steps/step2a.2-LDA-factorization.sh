@@ -47,4 +47,5 @@ command time -v python ${ficture}/ficture/scripts/init_model_selection.py \
     --min_ct_per_feature $ap_min_ct_per_feature \
     --thread $threads \
     --unit_attr X Y \
-    --R $ap_n_random_init
+    --R $ap_n_random_init \
+    --seed ${seed}

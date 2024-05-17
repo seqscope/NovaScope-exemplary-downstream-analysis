@@ -42,11 +42,11 @@ opts = parse_args(opt_parser)
 # Script Test
 script_test <- FALSE
 if (script_test){
-  opts$input_dir <-  "/nfs/turbo/umms-leeju/v5/ldaAR/N3-B08C_mouse_default_QCraret1v4/segment/gn/d_24/raw_1" 
-  opts$output_dir <- "/nfs/turbo/umms-leeju/v5/ldaAR/N3-B08C_mouse_default_QCraret1v4/segment/gn/d_24/raw_1/Seurat_wc"
+  opts$input_dir <-  "/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_data_for_Zenodo_v2/shallow_liver/hex_sge_d18" 
+  opts$output_dir <- "/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/results_v2/shallow/Seurat"
   opts$test_mode <- FALSE
-  opts$unit_id<-"B08C_t1v4"
-  opts$nFeature_RNA_cutoff<-300
+  opts$unit_id<-"shallow"
+  opts$nFeature_RNA_cutoff<-100
   opts$X_min<-2e+06
   opts$X_max<-8e+06
   opts$Y_min<-1e+06
@@ -246,25 +246,32 @@ create_faceted_density_plot <- function(adata_raw, adata_QCed, x_var, y_var, QC_
          dpi = dpi)
 }
 
-# Density plot depending on the test mode
 if (opts$test_mode) {
   message(" - Testing different cutoff values for nFeature_RNA...")
-  for (nFeature_RNA_cutoff in c(50,100,200,300,400,500,750,1000)) {
-    adata_QCed <- subset(adata, subset = nFeature_RNA > nFeature_RNA_cutoff)
-    create_faceted_density_plot(adata_raw=adata,
-                                adata_QCed=adata_QCed,
-                                x_var="Y",
-                                y_var="X",
-                                QC_var="nFeature_RNA",
-                                QC_cutoff=nFeature_RNA_cutoff,
-                                output_dir=opts$output_dir,
-                                color_var="nFeature_RNA",
-                                width=12,
-                                height=12,
-                                dpi=300)
+  for (nFeature_RNA_cutoff in c(50, 100, 200, 300, 400, 500, 750, 1000)) {
+    # Using tryCatch to handle errors during subsetting
+    adata_QCed <- tryCatch({
+      subset(adata, subset = nFeature_RNA > nFeature_RNA_cutoff)
+    }, error = function(e) {
+      message(paste("Warning: No cells found for cutoff", nFeature_RNA_cutoff, "- Skipping..."))
+      NULL  # Return NULL in case of error
+    })
+    # Proceed only if subsetting was successful (adata_QCed is not NULL)
+    if (!is.null(adata_QCed)) {
+      create_faceted_density_plot(adata_raw = adata,
+                                  adata_QCed = adata_QCed,
+                                  x_var = "Y",
+                                  y_var = "X",
+                                  QC_var = "nFeature_RNA",
+                                  QC_cutoff = nFeature_RNA_cutoff,
+                                  output_dir = opts$output_dir,
+                                  color_var = "nFeature_RNA",
+                                  width = 12,
+                                  height = 12,
+                                  dpi = 300)
+    }
   }
   message("==> End the execution of the script since --test_mode is enabled.")
-  #quit(save = "no", status = 1)
   quit(save = "no", status = 0)  # Exiting with status 0 for successful test completion
 }else{
   nFeature_RNA_cutoff=opts$nFeature_RNA_cutoff
