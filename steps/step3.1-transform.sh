@@ -58,7 +58,7 @@ fi
 command time -v python ${ficture}/ficture/scripts/transform_univ.py  \
     --input ${transcripts_filtered} \
     --model ${model_path}  \
-    --output_pref ${transform_prefix_w_dir} \
+    --output ${transform_prefix_w_dir} \
     --key ${solo_feature} \
     --hex_width ${fit_width}  \
     --n_move ${proj_n_move}   \

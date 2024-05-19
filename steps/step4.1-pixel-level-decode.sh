@@ -59,6 +59,7 @@ fi
 # ===== ANALYSIS =====
 
 # Pixel-level Decoding
+echo -e "Decoding pixel-level data..."
 command time -v python ${ficture}/ficture/scripts/slda_decode.py  \
     --input ${minibatches} \
     --model ${model_path}\
@@ -83,6 +84,8 @@ else
 fi
 
 # Sort based on major axis
+echo -e "Sorting and compressing the decoded pixel-level data..."
+
 while IFS=$'\t' read -r r_key r_val; do
     export "${r_key}"="${r_val}"
 done < ${xyrange}

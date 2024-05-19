@@ -23,7 +23,7 @@ hex_sge_ftr="${hexagon_sge_dir}/features.tsv.gz"
 seurat_cluster_meta="${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_metadata.csv"      # from step2b.3-Seurat-clustering.sh
 # * output:
 ct_mtx="${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_clusterbyres${res_of_interest}.tsv.gz"
-renamed_model="${model_dir}/${prefix}.${solo_feature}.nfactor${new_nf}.d_${train_width}.s_${train_n_epoch}.model.tsv.gz"
+#renamed_model="${model_dir}/${prefix}.${solo_feature}.nfactor${new_nf}.d_${train_width}.s_${train_n_epoch}.model_matrix.tsv.gz"    # assigned after nf is read from the count matrix file
 
 # Examine the input files
 required_files=(
@@ -64,6 +64,7 @@ else
     new_nf=$(zcat "$ct_mtx" | head -1 | awk -F '\t' '{print NF-1}')
 fi
 
+
 # Update the nfactor to input_data_and_params file. You can also manually update it, if you prefer. 
 echo -e "Updated number of factor: $new_nf"
 
@@ -75,6 +76,7 @@ else
 fi
 
 # Create a symbolic link to the count matrix file, simplifying its location by subsequent steps.
+renamed_model="${model_dir}/${prefix}.${solo_feature}.nf${new_nf}.d_${train_width}.s_${train_n_epoch}.model_matrix.tsv.gz"
 echo -e "A symbolic link of the model file from Seurat: $renamed_model"
 
 if [[ -f "${renamed_model}" ]]; then

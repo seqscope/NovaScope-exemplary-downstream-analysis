@@ -86,7 +86,7 @@ read_config_for_ST() {
     
     # Prefix definitions
     hexagon_prefix="${prefix}.hexagon.${solo_feature}.d_${train_width}"
-    train_prefix="${prefix}.${solo_feature}.nfactor${nfactor}.d_${train_width}.s_${train_n_epoch}"
+    train_prefix="${prefix}.${solo_feature}.nf${nfactor}.d_${train_width}.s_${train_n_epoch}"
     tranform_prefix="${train_prefix}.prj_${fit_width}.r_${anchor_dist}"
     decode_prefix="${train_prefix}.decode.prj_${fit_width}.r_${anchor_dist}_${neighbor_radius}"
 
@@ -103,11 +103,12 @@ read_config_for_ST() {
     echo -e "decode_prefix: $decode_prefix"
 
     # Construct model path based on training model
-    if [[ $train_model == "LDA" ]]; then
-        model_path=${model_dir}/${train_prefix}.model.p
-    elif [[ $train_model == "Seurat" ]]; then
-        model_path=${model_dir}/${train_prefix}.model.tsv.gz
-    fi
+    #if [[ $train_model == "LDA" ]]; then
+    #    model_path=${model_dir}/${train_prefix}.model.p
+    #elif [[ $train_model == "Seurat" ]]; then
+    #    model_path=${model_dir}/${train_prefix}.model.tsv.gz
+    #fi
+    model_path=${model_dir}/${train_prefix}.model_matrix.tsv.gz
 }
 
 # Define a function to check the existence of each file in the provided list
