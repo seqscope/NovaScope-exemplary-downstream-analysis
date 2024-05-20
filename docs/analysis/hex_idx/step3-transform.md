@@ -22,7 +22,7 @@ ${output_dir}/${train_model}/${tranform_prefix}.fit_result.tsv.gz
 ${output_dir}/${train_model}/${tranform_prefix}.posterior.count.tsv.gz
 ```
 
-Command:
+Commands:
 ```bash
 $neda_dir/steps/step3.1-transform.sh $input_configfile
 ```
@@ -45,7 +45,7 @@ ${output_dir}/${train_model}/${tranform_prefix}.top.png
 ${output_dir}/${train_model}/${tranform_prefix}.png
 ```
 
-Command:
+Commands:
 ```bash
 $neda_dir/steps/step3.2-transform-visualization.sh $input_configfile
 ```

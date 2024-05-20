@@ -27,7 +27,7 @@ ${output_dir}/${train_model}/${tranform_prefix}.fit_result.tsv.gz
 ${output_dir}/${train_model}/${decode_prefix}.pixel.sorted.tsv.gz
 ```
 
-Command:
+Commands:
 ```bash
 $neda_dir/steps/step4.1-pixel-level-decode.sh $input_configfile
 ```
@@ -47,7 +47,7 @@ ${output_dir}/${train_model}/${decode_prefix}.factor.info.html
 ${output_dir}/${train_model}/${decode_prefix}.pixel.png
 ```
 
-Command:
+Commands:
 ```bash
 $neda_dir/steps/step4.2-pixel-level-visualization-and-report.sh $input_configfile
 ```

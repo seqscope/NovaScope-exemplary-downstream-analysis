@@ -1285,7 +1285,7 @@
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/nFeature_RNA_dist.png
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/nFeature_RNA_cutoff<span class="si">${</span><span class="nv">cutoff</span><span class="si">}</span>.png<span class="w"> </span><span class="c1"># for each cut off, including 50, 100, 200, 300, 400, 500, 750, and 1000</span>
 </code></pre></div></td></tr></table></div></p>
-<p>Command:
+<p>Commands:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step2b.1-Seurat-test-cutoff.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
 <h2 id="step-2b2-manually-selecting-the-optimal-nfeature_rna-cutoff">Step 2b.2 Manually Selecting the Optimal nFeature_RNA Cutoff<a class="headerlink" href="#step-2b2-manually-selecting-the-optimal-nfeature_rna-cutoff" title="Permanent link">&para;</a></h2>
@@ -1327,7 +1327,7 @@
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_res<span class="si">${</span><span class="nv">res</span><span class="si">}</span>_DE.csv<span class="w">            </span><span class="c1"># for each resolution (`$res`) including 0.25, 0.5, 0.75, 1, 1.25, 1.5, and 1.75</span>
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_res<span class="si">${</span><span class="nv">res</span><span class="si">}</span>_DimSpatial.png<span class="w">    </span><span class="c1"># for each resolution (`$res`) including 0.25, 0.5, 0.75, 1, 1.25, 1.5, and 1.75</span>
 </code></pre></div></td></tr></table></div></p>
-<p>Command:
+<p>Commands:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step2b.3-Seurat-clustering.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
 <h2 id="step-2b4-manually-selecting-the-optimal-clustering-resolution">Step 2b.4 Manually Selecting the Optimal Clustering Resolution<a class="headerlink" href="#step-2b4-manually-selecting-the-optimal-clustering-resolution" title="Permanent link">&para;</a></h2>
@@ -1354,7 +1354,7 @@
 <span class="c1"># Output: </span>
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_prefix</span><span class="si">}</span>.model_matrix.tsv.gz
 </code></pre></div></td></tr></table></div></p>
-<p>Command:
+<p>Commands:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step2b.5-Seurat-count-matrix.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
 

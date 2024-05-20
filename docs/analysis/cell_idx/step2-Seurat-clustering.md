@@ -1,6 +1,6 @@
 # Step 2. Inferring Cell Type Factors using Seurat
 
-This example demonstrates how to infer cell type factors from a cell-indexed SGE using Seurat. Since this cell-indexed SGE is derived from histology files, we do not implement an nFeature_RNA cutoff.
+This example demonstrates how to infer cell type factors from a cell-indexed SGE using Seurat. Since this cell-indexed SGE is derived from histology files, we do not implement an `nFeature_RNA_cutoff`.
 
 The step script starts with the removal of mitochondrial and hypothetical genes and the filtering of hexagons based on `nFeature_RNA_cutoff` and, when applied, X Y ranges. Subsequently, it applies sctransform normalization followed by dimensionality reduction through [Principal Component Analysis (PCA)](https://satijalab.org/seurat/reference/runpca) and [Uniform Manifold Approximation and Projection (UMAP)](https://satijalab.org/seurat/reference/runumap) embedding.
 
@@ -22,7 +22,7 @@ ${output_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_res${res}_DE.csv           
 ${output_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_res${res}_DimSpatial.png    # for each resolution (`$res`) including 0.25, 0.5, 0.75, 1, 1.25, 1.5, and 1.75
 ```
 
-Command:
+Commands:
 ```bash
 Rscript ${neda}/scripts/seurat_analysis.R \
     --input_dir ${output_dir}/${prefix} \

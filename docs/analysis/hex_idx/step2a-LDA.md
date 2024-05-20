@@ -25,7 +25,7 @@ ${output_dir}/${prefix}.boundary.strict.geojson
 ${output_dir}/${train_model}/${hexagon_prefix}.tsv.gz
 ```
 
-Command:
+Commands:
 ```bash
 $neda_dir/steps/step2a.1-create-hexagons.sh $input_configfile
 ```
@@ -48,7 +48,7 @@ ${output_dir}/${train_model}/${train_prefix}.coherence.tsv
 ${output_dir}/${train_model}/${train_prefix}.model_selection_candidates.p
 ```
 
-Command:
+Commands:
 ```bash
 $neda_dir/steps/step2a.2-LDA-factorization.sh $input_configfile
 ```
@@ -68,7 +68,7 @@ ${output_dir}/${train_model}/${train_prefix}.bulk_chisq.tsv
 ${output_dir}/${train_model}/${train_prefix}.factor.info.html
 ```
 
-Command:
+Commands:
 ```bash
 $neda_dir/steps/step2a.3-LDA-factorization-report.sh $input_configfile
 ```

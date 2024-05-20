@@ -34,7 +34,7 @@ ${output_dir}/${train_model}/nFeature_RNA_dist.png
 ${output_dir}/${train_model}/nFeature_RNA_cutoff${cutoff}.png # for each cut off, including 50, 100, 200, 300, 400, 500, 750, and 1000
 ```
 
-Command:
+Commands:
 ```bash
 $neda_dir/steps/step2b.1-Seurat-test-cutoff.sh $input_configfile
 ```
@@ -74,7 +74,7 @@ ${output_dir}/${train_model}/${prefix}_cutoff${nFeature_RNA_cutoff}_res${res}_DE
 ${output_dir}/${train_model}/${prefix}_cutoff${nFeature_RNA_cutoff}_res${res}_DimSpatial.png    # for each resolution (`$res`) including 0.25, 0.5, 0.75, 1, 1.25, 1.5, and 1.75
 ```
 
-Command:
+Commands:
 ```bash
 $neda_dir/steps/step2b.3-Seurat-clustering.sh $input_configfile
 ```
@@ -103,7 +103,7 @@ ${output_dir}/${train_model}/${prefix}_cutoff${nFeature_RNA_cutoff}_metadata.csv
 ${output_dir}/${train_model}/${train_prefix}.model_matrix.tsv.gz
 ```
 
-Command:
+Commands:
 ```bash
 $neda_dir/steps/step2b.5-Seurat-count-matrix.sh $input_configfile
 ```
