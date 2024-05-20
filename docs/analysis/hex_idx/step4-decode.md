@@ -20,8 +20,7 @@ Input & Output
 ${output_dir}/${prefix}.coordinate_minmax.tsv
 ${output_dir}/${prefix}.batched.matrix.tsv.gz
 ${output_dir}/${prefix}.transcripts_filtered.tsv.gz
-${output_dir}/${train_model}/${train_prefix}.model.tsv.gz               # Only if the train model is defined as "Seurat"
-${output_dir}/${train_model}/${train_prefix}.model.p                    # Only if the train model is defined as "LDA"
+${output_dir}/${train_model}/${train_prefix}.model_matrix.tsv.gz        
 ${output_dir}/${train_model}/${tranform_prefix}.fit_result.tsv.gz
 
 # Output: 

@@ -9,14 +9,13 @@ tranform_prefix="${train_prefix}.prj_${pw}.r_${ar}"
 * See variables applied above in the [Job Configuration](./job_config.md).
 
 ## Step 3.1 Transform
-Convert to a factor space using the provided model, which includes gene names and potentially Dirichlet parameters. The pixel-level data will be organized into (potentially overlapping) hexagonal groups. Please note that the format of the model file varies between LDA (`*.model.p`) and Seurat(`*.model.tsv.gz`).
+Convert to a factor space using the provided model, which includes gene names and potentially Dirichlet parameters. The pixel-level data will be organized into (potentially overlapping) hexagonal groups. 
 
 Input & Output
 ```bash
 # Input:
 ${output_dir}/${prefix}.transcripts_filtered.tsv.gz
-${output_dir}/${train_model}/${train_prefix}.model.tsv.gz               # Only if the train model is defined as "Seurat"
-${output_dir}/${train_model}/${train_prefix}.model.p                    # Only if the train model is defined as "LDA"
+${output_dir}/${train_model}/${train_prefix}.model_matrix.tsv.gz              
 
 # Output:
 ${output_dir}/${train_model}/${tranform_prefix}.fit_result.tsv.gz
@@ -43,6 +42,7 @@ ${output_dir}/${prefix}.coordinate_minmax.tsv
 # Output:
 ${output_dir}/${train_model}/${tranform_prefix}.rgb.tsv
 ${output_dir}/${train_model}/${tranform_prefix}.top.png
+${output_dir}/${train_model}/${tranform_prefix}.png
 ```
 
 Command:

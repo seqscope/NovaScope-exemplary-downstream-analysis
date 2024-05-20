@@ -2,17 +2,16 @@
 #=========================
 # Mandatory Fields
 #=========================
-# input files
-transcripts="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/results_init/B08C_shallow.transcripts.tsv.gz"            # NovaScope name convention: "*.transcripts.tsv.gz"
-feature_clean="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/results_init/B08C_shallow.feature.clean.tsv.gz"        # NovaScope name convention: "*.feature.clean.tsv.gz"
+transcripts="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_data_for_Zenodo_v2/shallow/shallow.transcripts.tsv.gz"
+feature_clean="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_data_for_Zenodo_v2/shallow/shallow.feature.clean.tsv.gz"
 major_axis="X"
 
 # output directory and prefix
-output_dir="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/results"
-prefix="B08C_shallow"
+output_dir="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/results_v2/shallow"
+prefix="shallow"
 
 # analysis model
-train_model="LDA"          
+train_model="LDA"
 
 # analysis param
 solo_feature="gn"
@@ -25,5 +24,5 @@ anchor_dist=4
 #=========================
 # Optional Fields
 #=========================
-threads=12
-seed=2024030700
+#threads=12
+#seed=2024030700

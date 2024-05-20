@@ -19,90 +19,90 @@ The initial examination of the [shallow dataset](#shallow-liver-section-sge-data
 
 All datasets are provided under a single DOI, accessible via this URL: [https://doi.org/10.5281/zenodo.10841777](https://doi.org/10.5281/zenodo.10841777). The most recent version of the dataset is version 3.
 
-Since [Spatial Transcriptomics Analysis](../analysis/hex_idx/intro.md) and [Preliminary Single-Cell Analysis](../analysis/cell_idx/intro.md) require different input files, we have provided these files in separate tarball archives. Only the [shallow liver dataset](#shallow-liver-section-sge-dataset) and [deep liver dataset](#deep-liver-section-dataset) include input files for the [Preliminary Single-Cell Analysis](../analysis/cell_idx/intro.md) due to the availability of histology files.
+Since [Pixel-level Analysis](../analysis/hex_idx/intro.md) and [Cell Segmentation-based Analysis](../analysis/cell_idx/intro.md) require different input files, we have provided these files in separate tarball archives. Only the [shallow liver dataset](#shallow-liver-section-sge-dataset) and [deep liver dataset](#deep-liver-section-dataset) include input files for the [Cell Segmentation-based Analysis](../analysis/cell_idx/intro.md) due to the availability of histology files.
 
 ### Input for Spatial Transcriptomic analysis
 
-The tarball files with this naming convention is input files for [Spatial Transcriptomics Analysis](../analysis/hex_idx/intro.md): 
+The tarball files with this naming convention is input files for [Pixel-level Analysis](../analysis/hex_idx/intro.md): 
 
 ```bash
-<prefix>_input_ST_<release_date>.tar.gz
+<prefix>_pixel_<release_date>.tar.gz
 ```
 
 * Minimal Test Run Dataset : 
 
 ```bash
 ## To download the tarball from Zenodo, you can use the following command.
-curl -o minimal_test_input_ST_20240515.tar.gz https://zenodo.org/records/11201025/files/minimal_test_input_ST_20240515.tar.gz?download=1
+curl -o minimal_pixel_20240519.tar.gz https://zenodo.org/records/11218168/files/minimal_pixel_20240519.tar.gz?download=1
 
 ## (Optional) Verify the integrity of the tarball file.
-curl -o minimal_test_input_ST_20240515.tar.gz.md5 https://zenodo.org/records/11201025/files/minimal_test_input_ST_20240515.tar.gz.md5?download=1
-md5sum -c minimal_test_input_ST_20240515.tar.gz.md5
+curl -o minimal_pixel_20240519.tar.gz.md5 https://zenodo.org/records/11218168/files/minimal_pixel_20240519.tar.gz.md5?download=1
+md5sum -c minimal_pixel_20240519.tar.gz.md5
 
 ## Uncompress the tarball using the following command.
-tar -zxvf minimal_test_input_ST_20240515.tar.gz
+tar -zxvf minimal_pixel_20240519.tar.gz
 ```
 
 * Shallow Liver Section Dataset:
 
 ```bash
 ## To download the tarball from Zenodo, you can use the following command.
-curl -o  shallow_liver_input_ST_20240515.tars.gz https://zenodo.org/records/11201025/files/shallow_liver_input_ST_20240515.tar.gz?download=1
+curl -o  shallow_pixel_20240519.tars.gz https://zenodo.org/records/11218168/files/shallow_pixel_20240519.tar.gz?download=1
 
 ## (Optional) Verify the integrity of the tarball file.
-curl -o  shallow_liver_input_ST_20240515.tar.gz.md5 https://zenodo.org/records/11201025/files/shallow_liver_input_ST_20240515.tar.gz.md5?download=1
-md5sum -c  shallow_liver_input_ST_20240515.tar.gz.md5
+curl -o  shallow_pixel_20240519.tar.gz.md5 https://zenodo.org/records/11218168/files/shallow_pixel_20240519.tar.gz.md5?download=1
+md5sum -c  shallow_pixel_20240519.tar.gz.md5
 
 ## Uncompress the tarball using the following command.
-tar -zxvf  shallow_liver_input_ST_20240515.tar.gz
+tar -zxvf  shallow_pixel_20240519.tar.gz
 ```
 
 * Deep Liver Section Dataset:
 
 ```bash
 ## To download the tarball from Zenodo, you can use the following command.
-curl -o deep_liver_input_ST_20240515.tar.gz https://zenodo.org/records/11201025/files/deep_liver_input_ST_20240515.tar.gz?download=1
+curl -o deep_pixel_20240519.tar.gz https://zenodo.org/records/11218168/files/deep_pixel_20240519.tar.gz?download=1
 
 ## (Optional) Verify the integrity of the tarball file.
-curl -o deep_liver_input_ST_20240515.tar.gz.md5 https://zenodo.org/records/11201025/files/deep_liver_input_ST_20240515.tar.gz.md5?download=1
-md5sum -c deep_liver_input_ST_20240515.tar.gz.md5
+curl -o deep_pixel_20240519.tar.gz.md5 https://zenodo.org/records/11218168/files/deep_pixel_20240519.tar.gz.md5?download=1
+md5sum -c deep_pixel_20240519.tar.gz.md5
 
 ## Uncompress the tarball using the following command.
-tar -zxvf deep_liver_input_ST_20240515.tar.gz
+tar -zxvf deep_pixel_20240519.tar.gz
 ```
 
-### Input for Preliminary Single-Cell Analysis
+### Input for Cell Segmentation-based Analysis
 
-The tarball files with this naming convention is input files for [Preliminary Single-Cell Analysis](../analysis/cell_idx/intro.md): 
+The tarball files with this naming convention is input files for [Cell Segmentation-based Analysis](../analysis/cell_idx/intro.md): 
 
 ```bash
-<prefix>_input_SC_<release_date>.tar.gz
+<prefix>_cellseg_<release_date>.tar.gz
 ```
 
 * Shallow Liver Section Dataset:
 
 ```bash
 ## To download the tarball from Zenodo, you can use the following command.
-curl -o  shallow_liver_input_SC_20240515.tars.gz https://zenodo.org/records/11201025/files/shallow_liver_input_SC_20240515.tar.gz?download=1
+curl -o  shallow_cellseg_20240519.tars.gz https://zenodo.org/records/11218168/files/shallow_cellseg_20240519.tar.gz?download=1
 
 ## (Optional) Verify the integrity of the tarball file.
-curl -o  shallow_liver_input_SC_20240515.tar.gz.md5 https://zenodo.org/records/11201025/files/shallow_liver_input_SC_20240515.tar.gz.md5?download=1
-md5sum -c  shallow_liver_input_SC_20240515.tar.gz.md5
+curl -o  shallow_cellseg_20240519.tar.gz.md5 https://zenodo.org/records/11218168/files/shallow_cellseg_20240519.tar.gz.md5?download=1
+md5sum -c  shallow_cellseg_20240519.tar.gz.md5
 
 ## Uncompress the tarball using the following command.
-tar -zxvf  shallow_liver_input_SC_20240515.tar.gz
+tar -zxvf  shallow_cellseg_20240519.tar.gz
 ```
 
 * Deep Liver Section Dataset:
 
 ```bash
 ## To download the tarball from Zenodo, you can use the following command.
-curl -o deep_liver_input_SC_20240515.tar.gz https://zenodo.org/records/11201025/files/deep_liver_input_SC_20240515.tar.gz?download=1
+curl -o deep_cellseg_20240519.tar.gz https://zenodo.org/records/11218168/files/deep_cellseg_20240519.tar.gz?download=1
 
 ## (Optional) Verify the integrity of the tarball file.
-curl -o deep_liver_input_SC_20240515.tar.gz.md5 https://zenodo.org/records/11201025/files/deep_liver_input_SC_20240515.tar.gz.md5?download=1
-md5sum -c deep_liver_input_SC_20240515.tar.gz.md5
+curl -o deep_cellseg_20240519.tar.gz.md5 https://zenodo.org/records/11218168/files/deep_cellseg_20240519.tar.gz.md5?download=1
+md5sum -c deep_cellseg_20240519.tar.gz.md5
 
 ## Uncompress the tarball using the following command.
-tar -zxvf deep_liver_input_SC_20240515.tar.gz
+tar -zxvf deep_cellseg_20240519.tar.gz
 ```

@@ -41,8 +41,11 @@ ${output_dir}/${train_model}/${hexagon_prefix}.tsv.gz
 
 # Output: 
 ${output_dir}/${train_model}/${train_prefix}.model.p
+${output_dir}/${train_model}/${train_prefix}.model_matrix.tsv.gz
 ${output_dir}/${train_model}/${train_prefix}.fit_result.tsv.gz
 ${output_dir}/${train_model}/${train_prefix}.posterior.count.tsv.gz
+${output_dir}/${train_model}/${train_prefix}.coherence.tsv
+${output_dir}/${train_model}/${train_prefix}.model_selection_candidates.p
 ```
 
 Command:

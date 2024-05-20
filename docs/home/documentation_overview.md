@@ -11,9 +11,9 @@ The current documentation include the following sections:
 * [Example Datasets](../installation/example_data.md): Information on accessing three provided example datasets.
 
 
-[**Spatial Transcriptomics Analysis**](../analysis/hex_idx/intro.md):
+[**Pixel-level Analysis**](../analysis/hex_idx/intro.md):
 
-* [Introduction](../analysis/hex_idx/intro.md): Introduction to spatial transcriptomics analysis in NEDA.
+* [Introduction](../analysis/hex_idx/intro.md): Introduction to Pixel-level Analysis in NEDA.
 * [Preparing Input Data](../analysis/hex_idx/prepare_data.md): Overview of required input files.
 * [Preparing Job Configuration](../analysis/hex_idx/job_config.md): Preparing the input configuration file.
 * [Preprocessing](../analysis/hex_idx/step1-preprocess.md): Initialize computing environment and data preprocessing.
@@ -23,7 +23,7 @@ The current documentation include the following sections:
 * [Pixel-level Decoding](../analysis/hex_idx/step4-decode.md): Decoding of pixel-level factors or clusters using `FICTURE`.
 
 
-[**Preliminary Single-Cell Analysis**](../analysis/cell_idx/intro.md):
+[**Cell Segmentation-based Analysis**](../analysis/cell_idx/intro.md):
 
 * [Introduction](../analysis/cell_idx/intro.md): An Overview of the prelimary single-cell analysis.
 * [Preparing Input](../analysis/cell_idx/prepare_data.md): Details of required input files.

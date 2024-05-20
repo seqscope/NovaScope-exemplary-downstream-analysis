@@ -20,6 +20,10 @@ High-performance computing (HPC) users can easily load these programs using the 
 
 ### 2.2 Install FICTURE and Its Dependencies
 
+!!! info
+	Please view [FICTURE's official documentation](https://seqscope.github.io/ficture/) for the latest instruction.
+
+
 #### 2.2.1 Install FICTURE
 
 NEDA has included [FICTURE](https://github.com/seqscope/ficture/tree/protocol) as a submodule. We suggest the users to double check the `submodule/ficture` folder to make sure the FICTURE has been cloned successfully:

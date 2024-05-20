@@ -33,7 +33,7 @@ prefix=<output_prefix>                                  ## Replace with your out
 
 ## Step 1.1 Prepare Histology-based Cell Segmentation Mask Matrix
 
-To prepare a cell-indexed spatial digital gene expression matrix (SGE), first perform histology-based cell segmentation outside of NEDA using methods such as Watershed and Cellpose. Details for performing these segmentations are provided in the NovaScope Protocol paper.
+To prepare a cell-indexed spatial digital gene expression matrix (SGE), first perform histology-based cell segmentation outside of NEDA using methods, such as [Watershed](https://imagej.net/imaging/watershed) and [Cellpose](https://github.com/MouseLand/cellpose). Details for performing these segmentations are provided in the NovaScope Protocol paper.
 
 ### Watershed
 Watershed outputs a black-and-white cell segmentation TIFF image where white areas represent cell segments and black areas are non-tissue regions or cell boundaries. NEDA provides make_segmask.py to convert this image into a segmentation mask matrix in NumPy array format.
