@@ -276,7 +276,7 @@
   
     
   
-  Spatial Transcriptomics Analysis
+  Pixel-level Analysis
 
         </a>
       </li>
@@ -296,7 +296,7 @@
   
     
   
-  Preliminary Single-Cell Analysis
+  Cell Segmentation-based Analysis
 
         </a>
       </li>
@@ -621,9 +621,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#input-for-preliminary-single-cell-analysis" class="md-nav__link">
+  <a href="#input-for-cell-segmentation-based-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      Input for Preliminary Single-Cell Analysis
+      Input for Cell Segmentation-based Analysis
     </span>
   </a>
   
@@ -684,7 +684,7 @@
             
   
   <span class="md-ellipsis">
-    Spatial Transcriptomics Analysis
+    Pixel-level Analysis
   </span>
   
 
@@ -694,7 +694,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Spatial Transcriptomics Analysis
+            Pixel-level Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -797,7 +797,7 @@
         
   
   <span class="md-ellipsis">
-    Job Configuration
+    Input Configuration
   </span>
   
 
@@ -878,7 +878,7 @@
         
   
   <span class="md-ellipsis">
-    Preprocessing
+    Step1. Preprocessing
   </span>
   
 
@@ -899,7 +899,7 @@
         
   
   <span class="md-ellipsis">
-    Latent Dirichlet allocation (LDA) Factorization
+    Step2a. LDA Factorization
   </span>
   
 
@@ -920,7 +920,7 @@
         
   
   <span class="md-ellipsis">
-    Seurat Clustering
+    Step2b. Seurat Clustering
   </span>
   
 
@@ -941,7 +941,7 @@
         
   
   <span class="md-ellipsis">
-    Transform
+    Step3. Transform
   </span>
   
 
@@ -962,7 +962,7 @@
         
   
   <span class="md-ellipsis">
-    Pixel-level Decoding
+    Step4. Pixel-level Decoding
   </span>
   
 
@@ -1021,7 +1021,7 @@
             
   
   <span class="md-ellipsis">
-    Preliminary Single-Cell Analysis
+    Cell Segmentation-based Analysis
   </span>
   
 
@@ -1031,7 +1031,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Preliminary Single-Cell Analysis
+            Cell Segmentation-based Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1134,7 +1134,7 @@
         
   
   <span class="md-ellipsis">
-    Create Cell-indexed SGE
+    Step1. Create Cell-indexed SGE
   </span>
   
 
@@ -1155,7 +1155,7 @@
         
   
   <span class="md-ellipsis">
-    Seurat Clustering
+    Step2. Seurat Clustering
   </span>
   
 
@@ -1268,9 +1268,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#input-for-preliminary-single-cell-analysis" class="md-nav__link">
+  <a href="#input-for-cell-segmentation-based-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      Input for Preliminary Single-Cell Analysis
+      Input for Cell Segmentation-based Analysis
     </span>
   </a>
   
@@ -1311,10 +1311,10 @@
 <p>The initial examination of the <a href="#shallow-liver-section-sge-dataset">shallow dataset</a> was encouraging, prompting a more extensive sequencing of the sample tissue to fully saturate the library (i.e., approximately 2.61 billion paired-end reads). The deep dataset was produced using all pairs of 2nd-seq FASTQ files. While datasets with shallower sequencing depths offer valuable insights, deep sequencing allows for a more thorough exploration of the data. This dataset also includes a set of aligned H&amp;E stained histology images. </p>
 <h2 id="download-datasets">Download Datasets<a class="headerlink" href="#download-datasets" title="Permanent link">&para;</a></h2>
 <p>All datasets are provided under a single DOI, accessible via this URL: <a href="https://doi.org/10.5281/zenodo.10841777">https://doi.org/10.5281/zenodo.10841777</a>. The most recent version of the dataset is version 3.</p>
-<p>Since <a href="../../analysis/hex_idx/intro/">Spatial Transcriptomics Analysis</a> and <a href="../../analysis/cell_idx/intro/">Preliminary Single-Cell Analysis</a> require different input files, we have provided these files in separate tarball archives. Only the <a href="#shallow-liver-section-sge-dataset">shallow liver dataset</a> and <a href="#deep-liver-section-dataset">deep liver dataset</a> include input files for the <a href="../../analysis/cell_idx/intro/">Preliminary Single-Cell Analysis</a> due to the availability of histology files.</p>
+<p>Since <a href="../../analysis/hex_idx/intro/">Pixel-level Analysis</a> and <a href="../../analysis/cell_idx/intro/">Cell Segmentation-based Analysis</a> require different input files, we have provided these files in separate tarball archives. Only the <a href="#shallow-liver-section-sge-dataset">shallow liver dataset</a> and <a href="#deep-liver-section-dataset">deep liver dataset</a> include input files for the <a href="../../analysis/cell_idx/intro/">Cell Segmentation-based Analysis</a> due to the availability of histology files.</p>
 <h3 id="input-for-spatial-transcriptomic-analysis">Input for Spatial Transcriptomic analysis<a class="headerlink" href="#input-for-spatial-transcriptomic-analysis" title="Permanent link">&para;</a></h3>
-<p>The tarball files with this naming convention is input files for <a href="../../analysis/hex_idx/intro/">Spatial Transcriptomics Analysis</a>: </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;prefix&gt;_input_ST_&lt;release_date&gt;.tar.gz
+<p>The tarball files with this naming convention is input files for <a href="../../analysis/hex_idx/intro/">Pixel-level Analysis</a>: </p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;prefix&gt;_pixel_&lt;release_date&gt;.tar.gz
 </code></pre></div></td></tr></table></div>
 <ul>
 <li>Minimal Test Run Dataset : </li>
@@ -1328,14 +1328,14 @@
 <span class="normal">7</span>
 <span class="normal">8</span>
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">## To download the tarball from Zenodo, you can use the following command.</span>
-curl<span class="w"> </span>-o<span class="w"> </span>minimal_test_input_ST_20240515.tar.gz<span class="w"> </span>https://zenodo.org/records/11201025/files/minimal_test_input_ST_20240515.tar.gz?download<span class="o">=</span><span class="m">1</span>
+curl<span class="w"> </span>-o<span class="w"> </span>minimal_pixel_20240519.tar.gz<span class="w"> </span>https://zenodo.org/records/11218168/files/minimal_pixel_20240519.tar.gz?download<span class="o">=</span><span class="m">1</span>
 
 <span class="c1">## (Optional) Verify the integrity of the tarball file.</span>
-curl<span class="w"> </span>-o<span class="w"> </span>minimal_test_input_ST_20240515.tar.gz.md5<span class="w"> </span>https://zenodo.org/records/11201025/files/minimal_test_input_ST_20240515.tar.gz.md5?download<span class="o">=</span><span class="m">1</span>
-md5sum<span class="w"> </span>-c<span class="w"> </span>minimal_test_input_ST_20240515.tar.gz.md5
+curl<span class="w"> </span>-o<span class="w"> </span>minimal_pixel_20240519.tar.gz.md5<span class="w"> </span>https://zenodo.org/records/11218168/files/minimal_pixel_20240519.tar.gz.md5?download<span class="o">=</span><span class="m">1</span>
+md5sum<span class="w"> </span>-c<span class="w"> </span>minimal_pixel_20240519.tar.gz.md5
 
 <span class="c1">## Uncompress the tarball using the following command.</span>
-tar<span class="w"> </span>-zxvf<span class="w"> </span>minimal_test_input_ST_20240515.tar.gz
+tar<span class="w"> </span>-zxvf<span class="w"> </span>minimal_pixel_20240519.tar.gz
 </code></pre></div></td></tr></table></div>
 <ul>
 <li>Shallow Liver Section Dataset:</li>
@@ -1349,14 +1349,14 @@ tar<span class="w"> </span>-zxvf<span class="w"> </span>minimal_test_input_ST_20
 <span class="normal">7</span>
 <span class="normal">8</span>
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">## To download the tarball from Zenodo, you can use the following command.</span>
-curl<span class="w"> </span>-o<span class="w">  </span>shallow_liver_input_ST_20240515.tars.gz<span class="w"> </span>https://zenodo.org/records/11201025/files/shallow_liver_input_ST_20240515.tar.gz?download<span class="o">=</span><span class="m">1</span>
+curl<span class="w"> </span>-o<span class="w">  </span>shallow_pixel_20240519.tars.gz<span class="w"> </span>https://zenodo.org/records/11218168/files/shallow_pixel_20240519.tar.gz?download<span class="o">=</span><span class="m">1</span>
 
 <span class="c1">## (Optional) Verify the integrity of the tarball file.</span>
-curl<span class="w"> </span>-o<span class="w">  </span>shallow_liver_input_ST_20240515.tar.gz.md5<span class="w"> </span>https://zenodo.org/records/11201025/files/shallow_liver_input_ST_20240515.tar.gz.md5?download<span class="o">=</span><span class="m">1</span>
-md5sum<span class="w"> </span>-c<span class="w">  </span>shallow_liver_input_ST_20240515.tar.gz.md5
+curl<span class="w"> </span>-o<span class="w">  </span>shallow_pixel_20240519.tar.gz.md5<span class="w"> </span>https://zenodo.org/records/11218168/files/shallow_pixel_20240519.tar.gz.md5?download<span class="o">=</span><span class="m">1</span>
+md5sum<span class="w"> </span>-c<span class="w">  </span>shallow_pixel_20240519.tar.gz.md5
 
 <span class="c1">## Uncompress the tarball using the following command.</span>
-tar<span class="w"> </span>-zxvf<span class="w">  </span>shallow_liver_input_ST_20240515.tar.gz
+tar<span class="w"> </span>-zxvf<span class="w">  </span>shallow_pixel_20240519.tar.gz
 </code></pre></div></td></tr></table></div>
 <ul>
 <li>Deep Liver Section Dataset:</li>
@@ -1370,18 +1370,18 @@ tar<span class="w"> </span>-zxvf<span class="w">  </span>shallow_liver_input_ST_
 <span class="normal">7</span>
 <span class="normal">8</span>
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">## To download the tarball from Zenodo, you can use the following command.</span>
-curl<span class="w"> </span>-o<span class="w"> </span>deep_liver_input_ST_20240515.tar.gz<span class="w"> </span>https://zenodo.org/records/11201025/files/deep_liver_input_ST_20240515.tar.gz?download<span class="o">=</span><span class="m">1</span>
+curl<span class="w"> </span>-o<span class="w"> </span>deep_pixel_20240519.tar.gz<span class="w"> </span>https://zenodo.org/records/11218168/files/deep_pixel_20240519.tar.gz?download<span class="o">=</span><span class="m">1</span>
 
 <span class="c1">## (Optional) Verify the integrity of the tarball file.</span>
-curl<span class="w"> </span>-o<span class="w"> </span>deep_liver_input_ST_20240515.tar.gz.md5<span class="w"> </span>https://zenodo.org/records/11201025/files/deep_liver_input_ST_20240515.tar.gz.md5?download<span class="o">=</span><span class="m">1</span>
-md5sum<span class="w"> </span>-c<span class="w"> </span>deep_liver_input_ST_20240515.tar.gz.md5
+curl<span class="w"> </span>-o<span class="w"> </span>deep_pixel_20240519.tar.gz.md5<span class="w"> </span>https://zenodo.org/records/11218168/files/deep_pixel_20240519.tar.gz.md5?download<span class="o">=</span><span class="m">1</span>
+md5sum<span class="w"> </span>-c<span class="w"> </span>deep_pixel_20240519.tar.gz.md5
 
 <span class="c1">## Uncompress the tarball using the following command.</span>
-tar<span class="w"> </span>-zxvf<span class="w"> </span>deep_liver_input_ST_20240515.tar.gz
+tar<span class="w"> </span>-zxvf<span class="w"> </span>deep_pixel_20240519.tar.gz
 </code></pre></div></td></tr></table></div>
-<h3 id="input-for-preliminary-single-cell-analysis">Input for Preliminary Single-Cell Analysis<a class="headerlink" href="#input-for-preliminary-single-cell-analysis" title="Permanent link">&para;</a></h3>
-<p>The tarball files with this naming convention is input files for <a href="../../analysis/cell_idx/intro/">Preliminary Single-Cell Analysis</a>: </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;prefix&gt;_input_SC_&lt;release_date&gt;.tar.gz
+<h3 id="input-for-cell-segmentation-based-analysis">Input for Cell Segmentation-based Analysis<a class="headerlink" href="#input-for-cell-segmentation-based-analysis" title="Permanent link">&para;</a></h3>
+<p>The tarball files with this naming convention is input files for <a href="../../analysis/cell_idx/intro/">Cell Segmentation-based Analysis</a>: </p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;prefix&gt;_cellseg_&lt;release_date&gt;.tar.gz
 </code></pre></div></td></tr></table></div>
 <ul>
 <li>Shallow Liver Section Dataset:</li>
@@ -1395,14 +1395,14 @@ tar<span class="w"> </span>-zxvf<span class="w"> </span>deep_liver_input_ST_2024
 <span class="normal">7</span>
 <span class="normal">8</span>
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">## To download the tarball from Zenodo, you can use the following command.</span>
-curl<span class="w"> </span>-o<span class="w">  </span>shallow_liver_input_SC_20240515.tars.gz<span class="w"> </span>https://zenodo.org/records/11201025/files/shallow_liver_input_SC_20240515.tar.gz?download<span class="o">=</span><span class="m">1</span>
+curl<span class="w"> </span>-o<span class="w">  </span>shallow_cellseg_20240519.tars.gz<span class="w"> </span>https://zenodo.org/records/11218168/files/shallow_cellseg_20240519.tar.gz?download<span class="o">=</span><span class="m">1</span>
 
 <span class="c1">## (Optional) Verify the integrity of the tarball file.</span>
-curl<span class="w"> </span>-o<span class="w">  </span>shallow_liver_input_SC_20240515.tar.gz.md5<span class="w"> </span>https://zenodo.org/records/11201025/files/shallow_liver_input_SC_20240515.tar.gz.md5?download<span class="o">=</span><span class="m">1</span>
-md5sum<span class="w"> </span>-c<span class="w">  </span>shallow_liver_input_SC_20240515.tar.gz.md5
+curl<span class="w"> </span>-o<span class="w">  </span>shallow_cellseg_20240519.tar.gz.md5<span class="w"> </span>https://zenodo.org/records/11218168/files/shallow_cellseg_20240519.tar.gz.md5?download<span class="o">=</span><span class="m">1</span>
+md5sum<span class="w"> </span>-c<span class="w">  </span>shallow_cellseg_20240519.tar.gz.md5
 
 <span class="c1">## Uncompress the tarball using the following command.</span>
-tar<span class="w"> </span>-zxvf<span class="w">  </span>shallow_liver_input_SC_20240515.tar.gz
+tar<span class="w"> </span>-zxvf<span class="w">  </span>shallow_cellseg_20240519.tar.gz
 </code></pre></div></td></tr></table></div>
 <ul>
 <li>Deep Liver Section Dataset:</li>
@@ -1416,14 +1416,14 @@ tar<span class="w"> </span>-zxvf<span class="w">  </span>shallow_liver_input_SC_
 <span class="normal">7</span>
 <span class="normal">8</span>
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">## To download the tarball from Zenodo, you can use the following command.</span>
-curl<span class="w"> </span>-o<span class="w"> </span>deep_liver_input_SC_20240515.tar.gz<span class="w"> </span>https://zenodo.org/records/11201025/files/deep_liver_input_SC_20240515.tar.gz?download<span class="o">=</span><span class="m">1</span>
+curl<span class="w"> </span>-o<span class="w"> </span>deep_cellseg_20240519.tar.gz<span class="w"> </span>https://zenodo.org/records/11218168/files/deep_cellseg_20240519.tar.gz?download<span class="o">=</span><span class="m">1</span>
 
 <span class="c1">## (Optional) Verify the integrity of the tarball file.</span>
-curl<span class="w"> </span>-o<span class="w"> </span>deep_liver_input_SC_20240515.tar.gz.md5<span class="w"> </span>https://zenodo.org/records/11201025/files/deep_liver_input_SC_20240515.tar.gz.md5?download<span class="o">=</span><span class="m">1</span>
-md5sum<span class="w"> </span>-c<span class="w"> </span>deep_liver_input_SC_20240515.tar.gz.md5
+curl<span class="w"> </span>-o<span class="w"> </span>deep_cellseg_20240519.tar.gz.md5<span class="w"> </span>https://zenodo.org/records/11218168/files/deep_cellseg_20240519.tar.gz.md5?download<span class="o">=</span><span class="m">1</span>
+md5sum<span class="w"> </span>-c<span class="w"> </span>deep_cellseg_20240519.tar.gz.md5
 
 <span class="c1">## Uncompress the tarball using the following command.</span>
-tar<span class="w"> </span>-zxvf<span class="w"> </span>deep_liver_input_SC_20240515.tar.gz
+tar<span class="w"> </span>-zxvf<span class="w"> </span>deep_cellseg_20240519.tar.gz
 </code></pre></div></td></tr></table></div>
 
 

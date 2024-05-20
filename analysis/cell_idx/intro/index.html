@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#preliminary-single-cell-analysis" class="md-skip">
+        <a href="#cell-segmentation-based-analysis" class="md-skip">
           Skip to content
         </a>
       
@@ -274,7 +274,7 @@
   
     
   
-  Spatial Transcriptomics Analysis
+  Pixel-level Analysis
 
         </a>
       </li>
@@ -296,7 +296,7 @@
   
     
   
-  Preliminary Single-Cell Analysis
+  Cell Segmentation-based Analysis
 
         </a>
       </li>
@@ -564,7 +564,7 @@
             
   
   <span class="md-ellipsis">
-    Spatial Transcriptomics Analysis
+    Pixel-level Analysis
   </span>
   
 
@@ -574,7 +574,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Spatial Transcriptomics Analysis
+            Pixel-level Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -677,7 +677,7 @@
         
   
   <span class="md-ellipsis">
-    Job Configuration
+    Input Configuration
   </span>
   
 
@@ -758,7 +758,7 @@
         
   
   <span class="md-ellipsis">
-    Preprocessing
+    Step1. Preprocessing
   </span>
   
 
@@ -779,7 +779,7 @@
         
   
   <span class="md-ellipsis">
-    Latent Dirichlet allocation (LDA) Factorization
+    Step2a. LDA Factorization
   </span>
   
 
@@ -800,7 +800,7 @@
         
   
   <span class="md-ellipsis">
-    Seurat Clustering
+    Step2b. Seurat Clustering
   </span>
   
 
@@ -821,7 +821,7 @@
         
   
   <span class="md-ellipsis">
-    Transform
+    Step3. Transform
   </span>
   
 
@@ -842,7 +842,7 @@
         
   
   <span class="md-ellipsis">
-    Pixel-level Decoding
+    Step4. Pixel-level Decoding
   </span>
   
 
@@ -906,7 +906,7 @@
             
   
   <span class="md-ellipsis">
-    Preliminary Single-Cell Analysis
+    Cell Segmentation-based Analysis
   </span>
   
 
@@ -916,7 +916,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Preliminary Single-Cell Analysis
+            Cell Segmentation-based Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1071,7 +1071,7 @@
         
   
   <span class="md-ellipsis">
-    Create Cell-indexed SGE
+    Step1. Create Cell-indexed SGE
   </span>
   
 
@@ -1092,7 +1092,7 @@
         
   
   <span class="md-ellipsis">
-    Seurat Clustering
+    Step2. Seurat Clustering
   </span>
   
 
@@ -1170,15 +1170,15 @@
   
 
 
-<h1 id="preliminary-single-cell-analysis">Preliminary Single-Cell Analysis<a class="headerlink" href="#preliminary-single-cell-analysis" title="Permanent link">&para;</a></h1>
+<h1 id="cell-segmentation-based-analysis">Cell Segmentation-based Analysis<a class="headerlink" href="#cell-segmentation-based-analysis" title="Permanent link">&para;</a></h1>
 <p>This is an example to illustrate aggregating the spatial transcriptomic data from <a href="https://github.com/seqscope/NovaScope/tree/main">NovaScope</a> at the cell level, and clustering cells using <a href="https://satijalab.org/seurat/">Seurat</a> build-in graph-based clustering approach. </p>
 <p><img alt="overview_brief" src="../SC_overview.png" />
-<strong>Figure 2: A Brief Overview of the Inputs, Outputs, and Process Steps for Preliminary Single-Cell Analysis.</strong> SGE: spatial digital gene expression matrix; UMAP: Uniform Manifold Approximation and Projection.</p>
+<strong>Figure 2: A Brief Overview of the Inputs, Outputs, and Process Steps for Cell Segmentation-based Analysis.</strong> SGE: spatial digital gene expression matrix; UMAP: Uniform Manifold Approximation and Projection.</p>
 <h2 id="step-by-step-procedure">Step-by-Step Procedure<a class="headerlink" href="#step-by-step-procedure" title="Permanent link">&para;</a></h2>
 <p>Before beginning the analysis, ensure that NEDA and its dependencies are <a href="../../../installation/installation/">installed</a> in your computing environment. Follow these steps as outlined:</p>
 <ol>
 <li>
-<p>Create a cell-indexed spatial digital gene expression matrix.</p>
+<p>Create a cell-indexed spatial digital gene expression matrix. This step requires the users manuually perform histology-based cell segmentation outside of NEDA using methods such as <a href="https://imagej.net/imaging/watershed">Watershed</a> and <a href="https://github.com/MouseLand/cellpose">Cellpose</a>. </p>
 </li>
 <li>
 <p>Apply Seurat to identify cell type clusters for those staining-based segmented cells.</p>

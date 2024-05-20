@@ -22,7 +22,7 @@
     
     
       
-        <title>Transform - NovaScope-exemplary-downstream-analysis</title>
+        <title>Step3. Transform - NovaScope-exemplary-downstream-analysis</title>
       
     
     
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Transform
+              Step3. Transform
             
           </span>
         </div>
@@ -276,7 +276,7 @@
   
     
   
-  Spatial Transcriptomics Analysis
+  Pixel-level Analysis
 
         </a>
       </li>
@@ -296,7 +296,7 @@
   
     
   
-  Preliminary Single-Cell Analysis
+  Cell Segmentation-based Analysis
 
         </a>
       </li>
@@ -569,7 +569,7 @@
             
   
   <span class="md-ellipsis">
-    Spatial Transcriptomics Analysis
+    Pixel-level Analysis
   </span>
   
 
@@ -579,7 +579,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Spatial Transcriptomics Analysis
+            Pixel-level Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -685,7 +685,7 @@
         
   
   <span class="md-ellipsis">
-    Job Configuration
+    Input Configuration
   </span>
   
 
@@ -771,7 +771,7 @@
         
   
   <span class="md-ellipsis">
-    Preprocessing
+    Step1. Preprocessing
   </span>
   
 
@@ -792,7 +792,7 @@
         
   
   <span class="md-ellipsis">
-    Latent Dirichlet allocation (LDA) Factorization
+    Step2a. LDA Factorization
   </span>
   
 
@@ -813,7 +813,7 @@
         
   
   <span class="md-ellipsis">
-    Seurat Clustering
+    Step2b. Seurat Clustering
   </span>
   
 
@@ -843,7 +843,7 @@
           
   
   <span class="md-ellipsis">
-    Transform
+    Step3. Transform
   </span>
   
 
@@ -854,7 +854,7 @@
         
   
   <span class="md-ellipsis">
-    Transform
+    Step3. Transform
   </span>
   
 
@@ -913,7 +913,7 @@
         
   
   <span class="md-ellipsis">
-    Pixel-level Decoding
+    Step4. Pixel-level Decoding
   </span>
   
 
@@ -972,7 +972,7 @@
             
   
   <span class="md-ellipsis">
-    Preliminary Single-Cell Analysis
+    Cell Segmentation-based Analysis
   </span>
   
 
@@ -982,7 +982,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Preliminary Single-Cell Analysis
+            Cell Segmentation-based Analysis
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1085,7 +1085,7 @@
         
   
   <span class="md-ellipsis">
-    Create Cell-indexed SGE
+    Step1. Create Cell-indexed SGE
   </span>
   
 
@@ -1106,7 +1106,7 @@
         
   
   <span class="md-ellipsis">
-    Seurat Clustering
+    Step2. Seurat Clustering
   </span>
   
 
@@ -1200,7 +1200,7 @@
 </code></pre></div></td></tr></table></div>
 * See variables applied above in the <a href="../job_config/">Job Configuration</a>.</p>
 <h2 id="step-31-transform">Step 3.1 Transform<a class="headerlink" href="#step-31-transform" title="Permanent link">&para;</a></h2>
-<p>Convert to a factor space using the provided model, which includes gene names and potentially Dirichlet parameters. The pixel-level data will be organized into (potentially overlapping) hexagonal groups. Please note that the format of the model file varies between LDA (<code>*.model.p</code>) and Seurat(<code>*.model.tsv.gz</code>).</p>
+<p>Convert to a factor space using the provided model, which includes gene names and potentially Dirichlet parameters. The pixel-level data will be organized into (potentially overlapping) hexagonal groups. </p>
 <p>Input &amp; Output
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1208,11 +1208,9 @@
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Input:</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Input:</span>
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.transcripts_filtered.tsv.gz
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_prefix</span><span class="si">}</span>.model.tsv.gz<span class="w">               </span><span class="c1"># Only if the train model is defined as &quot;Seurat&quot;</span>
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_prefix</span><span class="si">}</span>.model.p<span class="w">                    </span><span class="c1"># Only if the train model is defined as &quot;LDA&quot;</span>
+<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_prefix</span><span class="si">}</span>.model_matrix.tsv.gz<span class="w">              </span>
 
 <span class="c1"># Output:</span>
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">tranform_prefix</span><span class="si">}</span>.fit_result.tsv.gz
@@ -1232,7 +1230,8 @@
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Input:</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Input:</span>
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_prefix</span><span class="si">}</span>.color.tsv<span class="w">                  </span><span class="c1"># Only if the train model is defined as &quot;LDA&quot;</span>
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">tranform_prefix</span><span class="si">}</span>.fit_result.tsv.gz
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.coordinate_minmax.tsv
@@ -1240,6 +1239,7 @@
 <span class="c1"># Output:</span>
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">tranform_prefix</span><span class="si">}</span>.rgb.tsv
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">tranform_prefix</span><span class="si">}</span>.top.png
+<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">tranform_prefix</span><span class="si">}</span>.png
 </code></pre></div></td></tr></table></div></p>
 <p>Command:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step3.2-transform-visualization.sh<span class="w"> </span><span class="nv">$input_configfile</span>
