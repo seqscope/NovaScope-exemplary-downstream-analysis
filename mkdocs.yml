@@ -40,6 +40,9 @@ theme:
   font:
     text: 'Roboto'
     code: 'Roboto Mono'
+#  icon:
+#    admonition:
+#      <type>: <icon>
 
 # Navigation structure
 nav:
@@ -69,8 +72,13 @@ nav:
 
 
 # Markdown Extensions
+# Markdown Extensions
 markdown_extensions:
+  - abbr
+  - footnotes
   - admonition
+  - pymdownx.details
+  - pymdownx.superfences
 #  - codehilite:
 #      guess_lang: false 
   - toc:
@@ -81,7 +89,6 @@ markdown_extensions:
       linenums: true
       css_class: 'highlight'
   - pymdownx.superfences
-# - pymdownx.inlinehilite
 
 
 plugins:
