@@ -396,9 +396,9 @@ clustering_by_resolution <- function(adata, resolution, output_prefix,base_size=
 }
 
 # Loop over resolutions
-for (resolution in c(0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75)) {
+for (resolution in c(0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2)) {
   message(paste0(" - Clustering and imaging at resolution ", resolution))
-  adata <- clustering_by_resolution(adata, resolution, output_prefix,base_size=7)
+  adata <- clustering_by_resolution(adata, resolution, output_prefix, base_size=7)
 }
 
 # 5. Save the data
@@ -412,7 +412,7 @@ saveRDS(adata, file=paste0(output_prefix, "_SCT.RDS"))
 adata@meta.data %>% select(X, Y,
                            nCount_RNA, nFeature_RNA,
                            nCount_SCT, nFeature_SCT, UMAP1, UMAP2, 
-                           SCT_snn_res.0.25, SCT_snn_res.0.5, SCT_snn_res.0.75,
-                           SCT_snn_res.1, SCT_snn_res.1.5, SCT_snn_res.1.75,
+                           SCT_snn_res.0.25, SCT_snn_res.0.5, SCT_snn_res.0.75, SCT_snn_res.1, 
+                           SCT_snn_res.1.25,  SCT_snn_res.1.5, SCT_snn_res.1.75, SCT_snn_res.2
 )%>%
   write.csv(.,paste0(output_prefix, "_metadata.csv"))
