@@ -57,9 +57,11 @@ read_config_for_ST() {
     echo -e "train_model: $train_model"
     echo -e "solo feature: $solo_feature"
     echo -e "training width: $train_width"
-    # if $nfactor is define, define it as "NA"
     if [[ -z ${nfactor+x} ]]; then
         nfactor="NA"
+    fi
+    if [[ -z ${train_n_epoch+x} ]]; then
+        train_n_epoch="NA"
     fi
     echo -e "number of factor: $nfactor"
     echo -e "training epoch: $train_n_epoch"

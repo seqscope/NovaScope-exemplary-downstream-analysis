@@ -13,6 +13,6 @@ The following required input files can be generated using [NovaScope](https://gi
 
 ## Example Datasets
 
-Additionally, NEDA provides two datasets, including [the Shallow Liver Section Dataset](../../installation/example_data.md#shallow-liver-section-dataset) and [Deep Liver Section Dataset](../../installation/example_data.md#deep-liver-section-dataset), include both transcript-indexed SGE and a corresponding histology file. These datasets are specifically suitable for this preliminary single-cell analysis. 
+NEDA provides two example datasets for this Cell Segmentation-based Analysis, including [the Shallow Liver Section Dataset](../../installation/example_data.md#shallow-liver-section-dataset) and [Deep Liver Section Dataset](../../installation/example_data.md#deep-liver-section-dataset). Each dataset contains the input transcript-indexed SGE and histology files. We also provide the the cell segment mask from [Cellpose](https://github.com/MouseLand/cellpose)as well as the black and white boundary TIF image from [Watershed](https://imagej.net/imaging/watershed).
 
 Details on these datasets and download instructions are available in [Accessing Example Datasets](../../installation/example_data.md#input-for-preliminary-single-cell-analysis).

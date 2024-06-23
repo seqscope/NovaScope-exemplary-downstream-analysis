@@ -49,23 +49,23 @@ nav:
   - Installation: 
       - Installing NEDA: installation/installation.md
       - Example Datasets: installation/example_data.md
-  - Spatial Transcriptomics Analysis:
+  - Pixel-level Analysis:
       - Introduction: analysis/hex_idx/intro.md
       - Preparing Input:
           - Input Data: analysis/hex_idx/prepare_data.md
-          - Job Configuration: analysis/hex_idx/job_config.md
+          - Input Configuration: analysis/hex_idx/job_config.md
       - Analysis:
-        - Preprocessing: analysis/hex_idx/step1-preprocess.md
-        - Latent Dirichlet allocation (LDA) Factorization: analysis/hex_idx/step2a-LDA.md
-        - Seurat Clustering: analysis/hex_idx/step2b-seurat.md
-        - Transform : analysis/hex_idx/step3-transform.md
-        - Pixel-level Decoding: analysis/hex_idx/step4-decode.md
-  - Preliminary Single-Cell Analysis:
+        - Step1. Preprocessing: analysis/hex_idx/step1-preprocess.md
+        - Step2a. LDA Factorization: analysis/hex_idx/step2a-LDA.md
+        - Step2b. Seurat Clustering: analysis/hex_idx/step2b-seurat.md
+        - Step3. Transform : analysis/hex_idx/step3-transform.md
+        - Step4. Pixel-level Decoding: analysis/hex_idx/step4-decode.md
+  - Cell Segmentation-based Analysis:
       - Introduction: analysis/cell_idx/intro.md
       - Preparing input: analysis/cell_idx/prepare_data.md
       - Analysis:
-        - Create Cell-indexed SGE: analysis/cell_idx/step1-cell_SGE.md
-        - Seurat Clustering: analysis/cell_idx/step2-Seurat-clustering.md
+        - Step1. Create Cell-indexed SGE: analysis/cell_idx/step1-cell_SGE.md
+        - Step2. Seurat Clustering: analysis/cell_idx/step2-Seurat-clustering.md
 
 
 # Markdown Extensions

@@ -20,15 +20,14 @@ Input & Output
 ${output_dir}/${prefix}.coordinate_minmax.tsv
 ${output_dir}/${prefix}.batched.matrix.tsv.gz
 ${output_dir}/${prefix}.transcripts_filtered.tsv.gz
-${output_dir}/${train_model}/${train_prefix}.model.tsv.gz               # Only if the train model is defined as "Seurat"
-${output_dir}/${train_model}/${train_prefix}.model.p                    # Only if the train model is defined as "LDA"
+${output_dir}/${train_model}/${train_prefix}.model_matrix.tsv.gz        
 ${output_dir}/${train_model}/${tranform_prefix}.fit_result.tsv.gz
 
 # Output: 
 ${output_dir}/${train_model}/${decode_prefix}.pixel.sorted.tsv.gz
 ```
 
-Command:
+Commands:
 ```bash
 $neda_dir/steps/step4.1-pixel-level-decode.sh $input_configfile
 ```
@@ -48,7 +47,7 @@ ${output_dir}/${train_model}/${decode_prefix}.factor.info.html
 ${output_dir}/${train_model}/${decode_prefix}.pixel.png
 ```
 
-Command:
+Commands:
 ```bash
 $neda_dir/steps/step4.2-pixel-level-visualization-and-report.sh $input_configfile
 ```

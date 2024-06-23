@@ -39,7 +39,7 @@ ${output_dir}/${prefix}.boundary.strict.geojson
 ${output_dir}/${prefix}.coordinate_minmax.tsv
 ```
 
-Command:
+Commands:
 ```bash
 $neda_dir/steps/step1.1-filter-transcripts $input_configfile
 ```
@@ -56,7 +56,7 @@ ${output_dir}/${prefix}.transcripts_filtered.tsv.gz
 ${output_dir}/${prefix}.batched.matrix.tsv.gz
 ```
 
-Command:
+Commands:
 ```bash
 $neda_dir/steps/step1.2-create-minibatch.sh $input_configfile
 ```

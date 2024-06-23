@@ -4,14 +4,15 @@
 # Mandatory Fields
 #=========================
 # input files
-transcripts="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_v2/B08C_shallow.transcripts.tsv.gz"            # NovaScope name convention: "${prefix}.transcripts.tsv.gz"
-feature_clean="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_v2/B08C_shallow.feature.clean.tsv.gz"        # NovaScope name convention: "${prefix}.feature.clean.tsv.gz"
-hexagon_sge_dir="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_v2/hexagon_sge_10x"                        #
+transcripts="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_data_for_Zenodo_v2/shallow/shallow.transcripts.tsv.gz"
+feature_clean="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_data_for_Zenodo_v2/shallow/shallow.feature.clean.tsv.gz"
 major_axis="X"
 
+hexagon_sge_dir="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_data_for_Zenodo_v2/shallow/hex_sge_d18"
+
 # output directory and prefix
-output_dir="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/results"
-prefix="B08C_shallow"
+output_dir="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/results_v2/shallow"
+prefix="shallow"
 
 # analysis model
 train_model="Seurat"
@@ -20,25 +21,26 @@ train_model="Seurat"
 solo_feature="gn"
 train_width=18
 nfactor=12
-train_n_epoch=3
+#train_n_epoch="NA"
 fit_width=18
 anchor_dist=4
 
 #=========================
 # Optional Fields
 #=========================
-threads=12
-seed=2024030700
+#threads=12
+#seed=2024030700
 
 #=========================
 # Manually-defined Fields
 #=========================
 # == Define below after manual evaluation at the first stop
-nFeature_RNA_cutoff=100
-X_min=2.5e+06
-X_max=1e+07
-Y_min=1e+06
+#nFeature_RNA_cutoff=100
+#X_min=2.5e+06
+#X_max=1e+07
+#Y_min=1e+06
+#Y_max=6e+06
 
 # == Defined below after manual evaluation at the second stop
-res_of_interest=1
-nf=17
+#res_of_interest=1
+#nf=17
