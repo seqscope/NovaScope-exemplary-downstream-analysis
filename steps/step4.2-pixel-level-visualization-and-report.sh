@@ -13,24 +13,26 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-read_config_for_ST $1 $neda
+read_config_for_neda $1 $neda
 
-# (Seurat-only) Sanity check - make sure nfactor is defined
+# ===== INPUT/OUTPUT =====
+# * input
+transform_rgb="${model_dir}/${tranform_prefix}.rgb.tsv"
+decode_ct="${model_dir}/${decode_prefix}.posterior.count.tsv.gz"
+decode_pixel="${model_dir}/${decode_prefix}.pixel.sorted.tsv.gz"
+
+# * output
+decode_de="${model_dir}/${decode_prefix}.bulk_chisq.tsv"
+decode_pixel_png="${model_dir}/${decode_prefix}.pixel.png"
+
+# ===== SANITY CHECK =====
+# (Seurat-only) make sure nfactor is defined
 if [[ -z $nfactor ]]; then
     echo -e "Error: number of factors (nfactor) is not defined. Please define nfactor in the input_data_and_params file."
     exit 1
 fi
 
-# Define the input and output paths and files
-# * input
-transform_rgb="${model_dir}/${tranform_prefix}.rgb.tsv"
-decode_ct="${model_dir}/${decode_prefix}.posterior.count.tsv.gz"
-decode_pixel="${model_dir}/${decode_prefix}.pixel.sorted.tsv.gz"
-# * output
-decode_de="${model_dir}/${decode_prefix}.bulk_chisq.tsv"
-decode_pixel_png="${model_dir}/${decode_prefix}.pixel.png"
-
-# Examine the required input files
+# - Required files
 required_files=(
     "${transform_rgb}"
     "${decode_ct}"
@@ -53,17 +55,17 @@ ap_plot_um_per_pixel=0.5
 command time -v python ${ficture}/ficture/scripts/de_bulk.py \
     --input ${decode_ct} \
     --output ${decode_de} \
-    --min_ct_per_feature $ap_min_ct_per_feature \
-    --max_pval_output $ap_max_pval_output \
-    --min_fold_output $ap_min_fold_output \
-    --thread $threads
+    --min_ct_per_feature ${ap_min_ct_per_feature} \
+    --max_pval_output ${ap_max_pval_output} \
+    --min_fold_output ${ap_min_fold_output} \
+    --thread ${threads}
 
 # 2) Create the high-resolution image of cell type factors for individual pixels.
 command time -v python ${ficture}/ficture/scripts/plot_pixel_full.py \
     --input ${decode_pixel} \
     --output ${decode_pixel_png}  \
     --color_table ${transform_rgb} \
-    --plot_um_per_pixel $ap_plot_um_per_pixel \
+    --plot_um_per_pixel ${ap_plot_um_per_pixel} \
     --full
 
 # 3) create an HTML file summarizing individual factors and marker genes. 

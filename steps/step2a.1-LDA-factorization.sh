@@ -13,18 +13,20 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-read_config_for_ST $1 $neda
+read_config_for_neda $1 $neda
 
-# Define the input and output paths and files
+# ===== INPUT/OUTPUT =====
 # * input:
-hexagons="${model_dir}/${hexagon_prefix}.tsv.gz"
+#    - input hexagons: Defined by the user
+#    - input features: Defined by the user
+
 # * output prefix:
 train_prefix_w_dir=${model_dir}/${train_prefix}
 
-# Examine the required input files
+# ===== SANITY CHECK =====
 required_files=(
-    "${hexagons}"
-    "${feature_clean}"
+    "${input_hexagon_sge_ficture}"
+    "${input_features}"
 )
 check_files_exist "${required_files[@]}"
 
@@ -36,16 +38,16 @@ ap_n_random_init=10
 
 # ===== ANALYSIS =====
 command time -v python ${ficture}/ficture/scripts/init_model_selection.py \
-    --input ${hexagons} \
-    --feature ${feature_clean} \
+    --input ${input_hexagon_sge_ficture} \
+    --feature ${input_features} \
     --output ${train_prefix_w_dir} \
     --key ${solo_feature} \
     --nFactor ${nfactor} \
     --epoch ${train_n_epoch} \
-    --epoch_id_length $ap_lenth_epoch_id \
-    --min_ct_per_unit $ap_min_ct_per_unit \
-    --min_ct_per_feature $ap_min_ct_per_feature \
-    --thread $threads \
+    --epoch_id_length ${ap_lenth_epoch_id} \
+    --min_ct_per_unit ${ap_min_ct_per_unit} \
+    --min_ct_per_feature ${ap_min_ct_per_feature} \
+    --thread ${threads} \
     --unit_attr X Y \
-    --R $ap_n_random_init \
+    --R ${ap_n_random_init} \
     --seed ${seed}

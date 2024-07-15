@@ -13,7 +13,7 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-read_config_for_ST $1 $neda
+read_config_for_neda $1 $neda
 
 # (Seurat-only) Sanity check - make sure nfactor is defined
 if [[ -z $nfactor ]]; then
@@ -21,21 +21,24 @@ if [[ -z $nfactor ]]; then
     exit 1
 fi
 
-# Define the input and output paths and files
+# ===== INPUT/OUTPUT =====
 # * input
-xyrange="${output_dir}/${prefix}.coordinate_minmax.tsv"             # from step1.1
-minibatches="${output_dir}/${prefix}.batched.matrix.tsv.gz"         # from step1.2
+#    - input_xyrange: defined by the user; naming convention: "*.coordinate_minmax.tsv"  
+minibatches="${output_dir}/${prefix}.batched.matrix.tsv.gz"         
 transform_fit="${model_dir}/${tranform_prefix}.fit_result.tsv.gz"
+
 # * output
 decode_pixel="${model_dir}/${decode_prefix}.pixel.sorted.tsv.gz"
+
 # * output prefix:
 decode_prefix_w_dir="${model_dir}/${decode_prefix}"
+
 # * temporary
 decode_pixel_unsorted="${model_dir}/${decode_prefix}.pixel.tsv.gz"
 
-# Examine the required input files
+# ===== SANITY CHECK =====
 required_files=(
-    "${xyrange}"
+    "${input_xyrange}"
     "${minibatches}"
     "${model_path}"
     "${transform_fit}"
@@ -57,7 +60,6 @@ if [[ -z $neighbor_radius ]]; then
 fi
 
 # ===== ANALYSIS =====
-
 # Pixel-level Decoding
 echo -e "Decoding pixel-level data..."
 command time -v python ${ficture}/ficture/scripts/slda_decode.py  \
@@ -69,10 +71,10 @@ command time -v python ${ficture}/ficture/scripts/slda_decode.py  \
     --neighbor_radius ${neighbor_radius} \
     --mu_scale ${ap_mu_scale} \
     --key ${solo_feature} \
-    --precision $ap_precision \
-    --lite_topk_output_pixel $ap_lite_topk_output_pixel \
-    --lite_topk_output_anchor $ap_lite_topk_output_anchor \
-    --thread $threads
+    --precision ${ap_precision} \
+    --lite_topk_output_pixel ${ap_lite_topk_output_pixel} \
+    --lite_topk_output_anchor ${ap_lite_topk_output_anchor} \
+    --thread ${threads}
 
 # Determine the sort/tabix column based on the major_axis value
 if [[ ${major_axis} == "Y" ]]; then
@@ -88,7 +90,7 @@ echo -e "Sorting and compressing the decoded pixel-level data..."
 
 while IFS=$'\t' read -r r_key r_val; do
     export "${r_key}"="${r_val}"
-done < ${xyrange}
+done < ${input_xyrange}
 
 offsetx=${xmin}
 offsety=${ymin}
@@ -102,5 +104,5 @@ header="##K=12;TOPK=3\n##BLOCK_SIZE=1000;BLOCK_AXIS=X;INDEX_AXIS=Y\n##OFFSET_X=$
     sort -S 10G -k1,1g $sort_column ) | \
     bgzip -c > ${decode_pixel}
 
-tabix -f -s1 $tabix_column ${decode_pixel}
+tabix -f -s1 ${tabix_column} ${decode_pixel}
 

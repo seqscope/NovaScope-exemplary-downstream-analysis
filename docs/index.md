@@ -14,4 +14,4 @@ For additional information, please refer to the following publications:
 
 * [NovaScope Protocol Preprint](https://www.biorxiv.org/content/10.1101/2024.03.29.587285v1)  
 * [NovaScope](https://seqscope.github.io/NovaScope/)
-* [FICTURE Preprint](https://www.biorxiv.org/content/10.1101/2023.11.04.565621v2)
+* [FICTURE](https://github.com/seqscope/ficture)

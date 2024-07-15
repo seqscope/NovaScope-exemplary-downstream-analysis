@@ -13,31 +13,33 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-read_config_for_ST $1 $neda
+read_config_for_neda $1 $neda
 
-# (Seurat-only) Sanity check - make sure nfactor is defined
+# ===== INPUT/OUTPUT =====
+# * input
+#   - input_xyrange: defined by the user 
+transform_fit="${model_dir}/${tranform_prefix}.fit_result.tsv.gz"
+
+# * (optional) input
+train_rgb="${model_dir}/${train_prefix}.rgb.tsv"
+
+# * output
+transform_rgb="${model_dir}/${tranform_prefix}.rgb.tsv"
+
+# * output prefix:
+transform_prefix_w_dir="${model_dir}/${tranform_prefix}"
+
+# ===== SANITY CHECK =====
+# - (Seurat-only) make sure nfactor is defined
 if [[ -z $nfactor ]]; then
     echo -e "Error: nfactor is not defined. Please define nfactor in the input_data_and_params file."
     exit 1
 fi
 
-# Define the input and output paths and files
-# * input
-xyrange="${output_dir}/${prefix}.coordinate_minmax.tsv"             # from step1.1
-transform_fit="${model_dir}/${tranform_prefix}.fit_result.tsv.gz"
-# - transform_ct="${model_dir}/${tranform_prefix}.posterior.count.tsv.gz"
-# * conditional input
-train_rgb="${model_dir}/${train_prefix}.rgb.tsv"
-# * output
-transform_rgb="${model_dir}/${tranform_prefix}.rgb.tsv"
-# * output prefix:
-transform_prefix_w_dir="${model_dir}/${tranform_prefix}"
-
-# Examine the required input files
+# - Required files
 required_files=(
-    ${xyrange}
+    ${input_xyrange}
     ${transform_fit}
-    #${transform_ct}
 )
 
 if [[ $train_model == "LDA" ]]; then
@@ -69,7 +71,7 @@ else
         python ${ficture}/ficture/scripts/choose_color.py \
             --input ${transform_fit}\
             --output ${transform_prefix_w_dir} \
-            --cmap_name $ap_cmap_name \
+            --cmap_name ${ap_cmap_name} \
             --seed ${seed}
     fi
 fi
@@ -77,7 +79,7 @@ fi
 # Visualiation
 while IFS=$'\t' read -r r_key r_val; do
     export "${r_key}"="${r_val}"
-done < ${xyrange}
+done < ${input_xyrange}
 echo -e "The coordinates ranges are: ${xmin}, ${xmax}; ${ymin}, ${ymax} !"
 
 command time -v python ${ficture}/ficture/scripts/plot_base.py \
@@ -85,10 +87,10 @@ command time -v python ${ficture}/ficture/scripts/plot_base.py \
     --output ${transform_prefix_w_dir} \
     --fill_range $fill_range \
     --color_table ${transform_rgb} \
-    --plot_um_per_pixel $ap_plot_um_per_pixel \
-    --xmin $xmin \
-    --xmax $xmax \
-    --ymin $ymin \
-    --ymax $ymax \
+    --plot_um_per_pixel ${ap_plot_um_per_pixel} \
+    --xmin ${xmin} \
+    --xmax ${xmax} \
+    --ymin ${ymin} \
+    --ymax ${ymax} \
     --plot_fit \
     --plot_discretized

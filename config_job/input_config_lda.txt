@@ -2,9 +2,13 @@
 #=========================
 # Mandatory Fields
 #=========================
-transcripts="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_data_for_Zenodo_v2/shallow/shallow.transcripts.tsv.gz"
-feature_clean="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_data_for_Zenodo_v2/shallow/shallow.feature.clean.tsv.gz"
+# input files
+input_transcripts="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_data_for_Zenodo_v2/shallow/shallow.transcripts.tsv.gz"
+input_features="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_data_for_Zenodo_v2/shallow/shallow.feature.clean.tsv.gz"
+hexagon_sge_10x_dir="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_data_for_Zenodo_v2/shallow/hex_sge_10x_d18"
+
 major_axis="X"
+
 
 # output directory and prefix
 output_dir="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/results_v2/shallow"
