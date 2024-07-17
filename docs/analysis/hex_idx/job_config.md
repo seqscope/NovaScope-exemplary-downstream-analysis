@@ -1,6 +1,6 @@
 # Preparing the Input Configuration File
 
-Given the amount of the paths and parameters, NEDA employs a **text** file to provide parameters and dataset paths. 
+NEDA employs an input configuration file in **text** format to provide input/output paths and parameters.
 
 For this input configuration file, we provide:
 
@@ -9,20 +9,20 @@ For this input configuration file, we provide:
  - an example configuration files for [Seurat+FICTURE analysis](https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/config_job/input_config_seurat.txt).
 
 ## Essential and Auxiliary Parameters
+[FICTURE](https://github.com/seqscope/ficture/) uses numerous parameters at each step to ensure flexibility. NEDA simplifies data analysis by only requiring **essential parameters** in the input configuration file. Although some steps may require **auxiliary parameters**, NEDA adopts FICTURE's recommended defaults.
 
-The template only includes [FICTURE](https://github.com/seqscope/ficture/tree/protocol)'s **essential parameters**, while certain steps might need **auxiliary parameters**. 
-
-NEDA employs FICTURE's recommended defaults for these auxiliary parameters wherever applicable. Should you wish to customize these auxiliary parameters beyond the defaults, please proceed with caution as it involves risk. For detailed information on modifying auxiliary parameters, kindly refer to the `AUXILIARY PARAMS` section in the step scripts and the guidance of [FICTURE](https://github.com/seqscope/ficture).
+If you wish to customize these defaults, refer to the `AUXILIARY PARAMS` section in the step scripts and the [FICTURE documentation](https://github.com/seqscope/ficture), but proceed with caution due to potential risks.
 
 ## An Input Configuration Template
+
 ```
 #=========================
 # Mandatory Fields
 #=========================
 ## Input files
-input_transcripts=/path/to/the/transcripts/file                     ## Path to the input spatial digital gene expression matrix (SGE) in FICTURE-compatible TSV format
-input_features=/path/to/the/feature/file                            ## Path to the input feature file
-input_xyrange=/path/to/the/xyrange                                  ## Path to the input meta file with minimum and maximum X Y coordinates
+input_transcripts=/path/to/the/transcripts/file                     ## Path to the input spatial digital gene expression matrix (SGE) in FICTURE-compatible TSV format.
+input_features=/path/to/the/feature/file                            ## Path to the input feature file.
+input_xyrange=/path/to/the/xyrange                                  ## Path to the input meta file with minimum and maximum X Y coordinates.
 
 ## (Model-Specific) Input Hexagon-Indexed SGE
 input_hexagon_sge_ficture=/path/to/the/hexagon/indexed/sge/ficture  ## (LDA-only) Path of hexagon-indexed SGE in the FICTURE-compatible TSV format.
@@ -38,7 +38,7 @@ train_model=<model_option>                                          ## Define th
 ## Params
 major_axis=<X_or_Y>                                                 ## Typically, the major axis is the axis with a greater length. Options: "X", "Y". For instance, it is Y in the minimal testrun dataset whereas X in the shallow and deep liver datasets.
 
-solo_feature=<solo_feature>                                         ## The soloFeatures selection. Options: "gn": Gene; "gt": GeneFull. See details at https://github.com/alexdobin/STAR/blob/master/docs/STARsolo.md.
+solo_feature=<solo_feature>                                         ## Select the genome feature. Options: "gn": Gene; "gt": GeneFull. See details at https://github.com/alexdobin/STAR/blob/master/docs/STARsolo.md.
 train_width=<train_width>                                           ## The side length of the hexagon (in micrometers), e.g., 18.
 fit_width=<projection_width>                                        ## Projection width, suggest to use one the same as the train width, e.g., 18.
 anchor_dist=<archor_distance>                                       ## Anchor point distance (in micrometers), e.g., 4.

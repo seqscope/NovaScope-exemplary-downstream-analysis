@@ -2,7 +2,7 @@
 
 ## Set Up Computing Environment
 
-Please make sure set up the computing environment before **each** step. 
+Please ensure the computing environment is set up before **each** step. 
 
 ```bash
 ## Load modules, if applicable.
@@ -25,12 +25,12 @@ input_configfile="<path_to_input_data_and_params>"  ## replace <path_to_input_da
 ```
 
 ## Step 1 Creating Minimatch
-Assigning minibatch label, and reordering the data based on the major axis so that they are locally contiguous. This output file will be applied in the step of projecting the factors into the pixel-level dataset using FICTURE.
+Assigning minibatch label, and reordering the data based on the major axis so that they are locally contiguous. The output file has the same columns as input with an extra column (1st) being the minibatch inde. 
 
 Input & Output
 ```bash
 #Input: 
-$input_transcripts                                   ## user-defined input SGE in FICTURE-compatible format
+$input_transcripts                                   ## user-defined input SGE matrix in FICTURE-compatible TSV format
 
 #Output: 
 ${output_dir}/${prefix}.batched.matrix.tsv.gz

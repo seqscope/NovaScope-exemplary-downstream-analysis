@@ -4,10 +4,11 @@
 
 The decode_prefix will be automatically defined as below.
 ```bash
-decode_prefix="${train_prefix}.decode.prj_${pw}.r_${ar}_${nr}"
+train_prefix="${prefix}.${solo_feature}.nf${nfactor}.d_${train_width}.s_${train_n_epoch}"
+decode_prefix="${train_prefix}.decode.prj_${fit_width}.r_${anchor_dist}_${neighbor_radius}"
 ```
 
-* `nr`: represents neighbor_radius. By default, `nr=ar+1`.
+* `neighbor_radius`: represents the radius (um) of each anchor point's territory. By default, `neighbor_radius = anchor_dist + 1`.
 * Other variables applied above are in the [Job Configuration](./job_config.md).
 
 
@@ -17,10 +18,10 @@ Decode the model matrix on individual pixels, which returns a tab-delimited file
 Input & Output
 ```bash
 # Input:
-$input_xyrange                                                          ## user-defined input min max coordinates for SGE
-${output_dir}/${prefix}.batched.matrix.tsv.gz
-${output_dir}/${train_model}/${train_prefix}.model_matrix.tsv.gz        
-${output_dir}/${train_model}/${tranform_prefix}.fit_result.tsv.gz
+$input_xyrange                                                          ## user-defined input meta file for coordinates corresponding to the input SGE matrix
+${output_dir}/${prefix}.batched.matrix.tsv.gz                           ## pixel minibatches from step1
+${output_dir}/${train_model}/${train_prefix}.model_matrix.tsv.gz        ## a model matrix from LDA (step2a) or from Seurat (step2b)
+${output_dir}/${train_model}/${tranform_prefix}.fit_result.tsv.gz       ## transform data from step3
 
 # Output: 
 ${output_dir}/${train_model}/${decode_prefix}.pixel.sorted.tsv.gz

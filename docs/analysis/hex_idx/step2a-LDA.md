@@ -6,7 +6,7 @@ This example illustrates infering cell type factors using Latent Dirichlet Alloc
 We use prefixes to clarify input and output filenames in this documentation. These prefixes are automatically defined by the script; users do **NOT** need to define them manually.
 
 ```bash
-train_prefix="${prefix}.${sf}.nF${nf}.d_${tw}.s_${ep}"
+train_prefix="${prefix}.${solo_feature}.nf${nfactor}.d_${train_width}.s_${train_n_epoch}"
 ```
 
 * Variable details for the prefixes are in the [Job Configuration](./job_config.md).
@@ -17,8 +17,8 @@ An unsupervised learning of cell type factors using LDA.
 Input & Output:
 ```bash
 # Input:
-$input_transcripts                                   ## user-defined input SGE in FICTURE-compatible format
-$input_hexagon_sge_ficture                           ## user-defined input hexagon SGE in FICTURE-compatible format
+$input_features                                      ## user-defined input features in TSV format
+$input_hexagon_sge_ficture                           ## user-defined input hexagon-indexed SGE matrix in FICTURE-compatible format
 
 # Output: 
 ${output_dir}/${train_model}/${train_prefix}.model.p

@@ -12,7 +12,7 @@ git clone --recursive git@github.com:seqscope/NovaScope-exemplary-downstream-ana
 
 Ensure the installation of the below software to facilitate analysis. The versions listed below have been confirmed for compatibility with NEDA while alternative versions may also work with it.
 
-High-performance computing (HPC) users can easily load these programs using the `module load` command. It's advisable to first check availability with `module available` or `module spider`.
+High-performance computing (HPC) users could load these tools using `module load`. It's advisable to first check availability with `module available` or `module spider`.
 
 * Samtools (v1.14)
 * Python (v3.10) 

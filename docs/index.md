@@ -10,7 +10,7 @@ This document serves as a guide for exemplary downstream analysis of spatial tra
     This feature facilitates the aggregation of spatial transcriptomics data at the cellular level based on histology files and supports the analysis of cell type clusters using the cell-indexed SGE.
 
 ## References
-For additional information, please refer to the following publications:
+For additional information, please refer to the following links:
 
 * [NovaScope Protocol Preprint](https://www.biorxiv.org/content/10.1101/2024.03.29.587285v1)  
 * [NovaScope](https://seqscope.github.io/NovaScope/)
