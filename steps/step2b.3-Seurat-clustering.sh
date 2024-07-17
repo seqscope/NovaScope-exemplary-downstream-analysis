@@ -13,17 +13,17 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-read_config_for_ST $1 $neda
+read_config_for_neda $1 $neda
 
-# Define the input and output paths and files
+# ===== INPUT/OUTPUT =====
 # * input:
-hex_sge_mtx="${hexagon_sge_dir}/matrix.mtx.gz"
-hex_sge_bcd="${hexagon_sge_dir}/barcodes.tsv.gz"
-hex_sge_ftr="${hexagon_sge_dir}/features.tsv.gz"
+hex_sge_mtx="${input_hexagon_sge_10x_dir}/matrix.mtx.gz"
+hex_sge_bcd="${input_hexagon_sge_10x_dir}/barcodes.tsv.gz"
+hex_sge_ftr="${input_hexagon_sge_10x_dir}/features.tsv.gz"
 # * output:
-# Only requires dirs
+#   - Only requires dirs
 
-# Examine the required input files
+# ===== SANITY CHECK =====
 required_files=(
     "${hex_sge_mtx}"
     "${hex_sge_bcd}"
@@ -42,7 +42,9 @@ Y_min=${Y_min-}
 Y_max=${Y_max-}
 
 # Define the command for Seurat analysis with the required arguments
-cmd="Rscript ${neda}/scripts/seurat_analysis.R --input_dir ${hexagon_sge_dir} --output_dir ${model_dir} --unit_id ${prefix} --nFeature_RNA_cutoff $nFeature_RNA_cutoff "
+echo -e "\nnFeature_RNA_cutoff: $nFeature_RNA_cutoff\n"
+
+cmd="Rscript ${neda}/scripts/seurat_analysis.R --input_dir ${input_hexagon_sge_10x_dir} --output_dir ${model_dir} --unit_id ${prefix} --nFeature_RNA_cutoff $nFeature_RNA_cutoff "
 
 [[ ${#X_min} -ge 1 ]] && cmd+=" --X_min $X_min"
 [[ ${#X_max} -ge 1 ]] && cmd+=" --X_max $X_max"

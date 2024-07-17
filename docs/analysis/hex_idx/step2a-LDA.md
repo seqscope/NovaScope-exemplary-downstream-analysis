@@ -3,32 +3,13 @@ This example illustrates infering cell type factors using Latent Dirichlet Alloc
 
 **Prefix**:
 
-To clarify the input and output filenames, we utilize prefixes in this documentation. Below, we illustrate how these prefixes are defined. Those prefixes are automatically defined by the script; users do **NOT** need to manually define them. 
+We use prefixes to clarify input and output filenames in this documentation. These prefixes are automatically defined by the script; users do **NOT** need to define them manually.
 
 ```bash
-hexagon_prefix="${prefix}.hexagon.${sf}.d_${tw}"
-train_prefix="${prefix}.${sf}.nF${nf}.d_${tw}.s_${ep}"
+train_prefix="${prefix}.${solo_feature}.nf${nfactor}.d_${train_width}.s_${train_n_epoch}"
 ```
 
-* Details on variables used in above prefixes are in the [Job Configuration](./job_config.md).
-
-## Step 2a.1 Create Hexagonal Spatial Gene Expression (SGE) matrix
-Given a specified size of hexagons, segment the raw spatial gene expression (SGE) matrix into hexagonal SGE.
-
-Input & Output
-```bash
-# Input:
-${output_dir}/${prefix}.transcripts_filtered.tsv.gz
-${output_dir}/${prefix}.boundary.strict.geojson
-
-# Output: 
-${output_dir}/${train_model}/${hexagon_prefix}.tsv.gz
-```
-
-Commands:
-```bash
-$neda_dir/steps/step2a.1-create-hexagons.sh $input_configfile
-```
+* Variable details for the prefixes are in the [Job Configuration](./job_config.md).
 
 ## Step 2a.2 LDA Factorization
 An unsupervised learning of cell type factors using LDA.
@@ -36,8 +17,8 @@ An unsupervised learning of cell type factors using LDA.
 Input & Output:
 ```bash
 # Input:
-${output_dir}/${prefix}.feature.clean.tsv.gz
-${output_dir}/${train_model}/${hexagon_prefix}.tsv.gz
+$input_features                                      ## user-defined input features in TSV format
+$input_hexagon_sge_ficture                           ## user-defined input hexagon-indexed SGE matrix in FICTURE-compatible format
 
 # Output: 
 ${output_dir}/${train_model}/${train_prefix}.model.p
@@ -50,11 +31,11 @@ ${output_dir}/${train_model}/${train_prefix}.model_selection_candidates.p
 
 Commands:
 ```bash
-$neda_dir/steps/step2a.2-LDA-factorization.sh $input_configfile
+$neda_dir/steps/step2a.1-LDA-factorization.sh $input_configfile
 ```
 
 ## Step 2a.3 Creating Marker Gene Reports
-This step includes: generating a color table, identifying marker genes for each factor, and creating a report html file, which summarizes individual factors and marker genes.
+This step includes: generating a color table, identifying marker genes for each factor, and creating a report html file summarizing individual factors and marker genes.
 
 Input & Output:
 ```bash
@@ -70,5 +51,5 @@ ${output_dir}/${train_model}/${train_prefix}.factor.info.html
 
 Commands:
 ```bash
-$neda_dir/steps/step2a.3-LDA-factorization-report.sh $input_configfile
+$neda_dir/steps/step2a.2-LDA-factorization-report.sh $input_configfile
 ```

@@ -2,7 +2,7 @@ site_name: NovaScope-exemplary-downstream-analysis
 site_url: https://seqscope.github.io/NovaScope-exemplary-downstream-analysis
 
 # Repository
-repo_name: seqscope/NovaScope
+repo_name: seqscope/NEDA
 repo_url: https://github.com/seqscope/NovaScope-exemplary-downstream-analysis
 
 # Theme configuration
@@ -40,6 +40,9 @@ theme:
   font:
     text: 'Roboto'
     code: 'Roboto Mono'
+#  icon:
+#    admonition:
+#      <type>: <icon>
 
 # Navigation structure
 nav:
@@ -62,15 +65,20 @@ nav:
         - Step4. Pixel-level Decoding: analysis/hex_idx/step4-decode.md
   - Cell Segmentation-based Analysis:
       - Introduction: analysis/cell_idx/intro.md
-      - Preparing input: analysis/cell_idx/prepare_data.md
+      - Input Data: analysis/cell_idx/prepare_data.md
       - Analysis:
         - Step1. Create Cell-indexed SGE: analysis/cell_idx/step1-cell_SGE.md
         - Step2. Seurat Clustering: analysis/cell_idx/step2-Seurat-clustering.md
 
 
 # Markdown Extensions
+# Markdown Extensions
 markdown_extensions:
+  - abbr
+  - footnotes
   - admonition
+  - pymdownx.details
+  - pymdownx.superfences
 #  - codehilite:
 #      guess_lang: false 
   - toc:
@@ -81,7 +89,6 @@ markdown_extensions:
       linenums: true
       css_class: 'highlight'
   - pymdownx.superfences
-# - pymdownx.inlinehilite
 
 
 plugins:

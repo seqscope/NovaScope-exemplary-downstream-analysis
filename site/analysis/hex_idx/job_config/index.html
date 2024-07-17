@@ -1160,11 +1160,11 @@
 #=========================
 ## Input files
 transcripts=/path/to/the/transcripts/file                           ## Path to the FICTURE-compatible spatial digital gene expression matrix (SGE), whose naming convention in NovaScope is *.transcripts.tsv.gz.
-feature_clean=/path/to/the/clean/feature/file                       ## NovaScope name convention is *.feature.clean.tsv.gz
+input_features=/path/to/the/clean/feature/file                       ## NovaScope name convention is *.feature.clean.tsv.gz
 major_axis=&lt;X_or_Y&gt;                                                 ## Typically, the major axis is the axis with a greater length. Options: &quot;X&quot;, &quot;Y&quot;. For instance, in the minimal test run dataset, the major axis is Y, whereas it is X in the shallow and deep liver datasets.
 
 ## Input file Only required for Seurat+FICTURE analysis
-hexagon_sge_dir=/path/to/the/hexagon/indexed/sge/directory          ## (Seurat-only) Specify the directory with hexagon-indexed SGE, i.e., SGE with pixels segmented into hexagonal units, in the 10x genome format. This directory should have the following three files: features.tsv.gz, barcodes.tsv.gz, and matrix.mtx.gz.
+hexagon_sge_dir=/path/to/the/hexagon/indexed/sge/directory          ## (Seurat-only) Specify the directory with hexagon-indexed SGE, i.e., SGE with pixels segmented into hexagonal units, in the 10x genomics format. This directory should have the following three files: features.tsv.gz, barcodes.tsv.gz, and matrix.mtx.gz.
 
 ## Output 
 output_dir=/path/to/the/output/directory/                           ## Directory for output files: LDA results will be saved in ${output_dir}/LDA, and Seurat results wil be in ${output_dir}/Seurat.&quot;

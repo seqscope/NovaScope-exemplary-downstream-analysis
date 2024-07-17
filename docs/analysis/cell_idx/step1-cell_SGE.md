@@ -33,12 +33,16 @@ prefix=<output_prefix>                                  ## Replace with your out
 
 ## Step 1.1 Prepare Histology-based Cell Segmentation Mask Matrix
 
-To construct a cell-indexed spatial digital gene expression matrix (SGE), begin by executing histology-based cell segmentation using external methodologies, such as [Watershed](https://imagej.net/imaging/watershed) or [Cellpose](https://github.com/MouseLand/cellpose). Irrespective of the segmentation technique employed, ensure that the input histology image is aligned with the SGE. This alignment involves referencing and resizing the histology image to match the SGE coordinates and dimensions, which can be accomplished using Rule [`historef`](https://seqscope.github.io/NovaScope/walkthrough/rules/historef/) within [NovaScope](https://seqscope.github.io/NovaScope).
+To construct a cell-indexed spatial digital gene expression matrix (SGE), begin by executing histology-based cell segmentation using external methodologies, such as [Watershed](https://imagej.net/imaging/watershed) or [Cellpose](https://github.com/MouseLand/cellpose). Details for performing histology-based cell segmentation using [Watershed](https://imagej.net/imaging/watershed) and [Cellpose](https://github.com/MouseLand/cellpose) are provided in the [NovaScope Protocol paper](../../index.md#references). 
 
-Details for performing histology-based cell segmentation using [Watershed](https://imagej.net/imaging/watershed) and [Cellpose](https://github.com/MouseLand/cellpose) are provided in the [NovaScope Protocol paper](../../index.md#references). 
+!!! note
+
+      Irrespective of the segmentation technique used, ensure that the input histology image is **aligned** with the input SGE. 
+      
+      This alignment involves referencing and resizing the histology image to match the SGE coordinates and dimensions, which can be accomplished by Rule [`historef`](https://seqscope.github.io/NovaScope/fulldoc/rules/historef/) in [NovaScope](https://seqscope.github.io/NovaScope).
 
 ### Watershed
-[Watershed](https://imagej.net/imaging/watershed) outputs a black-and-white cell segmentation TIFF image (please see an example below) where white areas represent cell segments and black areas are non-tissue regions or cell boundaries. NEDA provides `make_segmask.py` to convert this image into a segmentation mask matrix in NumPy array format.
+[Watershed](https://imagej.net/imaging/watershed) outputs a black-and-white cell segmentation TIFF image (please see an example below) where white areas represent cell segments and black areas are non-tissue regions or cell boundaries. NEDA provides `make_segmask.py` to convert this image into a segmentation mask matrix in `NumPy` array format.
 
 Input & Output
 ```bash
@@ -63,12 +67,11 @@ Examples:
    **Figure 3: A black-and-white cell segmentation TIFF image from [Watershed](https://imagej.net/imaging/watershed).** 
 
 ### Cellpose
-Cellpose produces an `npy` file that serves as the segmentation mask matrix in NumPy array format. No additional action is required with NEDA.
-
+Cellpose produces an `npy` file that serves as the segmentation mask matrix in `NumPy` array format. No additional action is required with NEDA.
 
 ## Step1.2 Create cell-indexed spatial digital gene expression matrix
 
-Use the histology-based cell segmentation mask matrix file from [Step1.1](#step-11-prepare-histology-based-cell-segmentation-mask-matrix) to aggregate spatial transcriptomic data at the cellular level. NEDA’s `make_sge_from_npy.py` script is utilized here. Note that the npy file from [Watershed](https://imagej.net/imaging/watershed) and [Cellpose](https://github.com/MouseLand/cellpose) differs, so the script requires specifying the `--approach`. This step creates a cell-indexed SGE in 10x genome format.
+Use the histology-based cell segmentation mask matrix file from [Step1.1](#step-11-prepare-histology-based-cell-segmentation-mask-matrix) to aggregate spatial transcriptomic data at the cellular level. NEDA’s `make_sge_from_npy.py` script is utilized here. Note that the npy file from [Watershed](https://imagej.net/imaging/watershed) and [Cellpose](https://github.com/MouseLand/cellpose) differs, so the script requires specifying the `--approach`. This step creates a cell-indexed SGE in 10x genomics format.
 
 ### Watershed
 

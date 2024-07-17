@@ -7,8 +7,8 @@ This is an example to illustrate aggregating the spatial transcriptomic data fro
 
 ## Step-by-Step Procedure
 
-Before beginning the analysis, ensure that NEDA and its dependencies are [installed](../../installation/installation.md) in your computing environment. Follow these steps as outlined:
+Before beginning the analysis, ensure that NEDA and its dependencies are [installed](../../installation/installation.md). Follow these steps as outlined:
 
-1. Create a cell-indexed spatial digital gene expression matrix. This step requires the users manuually perform histology-based cell segmentation outside of NEDA using methods such as [Watershed](https://imagej.net/imaging/watershed) and [Cellpose](https://github.com/MouseLand/cellpose). 
+1. Create a cell-indexed spatial digital gene expression matrix. This step requires the users manually perform histology-based cell segmentation outside of NEDA using methods such as [Watershed](https://imagej.net/imaging/watershed) and [Cellpose](https://github.com/MouseLand/cellpose). 
 
 2. Apply Seurat to identify cell type clusters for those staining-based segmented cells.

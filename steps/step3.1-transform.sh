@@ -13,24 +13,26 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-read_config_for_ST $1 $neda
+read_config_for_neda $1 $neda
 
-# - (Seurat-only) Sanity check - make sure nfactor is defined
+# ===== INPUT/OUTPUT =====
+# * input:
+#   - input_transcripts         # defined by the user
+#   - model_path                # defined in the read_hexagon_index_config function
+
+# * output prefix:
+transform_prefix_w_dir="${model_dir}/${tranform_prefix}"
+
+# ===== SANITY CHECK =====
+# - (Seurat-only) make sure nfactor is defined
 if [[ -z $nfactor ]]; then
     echo -e "Error: nfactor is not defined. Please define nfactor in the input_data_and_params file."
     exit 1
 fi
 
-# Define the input and output paths and files
-# * input:
-transcripts_filtered="${output_dir}/${prefix}.transcripts_filtered.tsv.gz"
-# model_path: defined in the read_hexagon_index_config function
-# * output prefix:
-transform_prefix_w_dir="${model_dir}/${tranform_prefix}"
-
-# Examine the required input files
+# - Required files
 required_files=(
-    "${transcripts_filtered}"
+    "${input_transcripts}"
     "${model_path}"
 )
 
@@ -56,7 +58,7 @@ fi
 # ===== ANALYSIS =====
 # Transform
 command time -v python ${ficture}/ficture/scripts/transform_univ.py  \
-    --input ${transcripts_filtered} \
+    --input ${input_transcripts} \
     --model ${model_path}  \
     --output ${transform_prefix_w_dir} \
     --key ${solo_feature} \

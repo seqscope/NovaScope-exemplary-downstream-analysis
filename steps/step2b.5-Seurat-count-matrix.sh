@@ -13,19 +13,20 @@ echo -e "#=====================\n#"
 # Read input config
 neda=$(dirname $(dirname "$0"))
 source $neda/scripts/process_input.sh
-read_config_for_ST $1 $neda
+read_config_for_neda $1 $neda
 
-# Define the input and output paths and files
+# ===== INPUT/OUTPUT =====
 # * input:
-hex_sge_mtx="${hexagon_sge_dir}/matrix.mtx.gz"
-hex_sge_bcd="${hexagon_sge_dir}/barcodes.tsv.gz"
-hex_sge_ftr="${hexagon_sge_dir}/features.tsv.gz"
+hex_sge_mtx="${input_hexagon_sge_10x_dir}/matrix.mtx.gz"
+hex_sge_bcd="${input_hexagon_sge_10x_dir}/barcodes.tsv.gz"
+hex_sge_ftr="${input_hexagon_sge_10x_dir}/features.tsv.gz"
 seurat_cluster_meta="${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_metadata.csv"      # from step2b.3-Seurat-clustering.sh
+
 # * output:
 ct_mtx="${model_dir}/${prefix}_cutoff${nFeature_RNA_cutoff}_clusterbyres${res_of_interest}.tsv.gz"
-#renamed_model="${model_dir}/${prefix}.${solo_feature}.nfactor${new_nf}.d_${train_width}.s_${train_n_epoch}.model_matrix.tsv.gz"    # assigned after nf is read from the count matrix file
+#    - renamed_model    # assigned after nf is read from the count matrix file
 
-# Examine the input files
+# ===== SANITY CHECK =====
 required_files=(
     "${hex_sge_mtx}"
     "${hex_sge_bcd}"
@@ -44,7 +45,7 @@ echo -e "\nresolution: $res_of_interest\n"
 
 command time -v python ${neda}/scripts/seurat_cluster_to_count_matrix_for_categorical.py\
     --input_csv ${seurat_cluster_meta} \
-    --dge_path ${hexagon_sge_dir} \
+    --dge_path ${input_hexagon_sge_10x_dir} \
     --output ${ct_mtx} \
     --key ${solo_feature} \
     --cluster "SCT_snn_res.${res_of_interest}" \

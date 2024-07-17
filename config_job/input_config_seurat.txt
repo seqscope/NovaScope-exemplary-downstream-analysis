@@ -3,33 +3,31 @@
 #=========================
 # Mandatory Fields
 #=========================
-# input files
-transcripts="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_data_for_Zenodo_v2/shallow/shallow.transcripts.tsv.gz"
-feature_clean="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_data_for_Zenodo_v2/shallow/shallow.feature.clean.tsv.gz"
-major_axis="X"
-
-hexagon_sge_dir="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/input_data_for_Zenodo_v2/shallow/hex_sge_d18"
+input_transcripts="/nfs/turbo/sph-hmkang/index/data/weiqiuc/testruns/neda/input_data_for_Zenodo_v3/shallow/shallow.gn.filtered.transcripts.tsv.gz"
+input_features="/nfs/turbo/sph-hmkang/index/data/weiqiuc/testruns/neda/input_data_for_Zenodo_v3/shallow/shallow.feature.clean.tsv.gz"
+input_xyrange="/nfs/turbo/sph-hmkang/index/data/weiqiuc/testruns/neda/input_data_for_Zenodo_v3/shallow/shallow.gn.filtered.coordinate_minmax.tsv"
+input_hexagon_sge_10x_dir="/nfs/turbo/sph-hmkang/index/data/weiqiuc/testruns/neda/input_data_for_Zenodo_v3/shallow/shallow.gn.raw.d_18.hexagon"
 
 # output directory and prefix
-output_dir="/nfs/turbo/sph-hmkang/index/data/weiqiuc/NovaScope_local/NovaScope-exemplary-downstream-testrun/results_v2/shallow"
+output_dir="/nfs/turbo/sph-hmkang/index/data/weiqiuc/testruns/neda/results_v3/shallow"
 prefix="shallow"
 
 # analysis model
 train_model="Seurat"
 
 # analysis param
+major_axis="X"
+
 solo_feature="gn"
 train_width=18
-nfactor=12
-#train_n_epoch="NA"
+train_n_epoch="NA"
 fit_width=18
 anchor_dist=4
 
 #=========================
 # Optional Fields
 #=========================
-#threads=12
-#seed=2024030700
+threads=12
 
 #=========================
 # Manually-defined Fields
@@ -43,4 +41,4 @@ anchor_dist=4
 
 # == Defined below after manual evaluation at the second stop
 #res_of_interest=1
-#nf=17
+#nfactor=17
