@@ -48,7 +48,7 @@ read_config_for_neda() {
 
     echo -e "\n#=== INPUT ===#"
     echo -e "input transcripts: $input_transcripts"
-    echo -e "input feature: $input_feature"
+    echo -e "input feature: $input_features"
     echo -e "input min and max x y coordinates: $input_xyrange"
     echo -e "input hexagon SGE in FICTURE-compatible format: $input_hexagon_sge_ficture"
     echo -e "input hexagon SGE in 10X Genomics-compatible format: $input_hexagon_sge_10x_dir"
@@ -89,12 +89,11 @@ read_config_for_neda() {
     
     # Handling the output directory
     echo -e "\n#=== OUTPUT DIR/PREFIX ===#"
-    if [ ! -d "$output_dir" ]; then
-        mkdir -p "$output_dir"
-    fi
     model_dir=${output_dir}/${train_model}
     echo -e "output dir: $output_dir"
     echo -e "model dir: $model_dir"
+    mkdir -p $output_dir
+    mkdir -p $model_dir
 
     train_prefix="${prefix}.${solo_feature}.nf${nfactor}.d_${train_width}.s_${train_n_epoch}"
     tranform_prefix="${train_prefix}.prj_${fit_width}.r_${anchor_dist}"
