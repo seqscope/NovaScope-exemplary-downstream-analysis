@@ -7,6 +7,7 @@ The `tranform_prefix` will be automatically defined by the script as below.
 train_prefix="${prefix}.${solo_feature}.nf${nfactor}.d_${train_width}.s_${train_n_epoch}"
 tranform_prefix="${train_prefix}.prj_${fit_width}.r_${anchor_dist}"
 ```
+
 * See variables applied above in the [Job Configuration](./job_config.md).
 
 ## Step 3.1 Transform
