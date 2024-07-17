@@ -203,7 +203,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    seqscope/NovaScope
+    seqscope/NEDA
   </div>
 </a>
       </div>
@@ -342,7 +342,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    seqscope/NovaScope
+    seqscope/NEDA
   </div>
 </a>
     </div>
@@ -952,7 +952,7 @@
         
   
   <span class="md-ellipsis">
-    Preparing input
+    Input Data
   </span>
   
 
@@ -1358,7 +1358,7 @@ module<span class="w"> </span>load<span class="w"> </span>R/4.2.0<span class="w"
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Irrespective of the segmentation technique used, ensure that the input histology image is <strong>aligned</strong> with the input SGE. </p>
-<p>This alignment involves referencing and resizing the histology image to match the SGE coordinates and dimensions, which can be accomplished by Rule <a href="https://seqscope.github.io/NovaScope/walkthrough/rules/historef/"><code>historef</code></a> in <a href="https://seqscope.github.io/NovaScope">NovaScope</a>.</p>
+<p>This alignment involves referencing and resizing the histology image to match the SGE coordinates and dimensions, which can be accomplished by Rule <a href="https://seqscope.github.io/NovaScope/fulldoc/rules/historef/"><code>historef</code></a> in <a href="https://seqscope.github.io/NovaScope">NovaScope</a>.</p>
 </div>
 <h3 id="watershed">Watershed<a class="headerlink" href="#watershed" title="Permanent link">&para;</a></h3>
 <p><a href="https://imagej.net/imaging/watershed">Watershed</a> outputs a black-and-white cell segmentation TIFF image (please see an example below) where white areas represent cell segments and black areas are non-tissue regions or cell boundaries. NEDA provides <code>make_segmask.py</code> to convert this image into a segmentation mask matrix in <code>NumPy</code> array format.</p>
@@ -1388,7 +1388,7 @@ module<span class="w"> </span>load<span class="w"> </span>R/4.2.0<span class="w"
 <h3 id="cellpose">Cellpose<a class="headerlink" href="#cellpose" title="Permanent link">&para;</a></h3>
 <p>Cellpose produces an <code>npy</code> file that serves as the segmentation mask matrix in <code>NumPy</code> array format. No additional action is required with NEDA.</p>
 <h2 id="step12-create-cell-indexed-spatial-digital-gene-expression-matrix">Step1.2 Create cell-indexed spatial digital gene expression matrix<a class="headerlink" href="#step12-create-cell-indexed-spatial-digital-gene-expression-matrix" title="Permanent link">&para;</a></h2>
-<p>Use the histology-based cell segmentation mask matrix file from <a href="#step-11-prepare-histology-based-cell-segmentation-mask-matrix">Step1.1</a> to aggregate spatial transcriptomic data at the cellular level. NEDA’s <code>make_sge_from_npy.py</code> script is utilized here. Note that the npy file from <a href="https://imagej.net/imaging/watershed">Watershed</a> and <a href="https://github.com/MouseLand/cellpose">Cellpose</a> differs, so the script requires specifying the <code>--approach</code>. This step creates a cell-indexed SGE in 10x genome format.</p>
+<p>Use the histology-based cell segmentation mask matrix file from <a href="#step-11-prepare-histology-based-cell-segmentation-mask-matrix">Step1.1</a> to aggregate spatial transcriptomic data at the cellular level. NEDA’s <code>make_sge_from_npy.py</code> script is utilized here. Note that the npy file from <a href="https://imagej.net/imaging/watershed">Watershed</a> and <a href="https://github.com/MouseLand/cellpose">Cellpose</a> differs, so the script requires specifying the <code>--approach</code>. This step creates a cell-indexed SGE in 10x genomics format.</p>
 <h3 id="watershed_1">Watershed<a class="headerlink" href="#watershed_1" title="Permanent link">&para;</a></h3>
 <p>Input &amp; Output
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>

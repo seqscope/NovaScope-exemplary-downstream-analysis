@@ -203,7 +203,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    seqscope/NovaScope
+    seqscope/NEDA
   </div>
 </a>
       </div>
@@ -342,7 +342,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    seqscope/NovaScope
+    seqscope/NEDA
   </div>
 </a>
     </div>
@@ -1018,7 +1018,7 @@
         
   
   <span class="md-ellipsis">
-    Preparing input
+    Input Data
   </span>
   
 
@@ -1196,11 +1196,13 @@
 <h1 id="step-3-transform">Step 3 Transform<a class="headerlink" href="#step-3-transform" title="Permanent link">&para;</a></h1>
 <p><strong>Prefix</strong>:</p>
 <p>The <code>tranform_prefix</code> will be automatically defined by the script as below.
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">tranform_prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">train_prefix</span><span class="si">}</span><span class="s2">.prj_</span><span class="si">${</span><span class="nv">pw</span><span class="si">}</span><span class="s2">.r_</span><span class="si">${</span><span class="nv">ar</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">train_prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}</span><span class="s2">.</span><span class="si">${</span><span class="nv">solo_feature</span><span class="si">}</span><span class="s2">.nf</span><span class="si">${</span><span class="nv">nfactor</span><span class="si">}</span><span class="s2">.d_</span><span class="si">${</span><span class="nv">train_width</span><span class="si">}</span><span class="s2">.s_</span><span class="si">${</span><span class="nv">train_n_epoch</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nv">tranform_prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">train_prefix</span><span class="si">}</span><span class="s2">.prj_</span><span class="si">${</span><span class="nv">fit_width</span><span class="si">}</span><span class="s2">.r_</span><span class="si">${</span><span class="nv">anchor_dist</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div></td></tr></table></div>
 * See variables applied above in the <a href="../job_config/">Job Configuration</a>.</p>
 <h2 id="step-31-transform">Step 3.1 Transform<a class="headerlink" href="#step-31-transform" title="Permanent link">&para;</a></h2>
-<p>Convert to a factor space using the provided model, which includes gene names and potentially Dirichlet parameters. The pixel-level data will be organized into (potentially overlapping) hexagonal groups. </p>
+<p>Convert to a factor space using the provided model, which includes gene names and potentially Dirichlet parameters. The pixel-level data will be organized into hexagonal groups.</p>
 <p>Input &amp; Output
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1209,8 +1211,8 @@
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Input:</span>
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.transcripts_filtered.tsv.gz
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_prefix</span><span class="si">}</span>.model_matrix.tsv.gz<span class="w">              </span>
+<span class="nv">$input_transcripts</span><span class="w">                                                      </span><span class="c1">## user-defined input SGE in FICTURE-compatible TSV format</span>
+<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_prefix</span><span class="si">}</span>.model_matrix.tsv.gz<span class="w">        </span><span class="c1">## a model matrix from LDA (step2a) or from Seurat (step2b)</span>
 
 <span class="c1"># Output:</span>
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">tranform_prefix</span><span class="si">}</span>.fit_result.tsv.gz
@@ -1220,8 +1222,8 @@
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step3.1-transform.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
 <h2 id="step-32-transform-visualization">Step 3.2 Transform Visualization<a class="headerlink" href="#step-32-transform-visualization" title="Permanent link">&para;</a></h2>
-<p>For LDA, simply create a symbolic link from the color table created at <a href="../step2a-LDA/#step-2a3-summarize-lda-factorization">step 2a.3</a> and use it to visualize the transformed data.</p>
-<p>For Seurat, this step creates a color table and visualize the transformed data. </p>
+<p>For LDA, this step simply creates a symbolic link from the color table created at <a href="../step2a-LDA/#step-2a3-summarize-lda-factorization">step 2a.3</a> and uses it to visualize the transformed data.</p>
+<p>For Seurat, this step creates a color table and visualize the transformed data.</p>
 <p>Input &amp; Output
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1232,9 +1234,9 @@
 <span class="normal">7</span>
 <span class="normal">8</span>
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Input:</span>
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_prefix</span><span class="si">}</span>.color.tsv<span class="w">                  </span><span class="c1"># Only if the train model is defined as &quot;LDA&quot;</span>
+<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_prefix</span><span class="si">}</span>.color.tsv<span class="w">                  </span><span class="c1">## (LDA-only) use the existing color table if available</span>
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">tranform_prefix</span><span class="si">}</span>.fit_result.tsv.gz
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.coordinate_minmax.tsv
+<span class="nv">$input_xyrange</span><span class="w">                                                          </span><span class="c1">## user-defined input min max coordinates for SGE</span>
 
 <span class="c1"># Output:</span>
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">tranform_prefix</span><span class="si">}</span>.rgb.tsv

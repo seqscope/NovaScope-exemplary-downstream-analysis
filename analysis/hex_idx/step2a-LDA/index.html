@@ -203,7 +203,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    seqscope/NovaScope
+    seqscope/NEDA
   </div>
 </a>
       </div>
@@ -342,7 +342,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    seqscope/NovaScope
+    seqscope/NEDA
   </div>
 </a>
     </div>
@@ -834,15 +834,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#step-2a1-create-hexagonal-spatial-gene-expression-sge-matrix" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 2a.1 Create Hexagonal Spatial Gene Expression (SGE) matrix
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#step-2a2-lda-factorization" class="md-nav__link">
     <span class="md-ellipsis">
       Step 2a.2 LDA Factorization
@@ -1027,7 +1018,7 @@
         
   
   <span class="md-ellipsis">
-    Preparing input
+    Input Data
   </span>
   
 
@@ -1167,15 +1158,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#step-2a1-create-hexagonal-spatial-gene-expression-sge-matrix" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 2a.1 Create Hexagonal Spatial Gene Expression (SGE) matrix
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#step-2a2-lda-factorization" class="md-nav__link">
     <span class="md-ellipsis">
       Step 2a.2 LDA Factorization
@@ -1214,32 +1196,12 @@
 <h1 id="step-2a-infer-cell-type-factors-using-latent-dirichlet-allocation-lda">Step 2a. Infer Cell Type Factors using Latent Dirichlet Allocation (LDA).<a class="headerlink" href="#step-2a-infer-cell-type-factors-using-latent-dirichlet-allocation-lda" title="Permanent link">&para;</a></h1>
 <p>This example illustrates infering cell type factors using Latent Dirichlet Allocation (LDA). </p>
 <p><strong>Prefix</strong>:</p>
-<p>To clarify the input and output filenames, we utilize prefixes in this documentation. Below, we illustrate how these prefixes are defined. Those prefixes are automatically defined by the script; users do <strong>NOT</strong> need to manually define them. </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">hexagon_prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}</span><span class="s2">.hexagon.</span><span class="si">${</span><span class="nv">sf</span><span class="si">}</span><span class="s2">.d_</span><span class="si">${</span><span class="nv">tw</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="nv">train_prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}</span><span class="s2">.</span><span class="si">${</span><span class="nv">sf</span><span class="si">}</span><span class="s2">.nF</span><span class="si">${</span><span class="nv">nf</span><span class="si">}</span><span class="s2">.d_</span><span class="si">${</span><span class="nv">tw</span><span class="si">}</span><span class="s2">.s_</span><span class="si">${</span><span class="nv">ep</span><span class="si">}</span><span class="s2">&quot;</span>
+<p>We use prefixes to clarify input and output filenames in this documentation. These prefixes are automatically defined by the script; users do <strong>NOT</strong> need to define them manually.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">train_prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}</span><span class="s2">.</span><span class="si">${</span><span class="nv">solo_feature</span><span class="si">}</span><span class="s2">.nf</span><span class="si">${</span><span class="nv">nfactor</span><span class="si">}</span><span class="s2">.d_</span><span class="si">${</span><span class="nv">train_width</span><span class="si">}</span><span class="s2">.s_</span><span class="si">${</span><span class="nv">train_n_epoch</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div></td></tr></table></div>
 <ul>
-<li>Details on variables used in above prefixes are in the <a href="../job_config/">Job Configuration</a>.</li>
+<li>Variable details for the prefixes are in the <a href="../job_config/">Job Configuration</a>.</li>
 </ul>
-<h2 id="step-2a1-create-hexagonal-spatial-gene-expression-sge-matrix">Step 2a.1 Create Hexagonal Spatial Gene Expression (SGE) matrix<a class="headerlink" href="#step-2a1-create-hexagonal-spatial-gene-expression-sge-matrix" title="Permanent link">&para;</a></h2>
-<p>Given a specified size of hexagons, segment the raw spatial gene expression (SGE) matrix into hexagonal SGE.</p>
-<p>Input &amp; Output
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Input:</span>
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.transcripts_filtered.tsv.gz
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.boundary.strict.geojson
-
-<span class="c1"># Output: </span>
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">hexagon_prefix</span><span class="si">}</span>.tsv.gz
-</code></pre></div></td></tr></table></div></p>
-<p>Commands:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step2a.1-create-hexagons.sh<span class="w"> </span><span class="nv">$input_configfile</span>
-</code></pre></div></td></tr></table></div></p>
 <h2 id="step-2a2-lda-factorization">Step 2a.2 LDA Factorization<a class="headerlink" href="#step-2a2-lda-factorization" title="Permanent link">&para;</a></h2>
 <p>An unsupervised learning of cell type factors using LDA.</p>
 <p>Input &amp; Output:
@@ -1254,8 +1216,8 @@
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Input:</span>
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.feature.clean.tsv.gz
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">hexagon_prefix</span><span class="si">}</span>.tsv.gz
+<span class="nv">$input_features</span><span class="w">                                      </span><span class="c1">## user-defined input features in TSV format</span>
+<span class="nv">$input_hexagon_sge_ficture</span><span class="w">                           </span><span class="c1">## user-defined input hexagon-indexed SGE matrix in FICTURE-compatible format</span>
 
 <span class="c1"># Output: </span>
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_prefix</span><span class="si">}</span>.model.p
@@ -1266,10 +1228,10 @@
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_prefix</span><span class="si">}</span>.model_selection_candidates.p
 </code></pre></div></td></tr></table></div></p>
 <p>Commands:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step2a.2-LDA-factorization.sh<span class="w"> </span><span class="nv">$input_configfile</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step2a.1-LDA-factorization.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
 <h2 id="step-2a3-creating-marker-gene-reports">Step 2a.3 Creating Marker Gene Reports<a class="headerlink" href="#step-2a3-creating-marker-gene-reports" title="Permanent link">&para;</a></h2>
-<p>This step includes: generating a color table, identifying marker genes for each factor, and creating a report html file, which summarizes individual factors and marker genes.</p>
+<p>This step includes: generating a color table, identifying marker genes for each factor, and creating a report html file summarizing individual factors and marker genes.</p>
 <p>Input &amp; Output:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1288,7 +1250,7 @@
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_prefix</span><span class="si">}</span>.factor.info.html
 </code></pre></div></td></tr></table></div></p>
 <p>Commands:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step2a.3-LDA-factorization-report.sh<span class="w"> </span><span class="nv">$input_configfile</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step2a.2-LDA-factorization-report.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
 
 

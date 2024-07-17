@@ -203,7 +203,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    seqscope/NovaScope
+    seqscope/NEDA
   </div>
 </a>
       </div>
@@ -342,7 +342,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    seqscope/NovaScope
+    seqscope/NEDA
   </div>
 </a>
     </div>
@@ -1045,7 +1045,7 @@
         
   
   <span class="md-ellipsis">
-    Preparing input
+    Input Data
   </span>
   
 
@@ -1248,23 +1248,21 @@
 
 
 <h1 id="step-2b-inferring-cell-type-factors-using-seurat">Step 2b. Inferring Cell Type Factors using Seurat<a class="headerlink" href="#step-2b-inferring-cell-type-factors-using-seurat" title="Permanent link">&para;</a></h1>
-<p>This example illustrates infering cell type factors using Seurat. This process contains two stops that require manual evaluation, including one at <a href="#step-2b2-manually-select-the-cutoffs">step 2b.2</a> and the other at <a href="#step-2b4-manually-select-the-resolution-for-clustering">step 2b.4</a>. </p>
+<p>This example illustrates infering cell type factors using Seurat. This process contains two stops that require manual evaluations at <a href="#step-2b2-manually-select-the-cutoffs">step 2b.2</a> and <a href="#step-2b4-manually-select-the-resolution-for-clustering">step 2b.4</a>.</p>
 <p><strong>Prefix</strong>:</p>
-<p>This documentation uses the following prefixes to illustrate input and output filenames, which are automatically assigned by the script. </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">hexagon_prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}</span><span class="s2">.hexagon.</span><span class="si">${</span><span class="nv">sf</span><span class="si">}</span><span class="s2">.d_</span><span class="si">${</span><span class="nv">tw</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="nv">train_prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}</span><span class="s2">.</span><span class="si">${</span><span class="nv">sf</span><span class="si">}</span><span class="s2">.nF</span><span class="si">${</span><span class="nv">nf</span><span class="si">}</span><span class="s2">.d_</span><span class="si">${</span><span class="nv">tw</span><span class="si">}</span><span class="s2">.s_</span><span class="si">${</span><span class="nv">ep</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">    </span>
+<p>This documentation uses the following prefixes to illustrate input and output filenames, which are automatically assigned by the script.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">train_prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}</span><span class="s2">.</span><span class="si">${</span><span class="nv">solo_feature</span><span class="si">}</span><span class="s2">.nf</span><span class="si">${</span><span class="nv">nfactor</span><span class="si">}</span><span class="s2">.d_</span><span class="si">${</span><span class="nv">train_width</span><span class="si">}</span><span class="s2">.s_</span><span class="si">${</span><span class="nv">train_n_epoch</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div></td></tr></table></div>
 <ul>
-<li>The <code>nf</code> will be determined in <a href="#step-2b5-prepare-a-count-matrix-with-the-selected-resolution">step 2b.5</a>.</li>
-<li>Details on variables used in above prefixes are in the <a href="../job_config/">Job Configuration</a>.</li>
+<li>The <code>nfactor</code> will be determined in <a href="#step-2b5-prepare-a-count-matrix-with-the-selected-resolution">step 2b.5</a>.</li>
+<li>Variable details for the prefixes are in the <a href="../job_config/">Job Configuration</a>.</li>
 </ul>
 <h2 id="step-2b1-data-evaluation">Step 2b.1 Data Evaluation<a class="headerlink" href="#step-2b1-data-evaluation" title="Permanent link">&para;</a></h2>
-<p>This step applies the 'Seurat_analysis.R' script in test mode for evaluation, which includes:</p>
+<p>This step applies the <code>Seurat_analysis.R</code> script in test mode to</p>
 <ul>
-<li>Assessing counts of mitochondrial and hypothetical genes,</li>
-<li>Examining the distribution of the number of spatial barcodes per hexagon (nCount_RNA) and the number of genes detected per hexagon (Nfeature_RNA),</li>
-<li>Filtering the SGE with various nFeature_RNA thresholds — 50, 100, 200, 300, 400, 500, 750, and 1000 — and creating density plots to assess each threshold's efficacy</li>
+<li>assess counts of mitochondrial and hypothetical genes,</li>
+<li>examine the distribution of the number of spatial barcodes per hexagon (nCount_RNA) and the number of genes detected per hexagon (<code>Nfeature_RNA</code>),</li>
+<li>evaluate assess the performance of different nFeature_RNA thresholds — 50, 100, 200, 300, 400, 500, 750, and 1000 — to filter the input hexagon-indexed SGE.</li>
 </ul>
 <p>Input &amp; Output
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1275,36 +1273,37 @@
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Input:</span>
-<span class="si">${</span><span class="nv">hexagon_sge_dir</span><span class="si">}</span>/features.tsv.gz
-<span class="si">${</span><span class="nv">hexagon_sge_dir</span><span class="si">}</span>/barcodes.tsv.gz
-<span class="si">${</span><span class="nv">hexagon_sge_dir</span><span class="si">}</span>/matrix.mtx.gz
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Input: </span>
+<span class="si">${</span><span class="nv">input_hexagon_sge_10x_dir</span><span class="si">}</span>/barcodes.tsv.gz<span class="w">                        </span><span class="c1">## user-defined input hexagon SGE in 10X Genomics format</span>
+<span class="si">${</span><span class="nv">input_hexagon_sge_10x_dir</span><span class="si">}</span>/features.tsv.gz<span class="w">     </span>
+<span class="si">${</span><span class="nv">input_hexagon_sge_10x_dir</span><span class="si">}</span>/matrix.mtx.gz<span class="w">  </span>
 
 <span class="c1"># Output: </span>
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/Ncount_Nfeature_vln.png
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/nFeature_RNA_dist.png
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/nFeature_RNA_cutoff<span class="si">${</span><span class="nv">cutoff</span><span class="si">}</span>.png<span class="w"> </span><span class="c1"># for each cut off, including 50, 100, 200, 300, 400, 500, 750, and 1000</span>
+<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/nFeature_RNA_cutoff<span class="si">${</span><span class="nv">cutoff</span><span class="si">}</span>.png<span class="w">       </span><span class="c1">## a density plot with two panels, displaying the hexagon-indexed SGE before and after filtering by Nfeature_RNA, for each nFeature_RNA cutoff</span>
 </code></pre></div></td></tr></table></div></p>
 <p>Commands:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step2b.1-Seurat-test-cutoff.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
 <h2 id="step-2b2-manually-selecting-the-optimal-nfeature_rna-cutoff">Step 2b.2 Manually Selecting the Optimal nFeature_RNA Cutoff<a class="headerlink" href="#step-2b2-manually-selecting-the-optimal-nfeature_rna-cutoff" title="Permanent link">&para;</a></h2>
-<p>Examine the density plots generated by <a href="#step-2b1-create-hexagonal-spatial-gene-expression-sge-matrix-and-test-different-cutoffs-for-nfeature_rna">step 2b.1</a> to choose a nFeature_RNA cutoff, aiming to remove noise signals. For our example data, we applied a cut off of 500 for deep liver section dataset, and 100 for shallow liver section dataset as well as the minimal test dataset. It is optional to define x y ranges(<code>X_min</code>, <code>X_max</code>, <code>Y_min</code>, and <code>Y_max</code>). </p>
-<p>Add the following variables to the input configuration file. </p>
+<p>Examine density plots generated by <a href="#step-2b1-data-evaluation">step 2b.1</a> to choose the optimal <code>nFeature_RNA</code> cutoff to remove noise signals. For our example data, we applied a cut off of 500 for the deep liver section dataset, and 100 for the shallow liver section dataset and the minimal test dataset. It is optional to define x y ranges(<code>X_min</code>, <code>X_max</code>, <code>Y_min</code>, and <code>Y_max</code>).</p>
+<p>Add the following variables to the input configuration file.</p>
 <p>Example:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">nFeature_RNA_cutoff</span><span class="o">=</span><span class="m">100</span><span class="w">         </span><span class="c1">## The cutoff for nFeature_RNA    </span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">nFeature_RNA_cutoff</span><span class="o">=</span><span class="m">100</span><span class="w">   </span>
 <span class="nv">X_min</span><span class="o">=</span><span class="m">2</span>.5e+06
 <span class="nv">X_max</span><span class="o">=</span>1e+07
 <span class="nv">Y_min</span><span class="o">=</span>1e+06
 <span class="nv">Y_max</span><span class="o">=</span>6e+06
 </code></pre></div></td></tr></table></div></p>
 <h2 id="step-2b3-seurat-clustering-analysis">Step 2b.3 Seurat Clustering Analysis<a class="headerlink" href="#step-2b3-seurat-clustering-analysis" title="Permanent link">&para;</a></h2>
-<p>The step script starts with the removal of mitochondrial and hypothetical genes and the filtering of hexagons based on <code>nFeature_RNA_cutoff</code> and, when applied, X Y ranges. Subsequently, it applies sctransform normalization followed by dimensionality reduction through <a href="https://satijalab.org/seurat/reference/runpca">Principal Component Analysis (PCA)</a> and <a href="https://satijalab.org/seurat/reference/runumap">Uniform Manifold Approximation and Projection (UMAP)</a> embedding.</p>
-<p>Next, the step script employs <a href="https://satijalab.org/seurat/reference/findclusters"><code>FindClusters</code></a> segregate hexagons into clusters utilizing a shared nearest neighbor (SNN) modularity optimization-based clustering algorithm. The argument <code>resolution</code> in <a href="https://satijalab.org/seurat/reference/findclusters"><code>FindClusters</code></a> determines the "granularity" of clusters, i.e., a higher resolution value yields more clusters. Thus, this step will examine the performance of a range of <code>resolutions</code>, including 0.25, 0.5, 0.75, 1, 1.25, 1.5, and 1.75. For each specified resolution, the script generates an UMAP for dimensionality reduction, a spatial plot to visualize the clusters and their spatial arrangement, and a Differential Expression (DE) file, detailing marker genes identified for each cluster.</p>
+<p>This step starts with removing mitochondrial and hypothetical genes and filtering the hexagon-indexed SGE matrix by <code>nFeature_RNA_cutoff</code>. When X Y coordinate ranges are applied, the hexagon-indexed SGE matrix will also be filtered by coordinates. </p>
+<p>Subsequently, this step applies <a href="https://github.com/satijalab/sctransform">sctransform</a> normalization followed by dimensionality reduction through <a href="https://satijalab.org/seurat/reference/runpca">Principal Component Analysis (PCA)</a> and <a href="https://satijalab.org/seurat/reference/runumap">Uniform Manifold Approximation and Projection (UMAP)</a> embedding.</p>
+<p>Next, the step employs <a href="https://satijalab.org/seurat/reference/findclusters"><code>FindClusters</code></a> to segregate hexagons into clusters utilizing a shared nearest neighbor (SNN) modularity optimization-based clustering algorithm. During this process, <a href="https://satijalab.org/seurat/reference/findclusters"><code>FindClusters</code></a> applies an argument of <code>resolution</code> to determine the "granularity" of clusters, i.e., a higher resolution value yields more clusters. A range of <code>resolutions</code>, including 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, and 2, are applied to explore the optimal <code>resolutions</code>. For each resolution, the step generates an UMAP for dimensionality reduction, a spatial plot to visualize the clusters and their spatial arrangement, and a CSV file of differentially expressed genes for each cluster.</p>
 <p>Additionally, this step generates a metadata file containing information on the cluster assignment for each hexagon, and an RDS (R Data Serialization) file that stores the complete Seurat object with all the compiled data.</p>
 <p>Input &amp; Output
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1317,26 +1316,26 @@
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Input: </span>
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/features.tsv.gz
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/barcodes.tsv.gz
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/matrix.mtx.gz
+<span class="si">${</span><span class="nv">input_hexagon_sge_10x_dir</span><span class="si">}</span>/barcodes.tsv.gz<span class="w">                                                    </span><span class="c1">## user-defined input hexagon-indexed SGE in 10X Genomics-compatible format</span>
+<span class="si">${</span><span class="nv">input_hexagon_sge_10x_dir</span><span class="si">}</span>/features.tsv.gz<span class="w">     </span>
+<span class="si">${</span><span class="nv">input_hexagon_sge_10x_dir</span><span class="si">}</span>/matrix.mtx.gz<span class="w">     </span>
 
 <span class="c1"># Output: </span>
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_metadata.csv<span class="w">                </span><span class="c1"># a metadata file</span>
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_SCT.RDS<span class="w">                     </span><span class="c1"># an RDS file</span>
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_res<span class="si">${</span><span class="nv">res</span><span class="si">}</span>_DE.csv<span class="w">            </span><span class="c1"># for each resolution (`$res`) including 0.25, 0.5, 0.75, 1, 1.25, 1.5, and 1.75</span>
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_res<span class="si">${</span><span class="nv">res</span><span class="si">}</span>_DimSpatial.png<span class="w">    </span><span class="c1"># for each resolution (`$res`) including 0.25, 0.5, 0.75, 1, 1.25, 1.5, and 1.75</span>
+<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_metadata.csv<span class="w">                </span><span class="c1">## a metadata file</span>
+<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_SCT.RDS<span class="w">                     </span><span class="c1">## an RDS file</span>
+<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_res<span class="si">${</span><span class="nv">res</span><span class="si">}</span>_DE.csv<span class="w">            </span><span class="c1">## Each resolution returns a CSV file of differentially expressed genes for each cluster</span>
+<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_res<span class="si">${</span><span class="nv">res</span><span class="si">}</span>_DimSpatial.png<span class="w">    </span><span class="c1">## Each resolution returns an image of two panels including an UMAP for dimensionality reduction, a spatial plot to visualize the clusters and their spatial arrangement </span>
 </code></pre></div></td></tr></table></div></p>
 <p>Commands:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$neda_dir</span>/steps/step2b.3-Seurat-clustering.sh<span class="w"> </span><span class="nv">$input_configfile</span>
 </code></pre></div></td></tr></table></div></p>
 <h2 id="step-2b4-manually-selecting-the-optimal-clustering-resolution">Step 2b.4 Manually Selecting the Optimal Clustering Resolution<a class="headerlink" href="#step-2b4-manually-selecting-the-optimal-clustering-resolution" title="Permanent link">&para;</a></h2>
-<p>Examine the UMAP and spatial plots from the <a href="#step-2b3-seurat-clustering-analysis">step 2b.3</a> and choose the optimal resolution. Then, save this chosen resolution into the input configuration file as the <code>res_of_interest</code> variable. </p>
+<p>Examine the UMAP and spatial plots from the <a href="#step-2b3-seurat-clustering-analysis">step 2b.3</a> and choose the optimal <code>resolution</code>. Then, save this chosen <code>resolution</code> into the input configuration file as the <code>res_of_interest</code> variable.</p>
 <p>Example:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">res_of_interest</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div></td></tr></table></div></p>
 <h2 id="step-2b5-preparing-a-count-matrix">Step 2b.5 Preparing a Count Matrix<a class="headerlink" href="#step-2b5-preparing-a-count-matrix" title="Permanent link">&para;</a></h2>
-<p>Transform the metadata into a count matrix to serve as the model matrix for the subsequent step. Additionally, the number of clusters from the model matrix will be obtained and assigned to the <code>nf</code> variable in the input configuration file.</p>
+<p>Transform the metadata file into a count matrix to serve as the model matrix for the subsequent steps. This step automatically detects the number of clusters from the model matrix and assignes it as a <code>nfactor</code> variable in the input configuration file.</p>
 <p>Input &amp; Output
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1346,10 +1345,10 @@
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Input:</span>
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/features.tsv.gz
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/barcodes.tsv.gz
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/matrix.mtx.gz
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_metadata.csv
+<span class="si">${</span><span class="nv">input_hexagon_sge_10x_dir</span><span class="si">}</span>/barcodes.tsv.gz<span class="w">                                                       </span><span class="c1">## user-defined input hexagon-indexed SGE in 10X Genomics-compatible format</span>
+<span class="si">${</span><span class="nv">input_hexagon_sge_10x_dir</span><span class="si">}</span>/features.tsv.gz<span class="w">     </span>
+<span class="si">${</span><span class="nv">input_hexagon_sge_10x_dir</span><span class="si">}</span>/matrix.mtx.gz<span class="w">     </span>
+<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_metadata.csv<span class="w">                   </span><span class="c1">## the meta file from step 2b.3</span>
 
 <span class="c1"># Output: </span>
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_model</span><span class="si">}</span>/<span class="si">${</span><span class="nv">train_prefix</span><span class="si">}</span>.model_matrix.tsv.gz

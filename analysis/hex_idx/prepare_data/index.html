@@ -203,7 +203,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    seqscope/NovaScope
+    seqscope/NEDA
   </div>
 </a>
       </div>
@@ -342,7 +342,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    seqscope/NovaScope
+    seqscope/NEDA
   </div>
 </a>
     </div>
@@ -708,20 +708,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#mandatory-input-files" class="md-nav__link">
+  <a href="#input-files" class="md-nav__link">
     <span class="md-ellipsis">
-      Mandatory Input Files:
+      Input Files:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Input Files:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-a-spatial-digital-gene-expression-sge-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      (1) A Spatial Digital Gene Expression (SGE) Matrix
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#seurat-only-input-files" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#2-a-tab-delimited-feature-file" class="md-nav__link">
     <span class="md-ellipsis">
-      Seurat-Only Input Files
+      (2) A Tab-Delimited Feature File
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1027,7 +1042,7 @@
         
   
   <span class="md-ellipsis">
-    Preparing input
+    Input Data
   </span>
   
 
@@ -1167,20 +1182,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#mandatory-input-files" class="md-nav__link">
+  <a href="#input-files" class="md-nav__link">
     <span class="md-ellipsis">
-      Mandatory Input Files:
+      Input Files:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Input Files:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-a-spatial-digital-gene-expression-sge-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      (1) A Spatial Digital Gene Expression (SGE) Matrix
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#seurat-only-input-files" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#2-a-tab-delimited-feature-file" class="md-nav__link">
     <span class="md-ellipsis">
-      Seurat-Only Input Files
+      (2) A Tab-Delimited Feature File
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1213,20 +1243,32 @@
 
 <h1 id="preparing-input-dataset">Preparing Input Dataset<a class="headerlink" href="#preparing-input-dataset" title="Permanent link">&para;</a></h1>
 <p>While the input spatial transcriptomics data varies between strategies, both can be generated using <a href="https://github.com/seqscope/NovaScope/tree/main">NovaScope</a>. </p>
-<h2 id="mandatory-input-files">Mandatory Input Files:<a class="headerlink" href="#mandatory-input-files" title="Permanent link">&para;</a></h2>
-<p>Regardless of the chosen strategy, the following files are essential and can be prepared using the Rule <a href="https://seqscope.github.io/NovaScope/walkthrough/rules/sdgeAR_reformat/"><code>sdgeAR_reformat</code></a> in NovaScope:</p>
+<h2 id="input-files">Input Files:<a class="headerlink" href="#input-files" title="Permanent link">&para;</a></h2>
+<p>The following files are essential and can be prepared using NovaScope:</p>
+<h3 id="1-a-spatial-digital-gene-expression-sge-matrix">(1) A Spatial Digital Gene Expression (SGE) Matrix<a class="headerlink" href="#1-a-spatial-digital-gene-expression-sge-matrix" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Ficture-Compatible Spatial Digital Gene Expression (SGE) Matrix:</strong><br />
-  This is a spatial transcriptomic data in a FICTURE-compatible format. It contains all informations including the barcode information, features information, and count for each genomic feature. The data format, and naming convention are provided <a href="https://seqscope.github.io/NovaScope/walkthrough/rules/sdgeAR_reformat/#1-ficture-compatible-sge">here</a>.</li>
-<li><strong>Tab-Delimited Feature File:</strong><br />
-  This file should contain information such as gene ID, gene name, and counts for each genomic feature. It is advisable to use the gene-filtered feature file from NovaScope (i.e., <code>*.feature.clean.tsv.gz</code>). Further details are available <a href="https://seqscope.github.io/NovaScope/walkthrough/rules/sdgeAR_reformat/#2-two-tab-delimited-feature-files">here</a>.</li>
+<li>Description: A Spatial Digital Gene Expression (SGE) matrix in FICTURE-compatible TSV format, containing information of spatial barcode, gene, and UMI count for each genomic feature by barcode and gene.</li>
+<li>Preparation: NovaScope facilitates the preparation of a raw SGE matrix via <a href="https://seqscope.github.io/NovaScope/fulldoc/rules/sdgeAR_reformat">Rule sdgeAR_reformat</a> and a filtered SGE matrix via <a href="https://seqscope.github.io/NovaScope/fulldoc/rules/sdgeAR_polygonfilter">Rule sdgeAR_polygonfilter</a>. Both can serve as input files for NEDA. The filtered SGE matrix undergoes gene filtering and density-based polygon filtering in this format. Users can select the option that best suits their requirements. Our example uses the filtered SGE matrix as input.</li>
 </ul>
-<h2 id="seurat-only-input-files">Seurat-Only Input Files<a class="headerlink" href="#seurat-only-input-files" title="Permanent link">&para;</a></h2>
-<p>When opting for the <code>Seurat+Ficture</code> strategy, the following specific file is required:</p>
+<h3 id="2-a-tab-delimited-feature-file">(2) A Tab-Delimited Feature File<a class="headerlink" href="#2-a-tab-delimited-feature-file" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Hexagon-Indexed SGE in 10x Genome Format:</strong><br />
-This SGE is created by segmenting pixels into hexagonal units, the size of which is defined by the user. The format aligns with the 10x genome standards. More details are provided <a href="https://seqscope.github.io/NovaScope/walkthrough/rules/sdgeAR_segment/#1-hexagon-based-sge">here</a>.</li>
+<li>
+<p>Description: This file should contain information of gene ID, gene name, and counts for each genomic feature per gene. </p>
+</li>
+<li>
+<p>Preparation: NovaScope also offers two options for this file, including the one corresponds to the raw SGE matrix from Rule <a href="https://seqscope.github.io/NovaScope/fulldoc/rules/sdgeAR_reformat">sdgeAR_reformat</a> (naming convention: <code>*.feature.tsv.gz</code>), and the clean feature file that passed the filtering based on gene names, gene types, and number of UMIs per gene from Rule <a href="https://seqscope.github.io/NovaScope/fulldoc/rules/sdgeAR_featurefilter">sdgeAR_featurefilter</a> (naming convention: <code>*.feature.clean.tsv.gz</code>). Our example data uses the clean feature file.</p>
+</li>
 </ul>
+<p><strong>(3) A Metadata File for X Y Coordinates:</strong>  </p>
+<ul>
+<li>Description: This file contains the minimum and maximum X Y coordinates for the input SGE matrix.</li>
+<li>Preparation: When the input SGE matrix is prepared by NovaScope, it includes a corresponding meta file for coordinates. The naming conventions for the raw and filtered coordinate meta files are <code>*.raw.coordinate_minmax.tsv</code> and <code>*.filtered.coordinate_minmax.tsv</code>, respectively.</li>
+</ul>
+<p><strong>(4) (Model-Specific) Hexagon-Indexed SGE:</strong>
+* Description: The hexagon-indexed SGE is created by segmenting pixels into hexagonal units, with the size defined by the user. 
+* Preparation: The required format for the hexagon-indexed SGE varies based on the chosen analytical strategy
+    * For LDA+FICTURE analysis, provide the hexagon-indexed SGE in FICTURE-compatible TSV format. This file can be generated using Rule <a href="https://seqscope.github.io/NovaScope/fulldoc/rules/c04_sdgeAR_segment_ficture">sdgeAR_segment_ficture</a> in NovaScope.
+    * For Seurat+FICTURE analysis, supply the hexagon-indexed SGE in 10x Genomics format. This file can be generated using Rule <a href="https://seqscope.github.io/NovaScope/fulldoc/rules/c04_sdgeAR_segment_10x">sdgeAR_segment_10x</a> in NovaScope.</p>
 <h2 id="example-datasets">Example Datasets<a class="headerlink" href="#example-datasets" title="Permanent link">&para;</a></h2>
 <p>Alternatively, NEDA offers three example datasets, each suitable for input in spatial transcriptomic analysis within NEDA. For detailed information on these datasets and instructions on how to download them, see <a href="../../../installation/example_data/#input-for-spatial-transcriptomic-analysis">Accessing Example Datasets</a>.</p>
 

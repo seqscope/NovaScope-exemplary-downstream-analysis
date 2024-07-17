@@ -201,7 +201,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    seqscope/NovaScope
+    seqscope/NEDA
   </div>
 </a>
       </div>
@@ -340,7 +340,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    seqscope/NovaScope
+    seqscope/NEDA
   </div>
 </a>
     </div>
@@ -950,7 +950,7 @@
         
   
   <span class="md-ellipsis">
-    Preparing input
+    Input Data
   </span>
   
 
@@ -1116,8 +1116,9 @@
 
 <h1 id="step-2-inferring-cell-type-factors-using-seurat">Step 2. Inferring Cell Type Factors using Seurat<a class="headerlink" href="#step-2-inferring-cell-type-factors-using-seurat" title="Permanent link">&para;</a></h1>
 <p>This example demonstrates how to infer cell type factors from a cell-indexed SGE using <code>Seurat</code>.</p>
-<p>The step script starts with the removal of mitochondrial and hypothetical genes and the filtering of hexagons based on <code>nFeature_RNA_cutoff</code> X Y ranges, when applied. Subsequently, it applies sctransform normalization followed by dimensionality reduction through <a href="https://satijalab.org/seurat/reference/runpca">Principal Component Analysis (PCA)</a> and <a href="https://satijalab.org/seurat/reference/runumap">Uniform Manifold Approximation and Projection (UMAP)</a> embedding.</p>
-<p>Next, the step script employs <a href="https://satijalab.org/seurat/reference/findclusters"><code>FindClusters</code></a> segregate hexagons into clusters utilizing a shared nearest neighbor (SNN) modularity optimization-based clustering algorithm. The argument <code>resolution</code> in <a href="https://satijalab.org/seurat/reference/findclusters"><code>FindClusters</code></a> determines the "granularity" of clusters, i.e., a higher resolution value yields more clusters. Thus, this step will examine the performance of a range of <code>resolutions</code>, including 0.25, 0.5, 0.75, 1, 1.25, 1.5, and 1.75. For each specified resolution, the script generates an UMAP for dimensionality reduction, a spatial plot to visualize the clusters and their spatial arrangement, and a Differential Expression (DE) file, detailing marker genes identified for each cluster.</p>
+<p>This step starts with removing mitochondrial and hypothetical genes and filtering the hexagon-indexed SGE matrix by <code>nFeature_RNA_cutoff</code>. When X Y coordinate ranges are applied, the hexagon-indexed SGE matrix will also be filtered by coordinates. </p>
+<p>Subsequently, this step applies <a href="https://github.com/satijalab/sctransform">sctransform</a> normalization followed by dimensionality reduction through <a href="https://satijalab.org/seurat/reference/runpca">Principal Component Analysis (PCA)</a> and <a href="https://satijalab.org/seurat/reference/runumap">Uniform Manifold Approximation and Projection (UMAP)</a> embedding.</p>
+<p>Next, the step employs <a href="https://satijalab.org/seurat/reference/findclusters"><code>FindClusters</code></a> to segregate hexagons into clusters utilizing a shared nearest neighbor (SNN) modularity optimization-based clustering algorithm. During this process, <a href="https://satijalab.org/seurat/reference/findclusters"><code>FindClusters</code></a> applies an argument of <code>resolution</code> to determine the "granularity" of clusters, i.e., a higher resolution value yields more clusters. A range of <code>resolutions</code>, including 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, and 2, are applied to explore the optimal <code>resolutions</code>. For each resolution, the step generates an UMAP for dimensionality reduction, a spatial plot to visualize the clusters and their spatial arrangement, and a CSV file of differentially expressed genes for each cluster.</p>
 <p>Additionally, this step generates a metadata file containing information on the cluster assignment for each hexagon, and an RDS (R Data Serialization) file that stores the complete Seurat object with all the compiled data.</p>
 <p>Input &amp; Output
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1130,15 +1131,15 @@
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Input: </span>
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>/barcodes.tsv.gz<span class="w">                                          </span><span class="c1"># the cell-indexed SGE from step1</span>
+<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>/barcodes.tsv.gz<span class="w">                                          </span><span class="c1"># the cell-indexed SGE matrix from step1</span>
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>/features.tsv.gz<span class="w"> </span>
 <span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>/matrix.mtx.gz
 
 <span class="c1"># Output: </span>
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_metadata.csv<span class="w">                </span><span class="c1"># a metadata file</span>
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_SCT.RDS<span class="w">                     </span><span class="c1"># an RDS file</span>
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_res<span class="si">${</span><span class="nv">res</span><span class="si">}</span>_DE.csv<span class="w">            </span><span class="c1"># for each resolution (`$res`) including 0.25, 0.5, 0.75, 1, 1.25, 1.5, and 1.75</span>
-<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_res<span class="si">${</span><span class="nv">res</span><span class="si">}</span>_DimSpatial.png<span class="w">    </span><span class="c1"># for each resolution (`$res`) including 0.25, 0.5, 0.75, 1, 1.25, 1.5, and 1.75</span>
+<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_metadata.csv<span class="w">                </span><span class="c1">## a metadata file</span>
+<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_SCT.RDS<span class="w">                     </span><span class="c1">## an RDS file</span>
+<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_res<span class="si">${</span><span class="nv">res</span><span class="si">}</span>_DE.csv<span class="w">            </span><span class="c1">## Each resolution returns a CSV file of differentially expressed genes for each cluster</span>
+<span class="si">${</span><span class="nv">output_dir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_cutoff<span class="si">${</span><span class="nv">nFeature_RNA_cutoff</span><span class="si">}</span>_res<span class="si">${</span><span class="nv">res</span><span class="si">}</span>_DimSpatial.png<span class="w">    </span><span class="c1">## Each resolution returns an image of two panels including an UMAP for dimensionality reduction, a spatial plot to visualize the clusters and their spatial arrangement </span>
 </code></pre></div></td></tr></table></div></p>
 <p>Parameters:</p>
 <ul>
