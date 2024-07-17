@@ -203,7 +203,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    seqscope/NovaScope
+    seqscope/NEDA
   </div>
 </a>
       </div>
@@ -342,7 +342,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    seqscope/NovaScope
+    seqscope/NEDA
   </div>
 </a>
     </div>
@@ -692,6 +692,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Input Configuration
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -701,6 +712,43 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#essential-and-auxiliary-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Essential and Auxiliary Parameters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#an-input-configuration-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      An Input Configuration Template
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -970,7 +1018,7 @@
         
   
   <span class="md-ellipsis">
-    Preparing input
+    Input Data
   </span>
   
 
@@ -1103,6 +1151,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#essential-and-auxiliary-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Essential and Auxiliary Parameters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#an-input-configuration-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      An Input Configuration Template
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1120,8 +1194,17 @@
 
 
 <h1 id="preparing-the-input-configuration-file">Preparing the Input Configuration File<a class="headerlink" href="#preparing-the-input-configuration-file" title="Permanent link">&para;</a></h1>
-<p>Given the amount of the paths and parameters, NEDA employs a <strong>text</strong> file as an input configuration file, which contains parameters and dataset paths. We offer separate example configuration files for <a href="https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/config_job/input_config_lda.txt">LDA+FICTURE analysis</a> and <a href="https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/config_job/input_config_seurat.txt">Seurat+FICTURE analysis</a>. </p>
-<p>Below only include <a href="https://github.com/seqscope/ficture/tree/protocol">FICTURE</a>'s <strong>essential parameters</strong>, while certain steps might need <strong>auxiliary parameters</strong>. In such cases, NEDA employs FICTURE's recommended defaults for these extra settings, wherever applicable. Should you wish to customize these auxiliary parameters beyond the defaults, please proceed with caution as it involves risk. For detailed information on modifying auxiliary parameters, kindly refer to the <code>AUXILIARY PARAMS</code> section in the script for each respective step and the guidance of <a href="https://github.com/seqscope/ficture/tree/protocol">FICTURE</a>.</p>
+<p>NEDA employs an input configuration file in <strong>text</strong> format to provide input/output paths and parameters.</p>
+<p>For this input configuration file, we provide:</p>
+<ul>
+<li>an <a href="#input-configuration-template">input configuration template</a> below,</li>
+<li>an example configuration files for <a href="https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/config_job/input_config_lda.txt">LDA+FICTURE analysis</a>,</li>
+<li>an example configuration files for <a href="https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/config_job/input_config_seurat.txt">Seurat+FICTURE analysis</a>.</li>
+</ul>
+<h2 id="essential-and-auxiliary-parameters">Essential and Auxiliary Parameters<a class="headerlink" href="#essential-and-auxiliary-parameters" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/seqscope/ficture/">FICTURE</a> uses numerous parameters at each step to ensure flexibility. NEDA simplifies data analysis by only requiring <strong>essential parameters</strong> in the input configuration file. Although some steps may require <strong>auxiliary parameters</strong>, NEDA adopts FICTURE's recommended defaults.</p>
+<p>If you wish to customize these defaults, refer to the <code>AUXILIARY PARAMS</code> section in the step scripts and the <a href="https://github.com/seqscope/ficture">FICTURE documentation</a>, but proceed with caution due to potential risks.</p>
+<h2 id="an-input-configuration-template">An Input Configuration Template<a class="headerlink" href="#an-input-configuration-template" title="Permanent link">&para;</a></h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1155,34 +1238,44 @@
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
-<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code>#=========================
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code>#=========================
 # Mandatory Fields
 #=========================
 ## Input files
-transcripts=/path/to/the/transcripts/file                           ## Path to the FICTURE-compatible spatial digital gene expression matrix (SGE), whose naming convention in NovaScope is *.transcripts.tsv.gz.
-input_features=/path/to/the/clean/feature/file                       ## NovaScope name convention is *.feature.clean.tsv.gz
-major_axis=&lt;X_or_Y&gt;                                                 ## Typically, the major axis is the axis with a greater length. Options: &quot;X&quot;, &quot;Y&quot;. For instance, in the minimal test run dataset, the major axis is Y, whereas it is X in the shallow and deep liver datasets.
+input_transcripts=/path/to/the/transcripts/file                     ## Path to the input spatial digital gene expression matrix (SGE) in FICTURE-compatible TSV format.
+input_features=/path/to/the/feature/file                            ## Path to the input feature file.
+input_xyrange=/path/to/the/xyrange                                  ## Path to the input meta file with minimum and maximum X Y coordinates.
 
-## Input file Only required for Seurat+FICTURE analysis
-hexagon_sge_dir=/path/to/the/hexagon/indexed/sge/directory          ## (Seurat-only) Specify the directory with hexagon-indexed SGE, i.e., SGE with pixels segmented into hexagonal units, in the 10x genomics format. This directory should have the following three files: features.tsv.gz, barcodes.tsv.gz, and matrix.mtx.gz.
+## (Model-Specific) Input Hexagon-Indexed SGE
+input_hexagon_sge_ficture=/path/to/the/hexagon/indexed/sge/ficture  ## (LDA-only) Path of hexagon-indexed SGE in the FICTURE-compatible TSV format.
+input_hexagon_sge_10x_dir=/path/to/the/hexagon/indexed/sge/10x/dir  ## (Seurat-only) Directory of hexagon-indexed SGE in the 10x genomics format, which should have features.tsv.gz, barcodes.tsv.gz, and matrix.mtx.gz.
 
 ## Output 
 output_dir=/path/to/the/output/directory/                           ## Directory for output files: LDA results will be saved in ${output_dir}/LDA, and Seurat results wil be in ${output_dir}/Seurat.&quot;
-prefix=&lt;prefix_of_output_files&gt;                                     ## Prefix for output files. The output files will be named using both this prefix and the following analytical parameters.
+prefix=&lt;prefix_of_output_files&gt;                                     ## Prefix for output files. The output files will be named using both this prefix and the following parameters.
 
-## Analysis model
+## Train model
 train_model=&lt;model_option&gt;                                          ## Define the analytical strategy. Options: &quot;LDA&quot;, &quot;Seurat&quot;.
 
-## Analysis param
-solo_feature=&lt;solo_feature&gt;                                         ## The soloFeatures selection. Options: &quot;gn&quot;: Gene; &quot;gt&quot;: GeneFull. See details at https://github.com/alexdobin/STAR/blob/master/docs/STARsolo.md.
+## Params
+major_axis=&lt;X_or_Y&gt;                                                 ## Typically, the major axis is the axis with a greater length. Options: &quot;X&quot;, &quot;Y&quot;. For instance, it is Y in the minimal testrun dataset whereas X in the shallow and deep liver datasets.
+
+solo_feature=&lt;solo_feature&gt;                                         ## Select the genome feature. Options: &quot;gn&quot;: Gene; &quot;gt&quot;: GeneFull. See details at https://github.com/alexdobin/STAR/blob/master/docs/STARsolo.md.
 train_width=&lt;train_width&gt;                                           ## The side length of the hexagon (in micrometers), e.g., 18.
 fit_width=&lt;projection_width&gt;                                        ## Projection width, suggest to use one the same as the train width, e.g., 18.
 anchor_dist=&lt;archor_distance&gt;                                       ## Anchor point distance (in micrometers), e.g., 4.
 
-## Analysis strategy-specific params
-nfactor=&lt;number_of_factors&gt;                                         ## (LDA-only) Number of factors, e.g., 12. For the &#39;Seurat + FICTURE&#39; analysis, remove it when preparing the configuration file; nf will be defined after clustering.
+## (Model-Specific) params
+## - LDA
+nfactor=&lt;number_of_factors&gt;                                         ## (LDA-only) Number of factors, e.g., 12. For &#39;Seurat+FICTURE&#39; analysis, remove it when preparing the configuration file; nf will be defined after clustering.
 train_n_epoch=&lt;number_of_epoch&gt;                                     ## (LDA-only) Epochs for LDA training, e.g., 3. For &quot;Seurat+FICTURE&quot; analysis, use &quot;NA&quot; or remove it.
-res_of_interest=1                                                   ## (Seurat-only) After examining the clustering results across all resolution settings, identify the optimal results for FICTURE projection by specifying the resolution for these results here.
+## - Seurat
+res_of_interest=&lt;the_optimal_resolution&gt;                            ## (Seurat-only) After examining clustering results across all resolution settings, identify the optimal resolution.
 
 #=========================
 # Optional Fields
