@@ -2,7 +2,7 @@
 
 **Prefix**:
 
-The `tranform_prefix` will be automatically defined by the script as below.
+Prefixes will be automatically defined as follows.
 ```bash
 train_prefix="${prefix}.${solo_feature}.nf${nfactor}.d_${train_width}.s_${train_n_epoch}"
 tranform_prefix="${train_prefix}.prj_${fit_width}.r_${anchor_dist}"
@@ -30,9 +30,11 @@ $neda_dir/steps/step3.1-transform.sh $input_configfile
 ```
 
 ## Step 3.2 Transform Visualization
+This step visualize the tranformed data using a coarse image that depict the distribution of each factor in hexagonally binned data, allowing for the inspection of spatial factor distribution patterns before conducting pixel-level analysis.
+
 For LDA, this step simply creates a symbolic link from the color table created at [step 2a.3](step2a-LDA.md/#step-2a3-summarize-lda-factorization) and uses it to visualize the transformed data.
 
-For Seurat, this step creates a color table and visualize the transformed data.
+For Seurat, this step creates a color table to visualize the transformed data.
 
 Input & Output
 ```bash

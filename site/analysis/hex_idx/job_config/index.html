@@ -1198,8 +1198,8 @@
 <p>For this input configuration file, we provide:</p>
 <ul>
 <li>an <a href="#input-configuration-template">input configuration template</a> below,</li>
-<li>an example configuration files for <a href="https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/config_job/input_config_lda.txt">LDA+FICTURE analysis</a>,</li>
-<li>an example configuration files for <a href="https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/config_job/input_config_seurat.txt">Seurat+FICTURE analysis</a>.</li>
+<li>an example configuration files for LDA+FICTURE analysis: <a href="https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/config_job/input_config_lda.txt">input_config_lda.txt</a>,</li>
+<li>an example configuration files for Seurat+FICTURE analysis: <a href="https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/config_job/input_config_seurat.txt">input_config_seurat.txt</a>.</li>
 </ul>
 <h2 id="essential-and-auxiliary-parameters">Essential and Auxiliary Parameters<a class="headerlink" href="#essential-and-auxiliary-parameters" title="Permanent link">&para;</a></h2>
 <p><a href="https://github.com/seqscope/ficture/">FICTURE</a> uses numerous parameters at each step to ensure flexibility. NEDA simplifies data analysis by only requiring <strong>essential parameters</strong> in the input configuration file. Although some steps may require <strong>auxiliary parameters</strong>, NEDA adopts FICTURE's recommended defaults.</p>
@@ -1243,7 +1243,10 @@
 <span class="normal">36</span>
 <span class="normal">37</span>
 <span class="normal">38</span>
-<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code>#=========================
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code>#=========================
 # Mandatory Fields
 #=========================
 ## Input files
@@ -1251,7 +1254,9 @@ input_transcripts=/path/to/the/transcripts/file                     ## Path to t
 input_features=/path/to/the/feature/file                            ## Path to the input feature file.
 input_xyrange=/path/to/the/xyrange                                  ## Path to the input meta file with minimum and maximum X Y coordinates.
 
-## (Model-Specific) Input Hexagon-Indexed SGE
+## (Model-Specific) Input Hexagon-Indexed SGE matrix 
+# Those two analytical strategies in NEDA require input hexagon-indexed SGE matrix in different formats.
+# Choose your analytical strategy first, then define its required hexagon-indexed SGE matrix.
 input_hexagon_sge_ficture=/path/to/the/hexagon/indexed/sge/ficture  ## (LDA-only) Path of hexagon-indexed SGE in the FICTURE-compatible TSV format.
 input_hexagon_sge_10x_dir=/path/to/the/hexagon/indexed/sge/10x/dir  ## (Seurat-only) Directory of hexagon-indexed SGE in the 10x genomics format, which should have features.tsv.gz, barcodes.tsv.gz, and matrix.mtx.gz.
 
@@ -1275,6 +1280,7 @@ anchor_dist=&lt;archor_distance&gt;                                       ## Anc
 nfactor=&lt;number_of_factors&gt;                                         ## (LDA-only) Number of factors, e.g., 12. For &#39;Seurat+FICTURE&#39; analysis, remove it when preparing the configuration file; nf will be defined after clustering.
 train_n_epoch=&lt;number_of_epoch&gt;                                     ## (LDA-only) Epochs for LDA training, e.g., 3. For &quot;Seurat+FICTURE&quot; analysis, use &quot;NA&quot; or remove it.
 ## - Seurat
+#nFeature_RNA_cutoff=&lt;the_optimal_cutoff&gt;                           ## (Seurat-only) After evaluating the performance of different cutoffs, define the optimal cutoff aiming at removing noises.
 res_of_interest=&lt;the_optimal_resolution&gt;                            ## (Seurat-only) After examining clustering results across all resolution settings, identify the optimal resolution.
 
 #=========================

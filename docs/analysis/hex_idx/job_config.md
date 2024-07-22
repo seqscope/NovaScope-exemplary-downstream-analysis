@@ -5,8 +5,8 @@ NEDA employs an input configuration file in **text** format to provide input/out
 For this input configuration file, we provide:
 
  - an [input configuration template](#input-configuration-template) below,
- - an example configuration files for [LDA+FICTURE analysis](https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/config_job/input_config_lda.txt),
- - an example configuration files for [Seurat+FICTURE analysis](https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/config_job/input_config_seurat.txt).
+ - an example configuration files for LDA+FICTURE analysis: [input_config_lda.txt](https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/config_job/input_config_lda.txt),
+ - an example configuration files for Seurat+FICTURE analysis: [input_config_seurat.txt](https://github.com/seqscope/NovaScope-exemplary-downstream-analysis/blob/main/config_job/input_config_seurat.txt).
 
 ## Essential and Auxiliary Parameters
 [FICTURE](https://github.com/seqscope/ficture/) uses numerous parameters at each step to ensure flexibility. NEDA simplifies data analysis by only requiring **essential parameters** in the input configuration file. Although some steps may require **auxiliary parameters**, NEDA adopts FICTURE's recommended defaults.
@@ -24,7 +24,9 @@ input_transcripts=/path/to/the/transcripts/file                     ## Path to t
 input_features=/path/to/the/feature/file                            ## Path to the input feature file.
 input_xyrange=/path/to/the/xyrange                                  ## Path to the input meta file with minimum and maximum X Y coordinates.
 
-## (Model-Specific) Input Hexagon-Indexed SGE
+## (Model-Specific) Input Hexagon-Indexed SGE matrix 
+# Those two analytical strategies in NEDA require input hexagon-indexed SGE matrix in different formats.
+# Choose your analytical strategy first, then define its required hexagon-indexed SGE matrix.
 input_hexagon_sge_ficture=/path/to/the/hexagon/indexed/sge/ficture  ## (LDA-only) Path of hexagon-indexed SGE in the FICTURE-compatible TSV format.
 input_hexagon_sge_10x_dir=/path/to/the/hexagon/indexed/sge/10x/dir  ## (Seurat-only) Directory of hexagon-indexed SGE in the 10x genomics format, which should have features.tsv.gz, barcodes.tsv.gz, and matrix.mtx.gz.
 
@@ -48,6 +50,7 @@ anchor_dist=<archor_distance>                                       ## Anchor po
 nfactor=<number_of_factors>                                         ## (LDA-only) Number of factors, e.g., 12. For 'Seurat+FICTURE' analysis, remove it when preparing the configuration file; nf will be defined after clustering.
 train_n_epoch=<number_of_epoch>                                     ## (LDA-only) Epochs for LDA training, e.g., 3. For "Seurat+FICTURE" analysis, use "NA" or remove it.
 ## - Seurat
+#nFeature_RNA_cutoff=<the_optimal_cutoff>                           ## (Seurat-only) After evaluating the performance of different cutoffs, define the optimal cutoff aiming at removing noises.
 res_of_interest=<the_optimal_resolution>                            ## (Seurat-only) After examining clustering results across all resolution settings, identify the optimal resolution.
 
 #=========================

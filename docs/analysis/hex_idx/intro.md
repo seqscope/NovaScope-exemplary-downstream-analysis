@@ -27,7 +27,7 @@ Before beginning the analysis, ensure that NEDA and its dependencies are [instal
 Each step contains detailed instructions for:
 
 * the **purpose** of each step;
-* the **execution command**;
+* the **execution commands**;
 * necessary **input and output files**;
 * definitions of **auxiliary parameters**, as outlined in the scripts for each step.
 

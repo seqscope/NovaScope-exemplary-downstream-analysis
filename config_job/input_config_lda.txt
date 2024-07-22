@@ -22,7 +22,7 @@ major_axis="X"
 
 solo_feature="gn"
 train_width=18
-nfactor=12
+nfactor=6
 train_n_epoch=3
 fit_width=18
 anchor_dist=4

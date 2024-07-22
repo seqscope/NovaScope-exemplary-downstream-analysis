@@ -1,6 +1,6 @@
 # Cell Segmentation-based Analysis
 
-This is an example to illustrate aggregating the spatial transcriptomic data from [NovaScope](https://github.com/seqscope/NovaScope/tree/main) at the cell level, and clustering cells using [Seurat](https://satijalab.org/seurat/) build-in graph-based clustering approach. 
+This is an example to illustrate aggregating the spatial transcriptomic data from [NovaScope](https://github.com/seqscope/NovaScope/tree/main) at the cell level, and clustering those identified cells using [Seurat](https://satijalab.org/seurat/) build-in graph-based clustering approach. 
 
 ![overview_brief](./SC_overview.png)
 **Figure 2: A Brief Overview of the Inputs, Outputs, and Process Steps for Cell Segmentation-based Analysis.** SGE: spatial digital gene expression matrix; UMAP: Uniform Manifold Approximation and Projection.
