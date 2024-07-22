@@ -718,9 +718,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-a-spatial-digital-gene-expression-sge-matrix" class="md-nav__link">
+  <a href="#1-a-spatial-digital-gene-expression-sge-matrix-in-tsv-format" class="md-nav__link">
     <span class="md-ellipsis">
-      (1) A Spatial Digital Gene Expression (SGE) Matrix
+      (1) A Spatial Digital Gene Expression (SGE) Matrix in TSV format
     </span>
   </a>
   
@@ -1192,9 +1192,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-a-spatial-digital-gene-expression-sge-matrix" class="md-nav__link">
+  <a href="#1-a-spatial-digital-gene-expression-sge-matrix-in-tsv-format" class="md-nav__link">
     <span class="md-ellipsis">
-      (1) A Spatial Digital Gene Expression (SGE) Matrix
+      (1) A Spatial Digital Gene Expression (SGE) Matrix in TSV format
     </span>
   </a>
   
@@ -1242,18 +1242,18 @@
 
 
 <h1 id="preparing-input-dataset">Preparing Input Dataset<a class="headerlink" href="#preparing-input-dataset" title="Permanent link">&para;</a></h1>
-<p>While the input spatial transcriptomics data varies between strategies, both can be generated using <a href="https://github.com/seqscope/NovaScope/tree/main">NovaScope</a>. </p>
+<p>The input spatial transcriptomics data can be generated using <a href="https://github.com/seqscope/NovaScope/tree/main">NovaScope</a>. </p>
 <h2 id="input-files">Input Files:<a class="headerlink" href="#input-files" title="Permanent link">&para;</a></h2>
 <p>The following files are essential and can be prepared using NovaScope:</p>
-<h3 id="1-a-spatial-digital-gene-expression-sge-matrix">(1) A Spatial Digital Gene Expression (SGE) Matrix<a class="headerlink" href="#1-a-spatial-digital-gene-expression-sge-matrix" title="Permanent link">&para;</a></h3>
+<h3 id="1-a-spatial-digital-gene-expression-sge-matrix-in-tsv-format">(1) A Spatial Digital Gene Expression (SGE) Matrix in TSV format<a class="headerlink" href="#1-a-spatial-digital-gene-expression-sge-matrix-in-tsv-format" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Description: A Spatial Digital Gene Expression (SGE) matrix in FICTURE-compatible TSV format, containing information of spatial barcode, gene, and UMI count for each genomic feature by barcode and gene.</li>
+<li>Description: A Spatial Digital Gene Expression (SGE) matrix in <strong>FICTURE-compatible TSV format</strong>, containing information of spatial barcode, gene, and UMI count for each genomic feature by barcode and gene.</li>
 <li>Preparation: NovaScope facilitates the preparation of a raw SGE matrix via <a href="https://seqscope.github.io/NovaScope/fulldoc/rules/sdgeAR_reformat">Rule sdgeAR_reformat</a> and a filtered SGE matrix via <a href="https://seqscope.github.io/NovaScope/fulldoc/rules/sdgeAR_polygonfilter">Rule sdgeAR_polygonfilter</a>. Both can serve as input files for NEDA. The filtered SGE matrix undergoes gene filtering and density-based polygon filtering in this format. Users can select the option that best suits their requirements. Our example uses the filtered SGE matrix as input.</li>
 </ul>
 <h3 id="2-a-tab-delimited-feature-file">(2) A Tab-Delimited Feature File<a class="headerlink" href="#2-a-tab-delimited-feature-file" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
-<p>Description: This file should contain information of gene ID, gene name, and counts for each genomic feature per gene. </p>
+<p>Description: A TSV file provides information of gene ID, gene name, and counts unique molecular identifiers (UMIs) for each genomic feature per gene.</p>
 </li>
 <li>
 <p>Preparation: NovaScope also offers two options for this file, including the one corresponds to the raw SGE matrix from Rule <a href="https://seqscope.github.io/NovaScope/fulldoc/rules/sdgeAR_reformat">sdgeAR_reformat</a> (naming convention: <code>*.feature.tsv.gz</code>), and the clean feature file that passed the filtering based on gene names, gene types, and number of UMIs per gene from Rule <a href="https://seqscope.github.io/NovaScope/fulldoc/rules/sdgeAR_featurefilter">sdgeAR_featurefilter</a> (naming convention: <code>*.feature.clean.tsv.gz</code>). Our example data uses the clean feature file.</p>
@@ -1264,11 +1264,15 @@
 <li>Description: This file contains the minimum and maximum X Y coordinates for the input SGE matrix.</li>
 <li>Preparation: When the input SGE matrix is prepared by NovaScope, it includes a corresponding meta file for coordinates. The naming conventions for the raw and filtered coordinate meta files are <code>*.raw.coordinate_minmax.tsv</code> and <code>*.filtered.coordinate_minmax.tsv</code>, respectively.</li>
 </ul>
-<p><strong>(4) (Model-Specific) Hexagon-Indexed SGE:</strong>
-* Description: The hexagon-indexed SGE is created by segmenting pixels into hexagonal units, with the size defined by the user. 
-* Preparation: The required format for the hexagon-indexed SGE varies based on the chosen analytical strategy
-    * For LDA+FICTURE analysis, provide the hexagon-indexed SGE in FICTURE-compatible TSV format. This file can be generated using Rule <a href="https://seqscope.github.io/NovaScope/fulldoc/rules/c04_sdgeAR_segment_ficture">sdgeAR_segment_ficture</a> in NovaScope.
-    * For Seurat+FICTURE analysis, supply the hexagon-indexed SGE in 10x Genomics format. This file can be generated using Rule <a href="https://seqscope.github.io/NovaScope/fulldoc/rules/c04_sdgeAR_segment_10x">sdgeAR_segment_10x</a> in NovaScope.</p>
+<p><strong>(4) (Model-Specific) Hexagon-Indexed SGE Matrices:</strong></p>
+<ul>
+<li>Description: The hexagon-indexed SGE matrix is created by segmenting pixels in the SGE matrix into hexagonal units, with the size defined by the user.</li>
+<li>Preparation: The required format for the hexagon-indexed SGE varies based on the chosen analytical strategy<ul>
+<li>For LDA+FICTURE analysis, provide a hexagon-indexed SGE matrix in FICTURE-compatible TSV format. This file can be generated using Rule <a href="https://seqscope.github.io/NovaScope/fulldoc/rules/c04_sdgeAR_segment_ficture">sdgeAR_segment_ficture</a> in NovaScope.</li>
+<li>For Seurat+FICTURE analysis, supply a hexagon-indexed SGE matrix in 10x Genomics format. This file can be generated using Rule <a href="https://seqscope.github.io/NovaScope/fulldoc/rules/c04_sdgeAR_segment_10x">sdgeAR_segment_10x</a> in NovaScope.</li>
+</ul>
+</li>
+</ul>
 <h2 id="example-datasets">Example Datasets<a class="headerlink" href="#example-datasets" title="Permanent link">&para;</a></h2>
 <p>Alternatively, NEDA offers three example datasets, each suitable for input in spatial transcriptomic analysis within NEDA. For detailed information on these datasets and instructions on how to download them, see <a href="../../../installation/example_data/#input-for-spatial-transcriptomic-analysis">Accessing Example Datasets</a>.</p>
 
