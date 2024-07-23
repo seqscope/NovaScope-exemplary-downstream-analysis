@@ -1,6 +1,6 @@
 # Step 2b. Inferring Cell Type Factors using Seurat
 
-This example illustrates infering cell type factors using Seurat. This process contains two stops that require manual evaluations at [step 2b.2](#step-2b2-manually-select-the-cutoffs) and [step 2b.4](#step-2b4-manually-select-the-resolution-for-clustering).
+This example illustrates inferring cell type factors using Seurat. This process contains two stops that require manual evaluations at [step 2b.2](#step-2b2-manually-select-the-cutoffs) and [step 2b.4](#step-2b4-manually-select-the-resolution-for-clustering).
 
 **Prefix**:
 
@@ -89,7 +89,7 @@ res_of_interest=1
 ```
 
 ## Step 2b.5 Preparing a Count Matrix
-Transform the metadata file into a count matrix to serve as the model matrix for the subsequent steps. This step automatically detects the number of clusters from the model matrix and assignes it as a `nfactor` variable in the input configuration file.
+Transform the metadata file into a count matrix to serve as the model matrix for the subsequent steps. This step automatically detects the number of clusters from the model matrix and assigns it as a `nfactor` variable in the input configuration file.
 
 Input & Output
 ```bash

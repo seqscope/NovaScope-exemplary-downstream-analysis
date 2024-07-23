@@ -24,8 +24,8 @@ neda_dir="<path_to_the_NEDA_repository>"            ## replace <path_to_the_NEDA
 input_configfile="<path_to_input_data_and_params>"  ## replace <path_to_input_data_and_params> with the path to the config_job file, e.g., ${neda_dir}/config_job/input_config_lda.txt
 ```
 
-## Step 1 Creating Minimatch
-Assigning minibatch label, and reordering the data based on the major axis so that they are locally contiguous. The output file has the same columns as input with an extra column (1st) being the minibatch inde. 
+## Step 1 Creating Minibatches
+Assigning minibatch label, and reordering the data based on the major axis so that they are locally contiguous. The output file has the same columns as input with an extra column (1st) being the minibatch IDs. 
 
 Input & Output
 ```bash

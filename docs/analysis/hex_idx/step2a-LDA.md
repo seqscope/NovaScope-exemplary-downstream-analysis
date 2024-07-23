@@ -1,5 +1,5 @@
 # Step 2a. Infer Cell Type Factors using Latent Dirichlet Allocation (LDA).
-This example illustrates infering cell type factors using Latent Dirichlet Allocation (LDA). 
+This example illustrates inferring cell type factors using Latent Dirichlet Allocation (LDA). 
 
 **Prefix**:
 
