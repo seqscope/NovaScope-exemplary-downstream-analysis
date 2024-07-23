@@ -1248,7 +1248,7 @@
 
 
 <h1 id="step-2b-inferring-cell-type-factors-using-seurat">Step 2b. Inferring Cell Type Factors using Seurat<a class="headerlink" href="#step-2b-inferring-cell-type-factors-using-seurat" title="Permanent link">&para;</a></h1>
-<p>This example illustrates infering cell type factors using Seurat. This process contains two stops that require manual evaluations at <a href="#step-2b2-manually-select-the-cutoffs">step 2b.2</a> and <a href="#step-2b4-manually-select-the-resolution-for-clustering">step 2b.4</a>.</p>
+<p>This example illustrates inferring cell type factors using Seurat. This process contains two stops that require manual evaluations at <a href="#step-2b2-manually-select-the-cutoffs">step 2b.2</a> and <a href="#step-2b4-manually-select-the-resolution-for-clustering">step 2b.4</a>.</p>
 <p><strong>Prefix</strong>:</p>
 <p>This documentation uses the following prefixes to illustrate input and output filenames, which are automatically assigned by the script.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">train_prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}</span><span class="s2">.</span><span class="si">${</span><span class="nv">solo_feature</span><span class="si">}</span><span class="s2">.nf</span><span class="si">${</span><span class="nv">nfactor</span><span class="si">}</span><span class="s2">.d_</span><span class="si">${</span><span class="nv">train_width</span><span class="si">}</span><span class="s2">.s_</span><span class="si">${</span><span class="nv">train_n_epoch</span><span class="si">}</span><span class="s2">&quot;</span>
@@ -1335,7 +1335,7 @@
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">res_of_interest</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div></td></tr></table></div></p>
 <h2 id="step-2b5-preparing-a-count-matrix">Step 2b.5 Preparing a Count Matrix<a class="headerlink" href="#step-2b5-preparing-a-count-matrix" title="Permanent link">&para;</a></h2>
-<p>Transform the metadata file into a count matrix to serve as the model matrix for the subsequent steps. This step automatically detects the number of clusters from the model matrix and assignes it as a <code>nfactor</code> variable in the input configuration file.</p>
+<p>Transform the metadata file into a count matrix to serve as the model matrix for the subsequent steps. This step automatically detects the number of clusters from the model matrix and assigns it as a <code>nfactor</code> variable in the input configuration file.</p>
 <p>Input &amp; Output
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
