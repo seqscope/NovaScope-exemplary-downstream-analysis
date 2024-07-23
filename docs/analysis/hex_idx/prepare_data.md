@@ -1,13 +1,13 @@
 # Preparing Input Dataset
 
-The input spatial transcriptomics data can be generated using [NovaScope](https://github.com/seqscope/NovaScope/tree/main). 
+The input spatial digital gene expression (SGE) matrix can be generated using [NovaScope](https://github.com/seqscope/NovaScope/tree/main). 
 
 ## Input Files:
 The following files are essential and can be prepared using NovaScope:
 
 ### (1) A Spatial Digital Gene Expression (SGE) Matrix in TSV format
 
-* Description: A Spatial Digital Gene Expression (SGE) matrix in **FICTURE-compatible TSV format**, containing information of spatial barcode, gene, and UMI count for each genomic feature by barcode and gene.
+* Description: A SGE matrix in **FICTURE-compatible TSV format**, containing information of spatial barcode, gene, and UMI count for each genomic feature by barcode and gene.
 * Preparation: NovaScope facilitates the preparation of a raw SGE matrix via [Rule sdgeAR_reformat](https://seqscope.github.io/NovaScope/fulldoc/rules/sdgeAR_reformat) and a filtered SGE matrix via [Rule sdgeAR_polygonfilter](https://seqscope.github.io/NovaScope/fulldoc/rules/sdgeAR_polygonfilter). Both can serve as input files for NEDA. The filtered SGE matrix undergoes gene filtering and density-based polygon filtering in this format. Users can select the option that best suits their requirements. Our example uses the filtered SGE matrix as input.
 
 ### (2) A Tab-Delimited Feature File
@@ -29,4 +29,4 @@ The following files are essential and can be prepared using NovaScope:
     * For Seurat+FICTURE analysis, supply a hexagon-indexed SGE matrix in 10x Genomics format. This file can be generated using Rule [sdgeAR_segment_10x](https://seqscope.github.io/NovaScope/fulldoc/rules/c04_sdgeAR_segment_10x) in NovaScope.
 
 ## Example Datasets
-Alternatively, NEDA offers three example datasets, each suitable for input in spatial transcriptomic analysis within NEDA. For detailed information on these datasets and instructions on how to download them, see [Accessing Example Datasets](../../installation/example_data.md#input-for-spatial-transcriptomic-analysis).
+Alternatively, NEDA offers three example datasets for this pixel-level analysis. For detailed information on these datasets and instructions on how to download them, see [Accessing Example Datasets](../../installation/example_data.md#input-for-spatial-transcriptomic-analysis).

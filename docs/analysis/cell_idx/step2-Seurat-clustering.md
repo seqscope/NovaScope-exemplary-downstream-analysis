@@ -30,7 +30,6 @@ Parameters:
 * `--Y_col`: Specify which part of the hexagon ID corresponds to the Y coordinate. As the Y coordinate is the second component in the example case, it should set to 2.  Default: 4.
 * `--nFeature_RNA_cutoff`: Cutoff value for filtering hexagons by nFeature_RNA. Since this cell-indexed SGE is derived from histology files, `nFeature_RNA_cutoff` is set to be 0.
 
-
 Commands:
 ```bash
 Rscript ${neda}/scripts/seurat_analysis.R \
@@ -41,4 +40,3 @@ Rscript ${neda}/scripts/seurat_analysis.R \
     --Y_col 2 \
     --nFeature_RNA_cutoff 0 
 ```
-

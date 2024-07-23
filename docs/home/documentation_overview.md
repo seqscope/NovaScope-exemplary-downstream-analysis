@@ -27,5 +27,5 @@ The current documentation include the following sections:
 
 * [Introduction](../analysis/cell_idx/intro.md): An Overview of the prelimary single-cell analysis.
 * [Preparing Input Data](../analysis/cell_idx/prepare_data.md): Details of required input files.
-* [Create Cell-indexed SGE](../analysis/cell_idx/step1-cell_SGE.md): Computing environment setup and preparation of a cell-indexed spatial digital gene expression matrix.
+* [Create Cell-indexed SGE](../analysis/cell_idx/step1-cell_SGE.md): Computing environment setup and preparation of a cell-indexed spatial digital gene expression (SGE) matrix.
 * [Seurat Clustering](../analysis/cell_idx/step2-Seurat-clustering.md): Application of multi-dimensional clustering with `Seurat` for cell type factor inference.

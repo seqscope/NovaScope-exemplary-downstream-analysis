@@ -38,7 +38,7 @@ ls -hlt $neda_dir/submodules/ficture
 
 #### 2.2.2 Create a Python Environment
 
-Set up a Python environment for [FICTURE](https://github.com/seqscope/ficture/tree/protocol) as per the [requirement file](https://github.com/seqscope/ficture/blob/8ceb419618c1181bb673255427b53198c4887cfa/requirements.txt). The requirement file is included in the FICTURE repository.
+Set up a Python environment for FICTURE as per the [requirement file](https://github.com/seqscope/ficture/blob/8ceb419618c1181bb673255427b53198c4887cfa/requirements.txt). The requirement file is included in the FICTURE repository.
 
 First, ensure the requirements file is accessible:
 
@@ -90,7 +90,7 @@ To enable Seurat analysis, install the following required R packages:
 * RColorBrewer
 
 ```R
-## install all required packages in R
+## install all required packages in R (need to be done only once)
 install.packages(c( "Seurat", "optparse", "patchwork", "dplyr", "tidyverse", "stringr", 
                     "ggplot2", "cowplot", "RColorBrewer"))
 ```

@@ -1242,12 +1242,12 @@
 
 
 <h1 id="preparing-input-dataset">Preparing Input Dataset<a class="headerlink" href="#preparing-input-dataset" title="Permanent link">&para;</a></h1>
-<p>The input spatial transcriptomics data can be generated using <a href="https://github.com/seqscope/NovaScope/tree/main">NovaScope</a>. </p>
+<p>The input spatial digital gene expression (SGE) matrix can be generated using <a href="https://github.com/seqscope/NovaScope/tree/main">NovaScope</a>. </p>
 <h2 id="input-files">Input Files:<a class="headerlink" href="#input-files" title="Permanent link">&para;</a></h2>
 <p>The following files are essential and can be prepared using NovaScope:</p>
 <h3 id="1-a-spatial-digital-gene-expression-sge-matrix-in-tsv-format">(1) A Spatial Digital Gene Expression (SGE) Matrix in TSV format<a class="headerlink" href="#1-a-spatial-digital-gene-expression-sge-matrix-in-tsv-format" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Description: A Spatial Digital Gene Expression (SGE) matrix in <strong>FICTURE-compatible TSV format</strong>, containing information of spatial barcode, gene, and UMI count for each genomic feature by barcode and gene.</li>
+<li>Description: A SGE matrix in <strong>FICTURE-compatible TSV format</strong>, containing information of spatial barcode, gene, and UMI count for each genomic feature by barcode and gene.</li>
 <li>Preparation: NovaScope facilitates the preparation of a raw SGE matrix via <a href="https://seqscope.github.io/NovaScope/fulldoc/rules/sdgeAR_reformat">Rule sdgeAR_reformat</a> and a filtered SGE matrix via <a href="https://seqscope.github.io/NovaScope/fulldoc/rules/sdgeAR_polygonfilter">Rule sdgeAR_polygonfilter</a>. Both can serve as input files for NEDA. The filtered SGE matrix undergoes gene filtering and density-based polygon filtering in this format. Users can select the option that best suits their requirements. Our example uses the filtered SGE matrix as input.</li>
 </ul>
 <h3 id="2-a-tab-delimited-feature-file">(2) A Tab-Delimited Feature File<a class="headerlink" href="#2-a-tab-delimited-feature-file" title="Permanent link">&para;</a></h3>
@@ -1274,7 +1274,7 @@
 </li>
 </ul>
 <h2 id="example-datasets">Example Datasets<a class="headerlink" href="#example-datasets" title="Permanent link">&para;</a></h2>
-<p>Alternatively, NEDA offers three example datasets, each suitable for input in spatial transcriptomic analysis within NEDA. For detailed information on these datasets and instructions on how to download them, see <a href="../../../installation/example_data/#input-for-spatial-transcriptomic-analysis">Accessing Example Datasets</a>.</p>
+<p>Alternatively, NEDA offers three example datasets for this pixel-level analysis. For detailed information on these datasets and instructions on how to download them, see <a href="../../../installation/example_data/#input-for-spatial-transcriptomic-analysis">Accessing Example Datasets</a>.</p>
 
 
 

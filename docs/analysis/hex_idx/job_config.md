@@ -20,7 +20,7 @@ If you wish to customize these defaults, refer to the `AUXILIARY PARAMS` section
 # Mandatory Fields
 #=========================
 ## Input files
-input_transcripts=/path/to/the/transcripts/file                     ## Path to the input spatial digital gene expression matrix (SGE) in FICTURE-compatible TSV format.
+input_transcripts=/path/to/the/transcripts/file                     ## Path to the input spatial digital gene expression (SGE) matrix in FICTURE-compatible TSV format.
 input_features=/path/to/the/feature/file                            ## Path to the input feature file.
 input_xyrange=/path/to/the/xyrange                                  ## Path to the input meta file with minimum and maximum X Y coordinates.
 

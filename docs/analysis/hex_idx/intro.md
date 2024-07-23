@@ -33,4 +33,4 @@ Each step contains detailed instructions for:
 
 ## An Overview
 ![overview_brief](./ST_overview.png)
-**Figure 1: A Brief Overview of the Inputs, Outputs, and Process Steps for Pixel-level Analysis.** 
+**Figure 1: A Brief Overview of the Inputs, Outputs, and Process Steps for Pixel-level Analysis.**

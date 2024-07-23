@@ -11,7 +11,6 @@ decode_prefix="${train_prefix}.decode.prj_${fit_width}.r_${anchor_dist}_${neighb
 * `neighbor_radius`: represents the radius (um) of each anchor point's territory. By default, `neighbor_radius = anchor_dist + 1`.
 * Other variables applied above are in the [Job Configuration](./job_config.md).
 
-
 ## Step 4.1 pixel-level Decoding. 
 Decode the model matrix on individual pixels, which returns a tab-delimited file of the posterior count of factors on individual pixels.
 

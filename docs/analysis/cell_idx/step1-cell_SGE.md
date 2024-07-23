@@ -1,4 +1,4 @@
-# Step1. Prepare Cell-indexed Spatial Digital Gene Expression Matrix
+# Step1. Prepare Cell-indexed Spatial Digital Gene Expression (SGE) Matrix
 
 ## Set Up Computing Environment
 
@@ -33,7 +33,7 @@ prefix=<output_prefix>                                  ## Replace with your out
 
 ## Step 1.1 Prepare Histology-based Cell Segmentation Mask Matrix
 
-To construct a cell-indexed spatial digital gene expression matrix (SGE), begin by executing histology-based cell segmentation using external methodologies, such as [Watershed](https://imagej.net/imaging/watershed) or [Cellpose](https://github.com/MouseLand/cellpose). Details for performing histology-based cell segmentation using [Watershed](https://imagej.net/imaging/watershed) and [Cellpose](https://github.com/MouseLand/cellpose) are provided in the [NovaScope Protocol paper](../../index.md#references). 
+To construct a cell-indexed spatial digital gene expression (SGE) matrix, begin by executing histology-based cell segmentation using external methodologies, such as [Watershed](https://imagej.net/imaging/watershed) or [Cellpose](https://github.com/MouseLand/cellpose). Details for performing histology-based cell segmentation using [Watershed](https://imagej.net/imaging/watershed) and [Cellpose](https://github.com/MouseLand/cellpose) are provided in the [NovaScope Protocol paper](../../index.md#references). 
 
 !!! note
 
@@ -69,9 +69,9 @@ Examples:
 ### Cellpose
 Cellpose produces an `npy` file that serves as the segmentation mask matrix in `NumPy` array format. No additional action is required with NEDA.
 
-## Step1.2 Create cell-indexed spatial digital gene expression matrix
+## Step1.2 Create cell-indexed SGE matrix
 
-Use the histology-based cell segmentation mask matrix file from [Step1.1](#step-11-prepare-histology-based-cell-segmentation-mask-matrix) to aggregate spatial transcriptomic data at the cellular level. NEDA’s `make_sge_from_npy.py` script is utilized here. Note that the npy file from [Watershed](https://imagej.net/imaging/watershed) and [Cellpose](https://github.com/MouseLand/cellpose) differs, so the script requires specifying the `--approach`. This step creates a cell-indexed SGE in 10x genomics format.
+Use the histology-based cell segmentation mask matrix file from [Step1.1](#step-11-prepare-histology-based-cell-segmentation-mask-matrix) to aggregate the input SGE matrix at the cellular level. NEDA’s `make_sge_from_npy.py` script is utilized here. Note that the `npy` file from [Watershed](https://imagej.net/imaging/watershed) and [Cellpose](https://github.com/MouseLand/cellpose) differs, so the script requires specifying the `--approach`. This step creates a cell-indexed SGE in 10X Genomics format.
 
 ### Watershed
 
