@@ -72,7 +72,7 @@ python -m venv ${pyenv_name}
 source ${pyenv_name}/bin/activate
 
 ## install the required packages (need to be done only once)
-pip install -r $$ficture_reqfile
+pip install -r $ficture_reqfile
 ```
 
 ### 2.3 Install R Packages
