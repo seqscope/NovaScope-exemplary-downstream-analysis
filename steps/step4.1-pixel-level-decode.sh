@@ -76,33 +76,41 @@ command time -v python ${ficture}/ficture/scripts/slda_decode.py  \
     --lite_topk_output_anchor ${ap_lite_topk_output_anchor} \
     --thread ${threads}
 
-# Determine the sort/tabix column based on the major_axis value
-if [[ ${major_axis} == "Y" ]]; then
-    sort_column="-k3,3g"
-    tabix_column="-b3 -e3"
-else
-    sort_column="-k2,2g"
-    tabix_column="-b2 -e2"
-fi
-
-# Sort based on major axis
+# Sort and compress the decoded pixel-level data
 echo -e "Sorting and compressing the decoded pixel-level data..."
 
+# 1) read xy range
 while IFS=$'\t' read -r r_key r_val; do
     export "${r_key}"="${r_val}"
-done < ${input_xyrange}
+done < "${input_xyrange}"
 
-offsetx=${xmin}
-offsety=${ymin}
-rangex=$( echo "(${xmax} - ${xmin} + 0.5)/1+1" | bc )
-rangey=$( echo "(${ymax} - ${ymin} + 0.5)/1+1" | bc )
+offsetx="${xmin}"
+offsety="${ymin}"
+rangex=$( echo "(${xmax} - ${xmin} + 0.5)/1+1" | bc )   
+rangey=$( echo "(${ymax} - ${ymin} + 0.5)/1+1" | bc )   
 
-header="##K=12;TOPK=3\n##BLOCK_SIZE=1000;BLOCK_AXIS=X;INDEX_AXIS=Y\n##OFFSET_X=${offsetx};OFFSET_Y=${offsety};SIZE_X=${rangex};SIZE_Y=${rangey};SCALE=100\n#BLOCK\tX\tY\tK1\tK2\tK3\tP1\tP2\tP3"
-(echo -e "${header}" && zcat ${decode_pixel_unsorted} | \
+# 2) define the block and sort axis
+declare -A axis2col
+axis2col["X"]=2
+axis2col["Y"]=3
+
+if [[ ${major_axis} == "Y" ]]; then
+    block_axis="X"
+    offblock="${offsetx}"
+else
+    block_axis="Y"
+    offblock="${offsety}"
+fi
+
+blockidx0=$( echo "${axis2col[${block_axis}]} - 1" | bc )   # perl is 0-based
+sortidx=${axis2col[${major_axis}]}
+
+header="##K=${nfactor};TOPK=3\n##BLOCK_SIZE=1000;BLOCK_AXIS=${block_axis};INDEX_AXIS=${major_axis}\n##OFFSET_X=${offsetx};OFFSET_Y=${offsety};SIZE_X=${rangex};SIZE_Y=${rangey};SCALE=100\n#BLOCK\tX\tY\tK1\tK2\tK3\tP1\tP2\tP3"
+(echo -e "${header}" && zcat "${decode_pixel_unsorted}" | \
     tail -n +2 | \
-    perl -slane '$F[0]=int(($F[1]-$offx)/$bsize) * $bsize; $F[1]=int(($F[1]-$offx)*$scale); $F[1]=($F[1]>=0)?$F[1]:0; $F[2]=int(($F[2]-$offy)*$scale); $F[2]=($F[2]>=0)?$F[2]:0; print join("\t", @F);' -- -bsize=1000 -scale=100 -offx=${offsetx} -offy=${offsety} | \
-    sort -S 10G -k1,1g $sort_column ) | \
-    bgzip -c > ${decode_pixel}
+    perl -slane '$F[0]=int(($F[$bidx]-$offb)/$bsize) * $bsize; $F[1]=int(($F[1]-$offx)*$scale); $F[1]=($F[1]>=0)?$F[1]:0; $F[2]=int(($F[2]-$offy)*$scale); $F[2]=($F[2]>=0)?$F[2]:0; print join("\t", @F);' -- -bsize=1000 -scale=100 -offx="${offsetx}" -offy="${offsety}" -bidx="${blockidx0}" -offb="${offblock}" | \
+    sort -S 10G -k1,1g -k"${sortidx},${sortidx}g") | \
+    bgzip -c > "${decode_pixel}"
 
-tabix -f -s1 ${tabix_column} ${decode_pixel}
+tabix -f -s1 -b"${sortidx}" -e"${sortidx}" ${decode_pixel}
 
