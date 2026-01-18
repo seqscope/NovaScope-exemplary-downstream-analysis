@@ -4,4 +4,4 @@ This is an exemplary downstream analysis for Spatial Transcriptomics data from [
 
 Please see detailed guidance at https://seqscope.github.io/NovaScope-exemplary-downstream-analysis.
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1234567.svg)](https://doi.org/10.5281/zenodo.18291721)
+Reference: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1234567.svg)](https://doi.org/10.5281/zenodo.18291721)
