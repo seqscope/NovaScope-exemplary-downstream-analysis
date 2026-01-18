@@ -5,4 +5,4 @@ This is an exemplary downstream analysis for Spatial Transcriptomics data from [
 Please see detailed guidance at https://seqscope.github.io/NovaScope-exemplary-downstream-analysis.
 
 
-Reference: <a href="https://doi.org/10.5281/zenodo.18291721"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.18291721.svg?clean=1" alt="DOI"></a>
+DOI: Cheng, W., & Kang, H. M. (2026). NovaScope Exemplary Downstream Analysis (NEDA) (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.18291721
